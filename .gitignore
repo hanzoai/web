@@ -1,0 +1,5 @@
+.sake/
+node_modules/
+public/js
+public/css
+public/*.html
