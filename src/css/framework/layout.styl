@@ -1,0 +1,15 @@
+header
+footer
+main > *
+  width: 100vw
+  +above($pageWidth + 1)
+    padding: 0 'calc((100% - %s) / 2)' % $pageWidth
+  +below($pageWidth)
+    padding 0 1rem
+
+main > *
+  position: relative
+  min-height: $sectionMinHeight
+
+[tabindex]
+  outline: none

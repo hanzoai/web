@@ -1,0 +1,59 @@
+// START Header
+
+header
+  .logo
+    .logo-techstars
+      height: 1rem
+      margin-top: .3rem
+      margin-left: .5rem
+
+      +between($phoneWidth + 1, 725px)
+        display: block
+
+// END Header
+
+// START Hero
+
+$heroHeight = 80vh
+
+.hero
+  background-image: url(#hero-bg)
+  height: $heroHeight
+  overflow: hidden
+  color: $textColorLight
+
+  .bg
+    position: absolute
+    left: 0
+    top: 0
+    height: $heroHeight
+    min-height: $sectionMinHeight
+    min-width: 100vw
+    z-index: -1
+
+  .bg-stars
+    position: absolute
+    animation: star-blur 20s infinite ease-in-out
+
+    +above($phoneWidth + 1)
+      top: 20%
+      left: 50vw
+      height: 50vh
+
+    +below($phoneWidth)
+      left: 25vw
+      top: 40%
+      width: 100vw
+
+  .content
+    top: 50%
+    position: relative
+    transform: translateY(-50%)
+
+    h1
+      margin-bottom: 2rem
+
+    .button
+      margin-right: 1rem
+
+// END Hero
