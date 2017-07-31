@@ -23,7 +23,7 @@ compilePug = (src, dst) ->
   pug = require 'pug'
 
   opts =
-    basedir:    __dirname + '/nodr_modules'
+    basedir:    __dirname + '/node_modules'
     pretty:     true
     production: if process.env.PRODUCTION then true else false
 
