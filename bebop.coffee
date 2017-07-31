@@ -23,11 +23,14 @@ compilePug = (src, dst) ->
   pug = require 'pug'
 
   opts =
-    basedir:    __dirname + '/src'
+    basedir:    __dirname + '/nodr_modules'
     pretty:     true
     production: if process.env.PRODUCTION then true else false
 
   for k,v of require './settings'
+    opts[k] = v
+
+  for k,v of require './data'
     opts[k] = v
 
   src = path.join 'src',    filename

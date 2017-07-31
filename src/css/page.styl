@@ -2,21 +2,23 @@
 
 header
   .logo
-    .logo-techstars
-      height: 1rem
-      margin-top: .3rem
-      margin-left: .5rem
+    .logo-link:nth-child(n+2)
+      .logo-image
+        height: 1rem
+        margin-top: .3rem
+        margin-left: .5rem
+        padding: 0
 
-      +above(751px)
-        border-left: 1px solid $textColorLight
-        padding-left: .5rem
+        +above(751px)
+          border-left: 1px solid $textColorLight
+          padding-left: .5rem
 
-      +below($phoneWidth)
-        border-left: 1px solid $textColorLight
-        padding-left: .5rem
+        +below($phoneWidth)
+          border-left: 1px solid $textColorLight
+          padding-left: .5rem
 
-      +between($phoneWidth + 1, 750px)
-        display: block
+        +between($phoneWidth + 1, 750px)
+          display: block
 
 // END Header
 

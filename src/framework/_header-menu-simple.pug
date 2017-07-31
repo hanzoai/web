@@ -1,0 +1,46 @@
+nav.simple-menus
+  div.left.logo
+    each logo in item.logos
+      a.logo-link(href=logo.url)
+        if logo.image
+          img.logo-image(src=logo.image, alt=logo.alt)
+        if logo.name
+          span=logo.name
+
+  if item.menuCollections[1]
+    div.right.secondary
+      each menu in item.menuCollections[1].menus
+        if menu.links
+          span.menu(tabindex=0)
+            .menu-title.fade-on-hover=menu.name
+            .menu-body
+              .menu-content
+                each link in menu.links
+                  a.menu-link(href=link.url)
+                    if link.image
+                      img.menu-link-icon(src=link.image, alt=link.name)
+                    .menu-link-text
+                      .menu-link-name=link.name
+                      if link.description
+                        .menu-link-description=link.description
+        else
+          a(href=menu.url).fade-on-hover(tabindex=0)=menu.name
+
+  if item.menuCollections[0]
+    div.center.primary
+      each menu in item.menuCollections[0].menus
+        if menu.links
+          span.menu(tabindex=0)
+            .menu-title.fade-on-hover=menu.name
+            .menu-body
+              .menu-content
+                each link in menu.links
+                  a.menu-link(href=link.url)
+                    if link.image
+                      img.menu-link-icon(src=link.image, alt=link.name)
+                    .menu-link-text
+                      .menu-link-name=link.name
+                      if link.description
+                        .menu-link-description=link.description
+        else
+          a(href=menu.url).fade-on-hover(tabindex=0)=menu.name

@@ -41,6 +41,7 @@
     "stylus": "0.54.5"
   },
   "dependencies": {
-    "shop.js": "2.1.30"
+    "shop.js": "2.1.30",
+    "zepto-modules": "1.0.1"
   }
 }

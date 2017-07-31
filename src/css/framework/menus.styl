@@ -1,0 +1,115 @@
+// START Header Navigation Menus
+header
+
+  // START Simple Menus
+  .simple-menus
+    a
+      text-decoration: none
+      color: $textColor1
+
+    // .menu contains all menu content and functions based on hover
+    .menu
+      cursor: default
+      position: relative
+      text-align: left
+
+
+      // .menu-content is the part of the menu that expands and stuff
+      .menu-body
+        opacity: 0
+        position: absolute
+        left: 50%
+        top: 100%
+        pointer-events: none
+        transition: all ($transitionTime * .5) ease-in-out
+
+        color: $textColor2
+
+        transform: translateX(-50%)
+        width: 360px
+        max-width: 100vw
+
+
+        &:before
+          content: ''
+          width:  2 * $spacing
+          height: 2 * $spacing
+          position: absolute
+          bottom: 100%
+          background-color: $backgroundColor1
+          left: 50%
+          transform: translate(-50%, 50%) rotate(45deg)
+
+        .menu-content
+          padding: $spacing 2 * $spacing
+          transform-origin: top center
+          transform: scale(.9)
+          background-color: $backgroundColor1
+          transition: all $transitionTime ease-in-out
+          box-shadow: 2px 4px 2px .5px $shadowColor2
+          max-height: 'calc(100vh - %s - %s)' % ($headerHeight (2 * $spacing))
+          overflow: auto
+
+          .menu-link
+            width: 100%
+            color: $textColor2
+            display: table
+            padding: $spacing 0
+
+            &:hover
+              .menu-link-icon
+                filter: saturate(40%) brightness(105%)
+
+              .menu-link-text
+                filter: brightness(300%)
+
+            .menu-link-icon
+            .menu-link-text
+              display: inline-block
+
+            .menu-link-icon
+              margin-right: 2 * $spacing
+              width: $headerHeight
+
+            .menu-link-text:first-child
+              width: 100%
+
+            .menu-link-text:not(:first-child)
+              width: 'calc(100% - %s - %s)' % ($headerHeight (2 * $spacing))
+
+              & > *
+                display: block
+
+              // Automatically work for both description and no description
+              // states
+              .menu-link-name:not(:last-child)
+                line-height: 2rem
+
+              .menu-link-description
+                line-height: 1.5rem
+                font-size: .875rem
+
+      &:hover .menu-body
+      &:focus .menu-body
+      .menu-body:hover
+        opacity: 1
+        pointer-events: auto
+
+        .menu-content
+          transform: none
+  // END Simple Menus
+
+  // START Complex Menus
+  .complex-menus
+    a
+      text-decoration: none
+      color: $textColor1
+
+    .menu
+      cursor: default
+      position: relative
+      text-align: left
+
+  // END Complex Menus
+
+// END Header Navigation Menus

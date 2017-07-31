@@ -1,35 +1,6 @@
-nav
-  div.left.logo
-    img.logo-image(src='/img/logo.png' alt='Hanzo')
-    span Hanzo
-    img.logo-techstars(src='/img/atechstars.png' alt='A Techstars Company')
+case item.type
+  when 'complex'
+    include framework/_header-menu-complex.pug
+  else
+    include framework/_header-menu-simple.pug
 
-  div.right.secondary
-    span.fade-on-hover(tabindex=0) Support
-    span.fade-on-hover(tabindex=0) Sign In
-
-  div.center.primary
-    span.menu(tabindex=0)
-      .menu-title.fade-on-hover Solutions
-      .menu-body
-        .menu-content
-          .menu-link Analytics
-          .menu-link Commerce
-          .menu-link Intelligence
-    span.menu(tabindex=0)
-      .menu-title.fade-on-hover Developers
-      .menu-body
-        .menu-content
-          .menu-link API
-          .menu-link SDK
-          .menu-link Open Source
-    span.fade-on-hover(tabindex=0) Pricing
-    span.menu(tabindex=0)
-      .menu-title.fade-on-hover Company
-      .menu-body
-        .menu-content
-          .menu-link Team
-          .menu-link Press
-          .menu-link Partners
-          .menu-link Careers
-          .menu-link Contact
