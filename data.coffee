@@ -3,7 +3,7 @@ module.exports =
     {
       '@context': 'hanzo.ai/schema'
       '@type': 'WebsiteHeader'
-      type: 'complex'
+      type: 'simple'
       logos: [
         {
           '@type': 'WebsiteLogo'
