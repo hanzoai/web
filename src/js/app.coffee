@@ -1,5 +1,5 @@
 import El from 'el.js'
 
-import { MenuComplex } from 'astley.js'
+import { HeaderMenuComplex } from 'astley.js'
 
 El.mount('*')
