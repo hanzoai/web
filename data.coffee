@@ -3,7 +3,7 @@ module.exports =
     {
       '@context': 'hanzo.ai/schema'
       '@type': 'WebsiteHeader'
-      type: 'simple'
+      type: 'complex'
       logos: [
         {
           '@type': 'WebsiteLogo'
@@ -28,18 +28,21 @@ module.exports =
               name: 'Solutions'
               links: [
                 {
+                  '@type': 'WebsiteMenuLink'
                   name: 'Analytics'
                   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.'
                   image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
+                  '@type': 'WebsiteMenuLink'
                   name: 'Commerce'
                   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
                   image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
+                  '@type': 'WebsiteMenuLink'
                   name: 'Intelligence'
                   description: 'Lorem ipsum dolor sit amet.'
                   image: '/img/test-rocket.svg'
@@ -52,18 +55,21 @@ module.exports =
               name: 'Developers'
               links: [
                 {
+                  '@type': 'WebsiteMenuLink'
                   name: 'API'
                   description: 'Lorem Descriptio'
                   image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
+                  '@type': 'WebsiteMenuLink'
                   name: 'SDK'
                   description: 'Lorem Descriptio'
                   image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
+                  '@type': 'WebsiteMenuLink'
                   name: 'Open Source'
                   description: 'Lorem Descriptio'
                   image: '/img/test-rocket.svg'
@@ -73,38 +79,43 @@ module.exports =
             }
             {
               '@type': 'WebsiteMenu'
-              name: 'Pricing'
-              url: '#'
-            }
-            {
-              '@type': 'WebsiteMenu'
               name: 'Company'
               links: [
                 {
+                  '@type': 'WebsiteMenuLink'
                   name: 'Team'
                   image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
+                  '@type': 'WebsiteMenuLink'
                   name: 'Press'
                   image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
+                  '@type': 'WebsiteMenuLink'
                   name: 'Partners'
                   image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
+                  '@type': 'WebsiteMenuLink'
                   name: 'Careers'
                   image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
+                  '@type': 'WebsiteMenuLink'
                   name: 'Contact'
                   url: '#'
                 }
               ]
+            }
+            {
+              '@type': 'WebsiteMenu'
+              name: 'Pricing'
+              url: '#'
             }
           ]
         }
