@@ -1,5 +1,9 @@
 import El from 'el.js'
 
-import { HeaderMenuComplex } from 'astley.js'
+import {
+  HeaderMenuComplex
+  HeaderMenuSimple
+  Hero
+} from 'astley.js'
 
 El.mount('*')

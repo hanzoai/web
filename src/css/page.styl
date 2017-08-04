@@ -27,7 +27,9 @@ header
 $heroHeight = 80vh
 
 .hero
-  background-image: url(#hero-bg)
+  background-image: url(/img/hero.svg)
+  background-position: left center
+  background-size: cover
   height: $heroHeight
   overflow: hidden
   color: $textColorLight
@@ -41,19 +43,19 @@ $heroHeight = 80vh
     min-width: 100vw
     z-index: -1
 
-  .bg-stars
-    position: absolute
-    animation: star-blur 20s infinite ease-in-out
+  // .bg-stars
+  //   position: absolute
+  //   animation: star-blur 20s infinite ease-in-out
 
-    +above($phoneWidth + 1)
-      top: 20%
-      left: 50vw
-      height: 50vh
+  //   +above($phoneWidth + 1)
+  //     top: 20%
+  //     left: 50vw
+  //     height: 50vh
 
-    +below($phoneWidth)
-      left: 25vw
-      top: 40%
-      width: 100vw
+  //   +below($phoneWidth)
+  //     left: 25vw
+  //     top: 40%
+  //     width: 100vw
 
   .content
     top: 50%

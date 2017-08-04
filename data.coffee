@@ -1,7 +1,8 @@
 module.exports =
-  data: [
-    {
-      '@context': 'hanzo.ai/schema'
+  data: {
+    '@context': 'hanzo.ai/schema'
+    '@type': 'Website'
+    header: {
       '@type': 'WebsiteHeader'
       type: 'complex'
       logos: [
@@ -136,4 +137,57 @@ module.exports =
         }
       ]
     }
-  ]
+    main: [
+      {
+        '@type': 'WebsiteSection'
+        content: [
+          {
+            '@type': 'WebsiteText'
+            text: 'Put your business on autopilot'
+            level: 'h1'
+          }
+          {
+            '@type': 'WebsiteLink'
+            class: 'button'
+            text: 'JOIN THE BETA +'
+            url: '#'
+          }
+          {
+            '@type': 'WebsiteLink'
+            class: 'button important'
+            text: 'CHECK OUR DOCS >'
+            url: '#'
+          }
+          {
+            '@type': 'WebsiteImage'
+            class: 'bg-stars'
+            src: '/img/stars.svg'
+          }
+        ]
+      }
+      {
+        '@type': 'WebsiteSection'
+        class: 'scale-your-business'
+        content: [
+          {
+            '@type': 'WebsiteImage'
+            class: 'phone-bb'
+            src: '/img/3diphone_bb_final.png'
+            alt: 'Bellabeat'
+          }
+          {
+            '@type': 'WebsiteImage'
+            class: 'phone-kanoa'
+            src: '/img/3diphone_kanoa_final.png'
+            alt: 'KANOA'
+          }
+          {
+            '@type': 'WebsiteImage'
+            class: 'phone-kanoa'
+            src: '/img/3diphone_stoned_final.png'
+            alt: 'Stoned Audio'
+          }
+        ]
+      }
+    ]
+  }
