@@ -1,5 +1,6 @@
 .sake/
 node_modules/
+package-lock.json
 public/js
 public/css
 public/*.html
