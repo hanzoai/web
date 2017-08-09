@@ -40,7 +40,7 @@
     "stylus": "0.54.5"
   },
   "dependencies": {
-    "astley.js": "0.0.17",
+    "astley.js": "0.0.18",
     "el.js": "2.1.24"
   }
 }
