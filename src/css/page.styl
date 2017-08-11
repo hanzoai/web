@@ -1,3 +1,24 @@
+// START Body
+
+body
+  color: $textColor3
+
+// END Body
+
+// START Anchor
+
+a
+  color: $linkColor1
+
+// END Anchor
+
+// START Headers
+
+h1, h2, h3, h4, h5
+  color: $headerColor1
+
+// END Headers
+
 // START Header
 
 header
@@ -27,9 +48,7 @@ header
 $heroHeight = 80vh
 
 .hero
-  background-image: url(/img/hero.svg)
-  background-position: left center
-  background-size: cover
+  background: linear-gradient(135deg, #3c72d0 0%,#3b77ce 21%,#25d4a7 61%,#34e4ea 100%)
   height: $heroHeight
   overflow: hidden
   color: $textColorLight
@@ -62,8 +81,13 @@ $heroHeight = 80vh
     position: relative
     transform: translateY(-50%)
 
-    h1
-      margin-bottom: 2rem
+    h1, h3
+      color: $textColorLight
+
+    h3
+      font-weight: 200
+      margin: 0
+      margin-bottom: 1.5rem
 
     .button
       margin-right: 1rem

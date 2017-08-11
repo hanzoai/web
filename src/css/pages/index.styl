@@ -1,36 +1,107 @@
 .scale-your-business
-
   // START phones
-  .phone-bb
-  .phone-kanoa
-  .phone-stoned
-    width: 45vw
+  // .phone-bb
+  // .phone-kanoa
+  // .phone-stoned
+  //   width: 45vw
+  //   position: absolute
+
+    // &:nth-child(1)
+    //   left: 45vw
+    //   top: 0
+    //   transform: translateY(-8vw)
+    //   img
+    //     position: relative
+    //     animation: fly-in 1s 1 ease-in-out
+
+
+    // &:nth-child(2)
+    //   left: 70vw
+    //   top: 0
+    //   transform: translateY(-25vw)
+    //   img
+    //     position: relative
+    //     animation: fly-in 1.2s 1 ease-in-out
+
+    // &:nth-child(3)
+    //   left: 55vw
+    //   top: 0
+    //   transform: translateY(-24vw)
+
+    //   img
+    //     position: relative
+    //     animation: fly-in 1.3s 1 ease-in-out
+
+    // END phones
+
+  .content
+    position: relative
+
+    &:last-child
+      .macbook
+        position: absolute
+        width: 50vw
+        max-width: initial
+        top: 0
+        left: 0
+        transform: translateY(-50%)
+      .iphone
+        position: absolute
+        width: 15vw
+        max-width: initial
+        top: 0
+        left: 27.5vw
+        transform: translateY(-25%)
+
+  .title-icon
+    max-width: 50px
+
+.blueprint-to-success
+  background-color: $backgroundColor2
+
+  .background
+    mask-image: url('/img/blueprint-mask.svg')
+    mask-mode: alpha
+    mask-repeat: no-repeat
+    mask-position: top center
+    mask-size: contain
     position: absolute
+    left: 0
+    width: 100vw
+    height: 100%
+    background-color: transparent
 
-    &:nth-child(1)
-      left: 45vw
-      top: 0
-      transform: translateY(-8vw)
-      img
-        position: relative
-        animation: fly-in 1s 1 ease-in-out
+    .floating-background
+      background: linear-gradient(to bottom, #8e54e9 0%,#6b91bf 25%,#5fb0b7 50%,#5bc8af 75%,#d6f7a3 100%)
+      background-attachment: fixed;
+      z-index: -1
+      width: 100vw
+      height: 100%
+
+  .block
+    width: 50%
+    display: inline-block
+
+    &.block-1
+      left: 48%
+      margin-top: 2%
+
+    &.block-2
+      width: 58%
+      left: 0%
+      margin-top: 5%
+
+    &.block-3
+      left: 48%
+      margin-top: 3%
+
+    &.block-4
+      width: 58%
+      left: 0%
+      margin-top: 1%
+
+    &.block-5
+      left: 48%
+      margin-top: 0%
 
 
-    &:nth-child(2)
-      left: 70vw
-      top: 0
-      transform: translateY(-25vw)
-      img
-        position: relative
-        animation: fly-in 1.2s 1 ease-in-out
-
-    &:nth-child(3)
-      left: 55vw
-      top: 0
-      transform: translateY(-24vw)
-
-      img
-        position: relative
-        animation: fly-in 1.3s 1 ease-in-out
-
-  // END phones
