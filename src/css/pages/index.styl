@@ -36,6 +36,9 @@
 .scale-your-business
   .content
     position: relative
+    margin: 2rem 0
+    +below($phoneWidth)
+      text-align: center
 
     h4
       color: $headerColor2
@@ -55,6 +58,18 @@
         top: 0
         left: 27.5vw
         transform: translateY(-25%)
+
+      +below($phoneWidth)
+        width: 100%
+
+        .macbook
+          width: 100%
+          position: relative
+          transform: none
+        .iphone
+          width: 30%
+          left: 50%
+          transform: translateY(20%)
 
   .title-icon
     max-width: 50px
@@ -112,6 +127,15 @@
       left: 48%
       margin-top: 0%
 
+  +below($phoneWidth)
+    .background
+      display: none
+
+    .group.group
+      width: 100%
+      left: 0%
+      text-align: center
+
 .re-architecting
   background-color: $backgroundColor2
   min-height: 0
@@ -122,68 +146,75 @@
 .success-stories
   margin: 2.5rem 0 6rem
 
-  .image
-    height: 200px
-    position: relative
-    box-shadow: 2px 4px 2px .5px $shadowColor2
-    transition: all $transitionTime ease-in-out
+  .content
+    width: 100%
 
-    &:before
-      content: ''
-      width: 100%
-      height: 100%
-      background-color: rgba(0,0,0,.6)
-      display: block
-      pointer-events: none
+    .image
+      height: 200px
+      position: relative
+      box-shadow: 2px 4px 2px .5px $shadowColor2
       transition: all $transitionTime ease-in-out
-
-    img
-      margin: 0 auto
-      left: 0
-      right: 0
-      position: absolute
-      top: 50%
-      transform: translateY(-50%)
-      padding: 2rem
-      transition: all $transitionTime ease-in-out
-
-    &:hover
-      transform: scale(1.1)
 
       &:before
-        opacity: 0
+        content: ''
+        width: 100%
+        height: 100%
+        background-color: rgba(0,0,0,.6)
+        display: block
+        pointer-events: none
+        transition: all $transitionTime ease-in-out
 
       img
-        opacity: 0
+        margin: 0 auto
+        left: 0
+        right: 0
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        padding: 2rem
+        transition: all $transitionTime ease-in-out
 
-  p
-    text-align: center
-    padding: 1.5rem 0
-    border-bottom: 1px solid $textColor3
-    margin 0 1rem
+      &:hover
+        transform: scale(1.1)
 
-  .kanoa-story
-    .image
-      background-image: url('/img/kanoa-screenshot.jpg')
-      background-size: cover
-      background-repeat: no-repeat
-      background-position: top center
+        &:before
+          opacity: 0
 
-  .skully-story
-    margin: 0 2rem
+        img
+          opacity: 0
 
-    .image
-      background-image: url('/img/skully-screenshot.jpg')
-      background-size: cover
-      background-repeat: no-repeat
-      background-position: center
+    p
+      text-align: center
+      padding: 1.5rem 0
+      border-bottom: 1px solid $textColor3
+      margin 0 1rem
+      margin-bottom: 2rem
 
-  .bb-story
-    .image
-      background-image: url('/img/bb-screenshot.jpg')
-      background-size: cover
-      background-repeat: no-repeat
-      background-position: center
+    &.kanoa-story
+      .image
+        background-image: url('/img/kanoa-screenshot.jpg')
+        background-size: cover
+        background-repeat: no-repeat
+        background-position: top center
+
+    &.skully-story
+      margin: 0 2rem
+
+      +below($phoneWidth)
+        margin: 0
+
+      .image
+        background-image: url('/img/skully-screenshot.jpg')
+        background-size: cover
+        background-repeat: no-repeat
+        background-position: center
+
+    &.bb-story
+      .image
+        background-image: url('/img/bb-screenshot.jpg')
+        background-size: cover
+        background-repeat: no-repeat
+        background-position: center
 
 .hanzo-products
   margin: 2rem 0
@@ -198,6 +229,10 @@
     .image
       height: 200px
       width: 100%
+
+    +below($phoneWidth)
+      margin: 0 1rem 2rem
+      text-align: center
 
   .marketing-card
     background-color: #7b4397
@@ -271,7 +306,8 @@
 
       &.kickstarter
         background-image: url('/img/integration-logos/kickstarter.svg')
-        margin-left: 0
+        +above($phoneWidth + 1)
+          margin-left: 0
       &.indiegogo
         background-image: url('/img/integration-logos/indiegogo.svg')
       &.stripe
@@ -282,7 +318,12 @@
         background-image: url('/img/integration-logos/mailchimp.svg')
       &.github
         background-image: url('/img/integration-logos/github.svg')
-        margin-right: 0
+        +above($phoneWidth + 1)
+          margin-right: 0
+
+      +below($phoneWidth)
+        width: 100%
+        margin: 1rem
 
 .misc-facts
   margin-top: 6rem
@@ -293,6 +334,9 @@
     margin: 0 4rem
     padding: 2.5rem
     padding-bottom: 6rem
+
+    +below($phoneWidth)
+      margin: 2rem 1rem
 
     img
       height: 50px
