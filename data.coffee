@@ -10,7 +10,7 @@ module.exports =
           '@type': 'WebsiteLogo'
           image: '/img/logo.png'
           alt: 'Hanzo'
-          name: 'Hanzo'
+          name: 'HANZO'
           url: '/'
         }
       ]
@@ -189,14 +189,14 @@ module.exports =
       logos: [
         {
           '@type': 'WebsiteLogo'
-          image: '/img/logo.png'
+          image: '/img/logo-dark.svg'
           alt: 'Hanzo'
-          name: 'Hanzo'
+          name: 'HANZO'
           url: '/'
         }
         {
           '@type': 'WebsiteLogo'
-          image: '/img/atechstars.png'
+          image: '/img/atechstars-dark.png'
           alt: 'A Techstars Company'
           url: 'http://www.techstars.com'
         }

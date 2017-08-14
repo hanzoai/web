@@ -19,28 +19,7 @@ h1, h2, h3, h4, h5
 
 // END Headers
 
-// START Header / Footer
-
-header
-footer
-  .logos
-    .logo-link:nth-child(n+2)
-      .logo-image
-        height: 1rem
-        margin-top: .3rem
-        margin-left: .5rem
-        padding: 0
-
-        +above(751px)
-          border-left: 1px solid $textColorLight
-          padding-left: .5rem
-
-        +below($phoneWidth)
-          border-left: 1px solid $textColorLight
-          padding-left: .5rem
-
-        +between($phoneWidth + 1, 750px)
-          display: block
+// START Footer
 
 footer
   overflow: hidden
@@ -48,12 +27,19 @@ footer
   background-color: $backgroundColor2
   border-top: 1px solid $footerSmallPrintBackgroundColor
 
-  *
-    color: $textColor3
-    line-height: 2rem
+  .logos
+    .logo-link:nth-child(n+2)
+      .logo-image
+        height: 1rem
+        margin-left: .5rem
+        padding: 0
 
-  .logo-link span
-    color: $textColor1
+        border-left: 1px solid $textColor3
+        padding-left: .5rem
+
+  *
+    color: $textColor3 !important
+    line-height: 2rem
 
   .footer-small-print
     background-color: $footerSmallPrintBackgroundColor
@@ -79,7 +65,7 @@ footer
       width: 100%
       height: 100%
 
-// END Header / Footer
+// END Footer
 
 // START Hero
 
