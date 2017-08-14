@@ -13,12 +13,6 @@ module.exports =
           name: 'Hanzo'
           url: '/'
         }
-        {
-          '@type': 'WebsiteLogo'
-          image: '/img/atechstars.png'
-          alt: 'A Techstars Company'
-          url: 'http://www.techstars.com'
-        }
       ]
       menuCollections: [
         {
