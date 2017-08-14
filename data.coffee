@@ -24,23 +24,23 @@ module.exports =
               links: [
                 {
                   '@type': 'WebsiteMenuLink'
-                  name: 'Analytics'
-                  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.'
-                  image: '/img/test-rocket.svg'
+                  name: 'Marketing'
+                  description: 'AI optimized marketing. Meet your automated sales engine.'
+                  # image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'Commerce'
-                  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-                  image: '/img/test-rocket.svg'
+                  description: 'Checkout optimized for convertions. Proven mobile checkout experience.'
+                  # image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
-                  name: 'Intelligence'
-                  description: 'Lorem ipsum dolor sit amet.'
-                  image: '/img/test-rocket.svg'
+                  name: 'Analytics'
+                  description: 'Real time actionable insights. Fully integrated from day one.'
+                  # image: '/img/test-rocket.svg'
                   url: '#'
                 }
               ]
@@ -211,7 +211,7 @@ module.exports =
               links: [
                 {
                   '@type': 'WebsiteMenuLink'
-                  name: 'Analytics'
+                  name: 'Marketing'
                   url: '#'
                 }
                 {
@@ -221,7 +221,7 @@ module.exports =
                 }
                 {
                   '@type': 'WebsiteMenuLink'
-                  name: 'Intelligence'
+                  name: 'Analytics'
                   url: '#'
                 }
               ]
