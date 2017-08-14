@@ -189,5 +189,143 @@ module.exports =
           }
         ]
       }
-    ]
+    ],
+    footer: {
+      '@type': 'WebsiteFooter'
+      logos: [
+        {
+          '@type': 'WebsiteLogo'
+          image: '/img/logo.png'
+          alt: 'Hanzo'
+          name: 'Hanzo'
+          url: '/'
+        }
+        {
+          '@type': 'WebsiteLogo'
+          image: '/img/atechstars.png'
+          alt: 'A Techstars Company'
+          url: 'http://www.techstars.com'
+        }
+      ]
+      menuCollections: [
+        {
+          '@type': 'WebsiteMenuCollection'
+          menus: [
+            {
+              '@type': 'WebsiteMenu'
+              name: 'Solutions'
+              links: [
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Analytics'
+                  url: '#'
+                }
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Commerce'
+                  url: '#'
+                }
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Intelligence'
+                  url: '#'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          '@type': 'WebsiteMenuCollection'
+          menus: [
+            {
+              '@type': 'WebsiteMenu'
+              name: 'Developers'
+              links: [
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'API'
+                  description: 'Lorem Descriptio'
+                  image: '/img/test-rocket.svg'
+                  url: '#'
+                }
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'SDK'
+                  description: 'Lorem Descriptio'
+                  image: '/img/test-rocket.svg'
+                  url: '#'
+                }
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Open Source'
+                  description: 'Lorem Descriptio'
+                  image: '/img/test-rocket.svg'
+                  url: '#'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          '@type': 'WebsiteMenuCollection'
+          menus: [
+            {
+              '@type': 'WebsiteMenu'
+              name: 'Company'
+              links: [
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Team'
+                  image: '/img/test-rocket.svg'
+                  url: '#'
+                }
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Press'
+                  image: '/img/test-rocket.svg'
+                  url: '#'
+                }
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Partners'
+                  image: '/img/test-rocket.svg'
+                  url: '#'
+                }
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Careers'
+                  image: '/img/test-rocket.svg'
+                  url: '#'
+                }
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Contact'
+                  url: '#'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          '@type': 'WebsiteMenuCollection'
+          menus: [
+            {
+              '@type': 'WebsiteMenu'
+              name: 'Pricing'
+              url: '#'
+            }
+          ]
+        }
+        {
+          '@type': 'WebsiteMenuCollection'
+          menus: [
+            {
+              '@type': 'WebsiteMenu'
+              name: 'Support'
+              url: '#'
+            }
+          ]
+        }
+      ]
+    }
   }
