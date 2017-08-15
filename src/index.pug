@@ -8,8 +8,8 @@ block content
     .content
       h1 Your Business Autopilot
       h3 Powered by Intelligence
-      a.button(href='#') JOIN THE BETA +
-      a.button.important(href='#') CHECK OUR DOCS >
+      a.button(href='#cta') JOIN THE BETA +
+      a.button.important(href='https://doc.hanzo.io') CHECK OUR DOCS >
 
   block.scale-your-business.flex-columns.full
     .content
@@ -150,9 +150,36 @@ block content
       a(href='#') More About Us
 
   cta.get-started.flex-columns
+    a(name='cta')
     .content
       h3 READY TO GET STARTED?
       p Get in touch or sign up for the closed beta.
     .content
-      a.button(href='#') CONTACT US
-      a.button.important(href='#') SIGN UP
+      label.button.important(for='demo-form-toggle') REQUEST A DEMO
+
+  input#demo-form-toggle(type='checkbox')
+  .modal-form
+    label.close-demo-form(for='demo-form-toggle') &#215;
+
+    form#demo-form(action='#', method='POST')
+      script(src='//api.hanzo.io/mailinglist/O2uj5dYU0rlxY/js')
+      h2 INTERESTED IN A DEMO?
+      h4 YOUR INFORMATION
+      label Your Name
+      input(type='text', name='name')
+      label Your Job
+      input(type='text', name='job')
+      label Your Website
+      input(type='text', name='website')
+
+      h4 COMPANY INFORMATION
+
+      label Your Company
+      input(type='text', name='company')
+      label Your Email
+      input(type='email', name='email')
+
+      h4 TELL US A LITTLE MORE ABOUT YOUR NEEDS
+      textarea(name='description', placeholder='Describe what you want to use Hanzo for.')
+
+      button(type='submit').button Request a Demo
