@@ -119,11 +119,6 @@ module.exports =
               name: 'Support'
               url: 'https://docs.hanzo.io'
             }
-          ]
-        }
-        {
-          '@type': 'WebsiteMenuCollection'
-          menus: [
             {
               '@type': 'WebsiteMenu'
               name: 'Sign In'
@@ -320,6 +315,11 @@ module.exports =
               name: 'Support'
               url: 'https://docs.hanzo.io'
             }
+          ]
+        }
+        {
+          '@type': 'WebsiteMenuCollection'
+          menus: [
             {
               '@type': 'WebsiteMenu'
               name: 'Sign In'
