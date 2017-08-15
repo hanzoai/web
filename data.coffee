@@ -10,7 +10,7 @@ module.exports =
           '@type': 'WebsiteLogo'
           image: '/img/logo.png'
           alt: 'Hanzo'
-          name: 'HANZO'
+          name: 'Hanzo'
           url: '/'
         }
       ]
@@ -188,7 +188,7 @@ module.exports =
           '@type': 'WebsiteLogo'
           image: '/img/logo-dark.svg'
           alt: 'Hanzo'
-          name: 'HANZO'
+          name: 'Hanzo'
           url: '/'
         }
         {
