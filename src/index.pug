@@ -1,5 +1,8 @@
 extends /astley.js/src/templates/layout.pug
 
+block pageId
+  #index
+
 block content
   hero.hero
     .content
@@ -86,18 +89,18 @@ block content
         $1M and 200k subscribers
 
   block.hanzo-products.flex-columns
-    .content.card.marketing-card
-      .image
-      h4 HANZO MARKETING
-      p AI optimized marketing. Meet your automated sales engine.
-    .content.card.commerce-card
-      .image
-      h4 HANZO COMMERCE
-      p Checkout optimized for convertions. Proven mobile checkout experience.
     .content.card.analytics-card
       .image
       h4 HANZO ANALYTICS
       p Real time actionable insights. Fully integrated from day one.
+    .content.card.commerce-card
+      .image
+      h4 HANZO COMMERCE
+      p Checkout optimized for convertions. Proven mobile checkout experience.
+    .content.card.marketing-card
+      .image
+      h4 HANZO MARKETING
+      p AI optimized marketing. Meet your automated sales engine.
 
   block.developer-playground
     .content

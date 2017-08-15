@@ -1,3 +1,4 @@
+#index ~ main
   // START phones
   // .phone-bb
   // .phone-kanoa
@@ -33,327 +34,327 @@
 
     // END phones
 
-.scale-your-business
-  .content
-    position: relative
-    margin: 2rem 0
-    +below($phoneWidth)
-      text-align: center
+  .scale-your-business
+    .content
+      position: relative
+      margin: 2rem 0
+      +below($phoneWidth)
+        text-align: center
 
-    h4
+      h4
+        color: $headerColor2
+
+      &:last-child
+        .macbook
+          position: absolute
+          width: 50vw
+          max-width: initial
+          top: 0
+          left: 0
+          transform: translateY(-50%)
+        .iphone
+          position: absolute
+          width: 15vw
+          max-width: initial
+          top: 0
+          left: 27.5vw
+          transform: translateY(-25%)
+
+        +below($phoneWidth)
+          width: 100%
+
+          .macbook
+            width: 100%
+            position: relative
+            transform: none
+          .iphone
+            width: 30%
+            left: 50%
+            transform: translateY(20%)
+
+    .title-icon
+      max-width: 50px
+
+  .blueprint-to-success
+    background-color: $backgroundColor2
+
+    h3
       color: $headerColor2
 
-    &:last-child
-      .macbook
-        position: absolute
-        width: 50vw
-        max-width: initial
-        top: 0
-        left: 0
-        transform: translateY(-50%)
-      .iphone
-        position: absolute
-        width: 15vw
-        max-width: initial
-        top: 0
-        left: 27.5vw
-        transform: translateY(-25%)
-
-      +below($phoneWidth)
-        width: 100%
-
-        .macbook
-          width: 100%
-          position: relative
-          transform: none
-        .iphone
-          width: 30%
-          left: 50%
-          transform: translateY(20%)
-
-  .title-icon
-    max-width: 50px
-
-.blueprint-to-success
-  background-color: $backgroundColor2
-
-  h3
-    color: $headerColor2
-
-  .background
-    mask-image: url('/img/blueprint-mask.svg')
-    mask-mode: alpha
-    mask-repeat: no-repeat
-    mask-position: top center
-    mask-size: contain
-    position: absolute
-    left: 0
-    width: 100vw
-    height: 100%
-    background-color: transparent
-    pointer-events: none
-
-    .floating-background
-      background: linear-gradient(to bottom, #8e54e9 0%,#6b91bf 25%,#5fb0b7 50%,#5bc8af 75%,#d6f7a3 100%)
-      background-attachment: fixed
-      z-index: -1
+    .background
+      mask-image: url('/img/blueprint-mask.svg')
+      mask-mode: alpha
+      mask-repeat: no-repeat
+      mask-position: top center
+      mask-size: contain
+      position: absolute
+      left: 0
       width: 100vw
       height: 100%
+      background-color: transparent
+      pointer-events: none
 
-  .group
-    width: 50%
-    display: inline-block
-    position: relative
-
-    &.group-1
-      left: 48%
-      margin-top: 2%
-
-    &.group-2
-      width: 58%
-      left: 0%
-      margin-top: 5%
-
-    &.group-3
-      left: 48%
-      margin-top: 3%
-
-    &.group-4
-      width: 58%
-      left: 0%
-      margin-top: 1%
-
-    &.group-5
-      left: 48%
-      margin-top: 0%
-
-  +below($phoneWidth)
-    .background
-      display: none
-
-    .group.group
-      width: 100%
-      left: 0%
-      text-align: center
-
-.re-architecting
-  background-color: $backgroundColor2
-  min-height: 0
-  text-align: center
-  padding-top: 1rem
-  padding-bottom: 2rem
-
-.success-stories
-  margin: 2.5rem 0 6rem
-
-  .content
-    width: 100%
-
-    .image
-      height: 200px
-      position: relative
-      box-shadow: 2px 4px 2px .5px $shadowColor2
-      transition: all $transitionTime ease-in-out
-
-      &:before
-        content: ''
-        width: 100%
+      .floating-background
+        background: linear-gradient(to bottom, #8e54e9 0%,#6b91bf 25%,#5fb0b7 50%,#5bc8af 75%,#d6f7a3 100%)
+        background-attachment: fixed
+        z-index: -1
+        width: 100vw
         height: 100%
-        background-color: rgba(0,0,0,.6)
-        display: block
-        pointer-events: none
-        transition: all $transitionTime ease-in-out
 
-      img
-        margin: 0 auto
-        left: 0
-        right: 0
-        position: absolute
-        top: 50%
-        transform: translateY(-50%)
-        padding: 2rem
-        transition: all $transitionTime ease-in-out
+    .group
+      width: 50%
+      display: inline-block
+      position: relative
 
-      &:hover
-        transform: scale(1.1)
+      &.group-1
+        left: 48%
+        margin-top: 2%
 
-        &:before
-          opacity: 0
+      &.group-2
+        width: 58%
+        left: 0%
+        margin-top: 5%
 
-        img
-          opacity: 0
+      &.group-3
+        left: 48%
+        margin-top: 3%
 
-    p
-      text-align: center
-      padding: 1.5rem 0
-      border-bottom: 1px solid $textColor3
-      margin 0 1rem
-      margin-bottom: 2rem
+      &.group-4
+        width: 58%
+        left: 0%
+        margin-top: 1%
 
-    &.kanoa-story
-      .image
-        background-image: url('/img/kanoa-screenshot.jpg')
-        background-size: cover
-        background-repeat: no-repeat
-        background-position: top center
-
-    &.skully-story
-      margin: 0 2rem
-
-      +below($phoneWidth)
-        margin: 0
-
-      .image
-        background-image: url('/img/skully-screenshot.jpg')
-        background-size: cover
-        background-repeat: no-repeat
-        background-position: center
-
-    &.bb-story
-      .image
-        background-image: url('/img/bb-screenshot.jpg')
-        background-size: cover
-        background-repeat: no-repeat
-        background-position: center
-
-.hanzo-products
-  margin: 2rem 0
-  align-items: flex-start
-
-  .card
-    h4
-      color: $textColor1
-      text-align: center
-      border-bottom: 1px solid $borderColor1
-
-    .image
-      height: 200px
-      width: 100%
+      &.group-5
+        left: 48%
+        margin-top: 0%
 
     +below($phoneWidth)
-      margin: 0 1rem 2rem
-      text-align: center
+      .background
+        display: none
 
-  .marketing-card
-    background-color: #7b4397
-    background: linear-gradient(135deg, #7b4397, #dc2430)
+      .group.group
+        width: 100%
+        left: 0%
+        text-align: center
 
-    .image
-      background-image: url('/img/hanzo-marketing.svg')
-      background-repeat: no-repeat
-      background-position: center
-      background-size: contain
+  .re-architecting
+    background-color: $backgroundColor2
+    min-height: 0
+    text-align: center
+    padding-top: 1rem
+    padding-bottom: 2rem
 
-  .commerce-card
-    background-color: #ff8008
-    background: linear-gradient(135deg, #ff8008, #ffc837)
-    margin: 0 4rem
+  .success-stories
+    margin: 2.5rem 0 6rem
 
-    .image
-      background-image: url('/img/hanzo-commerce.svg')
-      background-repeat: no-repeat
-      background-position: center
-      background-size: contain
+    .content
+      width: 100%
 
-  .analytics-card
-    background-color: #2c3e50, #3498db
-    background: linear-gradient(135deg, #2c3e50, #3498db)
+      .image
+        height: 200px
+        position: relative
+        box-shadow: 2px 4px 2px .5px $shadowColor2
+        transition: all $transitionTime ease-in-out
 
-    .image
-      background-image: url('/img/hanzo-analytics.svg')
-      background-repeat: no-repeat
-      background-position: center
-      background-size: contain
+        &:before
+          content: ''
+          width: 100%
+          height: 100%
+          background-color: rgba(0,0,0,.6)
+          display: block
+          pointer-events: none
+          transition: all $transitionTime ease-in-out
 
-.developer-playground
-  background-color: $backgroundColor2
-  padding-top: 5rem
-  padding-bottom: 3rem
+        img
+          margin: 0 auto
+          left: 0
+          right: 0
+          position: absolute
+          top: 50%
+          transform: translateY(-50%)
+          padding: 2rem
+          transition: all $transitionTime ease-in-out
 
-  .content
+        &:hover
+          transform: scale(1.1)
+
+          &:before
+            opacity: 0
+
+          img
+            opacity: 0
+
+      p
+        text-align: center
+        padding: 1.5rem 0
+        border-bottom: 1px solid $textColor3
+        margin 0 1rem
+        margin-bottom: 2rem
+
+      &.kanoa-story
+        .image
+          background-image: url('/img/kanoa-screenshot.jpg')
+          background-size: cover
+          background-repeat: no-repeat
+          background-position: top center
+
+      &.skully-story
+        margin: 0 2rem
+
+        +below($phoneWidth)
+          margin: 0
+
+        .image
+          background-image: url('/img/skully-screenshot.jpg')
+          background-size: cover
+          background-repeat: no-repeat
+          background-position: center
+
+      &.bb-story
+        .image
+          background-image: url('/img/bb-screenshot.jpg')
+          background-size: cover
+          background-repeat: no-repeat
+          background-position: center
+
+  .hanzo-products
+    margin: 2rem 0
+    align-items: flex-start
+
+    .card
+      h4
+        color: $textColor1
+        text-align: center
+        border-bottom: 1px solid $borderColor1
+
+      .image
+        height: 200px
+        width: 100%
+
+      +below($phoneWidth)
+        margin: 0 1rem 2rem
+        text-align: center
+
+    .marketing-card
+      background-color: #7b4397
+      background: linear-gradient(135deg, #7b4397, #dc2430)
+
+      .image
+        background-image: url('/img/hanzo-marketing.svg')
+        background-repeat: no-repeat
+        background-position: center
+        background-size: contain
+
+    .commerce-card
+      background-color: #ff8008
+      background: linear-gradient(135deg, #ff8008, #ffc837)
+      margin: 0 4rem
+
+      .image
+        background-image: url('/img/hanzo-commerce.svg')
+        background-repeat: no-repeat
+        background-position: center
+        background-size: contain
+
+    .analytics-card
+      background-color: #2c3e50, #3498db
+      background: linear-gradient(135deg, #2c3e50, #3498db)
+
+      .image
+        background-image: url('/img/hanzo-analytics.svg')
+        background-repeat: no-repeat
+        background-position: center
+        background-size: contain
+
+  .developer-playground
+    background-color: $backgroundColor2
+    padding-top: 5rem
+    padding-bottom: 3rem
+
+    .content
+
+      h3
+        color: $headerColor2
+        text-align: center
+
+      h4
+        &:nth-child(1)
+          text-align: left
+        &:nth-child(2)
+          text-align: center
+        &:nth-child(3)
+          text-align: right
+
+      p
+        text-align: center
+
+  .partner-integrations
+    margin-top: 2.5rem
 
     h3
       color: $headerColor2
       text-align: center
 
-    h4
-      &:nth-child(1)
-        text-align: left
-      &:nth-child(2)
-        text-align: center
-      &:nth-child(3)
-        text-align: right
+    .logos
+      margin: 2.5rem 0
 
-    p
-      text-align: center
+      .logo
+        height: 50px
+        background-repeat: no-repeat
+        background-position: center
+        background-size: contain
+        margin: 0 2rem
 
-.partner-integrations
-  margin-top: 2.5rem
+        &.kickstarter
+          background-image: url('/img/integration-logos/kickstarter.svg')
+          +above($phoneWidth + 1)
+            margin-left: 0
+        &.indiegogo
+          background-image: url('/img/integration-logos/indiegogo.svg')
+        &.stripe
+          background-image: url('/img/integration-logos/stripe.svg')
+        &.paypal
+          background-image: url('/img/integration-logos/paypal.svg')
+        &.mailchimp
+          background-image: url('/img/integration-logos/mailchimp.svg')
+        &.github
+          background-image: url('/img/integration-logos/github.svg')
+          +above($phoneWidth + 1)
+            margin-right: 0
 
-  h3
-    color: $headerColor2
-    text-align: center
+        +below($phoneWidth)
+          width: 100%
+          margin: 1rem
 
-  .logos
-    margin: 2.5rem 0
+  .misc-facts
+    margin-top: 6rem
+    align-items: flex-start
+    margin-bottom: -4rem
 
-    .logo
-      height: 50px
-      background-repeat: no-repeat
-      background-position: center
-      background-size: contain
-      margin: 0 2rem
-
-      &.kickstarter
-        background-image: url('/img/integration-logos/kickstarter.svg')
-        +above($phoneWidth + 1)
-          margin-left: 0
-      &.indiegogo
-        background-image: url('/img/integration-logos/indiegogo.svg')
-      &.stripe
-        background-image: url('/img/integration-logos/stripe.svg')
-      &.paypal
-        background-image: url('/img/integration-logos/paypal.svg')
-      &.mailchimp
-        background-image: url('/img/integration-logos/mailchimp.svg')
-      &.github
-        background-image: url('/img/integration-logos/github.svg')
-        +above($phoneWidth + 1)
-          margin-right: 0
+    .card
+      margin: 0 4rem
+      padding: 2.5rem
+      padding-bottom: 6rem
 
       +below($phoneWidth)
-        width: 100%
-        margin: 1rem
+        margin: 2rem 1rem
 
-.misc-facts
-  margin-top: 6rem
-  align-items: flex-start
-  margin-bottom: -4rem
+      img
+        height: 50px
 
-  .card
-    margin: 0 4rem
-    padding: 2.5rem
-    padding-bottom: 6rem
+    .always-exploring
+      background-color: #50329E
+      background: linear-gradient(135deg, #50329E, #358AC5, #45C7E0)
 
-    +below($phoneWidth)
-      margin: 2rem 1rem
+    .global-engine
+      background-color: #3124AE
+      background: linear-gradient(135deg, #3124AE, #B865D3)
 
-    img
-      height: 50px
+  .get-started
+    background-color: $backgroundColor2
 
-  .always-exploring
-    background-color: #50329E
-    background: linear-gradient(135deg, #50329E, #358AC5, #45C7E0)
+    .content
+      margin 2.5rem 0
 
-  .global-engine
-    background-color: #3124AE
-    background: linear-gradient(135deg, #3124AE, #B865D3)
-
-.get-started
-  background-color: $backgroundColor2
-
-  .content
-    margin 2.5rem 0
-
-    .button:first-child
-      margin-right: 1rem
+      .button:first-child
+        margin-right: 1rem

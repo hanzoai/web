@@ -18,33 +18,33 @@ module.exports =
         {
           '@type': 'WebsiteMenuCollection'
           menus: [
-            {
-              '@type': 'WebsiteMenu'
-              name: 'Solutions'
-              links: [
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Marketing'
-                  description: 'AI optimized marketing. Meet your automated sales engine.'
-                  # image: '/img/test-rocket.svg'
-                  url: '#'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Commerce'
-                  description: 'Checkout optimized for convertions. Proven mobile checkout experience.'
-                  # image: '/img/test-rocket.svg'
-                  url: '#'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Analytics'
-                  description: 'Real time actionable insights. Fully integrated from day one.'
-                  # image: '/img/test-rocket.svg'
-                  url: '#'
-                }
-              ]
-            }
+            # {
+            #   '@type': 'WebsiteMenu'
+            #   name: 'Solutions'
+            #   links: [
+            #     {
+            #       '@type': 'WebsiteMenuLink'
+            #       name: 'Analytics'
+            #       description: 'Real time actionable insights. Fully integrated from day one.'
+            #       # image: '/img/test-rocket.svg'
+            #       url: 'analytics'
+            #     }
+            #     {
+            #       '@type': 'WebsiteMenuLink'
+            #       name: 'Commerce'
+            #       description: 'Checkout optimized for convertions. Proven mobile checkout experience.'
+            #       # image: '/img/test-rocket.svg'
+            #       url: 'commerce'
+            #     }
+            #     {
+            #       '@type': 'WebsiteMenuLink'
+            #       name: 'Marketing'
+            #       description: 'AI optimized marketing. Meet your automated sales engine.'
+            #       # image: '/img/test-rocket.svg'
+            #       url: 'marketing'
+            #     }
+            #   ]
+            # }
             {
               '@type': 'WebsiteMenu'
               name: 'Developers'
@@ -52,23 +52,20 @@ module.exports =
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'API'
-                  description: 'Lorem Descriptio'
-                  image: '/img/test-rocket.svg'
-                  url: '#'
+                  # image: '/img/test-rocket.svg'
+                  url: 'https://docs.hanzo.io'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
-                  name: 'SDK'
-                  description: 'Lorem Descriptio'
-                  image: '/img/test-rocket.svg'
-                  url: '#'
+                  name: 'Javascript SDK'
+                  # image: '/img/test-rocket.svg'
+                  url: 'https://github.com/hanzo-io/hanzo.js'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'Open Source'
-                  description: 'Lorem Descriptio'
-                  image: '/img/test-rocket.svg'
-                  url: '#'
+                  # image: '/img/test-rocket.svg'
+                  url: 'https://github.com/hanzo-io/'
                 }
               ]
             }
@@ -79,25 +76,25 @@ module.exports =
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'Team'
-                  image: '/img/test-rocket.svg'
+                  # image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'Press'
-                  image: '/img/test-rocket.svg'
+                  # image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'Partners'
-                  image: '/img/test-rocket.svg'
+                  # image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'Careers'
-                  image: '/img/test-rocket.svg'
+                  # image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
@@ -107,11 +104,11 @@ module.exports =
                 }
               ]
             }
-            {
-              '@type': 'WebsiteMenu'
-              name: 'Pricing'
-              url: '#'
-            }
+            # {
+            #   '@type': 'WebsiteMenu'
+            #   name: 'Pricing'
+            #   url: '#'
+            # }
           ]
         }
         {
@@ -120,12 +117,17 @@ module.exports =
             {
               '@type': 'WebsiteMenu'
               name: 'Support'
-              url: '#'
+              url: 'https://docs.hanzo.io'
             }
+          ]
+        }
+        {
+          '@type': 'WebsiteMenuCollection'
+          menus: [
             {
               '@type': 'WebsiteMenu'
               name: 'Sign In'
-              url: '#'
+              url: 'https://dash.hanzo.io'
             }
           ]
         }
@@ -183,7 +185,7 @@ module.exports =
           }
         ]
       }
-    ],
+    ]
     footer: {
       '@type': 'WebsiteFooter'
       logos: [
@@ -202,32 +204,32 @@ module.exports =
         }
       ]
       menuCollections: [
-        {
-          '@type': 'WebsiteMenuCollection'
-          menus: [
-            {
-              '@type': 'WebsiteMenu'
-              name: 'Solutions'
-              links: [
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Marketing'
-                  url: '#'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Commerce'
-                  url: '#'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Analytics'
-                  url: '#'
-                }
-              ]
-            }
-          ]
-        },
+        # {
+        #   '@type': 'WebsiteMenuCollection'
+        #   menus: [
+        #     {
+        #       '@type': 'WebsiteMenu'
+        #       name: 'Solutions'
+        #       links: [
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Analytics'
+        #           url: 'analytics'
+        #         }
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Commerce'
+        #           url: 'commerce'
+        #         }
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Marketing'
+        #           url: 'marketing'
+        #         }
+        #       ]
+        #     }
+        #   ]
+        # }
         {
           '@type': 'WebsiteMenuCollection'
           menus: [
@@ -238,28 +240,28 @@ module.exports =
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'API'
-                  description: 'Lorem Descriptio'
-                  image: '/img/test-rocket.svg'
-                  url: '#'
+                  # description: 'Lorem Descriptio'
+                  # image: '/img/test-rocket.svg'
+                  url: 'https://docs.hanzo.io'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
-                  name: 'SDK'
-                  description: 'Lorem Descriptio'
-                  image: '/img/test-rocket.svg'
-                  url: '#'
+                  name: 'Javascript SDK'
+                  # description: 'Lorem Descriptio'
+                  # image: '/img/test-rocket.svg'
+                  url: 'https://github.com/hanzo-io/hanzo.js'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'Open Source'
-                  description: 'Lorem Descriptio'
-                  image: '/img/test-rocket.svg'
-                  url: '#'
+                  # description: 'Lorem Descriptio'
+                  # image: '/img/test-rocket.svg'
+                  url: 'https://github.com/hanzo-io/'
                 }
               ]
             }
           ]
-        },
+        }
         {
           '@type': 'WebsiteMenuCollection'
           menus: [
@@ -270,25 +272,25 @@ module.exports =
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'Team'
-                  image: '/img/test-rocket.svg'
+                  # image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'Press'
-                  image: '/img/test-rocket.svg'
+                  # image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'Partners'
-                  image: '/img/test-rocket.svg'
+                  # image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'Careers'
-                  image: '/img/test-rocket.svg'
+                  # image: '/img/test-rocket.svg'
                   url: '#'
                 }
                 {
@@ -299,24 +301,29 @@ module.exports =
               ]
             }
           ]
-        },
-        {
-          '@type': 'WebsiteMenuCollection'
-          menus: [
-            {
-              '@type': 'WebsiteMenu'
-              name: 'Pricing'
-              url: '#'
-            }
-          ]
         }
+        # {
+        #   '@type': 'WebsiteMenuCollection'
+        #   menus: [
+        #     {
+        #       '@type': 'WebsiteMenu'
+        #       name: 'Pricing'
+        #       url: '#'
+        #     }
+        #   ]
+        # }
         {
           '@type': 'WebsiteMenuCollection'
           menus: [
             {
               '@type': 'WebsiteMenu'
               name: 'Support'
-              url: '#'
+              url: 'https://docs.hanzo.io'
+            }
+            {
+              '@type': 'WebsiteMenu'
+              name: 'Sign In'
+              url: 'https://dash.hanzo.io'
             }
           ]
         }
