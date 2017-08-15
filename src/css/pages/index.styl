@@ -413,6 +413,36 @@
     form
       padding: 2rem
 
+    input[type=radio]
+      display: none
+
+    .options
+      display: table
+      margin: 1rem 0
+      width: 100%
+      position: relative
+
+      label
+        max-width: 45%
+        width: 200px
+        transition: all $transitionTime ease-in-out
+        padding: 1rem
+        position: relative
+        left: 0
+        top: 0
+        display: inline-block
+        text-align: center
+        transform: translateX(105%)
+        border: 1px solid white
+
+        &:last-child
+          position: absolute
+
+      input:checked + label
+        background-color: white
+        color: #3498db
+        transform: none
+
   #demo-form-toggle
     display: none
 

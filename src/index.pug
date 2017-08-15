@@ -165,6 +165,13 @@ block content
       script(src='//api.hanzo.io/mailinglist/O2uj5dYU0rlxY/js')
       h2 INTERESTED IN A DEMO?
       h4 YOUR INFORMATION
+      label You want to use Hanzo as a...
+      .options
+        input#brand-choice(type='radio', name='type', value='brand', checked)
+        label.brand-choice(for='brand-choice') RETAILER OR BRAND
+        input#dev-choice(type='radio', name='type', value='dev')
+        label.dev-choice(for='dev-choice') DEVELOPER
+      input(type='hidden', name='type')
       label Your Name
       input(type='text', name='name')
       label Your Job
