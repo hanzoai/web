@@ -53,7 +53,7 @@ module.exports =
                   '@type': 'WebsiteMenuLink'
                   name: 'API'
                   # image: '/img/test-rocket.svg'
-                  url: 'https://docs.hanzo.io'
+                  url: 'https://docs.hanzo.io/reference'
                 }
                 {
                   '@type': 'WebsiteMenuLink'
@@ -117,7 +117,7 @@ module.exports =
             {
               '@type': 'WebsiteMenu'
               name: 'Support'
-              url: 'https://docs.hanzo.io'
+              url: 'https://docs.hanzo.io/discuss'
             }
             {
               '@type': 'WebsiteMenu'
@@ -313,7 +313,7 @@ module.exports =
             {
               '@type': 'WebsiteMenu'
               name: 'Support'
-              url: 'https://docs.hanzo.io'
+              url: 'https://docs.hanzo.io/discuss'
             }
           ]
         }
