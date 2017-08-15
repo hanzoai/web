@@ -36,6 +36,7 @@
 
   .hero
     background: linear-gradient(135deg, #3c72d0 0%,#3b77ce 21%,#25d4a7 61%,#34e4ea 100%)
+    text-align: center
 
   .scale-your-business
     .content
@@ -365,6 +366,9 @@
       .button:first-child
         margin-right: 1rem
 
+      &:last-child
+        text-align: center
+
 // Short notice form
 
   .modal-form
@@ -391,24 +395,39 @@
     h2
     h4
       color: white
+      margin-bottom: 1rem
 
     input
     textarea
       outline: 0
-      border: 1px solid black
+      border: 1px solid white
       height: 2.5rem
       line-height: 2.5rem
       padding: 0rem 1rem
       display: block
-      margin-bottom: 1rem
+      margin: .5rem 0 1rem
       font-size: 1rem
       width: 100%
+      background-color: transparent
+      color: white
+
+      &::-webkit-input-placeholder
+        color: white
+      &:-ms-input-placeholder
+        color: white
+      &::-moz-placeholder
+        color: white
+      &:-moz-placeholder
+        color: white
+      &:placeholder
+        color: white
 
     textarea
       height: 200px
 
     button
       line-height: 1rem
+      font-weight: 400
 
     form
       padding: 2rem
@@ -418,7 +437,7 @@
 
     .options
       display: table
-      margin: 1rem 0
+      margin: .5rem 0 1rem
       width: 100%
       position: relative
 
