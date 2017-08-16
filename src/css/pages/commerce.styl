@@ -6,3 +6,57 @@
 
     p
       padding 0 10%
+
+  .examples
+    text-align: center
+    padding-top: $spacing * 4
+    padding-bottom: $spacing * 4
+    background-color: $backgroundColor2
+
+    p
+      padding 0 10%
+
+
+  .list-1
+    padding-top: $spacing * 8
+
+    .content > *
+      width: 45%
+
+      & > *
+        display: inline-block
+        vertical-align: top
+
+      .icon
+        width: $iconSize
+        margin-right: $spacing * 2
+
+      .text
+        width: 'calc(95% - %s)' % ($iconSize + $spacing * 2)
+        margin-bottom: $spacing * 10
+
+        .title
+        .body
+          margin: 0
+
+        .title
+          margin-bottom: 1rem
+
+      &:nth-child(2n + 1)
+        margin-right: 10%
+
+  .solutions
+    padding-bottom: $spacing * 8
+
+    .content
+      text-align: center
+
+      h3
+        margin-bottom: 2 * $spacing
+        color: #74226C
+
+      h4
+        padding 0 10%
+        margin-bottom: 2 * $spacing
+        color: $textColor3
+

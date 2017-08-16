@@ -42,7 +42,7 @@
   .scale-your-business
     .content
       position: relative
-      margin: 2rem 0
+      margin: ($spacing * 4) 0
       +below($phoneWidth)
         text-align: center
 
@@ -146,11 +146,11 @@
     background-color: $backgroundColor2
     min-height: 0
     text-align: center
-    padding-top: 1rem
-    padding-bottom: 2rem
+    padding-top: $spacing * 4
+    padding-bottom: $spacing * 4
 
   .success-stories
-    margin: 2.5rem 0 6rem
+    margin: ($spacing * 4) 0 ($spacing * 8)
 
     .content
       width: 100%
@@ -177,7 +177,7 @@
           position: absolute
           top: 50%
           transform: translateY(-50%)
-          padding: 2rem
+          padding: $spacing * 4
           transition: all $transitionTime ease-in-out
 
         &:hover
@@ -191,10 +191,10 @@
 
       p
         text-align: center
-        padding: 1.5rem 0
+        padding: ($spacing * 4) 0
         border-bottom: 1px solid $textColor3
-        margin 0 1rem
-        margin-bottom: 2rem
+        margin 0 ($spacing * 2)
+        margin-bottom: ($spacing * 4)
 
       &.kanoa-story
         .image
@@ -204,7 +204,7 @@
           background-position: top center
 
       &.skully-story
-        margin: 0 2rem
+        margin: 0 ($spacing * 4)
 
         +below($phoneWidth)
           margin: 0
@@ -223,7 +223,7 @@
           background-position: center
 
   .hanzo-products
-    margin: 2rem 0
+    margin: ($spacing * 4) 0
     align-items: flex-start
 
     .card
@@ -273,8 +273,8 @@
 
   .developer-playground
     background-color: $backgroundColor2
-    padding-top: 5rem
-    padding-bottom: 3rem
+    padding-top: ($spacing * 8)
+    padding-bottom: ($spacing * 4)
 
     .content
 
@@ -294,21 +294,21 @@
         text-align: center
 
   .partner-integrations
-    margin-top: 2.5rem
+    margin-top: ($spacing * 4)
 
     h3
       color: $headerColor2
       text-align: center
 
     .logos
-      margin: 2.5rem 0
+      margin: ($spacing * 4) 0
 
       .logo
         height: 50px
         background-repeat: no-repeat
         background-position: center
         background-size: contain
-        margin: 0 2rem
+        margin: 0 ($spacing * 4)
 
         &.kickstarter
           background-image: url('/img/integration-logos/kickstarter.svg')
@@ -329,20 +329,20 @@
 
         +below($phoneWidth)
           width: 100%
-          margin: 1rem
+          margin: ($spacing * 2)
 
   .misc-facts
-    margin-top: 6rem
+    margin-top: ($spacing * 12)
     align-items: flex-start
-    margin-bottom: -4rem
+    margin-bottom: ($spacing * -8)
 
     .card
-      margin: 0 4rem
-      padding: 2.5rem
-      padding-bottom: 6rem
+      margin: 0 ($spacing * 8)
+      padding: ($spacing * 4)
+      padding-bottom: ($spacing * 8)
 
       +below($phoneWidth)
-        margin: 2rem 1rem
+        margin: ($spacing * 4) ($spacing * 2)
 
       img
         height: 50px
@@ -392,6 +392,13 @@
       top: 2rem
       font-size: 3rem
       line-height: 2rem
+
+    .thank-you
+      font-size: 2rem
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      text-align: center
 
     h2
     h4
