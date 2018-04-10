@@ -19,7 +19,7 @@ task 'build:js', 'build js', ->
 
   bundle.write
     entry:    'src/js/app.coffee'
-    dest:     'public/js/app.js'
+    output:   'public/js/app.js'
     cache:    false
     format:   'web'
     commonjs: true

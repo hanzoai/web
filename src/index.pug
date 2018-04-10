@@ -1,7 +1,7 @@
 extends /astley.js/src/templates/layout.pug
 
-block pageId
-  #index
+block vars
+  - var pageId = 'index'
 
 block content
   hero.hero
@@ -16,14 +16,14 @@ block content
       img.title-icon(src='/img/icons/increase-sales.svg')
       h4 BUILD YOUR BUSINESS ON THE BLOCKCHAIN
       p.
-        Hanzo provides a suite of APIs to grow 
-        your company and take advantage of the 
-        power of the blockchain. Our tools make 
+        Hanzo provides a suite of APIs to grow
+        your company and take advantage of the
+        power of the blockchain. Our tools make
         blockchain payments easy and drives growth
-        for your business. You can focus on building 
-        what you’re passionate about and 
-        leave the rest to us. 
-      a(href='#') For rapid growth, join now
+        for your business. You can focus on building
+        what you’re passionate about and
+        leave the rest to us.
+      label.button.important(for='demo-form-toggle') JOIN THE BETA +
     .content
       img.macbook(src='/img/macbook-dashboard.png')
       img.iphone(src='/img/phone-bb.png')
@@ -36,35 +36,35 @@ block content
       h3 BLOCKCHAIN BLUEPRINT
       h4 BLOCKCHAIN PAYMENTS
       p.
-        For any shop looking to diversify into crypto, or 
-        company focused on blockchain, our tools will make 
-        payments simple. 
+        For any shop looking to diversify into crypto, or
+        company focused on blockchain, our tools will make
+        payments simple.
 
     .content.group.group-2
       h4 WALLET
       p.
-        Our blockchain wallet allows organizations and individual users to 
-        securely manage their incoming and outgoing cryptocurrency 
-        funds.  
+        Our blockchain wallet allows organizations and individual users to
+        securely manage their incoming and outgoing cryptocurrency
+        funds.
 
     .content.group.group-3
       h4 ECOMMERCE
       p.
-        Our ecommerce tools allow any blockchain company to run smoothly, 
-        with support for products, users and orders. 
-        
+        Our ecommerce tools allow any blockchain company to run smoothly,
+        with support for products, users and orders.
+
     .content.group.group-4
       h4 MARKETING
       p.
-        Our proven referral and affiliate marketing 
-        tools will help any company compensate 
-        partners with BTC, ETH or other tokens. 
+        Our proven referral and affiliate marketing
+        tools will help any company compensate
+        partners with BTC, ETH or other tokens.
 
     .content.group.group-5
       h4 ANALYTICS
       p.
-        Our analytics give you the most insight into a new generation of 
-        customers so that you can connect with your perfect audience. 
+        Our analytics give you the most insight into a new generation of
+        customers so that you can connect with your perfect audience.
 
   block.re-architecting
     p.
@@ -97,18 +97,18 @@ block content
       .image
       h4 NEW TOKENS
       p.
-        Companies running TGEs have all the tools they need to support and manage users, accept payments and spread the word. 
+        Companies running TGEs have all the tools they need to support and manage users, accept payments and spread the word.
     .content.card.commerce-card
       .image
       h4 CRYPTO COMMERCE
       p.
-        Ecommerce companies hoping to accept crypto can now easily manage different 
+        Ecommerce companies hoping to accept crypto can now easily manage different
         currencies in one platform.
     .content.card.marketing-card
       .image
       h4 BLOCKCHAIN FIRST
       p.
-        Blockchain companies are given the tools to enable a smooth user 
+        Blockchain companies are given the tools to enable a smooth user
         experience and simple, secure management of resources.
 
   block.developer-playground
@@ -144,7 +144,7 @@ block content
         using Hanzo means you can keep up with the latest
         technologies.
 
-      a(href='#') More About Us
+      // a(href='#') More About Us
 
     .content.card.global-engine
       img(src='/img/global-engine.svg')
@@ -156,7 +156,7 @@ block content
         is working to help transform how modern businesses
         are built and run globally.
 
-      a(href='#') More About Us
+      // a(href='#') More About Us
 
   cta.get-started.columns
     a(name='cta')
