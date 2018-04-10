@@ -114,11 +114,11 @@ module.exports =
         {
           '@type': 'WebsiteMenuCollection'
           menus: [
-            {
-              '@type': 'WebsiteMenu'
-              name: 'Support'
-              url: 'https://docs.hanzo.io/discuss'
-            }
+            # {
+            #   '@type': 'WebsiteMenu'
+            #   name: 'Support'
+            #   url: 'https://docs.hanzo.io/discuss'
+            # }
             {
               '@type': 'WebsiteMenu'
               name: 'Sign In'
