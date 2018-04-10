@@ -45,65 +45,65 @@ module.exports =
             #     }
             #   ]
             # }
-            {
-              '@type': 'WebsiteMenu'
-              name: 'Developers'
-              links: [
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'API'
-                  # image: '/img/test-rocket.svg'
-                  url: 'https://docs.hanzo.io/reference'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Javascript SDK'
-                  # image: '/img/test-rocket.svg'
-                  url: 'https://github.com/hanzo-io/hanzo.js'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Open Source'
-                  # image: '/img/test-rocket.svg'
-                  url: 'https://github.com/hanzo-io/'
-                }
-              ]
-            }
-            {
-              '@type': 'WebsiteMenu'
-              name: 'Company'
-              links: [
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Team'
-                  # image: '/img/test-rocket.svg'
-                  url: '#'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Press'
-                  # image: '/img/test-rocket.svg'
-                  url: '#'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Partners'
-                  # image: '/img/test-rocket.svg'
-                  url: '#'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Careers'
-                  # image: '/img/test-rocket.svg'
-                  url: '#'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Contact'
-                  url: '#'
-                }
-              ]
-            }
+            # {
+            #   '@type': 'WebsiteMenu'
+            #   name: 'Developers'
+            #   links: [
+            #     {
+            #       '@type': 'WebsiteMenuLink'
+            #       name: 'API'
+            #       # image: '/img/test-rocket.svg'
+            #       url: 'https://docs.hanzo.io/reference'
+            #     }
+            #     {
+            #       '@type': 'WebsiteMenuLink'
+            #       name: 'Javascript SDK'
+            #       # image: '/img/test-rocket.svg'
+            #       url: 'https://github.com/hanzo-io/hanzo.js'
+            #     }
+            #     {
+            #       '@type': 'WebsiteMenuLink'
+            #       name: 'Open Source'
+            #       # image: '/img/test-rocket.svg'
+            #       url: 'https://github.com/hanzo-io/'
+            #     }
+            #   ]
+            # }
+            # {
+            #   '@type': 'WebsiteMenu'
+            #   name: 'Company'
+            #   links: [
+            #     {
+            #       '@type': 'WebsiteMenuLink'
+            #       name: 'Team'
+            #       # image: '/img/test-rocket.svg'
+            #       url: '#'
+            #     }
+            #     {
+            #       '@type': 'WebsiteMenuLink'
+            #       name: 'Press'
+            #       # image: '/img/test-rocket.svg'
+            #       url: '#'
+            #     }
+            #     {
+            #       '@type': 'WebsiteMenuLink'
+            #       name: 'Partners'
+            #       # image: '/img/test-rocket.svg'
+            #       url: '#'
+            #     }
+            #     {
+            #       '@type': 'WebsiteMenuLink'
+            #       name: 'Careers'
+            #       # image: '/img/test-rocket.svg'
+            #       url: '#'
+            #     }
+            #     {
+            #       '@type': 'WebsiteMenuLink'
+            #       name: 'Contact'
+            #       url: '#'
+            #     }
+            #   ]
+            # }
             # {
             #   '@type': 'WebsiteMenu'
             #   name: 'Pricing'
@@ -225,78 +225,78 @@ module.exports =
         #     }
         #   ]
         # }
-        {
-          '@type': 'WebsiteMenuCollection'
-          menus: [
-            {
-              '@type': 'WebsiteMenu'
-              name: 'Developers'
-              links: [
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'API'
-                  # description: 'Lorem Descriptio'
-                  # image: '/img/test-rocket.svg'
-                  url: 'https://docs.hanzo.io'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Javascript SDK'
-                  # description: 'Lorem Descriptio'
-                  # image: '/img/test-rocket.svg'
-                  url: 'https://github.com/hanzo-io/hanzo.js'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Open Source'
-                  # description: 'Lorem Descriptio'
-                  # image: '/img/test-rocket.svg'
-                  url: 'https://github.com/hanzo-io/'
-                }
-              ]
-            }
-          ]
-        }
-        {
-          '@type': 'WebsiteMenuCollection'
-          menus: [
-            {
-              '@type': 'WebsiteMenu'
-              name: 'Company'
-              links: [
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Team'
-                  # image: '/img/test-rocket.svg'
-                  url: '#'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Press'
-                  # image: '/img/test-rocket.svg'
-                  url: '#'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Partners'
-                  # image: '/img/test-rocket.svg'
-                  url: '#'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Careers'
-                  # image: '/img/test-rocket.svg'
-                  url: '#'
-                }
-                {
-                  '@type': 'WebsiteMenuLink'
-                  name: 'Contact'
-                  url: '#'
-                }
-              ]
-            }
-          ]
-        }
+        # {
+        #   '@type': 'WebsiteMenuCollection'
+        #   menus: [
+        #     {
+        #       '@type': 'WebsiteMenu'
+        #       name: 'Developers'
+        #       links: [
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'API'
+        #           # description: 'Lorem Descriptio'
+        #           # image: '/img/test-rocket.svg'
+        #           url: 'https://docs.hanzo.io'
+        #         }
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Javascript SDK'
+        #           # description: 'Lorem Descriptio'
+        #           # image: '/img/test-rocket.svg'
+        #           url: 'https://github.com/hanzo-io/hanzo.js'
+        #         }
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Open Source'
+        #           # description: 'Lorem Descriptio'
+        #           # image: '/img/test-rocket.svg'
+        #           url: 'https://github.com/hanzo-io/'
+        #         }
+        #       ]
+        #     }
+        #   ]
+        # }
+        # {
+        #   '@type': 'WebsiteMenuCollection'
+        #   menus: [
+        #     {
+        #       '@type': 'WebsiteMenu'
+        #       name: 'Company'
+        #       links: [
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Team'
+        #           # image: '/img/test-rocket.svg'
+        #           url: '#'
+        #         }
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Press'
+        #           # image: '/img/test-rocket.svg'
+        #           url: '#'
+        #         }
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Partners'
+        #           # image: '/img/test-rocket.svg'
+        #           url: '#'
+        #         }
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Careers'
+        #           # image: '/img/test-rocket.svg'
+        #           url: '#'
+        #         }
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Contact'
+        #           url: '#'
+        #         }
+        #       ]
+        #     }
+        #   ]
+        # }
         # {
         #   '@type': 'WebsiteMenuCollection'
         #   menus: [
@@ -307,26 +307,26 @@ module.exports =
         #     }
         #   ]
         # }
-        {
-          '@type': 'WebsiteMenuCollection'
-          menus: [
-            {
-              '@type': 'WebsiteMenu'
-              name: 'Support'
-              url: 'https://docs.hanzo.io/discuss'
-            }
-          ]
-        }
-        {
-          '@type': 'WebsiteMenuCollection'
-          menus: [
-            {
-              '@type': 'WebsiteMenu'
-              name: 'Sign In'
-              url: 'https://dash.hanzo.io'
-            }
-          ]
-        }
+        # {
+        #   '@type': 'WebsiteMenuCollection'
+        #   menus: [
+        #     {
+        #       '@type': 'WebsiteMenu'
+        #       name: 'Support'
+        #       url: 'https://docs.hanzo.io/discuss'
+        #     }
+        #   ]
+        # }
+        # {
+        #   '@type': 'WebsiteMenuCollection'
+        #   menus: [
+        #     {
+        #       '@type': 'WebsiteMenu'
+        #       name: 'Sign In'
+        #       url: 'https://dash.hanzo.io'
+        #     }
+        #   ]
+        # }
       ]
     }
   }

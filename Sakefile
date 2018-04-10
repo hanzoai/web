@@ -30,13 +30,6 @@ task 'build:js', 'build js', ->
   .catch (err) ->
     console.error err
 
-task 'build:static', 'build static assets', ->
-  exec '''
-    mkdir -p public/css
-    mkdir -p public/js
-    bebop compile'
-  '''
-
 task 'build-min:js', 'build minified js', ['build'], ->
   exec '''
   uglifyjs public/js/app.js -o public/js/app.min.js
@@ -53,7 +46,7 @@ task 'build:static', 'build static assets', ->
 task 'watch', 'watch for changes and rebuild project', ['build:js', 'watch:js', 'watch:static']
 
 task 'watch:js', 'watch js for changes and rebuild', ->
- build = (filename) ->
+  build = (filename) ->
     return if (running 'build')
     console.log filename, 'modified'
     invoke 'build:js'
