@@ -8,9 +8,9 @@ module.exports =
       logos: [
         {
           '@type': 'WebsiteLogo'
-          image: '/img/logo.png'
+          image: '/img/logo.svg'
           alt: 'Hanzo'
-          name: 'Hanzo'
+          name: ''
           url: '/'
         }
       ]

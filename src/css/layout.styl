@@ -1,0 +1,20 @@
+section.columns
+  // padding-bottom: 0
+
+  & > *
+    padding: 10vh 0 15vh
+
++below($tabletWidth)
+  .hero
+    padding-top: 20vh
+    padding-bottom: 20vh
+
+    &.columns
+      & > *
+        padding: 0
+
+  section
+    min-height: auto
+
+  .columns
+    flex-direction: column
