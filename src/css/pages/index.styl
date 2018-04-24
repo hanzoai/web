@@ -26,25 +26,31 @@
     .columns
       align-items: flex-start
 
-      .column:first-child
-        margin-right: $spacing * 2
+      +above($tabletWidth + 1)
+        .column:first-child
+          margin-right: $spacing * 2
 
-      .column:last-child
-        margin-left: $spacing * 2
+        .column:last-child
+          margin-left: $spacing * 2
 
     h4
       margin: 0 0 $spacing * 3
 
     .item
       .columns
-        align-items: flex-start
+        align-items: center
+        flex-direction: row
 
         svg
           flex: 0
           padding-right: $spacing * 2
+          width: 64px
 
           path
             fill: $hanzoGreen
+
+        p
+          margin: 0
 
   .developers-first
     background-color: $hanzoIndigo
@@ -63,11 +69,12 @@
     .columns
       align-items: flex-start
 
-      .column:first-child
-        margin-right: $spacing * 2
+      +above($tabletWidth + 1)
+        .column:first-child
+          margin-right: $spacing * 2
 
-      .column:last-child
-        margin-left: $spacing * 2
+        .column:last-child
+          margin-left: $spacing * 2
 
       .column
         .content
@@ -78,14 +85,19 @@
 
     .item
       .columns
-        align-items: flex-start
+        align-items: center
+        flex-direction: row
 
         svg
           flex: 0
           padding-right: $spacing * 2
+          width: 64px
 
           path
             fill: $hanzoGreen
+
+        p
+          margin: 0
 
   .get-started
     background-color: $hanzoIndigoDarker
