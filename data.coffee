@@ -18,6 +18,53 @@ module.exports =
         {
           '@type': 'WebsiteMenuCollection'
           menus: [
+            {
+              '@type': 'WebsiteMenu'
+              name: 'Developers'
+              links: [
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Introduction to Hanzo'
+                  description: 'What is Hanzo?'
+                  # image: '/img/test-rocket.svg'
+                  url: 'https://docs.hanzo.ai/docs/introduction-10'
+                }
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'API Reference'
+                  description: 'Request and Response Examples'
+                  # image: '/img/test-rocket.svg'
+                  url: 'https://docs.hanzo.ai/reference'
+                }
+              ]
+            }
+            {
+              '@type': 'WebsiteMenu'
+              name: 'Open Source'
+              links: [
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Javascript SDK'
+                  description: 'Start building your store with our Javascript & Node SDK.'
+                  # image: '/img/test-rocket.svg'
+                  url: 'https://github.com/hanzoai/hanzo.js'
+                }
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Shop.js'
+                  description: 'Checkout open source custom payment flow UI library.'
+                  # image: '/img/test-rocket.svg'
+                  url: 'https://getshopjs.com'
+                }
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Other Projects'
+                  description: "Look at other software we've worked on."
+                  # image: '/img/test-rocket.svg'
+                  url: 'https://github.com/hanzoai'
+                }
+              ]
+            }
             # {
             #   '@type': 'WebsiteMenu'
             #   name: 'Solutions'
@@ -128,59 +175,59 @@ module.exports =
         }
       ]
     }
-    main: [
-      {
-        '@type': 'WebsiteSection'
-        content: [
-          {
-            '@type': 'WebsiteText'
-            text: 'Put your business on autopilot'
-            level: 'h1'
-          }
-          {
-            '@type': 'WebsiteLink'
-            class: 'button'
-            text: 'JOIN THE BETA +'
-            url: '#'
-          }
-          {
-            '@type': 'WebsiteLink'
-            class: 'button important'
-            text: 'CHECK OUR DOCS >'
-            url: '#'
-          }
-          {
-            '@type': 'WebsiteImage'
-            class: 'bg-stars'
-            src: '/img/stars.svg'
-          }
-        ]
-      }
-      {
-        '@type': 'WebsiteSection'
-        class: 'scale-your-business'
-        content: [
-          {
-            '@type': 'WebsiteImage'
-            class: 'phone-bb'
-            src: '/img/3diphone_bb_final.png'
-            alt: 'Bellabeat'
-          }
-          {
-            '@type': 'WebsiteImage'
-            class: 'phone-kanoa'
-            src: '/img/3diphone_kanoa_final.png'
-            alt: 'KANOA'
-          }
-          {
-            '@type': 'WebsiteImage'
-            class: 'phone-kanoa'
-            src: '/img/3diphone_stoned_final.png'
-            alt: 'Stoned Audio'
-          }
-        ]
-      }
-    ]
+    # main: [
+    #   {
+    #     '@type': 'WebsiteSection'
+    #     content: [
+    #       {
+    #         '@type': 'WebsiteText'
+    #         text: 'Put your business on autopilot'
+    #         level: 'h1'
+    #       }
+    #       {
+    #         '@type': 'WebsiteLink'
+    #         class: 'button'
+    #         text: 'JOIN THE BETA +'
+    #         url: '#'
+    #       }
+    #       {
+    #         '@type': 'WebsiteLink'
+    #         class: 'button important'
+    #         text: 'CHECK OUR DOCS >'
+    #         url: '#'
+    #       }
+    #       {
+    #         '@type': 'WebsiteImage'
+    #         class: 'bg-stars'
+    #         src: '/img/stars.svg'
+    #       }
+    #     ]
+    #   }
+    #   {
+    #     '@type': 'WebsiteSection'
+    #     class: 'scale-your-business'
+    #     content: [
+    #       {
+    #         '@type': 'WebsiteImage'
+    #         class: 'phone-bb'
+    #         src: '/img/3diphone_bb_final.png'
+    #         alt: 'Bellabeat'
+    #       }
+    #       {
+    #         '@type': 'WebsiteImage'
+    #         class: 'phone-kanoa'
+    #         src: '/img/3diphone_kanoa_final.png'
+    #         alt: 'KANOA'
+    #       }
+    #       {
+    #         '@type': 'WebsiteImage'
+    #         class: 'phone-kanoa'
+    #         src: '/img/3diphone_stoned_final.png'
+    #         alt: 'Stoned Audio'
+    #       }
+    #     ]
+    #   }
+    # ]
     footer: {
       '@type': 'WebsiteFooter'
       logos: [
@@ -234,29 +281,55 @@ module.exports =
         #       links: [
         #         {
         #           '@type': 'WebsiteMenuLink'
-        #           name: 'API'
+        #           name: 'Introduction to Hanzo'
         #           # description: 'Lorem Descriptio'
         #           # image: '/img/test-rocket.svg'
-        #           url: 'https://docs.hanzo.io'
+        #           url: 'https://docs.hanzo.ai/docs/introduction-10'
         #         }
         #         {
         #           '@type': 'WebsiteMenuLink'
-        #           name: 'Javascript SDK'
+        #           name: 'API Reference'
         #           # description: 'Lorem Descriptio'
         #           # image: '/img/test-rocket.svg'
-        #           url: 'https://github.com/hanzo-io/hanzo.js'
-        #         }
-        #         {
-        #           '@type': 'WebsiteMenuLink'
-        #           name: 'Open Source'
-        #           # description: 'Lorem Descriptio'
-        #           # image: '/img/test-rocket.svg'
-        #           url: 'https://github.com/hanzo-io/'
+        #           url: 'https://docs.hanzo.ai/reference'
         #         }
         #       ]
         #     }
         #   ]
         # }
+        # {
+        #   '@type': 'WebsiteMenuCollection'
+        #   menus: [
+        #     {
+        #       '@type': 'WebsiteMenu'
+        #       name: 'Open Source'
+        #       links: [
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Javascript SDK'
+        #           # description: 'Lorem Descriptio'
+        #           # image: '/img/test-rocket.svg'
+        #           url: 'https://github.com/hanzoai/hanzo.js'
+        #         }
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Shop.js'
+        #           # description: 'Lorem Descriptio'
+        #           # image: '/img/test-rocket.svg'
+        #           url: 'https://getshopjs.com'
+        #         }
+        #         {
+        #           '@type': 'WebsiteMenuLink'
+        #           name: 'Other Projects'
+        #           # description: 'Lorem Descriptio'
+        #           # image: '/img/test-rocket.svg'
+        #           url: 'https://github.com/hanzoai'
+        #         }
+        #       ]
+        #     }
+        #   ]
+        # }
+
         # {
         #   '@type': 'WebsiteMenuCollection'
         #   menus: [
