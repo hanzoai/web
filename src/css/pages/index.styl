@@ -20,11 +20,31 @@
     h4
       color: $hanzoPurple
 
+    .content
+      margin-bottom: $spacing * 4
+
     .columns
       align-items: flex-start
 
-      .content
-        margin: $spacing * 2
+      .column:first-child
+        margin-right: $spacing * 2
+
+      .column:last-child
+        margin-left: $spacing * 2
+
+    h4
+      margin: 0 0 $spacing * 3
+
+    .item
+      .columns
+        align-items: flex-start
+
+        svg
+          flex: 0
+          padding-right: $spacing * 2
+
+          path
+            fill: $hanzoGreen
 
   .developers-first
     background-color: $hanzoIndigo
@@ -35,20 +55,37 @@
       color: $hanzoGreen
 
     .content
+      margin-bottom: $spacing * 4
+
       p
         padding 0
 
     .columns
       align-items: flex-start
 
+      .column:first-child
+        margin-right: $spacing * 2
+
+      .column:last-child
+        margin-left: $spacing * 2
+
       .column
         .content
           p
-            padding $spacing
-
             a
               color: $hanzoGreen
               text-decoration: none
+
+    .item
+      .columns
+        align-items: flex-start
+
+        svg
+          flex: 0
+          padding-right: $spacing * 2
+
+          path
+            fill: $hanzoGreen
 
   .get-started
     background-color: $hanzoIndigoDarker
