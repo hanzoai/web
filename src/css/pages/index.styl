@@ -32,8 +32,15 @@
     h2
       color: $hanzoGreen
 
-    .content:first-child
-      text-align center
+    .content
+      p
+        padding 0
+
+    .columns
+      .column
+        .content
+          p
+            padding $spacing
 
   .get-started
     background-color: $hanzoIndigoDarker
