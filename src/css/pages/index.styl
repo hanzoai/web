@@ -4,6 +4,18 @@
     background: -webkit-linear-gradient(180deg, $hanzoIndigo, $hanzoPurpleDarker)
     background: linear-gradient(180deg, $hanzoIndigo, $hanzoPurpleDarker)
     height: auto
+    padding-bottom: 30vh
+
+    &:after
+      content: ''
+      display: block
+      position: absolute
+      bottom: 0
+      width: 200vw
+      height: 60px
+      background: white
+      left: -1vw
+      transform: rotate(-2deg)
 
     h1
       color: $hanzoGreen
@@ -13,8 +25,8 @@
 
   .support-crypto
     color: #263238
-    padding-top: 15vh
-    padding-bottom: 15vh
+    padding-top: 10vh
+    padding-bottom: 10vh
 
     h2
     h4
@@ -54,8 +66,30 @@
 
   .developers-first
     background-color: $hanzoIndigo
-    padding-top: 15vh
+    padding-top: 20vh
     padding-bottom: 15vh
+
+    &:before
+      content: ''
+      display: block
+      position: absolute
+      top: 25px
+      width: 200vw
+      height: 60px
+      background: $hanzoIndigoDarker
+      left: -1vw
+      transform: rotate(.9deg)
+
+    &:after
+      content: ''
+      display: block
+      position: absolute
+      top: 0px
+      width: 200vw
+      height: 60px
+      background: white
+      left: -1vw
+      transform: rotate(2deg)
 
     h2
       color: $hanzoGreen
