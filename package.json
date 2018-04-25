@@ -11,7 +11,7 @@
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "8.3.0",
-    "bebop": "1.12.8",
+    "bebop": "1.12.10",
     "clean-css": "4.1.11",
     "coffee-script": "1.12.7",
     "css-mqpacker": "6.0.2",
@@ -40,7 +40,7 @@
     "stylus": "0.54.5"
   },
   "dependencies": {
-    "astley.js": "0.0.39",
+    "astley.js": "0.0.40",
     "el.js": "2.1.32"
   }
 }
