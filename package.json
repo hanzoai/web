@@ -11,7 +11,7 @@
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "8.3.0",
-    "bebop": "1.12.10",
+    "bebop": "1.13.0",
     "clean-css": "4.1.11",
     "coffee-script": "1.12.7",
     "css-mqpacker": "6.0.2",
