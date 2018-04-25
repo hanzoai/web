@@ -16,13 +16,20 @@ header
 
   .menu-link-description
     font-weight: 200
+    color: $bodyLight
 
   .complex-menus .menu-wrapper .menu-bodies .menu-body :first-child
     width: 200px
 
+  .complex-menus .menu-wrapper .menu-bodies .menu-body .menu-content
+    border-radius: $borderRadius
+
   .mobile-menus .menu-content
     background-color: $grey900
 
+  .mobile-menus .menu-content, .complex-menus .menu-wrapper
+    border-radius: $borderRadius
+    box-shadow: $boxShadow
+
+
 /* HEADER END */
-
-

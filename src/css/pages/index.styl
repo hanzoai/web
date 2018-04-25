@@ -22,7 +22,7 @@
 
     .button
       margin $spacing * 2 $spacing * 2 0 0
-      box-shadow: 2px 2px 4px 0px rgba(50, 50, 50, 0.55)
+      box-shadow: $boxShadow
 
   .support-crypto
     color: #263238
@@ -199,7 +199,7 @@
     textarea
       outline: 0
       border: 1px solid rgba(255, 255, 255, 0.3)
-      border-radius: 4px
+      border-radius: $borderRadius
       height: 2.5rem
       line-height: 2.5rem
       padding: 0rem 1rem
@@ -254,14 +254,14 @@
         text-align: center
         transform: translateX(105%)
         border: 1px solid white
-        border-radius: 4px
+        border-radius: $borderRadius
 
         &:last-child
           position: absolute
 
       input:checked + label
         background-color: white
-        box-shadow: 2px 2px 4px 0px rgba(50, 50, 50, 0.55)
+        box-shadow: $boxShadow
         color: $hanzoPurple
         transform: none
 
