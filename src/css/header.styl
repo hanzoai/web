@@ -1,12 +1,23 @@
 /* HEADER START */
+header.undocked, header.undocked::before
+  background-color: $black
+
 header
+  height: 64px
+  font-size: .95rem
   background-color: transparent
 
   &:before
     background-color: transparent
 
-  .nav *
-    color: $white
+  .fade-on-hover
+    opacity: 0.8
+
+  .fade-on-hover:hover
+    opacity: 1
+
+  .menu-title, .complex-menus a
+    color:  white
 
   .menu-bodies *
     color: $black
@@ -35,5 +46,18 @@ header
 
   .mobile-menus .menu-content
     background-color: $grey900
+
+header nav, header .nav
+  height: 64px
+
+.nav
+  margin-top: 5px
+
+header nav .logos .logo-image, header .nav .logos .logo-image
+  height: 48px
+  margin-top: 2px
+
+header .complex-menus .menu-wrapper.active
+  margin-top: -5px
 
 /* HEADER END */
