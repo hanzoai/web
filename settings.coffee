@@ -23,13 +23,13 @@ module.exports =
     facebook:
       appid:       '726744070795618'
       description: description
-      image:       ''
-      title:       ''
+      image:       'img/opengraph.png'
+      title:       'Hanzo'
 
     twitter:
       description: description
-      image:       ''
-      title:       ''
+      image:       'img/opengraph.png'
+      title:       'Hanzo'
 
   social:
     email:
@@ -48,16 +48,16 @@ module.exports =
   legal:
     email:   'legal@hanzo.ai'
     name:    'Hanzo, Inc'
-    address: ''
-    state:   ''
+    address: '405 Southwest Blvd, Ste 200 Kansas City, MO 64108'
+    state:   'Missouri'
 
   contact:
     email: 'hi@hanzo.ai'
     phone: ''
 
   press:
-    name:  ''
-    email: ''
+    name:  'Zach Kelling'
+    email: 'press@hanzo.ai'
     phone: ''
 
   support:
