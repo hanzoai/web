@@ -23,12 +23,12 @@ module.exports =
     facebook:
       appid:       '726744070795618'
       description: description
-      image:       'img/opengraph.png'
+      image:       'https://hanzo.ai/img/opengraph.png'
       title:       'Hanzo'
 
     twitter:
       description: description
-      image:       'img/opengraph.png'
+      image:       'https://hanzo.ai/img/opengraph.png'
       title:       'Hanzo'
 
   social:
