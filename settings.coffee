@@ -1,9 +1,9 @@
-url = 'https://kpakcase.com'
+url = 'https://hanzo.ai'
 
-description = """Hanzo - The one stop for starting your online business"""
+description = 'Hanzo provides a suite of APIs to grow your company and take advantage of the power of the blockchain. Our tools make blockchain payments easy and drives growth for your business. You can focus on building what you’re passionate about and leave the rest to us.'
 
 twitter =
-  username: ''
+  username: 'hanzoai'
   hashtags: ''
   text:     ''
 
@@ -21,7 +21,7 @@ module.exports =
     description: description
 
     facebook:
-      appid:       ''
+      appid:       '726744070795618'
       description: description
       image:       ''
       title:       ''
@@ -33,12 +33,12 @@ module.exports =
 
   social:
     email:
-      shareLink: ''
+      shareLink: 'hi@hanzo.ai'
     twitter:
-      username:  ''
+      username:  'hanzoai'
       shareLink: ''
     facebook:
-      username:  ''
+      username:  'hanzoai'
       shareLink: ''
     googlePlus:
       shareLink: ''
@@ -46,13 +46,13 @@ module.exports =
       shareLink: ''
 
   legal:
-    email:   ''
-    name:    ''
+    email:   'legal@hanzo.ai'
+    name:    'Hanzo, Inc'
     address: ''
     state:   ''
 
   contact:
-    email: ''
+    email: 'hi@hanzo.ai'
     phone: ''
 
   press:
@@ -61,5 +61,4 @@ module.exports =
     phone: ''
 
   support:
-    email: ''
-
+    email: 'support@hanzo.ai'
