@@ -53,12 +53,12 @@ module.exports =
 
   contact:
     email: 'hi@hanzo.ai'
-    phone: ''
+    phone: '(816) 919-1142'
 
   press:
     name:  'Zach Kelling'
     email: 'press@hanzo.ai'
-    phone: ''
+    phone: '(816) 919-1142'
 
   support:
     email: 'support@hanzo.ai'
