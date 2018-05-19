@@ -10,7 +10,7 @@
   "author": "David Tai",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "8.4.1",
+    "autoprefixer": "8.5.0",
     "bebop": "1.14.1",
     "clean-css": "4.1.11",
     "coffee-script": "1.12.7",
@@ -27,7 +27,7 @@
     "rollup-analyzer": "1.1.0",
     "rucksack-css": "1.0.2",
     "rupture": "0.7.1",
-    "sake-bundle": "0.6.7",
+    "sake-bundle": "0.6.11",
     "sake-cli": "0.7.2",
     "sake-core": "1.6.7",
     "sake-linked": "0.1.2",
@@ -36,7 +36,7 @@
     "sake-test": "0.2.1",
     "sake-version": "0.1.19",
     "selectize": "0.12.4",
-    "shop.js": "2.2.38",
+    "shop.js": "2.2.43",
     "stylus": "0.54.5"
   },
   "dependencies": {
