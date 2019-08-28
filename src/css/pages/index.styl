@@ -25,6 +25,34 @@
       margin $spacing * 2 $spacing * 2 0 0
       box-shadow: $boxShadow
 
+  .second-hero
+    // background $hanzoIndigo
+    // background: -webkit-linear-gradient(180deg, $hanzoIndigo, $hanzoPurpleDarker)
+    // background: linear-gradient(180deg, $hanzoIndigo, $hanzoPurpleDarker)
+    background: black;
+    height: auto
+    padding-bottom: 30vh
+
+    &:after
+      content: ''
+      display: block
+      position: absolute
+      bottom: 0
+      width: 200vw
+      height: 80px
+      // background: #091b47;
+      background: black;
+      left: -1vw
+      transform: rotate(-2deg)
+
+    h1
+      color: $hanzoGreen
+      font-size: 50px
+
+    .button
+      margin $spacing * 2 $spacing * 2 0 0
+      box-shadow: $boxShadow
+
   .support-crypto
     color: #263238
     padding-top: 10vh
@@ -187,17 +215,6 @@
     background-color: $hanzoIndigoDarker
     padding-top: 15vh
     padding-bottom: 20vh
-
-    &:before
-      content: ''
-      display: block
-      position: absolute
-      top: -30px
-      width: 200vw
-      height: 80px
-      background: $hanzoIndigoDarker
-      left: -1vw
-      transform: rotate(-.9deg)
 
     h2
       color: $hanzoGreen
