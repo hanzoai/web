@@ -13,7 +13,7 @@
       bottom: 0
       width: 200vw
       height: 80px
-      background: white
+      background: #f6f9fc
       left: -1vw
       transform: rotate(-2deg)
 
@@ -64,6 +64,58 @@
         p
           margin: 0
 
+  
+  
+  .ai-powered
+    color: #263238
+    padding-top: 10vh
+    padding-bottom: 10vh
+    background: #f6f9fc;
+
+    &:after
+      content: ''
+      display: block
+      position: absolute
+      bottom: 0
+      width: 200vw
+      height: 80px
+      background: white;
+      left: -1vw
+      transform: rotate(-2deg)
+
+    h2
+    h4
+      color: $hanzoPurple
+
+    .content
+      margin-bottom: $spacing * 4
+
+    .columns
+      align-items: flex-start
+
+      +above($tabletWidth + 1)
+        .column:first-child
+          margin-right: $spacing * 3
+
+        .column:last-child
+          margin-left: $spacing * 3
+
+    h4
+      margin: 0 0 $spacing * 3
+
+    .item
+      .columns
+        align-items: center
+        flex-direction: row
+
+        div
+          flex: 0 0 80px
+          svg
+            path
+              fill: $hanzoGreen
+
+        p
+          margin: 0   
   .developers-first
     background-color: $hanzoIndigo
     padding-top: 20vh
