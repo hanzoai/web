@@ -25,7 +25,7 @@ module.exports =
                 {
                   '@type': 'WebsiteMenuLink'
                   name: 'The secure, transparent way to verify any type of transaction:'
-                  description: 'Whether you’re launching a decentralized app, asset exchange, or building a nation, Hanzo has you covered'
+                  description: 'Whether you’re launching a decentralized app, secure asset exchange, or building a nation, Hanzo has you covered'
                   url: 'https://hanzo.ai/blockchain'
                 }
               ]
