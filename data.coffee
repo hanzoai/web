@@ -20,6 +20,17 @@ module.exports =
           menus: [
             {
               '@type': 'WebsiteMenu'
+              name: 'Blockchain'
+              links: [
+                {
+                  '@type': 'WebsiteMenuLink'
+                  name: 'Blockchain'
+                  url: 'https://hanzo.ai/blockchain'
+                }
+              ]
+            }
+            {
+              '@type': 'WebsiteMenu'
               name: 'Developers'
               links: [
                 {
@@ -158,6 +169,7 @@ module.exports =
             # }
           ]
         }
+        
         {
           '@type': 'WebsiteMenuCollection'
           menus: [
