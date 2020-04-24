@@ -15,7 +15,7 @@ module.exports =
     title:     'Hanzo'
     name:      'Hanzo.io'
     url:       url
-    copyright: '© Hanzo, Inc 2018'
+    copyright: '© Hanzo, Inc 2018-2020'
 
   meta:
     description: description
