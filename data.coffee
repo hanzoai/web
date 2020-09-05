@@ -170,7 +170,7 @@ module.exports =
             # }
           ]
         }
-        
+
         {
           '@type': 'WebsiteMenuCollection'
           menus: [
@@ -182,7 +182,7 @@ module.exports =
             {
               '@type': 'WebsiteMenu'
               name: 'Sign In'
-              url: 'https://dash.hanzo.io'
+              url: 'https://dash3.hanzo.ai'
             }
           ]
         }
