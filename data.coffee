@@ -182,7 +182,7 @@ module.exports =
             {
               '@type': 'WebsiteMenu'
               name: 'Sign In'
-              url: 'https://dash3.hanzo.ai'
+              url: 'https://dash.hanzo.ai'
             }
           ]
         }
