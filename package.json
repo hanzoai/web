@@ -42,5 +42,8 @@
   "dependencies": {
     "astley.js": "^0.0.41",
     "el.js": "^2.1.32"
+  },
+  "scripts": {
+    "build": "sake build"
   }
 }
