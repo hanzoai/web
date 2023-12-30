@@ -66,7 +66,7 @@ module.exports =
                   name: 'Shop.js'
                   description: 'Checkout open source custom payment flow UI library.'
                   # image: '/img/test-rocket.svg'
-                  url: 'https://getshopjs.com'
+                  url: 'https://github.com/shopjs/shop.js'
                 }
                 {
                   '@type': 'WebsiteMenuLink'

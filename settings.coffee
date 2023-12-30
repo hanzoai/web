@@ -1,6 +1,6 @@
 url = 'https://hanzo.ai'
 
-description = 'Hanzo provides a suite of APIs to grow your company and take advantage of the power of the blockchain. Our tools make blockchain payments easy and drives growth for your business. You can focus on building what you’re passionate about and leave the rest to us.'
+description = 'Hanzo provides a suite of APIs to grow your company and take advantage of the power of AI. Our tools make AI accessible and drives growth for your business. You can focus on building what you’re passionate about and leave the AI to us.'
 
 twitter =
   username: 'hanzoai'
@@ -13,9 +13,9 @@ pinterest =
 module.exports =
   site:
     title:     'Hanzo'
-    name:      'Hanzo.io'
+    name:      'Hanzo.ai'
     url:       url
-    copyright: '© Hanzo, Inc 2016-2023'
+    copyright: '© Hanzo, Inc 2016-2024'
 
   meta:
     description: description
@@ -47,7 +47,7 @@ module.exports =
 
   legal:
     email:   'legal@hanzo.ai'
-    name:    'Hanzo, Inc'
+    name:    'Hanzo AI, Inc'
     address: '405 Southwest Blvd, Ste 200 Kansas City, MO 64108'
     state:   'Missouri'
 

@@ -1,5 +1,5 @@
 {
-  "name": "hanzo.io",
+  "name": "hanzo.ai",
   "version": "1.0.0",
   "private": true,
   "description": "Hanzo Main Site",
@@ -7,8 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "David Tai",
-  "license": "MIT",
+  "author": "Hanzo AI, Inc",
+  "license": "BSD-3-Clause",
   "devDependencies": {
     "autoprefixer": "^8.5.0",
     "bebop": "^1.14.1",
