@@ -1,0 +1,29 @@
+@keyframes wiggle-larger {
+    0% { transform: rotate(0deg); }
+    18% { transform: rotate(10deg) scale(0.9); }
+    32% { transform: rotate(0deg) scale(1.05);; }
+    50% { transform: rotate(-10deg) scale(1.05); }
+    68% { transform: rotate(0deg) scale(1.1); }
+    84% { transform: rotate(10deg) scale(1); }
+  100% { transform: rotate(0deg) scale(1);}
+}
+
+@keyframes wiggle-smaller {
+    0% { transform: rotate(0deg); }
+    18% { transform: rotate(10deg) scale(1.05); }
+    32% { transform: rotate(0deg) scale(0.9);; }
+    50% { transform: rotate(-10deg) scale(0.9); }
+    68% { transform: rotate(0deg) scale(0.85); }
+    84% { transform: rotate(10deg) scale(1); }
+  100% { transform: rotate(0deg) scale(1);}
+}
+
+.wiggle-larger-animation,
+.item-added-to-cart-animation {
+  animation: wiggle-larger 350ms; 
+}
+
+.wiggle-smaller-animation,
+.item-removed-from-cart-animation  {
+  animation: wiggle-smaller 300ms; 
+}

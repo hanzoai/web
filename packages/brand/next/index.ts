@@ -1,0 +1,1 @@
+export { default as determineDeviceMW } from './middleware/determine-device-mw'

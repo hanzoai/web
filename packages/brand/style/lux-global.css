@@ -1,0 +1,31 @@
+/* Note, preflight is applied first:
+  https://unpkg.com/tailwindcss@3.3.5/src/css/preflight.css
+*/
+@import "tailwindcss/base";
+
+/* see https://stackoverflow.com/questions/69746121/using-nextjs-how-can-you-import-in-css-using-tailwind-css */
+@import "@hanzo/ui/style/hanzo-common";
+@import "lux-colors";
+
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+div.nextjs-toast-errors-parent[data-nextjs-toast="true"] {
+  display: none;
+}
+
+.font-heading {
+  @apply uppercase;
+}
+
+/* Specific style fixes for react-square-web-payments-sdk -
+ * reduce gap between card input and pay button
+ */
+#rswps-card-container {
+  min-height: unset !important;
+}
+
+.sq-card-wrapper .sq-card-message {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}

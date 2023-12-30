@@ -1,0 +1,52 @@
+import React from 'react'
+
+import { cn } from '@hanzo/ui/util'
+import { AuthWidget } from '@hanzo/auth/components'
+
+import { Logo } from '..'
+
+import DesktopNav from '../commerce/desktop-nav-menu'
+import Link from 'next/link'
+
+
+import type { LinkDef } from '@hanzo/ui/types'
+
+const DesktopHeader: React.FC<{
+  currentAs: string | undefined
+  links: LinkDef[]
+  className?: string
+}> = ({
+  currentAs,
+  links,
+  className = ''
+}) => {
+
+    // TODO move 13px into a size class and configure twMerge to recognize say, 'text-size-nav' 
+    // (vs be beat out by 'text-color-nav')
+    return (
+      <header className={cn('bg-background fixed z-header top-0 left-0 right-0', className)} >
+        {/* md or larger */}
+        <div className={
+          'flex flex-row h-[80px] items-center  justify-between ' +
+          'px-[8px] w-full mx-auto max-w-screen'
+        }>
+          <div className='flex gap-4 items-center'>
+            <Logo size='md' href='/' className='hidden lg:flex' key='two' layout='text-only' />
+            <Logo size='sm' href='/' className='hidden md:flex lg:hidden' key='one' layout='text-only' />
+            {/* md or larger */}
+
+            <DesktopNav links={links} />
+          </div>
+          <div className='flex items-center'>
+            <Link href={"#"} className='m-[14px]'>
+              Contact
+            </Link>
+            <AuthWidget />
+          </div>
+        </div>
+      </header>
+    )
+  }
+
+export default DesktopHeader
+
