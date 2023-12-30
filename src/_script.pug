@@ -1,2 +1,36 @@
 script(defer,src='https://use.fontawesome.com/releases/v5.0.8/js/all.js')
 script(src='/js/app.js?v=#{ version }')
+script(type="text/javascript" async src="https://cdn.reamaze.com/assets/reamaze-loader.js")
+script(type="text/javascript").
+  var _support = _support || { 'ui': {}, 'user': {} };
+  _support['account'] = 'hanzoai';
+  _support['ui']['contactMode'] = 'mixed';
+  _support['ui']['enableKb'] = 'true';
+  _support['ui']['styles'] = {
+    widgetColor: 'rgb(31, 26, 100)',
+    gradient: true,
+  };
+  _support['ui']['shoutboxFacesMode'] = 'default';
+  _support['ui']['shoutboxHeaderLogo'] = true;
+  _support['ui']['widget'] = {
+    icon: 'chat',
+    displayOn: 'all',
+    fontSize: 'default',
+    allowBotProcessing: true,
+    label: {
+      text: 'Let us know if you have any questions! &#128522;',
+      mode: "notification",
+      delay: 3,
+      duration: 30,
+      primary: 'I have a question',
+      secondary: 'No, thanks',
+      sound: true,
+    },
+    position: 'bottom-right',
+    mobilePosition: 'bottom-right'
+  };
+  _support['apps'] = {
+    faq: {"enabled":true},
+    recentConversations: {},
+    orders: {}
+  };
