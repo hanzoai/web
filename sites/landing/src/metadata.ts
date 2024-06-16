@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
 
 export default {
-  metadataBase: new URL('https://lux.credit'),
+  metadataBase: new URL('https://hanzo.ai'),
   title: {
-    default: 'Lux Credit',
-    template: '%s | Lux Credit',
+    default: 'Hanzo AI',
+    template: '%s | Hanzo AI',
   },
-  description: 'Lux Credit Card is the first crypto credit card that pays you. Never sell your crypto again!',
-  applicationName: 'Lux Credit',
-  authors: {name: 'Lux Dev team'},
-  keywords: "Lux Network, Blockchain Bridge, Multi-Chain, EVM, Solana, Bitcoin, Cross-Chain, Interoperability, Cryptocurrency, Blockchain Technology",
+  description: 'Hanzo AI Card is the first crypto credit card that pays you. Never sell your crypto again!',
+  applicationName: 'Hanzo AI',
+  authors: {name: 'Hanzo Dev team'},
+  keywords: "Hanzo AI, Blockchain Bridge, Multi-Chain, EVM, Solana, Bitcoin, Cross-Chain, Interoperability, Cryptocurrency, Blockchain Technology",
   icons: [
     {
       rel: 'icon',
