@@ -1,0 +1,2 @@
+Unwise to have this in a barrel / index file that is mostly imported by a Client Component.
+Creates Next / SSR issues

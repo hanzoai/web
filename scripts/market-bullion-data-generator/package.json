@@ -1,0 +1,25 @@
+{
+  "name": "market-data-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "type": "module",
+  "scripts": {
+    "COMMENT": "ts-node sucks!  Just say NO!",
+    "tc": "tsc --noEmit",
+    "go": "vite-node main.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@hanzo/commerce": "*",
+    "@hanzo/ui": "*",
+    "fs-extra": "^11.2.0",
+    "typescript": "^5.4.5",
+    "vite-node": "^1.4.0"
+  },
+  "peerDependencies": {
+    "tailwindcss" : "^3.4.3"
+  }
+}

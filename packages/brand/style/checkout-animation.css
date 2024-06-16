@@ -1,0 +1,23 @@
+@keyframes checkout-widget-fade-in {
+    0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1;}
+}
+
+.checkout-widget-appears {
+  animation-name: checkout-widget-fade-in;
+  animation-duration: 200ms; 
+}
+
+.checkout-widget-disappears {
+  animation-name: checkout-widget-fade-in;
+  animation-duration: 200ms; 
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+}
+
+.checkout-widget-appears-after-buy-drawer-closes {
+  animation-fill-mode: backwards;
+    /* Drawer is hardcoded to open in 0.5s.  We can start slightly sooner. */
+  animation-delay: 400ms;  
+}
+

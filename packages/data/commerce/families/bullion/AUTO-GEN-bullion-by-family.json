@@ -1,0 +1,34 @@
+[
+  {
+    "id": "LXM-AG-B",
+    "title": "Minted Bar",
+    "parentTitle": "Lux Silver",
+    "desc": "Get unprecedented access to silver with 1:1 asset-backed Lux Silver NFTs, sovereign ownership of physical silver without management fees, and mine-direct discount pricing.",
+    "img": {
+      "src": "/assets/commerce/silver/product/silver-bar-pt-800x800.png",
+      "dim": {
+        "w": 800,
+        "h": 800
+      }
+    },
+    "products": [
+      {
+        "id": "fce17569-a86c-4f69-bc61-ab435ed0c46f",
+        "sku": "LXM-AG-B-1_OZ",
+        "fullTitle": "Lux Silver, 1oz Minted Bar",
+        "optionLabel": "1oz",
+        "familyTitle": "Minted Bar",
+        "familyId": "LXM-AG-B",
+        "desc": "Get unprecedented access to silver with 1:1 asset-backed Lux Silver NFTs, sovereign ownership of physical silver without management fees, and mine-direct discount pricing.",
+        "price": 0,
+        "img": {
+          "src": "/assets/commerce/silver/product/silver-bar-pt-800x800.png",
+          "dim": {
+            "w": 800,
+            "h": 800
+          }
+        }
+      }
+    ]
+  }
+]
