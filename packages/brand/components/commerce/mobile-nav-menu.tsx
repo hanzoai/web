@@ -55,9 +55,8 @@ const MobileNav: React.FC<{
             }
             const itemClx = (commonItemClx) ? (typeof commonItemClx === 'string' ? commonItemClx : commonItemClx(el)) : ''
 
-            if (!el.isAIMenu) {
-              return <MobileNavMenuItem link={el} setMenuOpen={setMenuOpen}/>
-            }
+            return <MobileNavMenuItem link={el} setMenuOpen={setMenuOpen} />
+
           })}
         </div>
         <MobileAuthWidget className=' text-2xl' handleLogin={() => { setMenuState('login') }} />
