@@ -93,13 +93,15 @@ const ServiceBlockComponent: React.FC<{
       <div className="!w-full slide snap-start relative" ref={containerRef}>
         <div className="w-full h-screen flex flex-col justify-center sticky top-0 left-0">
           <div className='w-full'>
-            <div className=' pl-13 pb-31'>
-              <span className=' text-xl'>POWERED BY</span>
-              <div className='flex'>
-                <HanzoLogo className='w-[80px]' />
-                <span className=' pr-20 ml-5 text-5xl'>Hanzo</span>
-                <p className=' text-2xl align-bottom'>The game-changer in  your go-to-market strategy.</p>
+            <div className='lg:pl-13 lg:pb-31 flex pl-[14px]'>
+              <div className="w-[45%]">
+                <span className='lg:text-xl text-sm font-bold'>POWERED BY</span>
+                <div className='flex lg:align-top lg:items-start items-center'>
+                  <HanzoLogo className='lg:w-[80px] w-[23px]' />
+                  <span className='lg:pr-20 lg:ml-5 lg:text-5xl text-base'>Hanzo</span>
+                </div>
               </div>
+              <p className='lg:text-2xl lg:mt-18 lg:font-medium italic font-thin'>The game-changer in  your go-to-market strategy.</p>
             </div>
           </div>
           <style>
@@ -107,18 +109,21 @@ const ServiceBlockComponent: React.FC<{
               display: none;
             }`}
           </style>
-          <div className="w-full overflow-x-auto overflow-y-hidden no-scrollbar" ref={scrollRef}>
-            <div className="grid grid-rows-2 grid-flow-col gap-x-12 gap-y-4 w-max px-4">
+          <div className="w-full overflow-x-auto overflow-y-hidden no-scrollbar " ref={scrollRef}>
+            <div className="grid grid-rows-2 grid-flow-col gap-x-12 gap-y-4 w-max px-4 mt-15">
               {new Array(8).fill(null).map((_, index) => (
                 <section key={index} className={`panel flex box-${index + 1} ${className}`}>
-                  <span>0{index + 1}</span>
-                  <div className=" pl-[22px] w-[762.08px]">
+                  <span className="lg:font-semibold lg:text-[12px]">0{index + 1}</span>
+                  <div className=" lg:pl-[22px] lg:w-[762.08px] w-[324.8px] pl-2 pt-1">
                     <div className=" border-r border-t w-full h-[33.42px]"></div>
-                    <div className="card flex px-7">
-                      <div className="flex-1 text-4xl font-bold">{service.title[index]}</div>
-                      <div className="flex-1 gap-4 text-sm text-muted-1">
+                    <div className="card lg:flex lg:px-7 ">
+                      <div className="lg:flex-1 lg:text-4xl lg:font-medium lg:leading-[43px] lg:px-2 text-base leading-5 font-light">{service.title[index]}</div>
+                      <div className="lg:flex-1 lg:gap-4 lg:text-sm lg:text-muted-1 leading-[14px] lg:font-normal mt-[18px] text-sm text-primary">
                         <p>
-                          {service.details[index]}
+                          {service.details[index][0]}
+                        </p>
+                        <p className="lg:mt-2 mt-3">
+                          {service.details[index][1]}
                         </p>
                       </div>
                     </div>

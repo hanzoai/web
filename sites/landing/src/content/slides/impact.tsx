@@ -3,6 +3,7 @@ import type {
   ScreenfulBlock,
   ElementBlock,
 } from '@hanzo/ui/blocks'
+import Link from 'next/link'
 
 export default {
   blockType: 'screenful',
@@ -13,17 +14,34 @@ export default {
       {
         blockType: 'element',
         element: (
-          <div className='w-full pl-6'>
-            <div className="border-t-2 flex pt-8 mb-19">
-              <div className='flex flex-1'>
-                <h5 className='flex-[30%]'>OUR IMPACT</h5>
-                <span className=' text-5xl flex-[70%]'>You don't have to take our word for it.</span>
+          <div className='w-full lg:pl-6 '>
+            <div className="border-t-2 lg:flex lg:pt-8 lg:mb-19 px-4">
+              <div className='lg:flex lg:flex-1'>
+                <h5 className='lg:flex-[30%] text-muted-1 lg:text-primary font-semibold lg:text-xl text-base'>OUR IMPACT</h5>
+                <span className=' lg:text-5xl lg:flex-[70%] lg:font-light font-medium text-2xl'>You don't have to take our word for it.</span>
               </div>
-              <div className=' text-4xl flex-1'>
+              <div className='lg:text-4xl lg:flex-1 text-xl font-light leading-6 lg:mt-0 mt-4'>
                 <p>Here's what some of our clients have to say about the power of a well-defined campaign and data driven strategy.</p>
               </div>
             </div>
-            <div className="border-t-2 flex pt-8 mb-19">
+            <div className='text-base mt-9 lg:hidden'>
+              <div className="border-t py-4">
+                <Link href={"#"} className='font-light text-muted-1 no-underline'>
+                  Damon Motorcycles
+                </Link>
+              </div>
+              <div className="border-t py-4">
+                <Link href={"#"} className='font-light text-muted-1 no-underline'>
+                  Triller
+                </Link>
+              </div>
+              <div className="border-t py-4">
+                <Link href={"#"} className='font-light text-muted-1 no-underline'>
+                  Keek.com
+                </Link>
+              </div>
+            </div>
+            <div className="hidden border-t-2 lg:flex pt-8 mb-19 ">
               <div className='flex flex-1'>
                 <span className='text-2xl text-muted-1 flex-[30%] '>Triller</span>
                 <span className='text-2xl text-muted-1 flex-[35%]'>Jeniffer Patel</span>
@@ -33,7 +51,7 @@ export default {
                 <p>Jenifer has spearheaded the green technology industry for over a decade, turning her stgartup into a leading provider of eco-friendly products. GG engergy is a pioneer in green solutions across global markets.."We were Greatefull for the opportunity to work with Hanzo and take the company public."</p>
               </div>
             </div>
-            <div className="border-t-2 flex pt-8 mb-19">
+            <div className="border-t-2 lg:flex pt-8 mb-19 hidden">
               <div className="flex flex-1">
                 <span className='text-2xl flex-[30%] text-muted-1'>Impact Hub Bali</span>
                 <span className='text-2xl text-muted-1 flex-[35%]'>Rebecca Rocco</span>

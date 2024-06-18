@@ -7,7 +7,7 @@ import {
   Carousel,
   CarouselItem,
   CarouselContent,
-  type CarouselApi
+  type CarouselApi,
 } from '@hanzo/ui/primitives'
 
 import { ImageBlockComponent, type ImageBlock } from '@hanzo/ui/blocks'
@@ -29,76 +29,84 @@ const ImageComponent: React.FC<{
   onSelectImage
 }) => {
 
-  const roundedClass = img.rounded ? `rounded-${img.rounded}` : '';
-    return (
-      <ApplyTypography>
-        <div onClick={onSelectImage}>
-          <ImageBlockComponent
-            block={{
-              blockType: 'image',
-              props: {
-                style: {
-                  width: 'auto',
-                  // height: '576px',
-                  objectFit: 'cover'
-                },
+  const roundedClass = img.rounded ? `rounded-${img.rounded}` : ''
+  
+  return (
+    <ApplyTypography>
+      <div onClick={onSelectImage}>
+        <ImageBlockComponent
+          block={{
+            blockType: 'image',
+            props: {
+              style: {
+                width: 'auto',
+                objectFit: 'cover'
               },
-              ...img
-            } as ImageBlock}
-            className={cn('mx-auto ', current !== index ? 'cursor-pointer' : '', roundedClass, 'lg:h-[240px] 2xl:h-[576px]')}
-          />
-        </div>
-      </ApplyTypography>
-    )
-
-  }
+            },
+            ...img
+          } as ImageBlock}
+          className={cn('mx-auto', current !== index ? 'cursor-pointer' : '', roundedClass, 'lg:h-[576px] h-[398px]')}
+        />
+      </div>
+    </ApplyTypography>
+  )
+}
 
 const ImageCarousel: React.FC<{
   className?: string,
 }> = ({
   className,
 }) => {
-    const [api, setApi] = useState<CarouselApi>()
-    const [current, setCurrent] = useState(0)
+  const [api, setApi] = useState<CarouselApi | undefined>()
+  const [current, setCurrent] = useState(0)
 
-    useEffect(() => {
-      if (!api) {
-        return
-      }
+  useEffect(() => {
+    if (!api) {
 
-      api.on("select", () => {
-        setCurrent(api.selectedScrollSnap())
-      })
-    }, [api])
-
-    const selectedImage = (index: number) => {
-      if (api) {
-        api.scrollTo(index)
-      }
+      return
     }
 
-    return (
-      <Carousel
-        setApi={setApi}
-        options={{ align: 'center', loop: true }}
-        className={cn('w-full', className)}>
-        <CarouselContent>
-          {images.map((image: ImageDef, index) => {
-            const basisClass = index === 0 || index === images.length - 1
-              ? 'basis-1/4'
-              : index === 1
-                ? 'basis-2/4'
-                : 'basis-1/3 md:basis-1/3 xl:basis-1/5';
+    
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap())
+    }
 
-            return (
-              <CarouselItem key={index} className={cn(basisClass)}>
-                <ImageComponent img={image} current={current} index={index} onSelectImage={() => selectedImage(index)} />
-              </CarouselItem>
-            )
-          })}
-        </CarouselContent>
-      </Carousel>
-    )
+    api.on("select", onSelect)
 
+    return () => {
+      api.off("select", onSelect)
+    }
+  }, [api])
+
+  const selectedImage = (index: number) => {
+    if (api) {
+      api.scrollTo(index)
+    }
   }
+
+  return (
+    <Carousel
+      setApi={setApi}
+      options={{ align: 'start', loop: true }}
+      className={cn('w-full overflow-hidden max-w-[100vw]', className)}
+    >
+      <CarouselContent>
+        {images.map((image: ImageDef, index) => {
+          const basisClass = index === 0 || index === images.length - 1
+            ? 'lg:basis-1/4 '
+            : index === 1
+              ? 'lg:basis-2/4 '
+              : 'lg:basis-1/4';
+
+          return (
+            <CarouselItem key={index} className={basisClass}>
+              <ImageComponent img={image} current={current} index={index} onSelectImage={() => selectedImage(index)} />
+            </CarouselItem>
+          )
+        })}
+      </CarouselContent>
+    </Carousel>
+  )
+}
+
 export default ImageCarousel

@@ -8,6 +8,7 @@ const Casperlabs: React.FC<LucideProps> = (props: LucideProps) => (
   viewBox="0 0 114 63"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
+  {...props}
 >
   <g clipPath="url(#clip0_104_7)">
     <mask

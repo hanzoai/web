@@ -4,11 +4,12 @@ import { type LucideProps } from 'lucide-react'
 const HanzoLogo: React.FC<LucideProps> = (props: LucideProps) => (
 <svg
   width={81}
-  height={81}
+  height={'auto'}
   viewBox="0 0 81 81"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   xmlnsXlink="http://www.w3.org/1999/xlink"
+  {...props}
 >
   <rect
     x="0.378418"

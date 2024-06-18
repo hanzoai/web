@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import type DetailsBlock from '../def/details'
 import type { Block } from '@hanzo/ui/blocks'
 import { Button } from '@hanzo/ui/primitives'
+import GotoBtn from '@/content/slides/details/svg/Gotobtn'
+
 
 
 const DetailsBlockComponent: React.FC<{
@@ -64,26 +66,30 @@ const DetailsBlockComponent: React.FC<{
   return (
     <div className='relative snap-start' ref={elementRef}>
 
-      <div className="z-10 w-full h-[120vh] p-0 sticky top-0 pt-[180px]">
+      <div className="z-10 w-full h-[120vh] p-0 sticky top-0 lg:pt-[180px]">
 
         <div className="sections-container relative">
           <section
-            className='grid grid-cols-2 detailSection animated-section h-screen'
+            className='grid  sm:grid-cols-2 grid-cols-1 detailSection animated-section h-screen'
           >
-            <div className='2xl:pl-24 outer lg:pl-2'>
-              <div className='w-4/5'>
-                <span className='2xl:text-[20px] lg:text-[12px]'>{detail.pretitle[getCurrentBlockIndex()]}</span>
-                <p className='2xl:text-[32px] mt-4 lg:text-[24px]'>{detail.title[getCurrentBlockIndex()]}</p>
-                <p className='2xl:text-[55px] lg:text-[32px] font-sans section-heading '>{detail.subtitle[getCurrentBlockIndex()]}</p>
-                <p className='2xl:text-[20px] lg:text-[16px] w-[455px] 2xl:pt-[22.42px] lg:pt-[12px]'>{detail.explain1[getCurrentBlockIndex()]}</p>
-                <p className='2xl:text-[20px] lg:text-[16px] w-[455px] 2xl:pt-[22.42px] lg:pt-[12px]'>{detail.explain2[getCurrentBlockIndex()]}</p>
-                <Button variant={'outline'} rounded={'none'} className=' w-[248px] h-[66.76px] text-base mt-27'>
+            <div className='2xl:lg:pl-24 outer lg:pl-2 lg:order-1 order-2 px-[12px]'>
+              <div className='lg:w-4/5 w-full '>
+                <span className='2xl:text-[20px] lg:text-[12px] lg:block hidden'>{detail.pretitle[getCurrentBlockIndex()]}</span>
+                <p className='2xl:text-[32px] mt-4 lg:text-[24px] lg:block hidden'>{detail.title[getCurrentBlockIndex()]}</p>
+                <p className='2xl:text-[55px] 2xl:leading-[64px] font-sans section-heading text-2xl leading-[29px] font-bold'>{detail.subtitle[getCurrentBlockIndex()]}</p>
+                <p className='2xl:text-[20px] lg:text-[16px] max-w-[455px] lg:pt-[22.42px] lg:leading-6 text-xl leading-5 pt-4'>{detail.explain1[getCurrentBlockIndex()]}</p>
+                <p className='2xl:text-[20px] lg:text-[16px] max-w-[455px] lg:pt-[22.42px] lg:leading-6 text-xl leading-5 pt-4'>{detail.explain2[getCurrentBlockIndex()]}</p>
+                <Button variant={'outline'} rounded={'none'} className='hidden lg:block w-[248px] h-[66.76px] text-base mt-27'>
                   {detail.buttonName[getCurrentBlockIndex()]}
                 </Button>
-
+                <Button variant={'link'} rounded={'none'} className='xl:hidden text-xl font-bold w-[300px] px-0 py-[22px] !justify-start'>
+                {detail.buttonName[getCurrentBlockIndex()]}
+                <GotoBtn className='ml-3'/>
+                </Button>
+                <span className='text-sm lg:hidden'>{detail.pretitle[getCurrentBlockIndex()]}</span>
               </div>
             </div>
-            <div className='img pr-24 flex justify-center'>{detail.image[getCurrentBlockIndex()]}</div>
+            <div className='lg:order-2 order-1 justify-center lg:w-full w-[300px] flex mx-auto'>{detail.image[getCurrentBlockIndex()]}</div>
           </section>
         </div>
         <div className='absolute top-20 right-0 w-3 bg-transparent h-[calc(100vh-80px)] overflow-hidden'>

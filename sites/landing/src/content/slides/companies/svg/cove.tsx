@@ -9,6 +9,7 @@ const Cove: React.FC<LucideProps> = (props: LucideProps) => (
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   xmlnsXlink="http://www.w3.org/1999/xlink"
+  {...props}
 >
   <rect
     x="0.0991211"
