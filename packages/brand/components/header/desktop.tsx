@@ -31,8 +31,8 @@ const DesktopHeader: React.FC<{
           'px-[8px] w-full mx-auto max-w-screen'
         }>
           <div className='flex gap-4 items-center'>
-            <Logo size='md' href='/' className='hidden lg:flex' key='two' layout='text-only' />
-            <Logo size='sm' href='/' className='hidden md:flex lg:hidden' key='one' layout='text-only' />
+            <Logo size='md' href='/' className='hidden lg:flex' key='two' layout='full' />
+            <Logo size='sm' href='/' className='hidden md:flex lg:hidden' key='one' layout='full' />
             {/* md or larger */}
 
             <DesktopNav links={links} />

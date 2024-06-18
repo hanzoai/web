@@ -64,7 +64,7 @@ async function RootLayout({
     {showHeader && <Header siteDef={siteDef}/>}
     {children}
     {chatbot && (<ChatWidget
-      title='LUX'
+      title='Hanzo'
       subtitle='AI'
       chatbotUrl='https://lux.chat/?isIframe=true'
       suggestedQuestions={siteDef.chatbot?.suggestedQuestions ?? []}

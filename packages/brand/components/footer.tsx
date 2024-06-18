@@ -40,12 +40,12 @@ const Footer: React.FC<{
           'md:w-full sm:justify-items-center md:mx-0 lg:w-full' +
           'md:flex md:flex-row md:justify-between '
         }>
-          <div className='hidden lg:grid grid-cols-4 !pointer-events-autow-full w-full' key={0}>
+          <div className=' lg:grid grid-cols-4 !pointer-events-autow-full w-full' key={0}>
             <div className=''>
-              <span className=' text-2xl'>
+              <span className='text-2xl font-normal leading-5'>
                 Shortcuts
               </span>
-              <div className='grid grid-cols-3 gap-3 text-muted-1 text-base max-w-[222px]'>
+              <div className='grid grid-cols-3 gap-3 text-muted-1 lg:items-center text-base max-w-[222px] mt-9'>
                 <Link className='max-w-[83px]' href={"#"}>
                   Home
                 </Link>
@@ -75,33 +75,33 @@ const Footer: React.FC<{
                 </Link>
               </div>
             </div>
-            <div className=''>
-              <span className=' text-2xl'>
+            <div className='lg:mt-0 mt-[41.52px]'>
+              <span className=' text-2xl leading-5 font-normal'>
                 Connect with us
               </span>
               <div>
-                <Link href={"#"} className=' underline'>
+                <Link href={"#"} className='lg:mt-[33.8px] mt-5 underline'>
                   info@hanzo.ai
                 </Link>
               </div>
             </div>
-            <div className=''>
+            <div className='lg:mt-0 mt-[52px] lg:-ml-[150px]'>
               <span className=' text-2xl'>
                 Join our newsletter
               </span>
-              <div className='flex flex-col max-w-[416px]'>
+              <div className='flex flex-col max-w-[416px] lg:mt-[31.57px] mt-[21px]'>
                 <input type='text' placeholder='Name' className=' bg-transparent text-base outline-none text-muted-1 border-b' />
-                <div className='flex gap-[58px] w-full justify-between'>
-                  <input type='text' placeholder='E-mail' className='w-full bg-transparent text-base outline-none text-muted-1 border-b max-w-[329px]' />
-                  <Goto />
+                <div className='flex gap-[58px] w-full justify-between lg:mt-[31.57px] mt-[8.57px] lg:border-b-0 border-b'>
+                  <input type='text' placeholder='E-mail' className='w-full bg-transparent text-base outline-none text-muted-1 lg:border-b max-w-[329px]' />
+                  <Goto className='lg:bg-muted-1 bg-primary'/>
                 </div>
               </div>
             </div>
-            <div className=''>
-              <span className=' text-2xl'>
+            <div className='lg:mt-0 mt-12'>
+              <span className=' text-2xl '>
                 Follow Us
               </span>
-              <div className='grid grid-cols-2 gap-3 text-base text-[16px]'>
+              <div className='grid grid-cols-2 gap-3 text-[16px] lg:mt-[43.1px] mt-[30px]'>
                 <Link className='' href={"#"}>
                   X
                 </Link>
@@ -125,7 +125,7 @@ const Footer: React.FC<{
             </div>
           </div>
         </div>
-        <div className='md:mt-[2vh] flex justify-start gap-8 pl-[27px]'>
+        <div className='md:mt-[2vh] flex justify-start gap-8 lg:pl-[27px] mb-0'>
           <Nvidia />
           <Techstars />
           <Stripe />
