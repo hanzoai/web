@@ -9,6 +9,7 @@ const Beallabeat: React.FC<LucideProps> = (props: LucideProps) => (
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   xmlnsXlink="http://www.w3.org/1999/xlink"
+  {...props}
 >
   <rect y="0.5" width={212} height={56} fill="url(#pattern0_104_3)" />
   <defs>

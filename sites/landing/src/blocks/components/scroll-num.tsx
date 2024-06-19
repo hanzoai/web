@@ -65,15 +65,15 @@ const ScrollNumBlockComponent: React.FC<{
   }, []);
 
   return (
-    <div id='fast-facts' className={cn('grid lg:grid-cols-4 gap-10 px-9 w-full my-8', className)}>
+    <div id='fast-facts' className={cn('grid lg:grid-cols-4 gap-10 px-9 w-full my-8 sm:grid-cols-2 xs:grid-cols-2', className)}>
       {
         scrollNum.aniNum.map((num, index) => (
           <div className='flex flex-col' key={index}>
             <div className='flex flex-row'>
-              <span className='animCounter 2xl:text-[150px] lg:text-[48px]'>{num}</span>
-              <span className='2xl:text-[52px] lg:text-[24px] 2xl:py-8 lg:py-2'>{scrollNum.modifier[index]}</span>
+              <span className='animCounter 2xl:text-[150px] lg:text-[64px] sm:text-[64px] xs:text-[64px]'>{num}</span>
+              <span className='2xl:text-[52px] lg:text-[24px] 2xl:py-8 lg:py-2 sm:text-xl xs:text-xl xs:py-4'>{scrollNum.modifier[index]}</span>
             </div>
-            <span className='text-2xl'>{scrollNum.detail[index]}</span>
+            <span className='xl:text-2xl lg:text-2xl sm:text-base xs:text-base'>{scrollNum.detail[index]}</span>
           </div>
         ))
       }

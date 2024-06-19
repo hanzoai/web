@@ -31,7 +31,6 @@ const Page = ({ searchParams }: Props) => {
             agent={agent}
             snapTile
             key={`section-${index}`}
-            bottom={<DrawerMargin clx='grow-0 shrink-0' />}
           />
         )
       else {

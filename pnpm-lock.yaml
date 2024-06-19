@@ -10,7 +10,7 @@ overrides:
   '@types/react': ^18.3.2
   '@types/react-dom': ^18.3.0
   supports-color: 8.1.1
-  '@hanzo/brand': 0.1.1
+  '@hanzo/brand': 0.1.2
   '@luxfi/data': 1.0.6
   '@hanzo/auth': 2.4.12
   '@hanzo/commerce': 7.1.5
@@ -254,8 +254,8 @@ importers:
         specifier: 2.4.12
         version: 2.4.12(@hanzo/ui@3.8.21(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(@types/react-dom@18.3.0)(@types/react@18.3.3)(date-fns@3.6.0)(embla-carousel@8.1.1)(lucide-react@0.344.0(react@18.3.1))(mobx@6.12.3)(next-themes@0.2.1(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.4)(validator@13.12.0)(zod@3.23.8))(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(firebase@10.12.0)(lucide-react@0.344.0(react@18.3.1))(mobx-react-lite@4.0.7(mobx@6.12.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.12.3)(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(supports-color@8.1.1)(zod@3.23.8)
       '@hanzo/brand':
-        specifier: 0.1.1
-        version: 0.1.1(lcd7albabmwb76g4gdln722vza)
+        specifier: 0.1.2
+        version: 0.1.2(lcd7albabmwb76g4gdln722vza)
       '@hanzo/commerce':
         specifier: 7.1.5
         version: 7.1.5(pvgq52nbqhsqczukrpjz5aftba)
@@ -1304,8 +1304,8 @@ packages:
       react-hook-form: 7.51.4
       zod: 3.23.8
 
-  '@hanzo/brand@0.1.1':
-    resolution: {integrity: sha512-XYRT/fgWZb2T55k6Oqrmu4+AXGtKRptV0/07Jyj9TfSrdJlGqiORHnD9A/8k8KZ0e+kcJNKnZSOzgfViPrStyA==}
+  '@hanzo/brand@0.1.2':
+    resolution: {integrity: sha512-dvf0kwwvEXxzNrFPkZ/jebnTGK0eZey4LOYQqT7d9M/IIarNuX4SU7S/GxRUeVUuCPvSWaY/ImbXs1WU6fV6MQ==}
     peerDependencies:
       '@hanzo/auth': 2.4.12
       '@hanzo/commerce': 7.1.5
@@ -6621,7 +6621,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@hanzo/brand@0.1.1(lcd7albabmwb76g4gdln722vza)':
+  '@hanzo/brand@0.1.2(lcd7albabmwb76g4gdln722vza)':
     dependencies:
       '@hanzo/auth': 2.4.12(@hanzo/ui@3.8.21(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(@types/react-dom@18.3.0)(@types/react@18.3.3)(date-fns@3.6.0)(embla-carousel@8.1.1)(lucide-react@0.344.0(react@18.3.1))(mobx@6.12.3)(next-themes@0.2.1(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.4)(validator@13.12.0)(zod@3.23.8))(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(firebase@10.12.0)(lucide-react@0.344.0(react@18.3.1))(mobx-react-lite@4.0.7(mobx@6.12.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.12.3)(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(supports-color@8.1.1)(zod@3.23.8)
       '@hanzo/commerce': 7.1.5(pvgq52nbqhsqczukrpjz5aftba)

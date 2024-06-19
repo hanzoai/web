@@ -38,9 +38,9 @@ const Header: React.FC<{
         currentAs={currentAs}
         setChatbotOpen={setOpen}
       />
-      {isDesktopView() && (
+      {!isDesktopView() && (
         <ChatWidget
-          title='LUX'
+          title='Hanzo'
           subtitle='AI'
           chatbotUrl='https://lux.chat/iframe'
           suggestedQuestions={siteDef.chatbot?.suggestedQuestions ?? []}

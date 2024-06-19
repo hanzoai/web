@@ -18,7 +18,7 @@ export default {
         element:(
           <div className='w-full px-9'>
             <p className='text-muted-1 mb-10'>OUR VISION</p>
-            <span className='2xl:text-5xl lg:text-2xl'>We <b>empower businesses</b> to transcend traditional boundaries and redefine success with pioneering digital solutions - enabling acceleration and growth that expand companies reach by providing a suite of digital tools that simplify coplex challenges when launching, scaling, and innovating.</span>
+            <span className='2xl:text-5xl lg:text-2xl'>We <b>empower businesses</b> to transcend traditional boundaries and redefine success with pioneering digital solutions - enabling acceleration and growth that expand companies reach by providing a suite of digital tools that simplify complex challenges when launching, scaling, and innovating.</span>
           </div>
         )
       }satisfies ElementBlock as Block,

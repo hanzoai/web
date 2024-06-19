@@ -52,14 +52,14 @@ export default [
         icon: <AI  size={25}/>,
         href: "http://docs.hanzo.ai",
         newTab: false,
-        contents:"Powering Breakthroughs" //insert string to here
+        contents:"Powering breakthroughs" //insert string to here
       }, {
         groupName:"DX Platform",
         title: "Blockchain",
         icon: <Blockchain  size={25}/>,
         href: "http://docs.hanzo.ai",
         newTab: false,
-        contents:"Decentralized Application" //insert string to here
+        contents:"Decentralized application" //insert string to here
       }, {
         groupName:"DX Platform",
         title: "Commerce",
@@ -206,7 +206,7 @@ export default [
         icon: <ResourceCenter  size={25}/>,
         href: "https://docs.google.com/document/d/1Kk4VmVf6RyVF8Bi3lCawFV9zAr7zV8O96pRU_YfHrf4/edit?usp=sharing",
         newTab: false,
-        contents:"Dynamic Solutions" //insert string to here
+        contents:"Dynamic solutions" //insert string to here
       },{
         groupName:"Tools",
         title: "Integrations",

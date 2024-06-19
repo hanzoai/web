@@ -4,10 +4,11 @@ import { type LucideProps } from 'lucide-react'
 const Solutions: React.FC<LucideProps> = (props: LucideProps) => (
   <svg
     width={585}
-    height={586}
+    height={'auto'}
     viewBox="0 0 585 586"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <rect
       x="0.999023"
