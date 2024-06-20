@@ -48,8 +48,8 @@ export default {
               <p className='lg:block text-2xl hidden'>Hanzo has powerd over 1000 companies from zero to millions of dollars in revenue per month.</p>
               <p className='lg:hidden text-base italic font-light'>Some of our favorite projects we’ve worked on.</p>
             </div>
-            <div className='grid lg:grid-cols-5 lg:gap-12 justify-items-center grid-cols-2 gap-10 lg:pt-31 pt-20'>
-              <AAAA className='lg:block hidden w-[100%]' />
+            <div className='grid lg:grid-cols-5 border lg:gap-12 grid-cols-2 gap-10 lg:pt-31 pt-20' style={{alignItems: "center",justifyContent:"center"}}>
+              <AAAA className='lg:block hidden w-[100%]'  />
               <Arca className='lg:block hidden w-[100%]'/>
               <Beallabeat className='lg:block hidden w-[100%]'/>
               <Casperlabs className='lg:block hidden w-[100%]'/>
@@ -62,10 +62,10 @@ export default {
               <Karma className='w-[100%]'/>
               <Keek className='w-[100%]'/>
               <Lux className='lg:block hidden w-[100%]'/>
-              <Myle className='lg:block hidden  w-[100%]'/>
+              <Myle className='lg:block hidden  w-[70%] md:w-[100%]'/>
               <Nasa className='lg:block hidden w-[100%]'/>
               <Snapchat className='w-[100%]'/>
-              <Skully className='w-[100%]'/>
+              <Skully className='w-[100%]' />
               <Triller className='lg:block hidden w-[100%]'/>
               <Unikain className='lg:block hidden w-[100%]'/>
               <Zoo className='lg:block hidden w-[100%]'/>
