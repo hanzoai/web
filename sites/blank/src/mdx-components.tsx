@@ -9,6 +9,7 @@ import { MDXLink } from '@hanzo/ui/primitives'
 // https://nextjs.org/docs/pages/building-your-application/configuring/mdx
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
+  
   return {
     a: (props) => (
       <MDXLink {...props}/>
