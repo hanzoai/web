@@ -26,13 +26,13 @@ export default {
         blockType: 'element',
         element :(
           <div className='flex flex-col items-center justify-center w-full'>
-            <span className='text-[180px] font-bold font-sans'>Hanzo</span>
-            <span className=' text-5xl font-normal font-sans'>CUT THROUGH THE COMPLEXITIES</span>
-            <div className='flex flex-row mt-21 gap-18'>
-              <Button variant={'outline'} rounded={'none'} className='w-96 h-22 text-2xl'>
+            <span className='text-[100px] md:text-[180px] font-bold font-sans'>Hanzo</span>
+            <span className=' text-2xl md:text-5xl text-center font-normal font-sans'>CUT THROUGH THE COMPLEXITIES</span>
+            <div className='flex flex-col sm:flex-row mt-21 gap-10 md:gap-16'>
+              <Button variant={'outline'} rounded={'none'} className='w-50 md:w-90 h-15 md:h-20 text-base md:text-2xl'>
                 BROWSE CASE STUDIES
               </Button>
-              <Button variant={'primary'} rounded={'none'} className='w-96 h-22 text-2xl'>
+              <Button variant={'primary'} rounded={'none'} className='w-50 md:w-90 h-15 md:h-20 text-base md:text-2xl'>
                 SCHEDULE CALL
               </Button>
             </div>
