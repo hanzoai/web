@@ -79,10 +79,10 @@ const DetailsBlockComponent: React.FC<{
                 <p className='2xl:text-[55px] 2xl:leading-[64px] font-sans section-heading text-2xl leading-[29px] font-bold'>{detail.subtitle[getCurrentBlockIndex()]}</p>
                 <p className='2xl:text-[20px] lg:text-[16px] max-w-[455px] lg:pt-[22.42px] lg:leading-6 text-xl leading-5 pt-4'>{detail.explain1[getCurrentBlockIndex()]}</p>
                 <p className='2xl:text-[20px] lg:text-[16px] max-w-[455px] lg:pt-[22.42px] lg:leading-6 text-xl leading-5 pt-4'>{detail.explain2[getCurrentBlockIndex()]}</p>
-                <Button variant={'outline'} rounded={'none'} className='hidden lg:block md:w-[248px] h-[66.76px] md:text-base mt-27'>
+                <Button variant={'outline'} rounded={'none'} className='hidden lg:block w-[248px] h-[66.76px] md:text-base mt-27'>
                   {detail.buttonName[getCurrentBlockIndex()]}
                 </Button>
-                <Button variant={'link'} rounded={'none'} className='xl:hidden text-sm font-bold px-0 py-[22px] !justify-start'>
+                <Button variant={'link'} rounded={'none'} className='lg:hidden text-sm font-bold w-[300px] px-0 py-[22px] !justify-start'>
                 {detail.buttonName[getCurrentBlockIndex()]}
                 <GotoBtn className='ml-3'/>
                 </Button>
