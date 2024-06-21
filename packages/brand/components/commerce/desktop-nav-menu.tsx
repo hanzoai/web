@@ -117,7 +117,7 @@ const GroupChildMenu = (childs: ChildMenu[] | undefined) => {
         <h2 className="text-muted-1">{groupName}</h2>
         <ul className=" w-[200px] gap-3 md:w-[250px] lg:w-[250px]">
           {childLinks.map((link) => (
-            <div className="flex items-center" key={link.title}>
+            <div className="flex justify-start items-center" key={link.title}>
               {link.icon}
               <ListItem key={link.title} title={link.title} href={link.href} className="ml-[14px]">
                 {link.contents}
