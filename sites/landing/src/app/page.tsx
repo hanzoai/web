@@ -19,9 +19,8 @@ const Page = ({ searchParams }: Props) => {
   const swipeOuter = 'snap-start snap-always h-[100vh] '
   const swipeInner = 'pt-[68px] md:pt-[104px] pb-[24px] '
   const swipeInnerTouch = swipeInner + 'h-[100svh] '
-
   return (<>
-    <Header siteDef={siteDef} />
+    <Header siteDef={siteDef}/>
     {tiles.map((banner, index) => {
       if (banner.blockType == 'screenful')
         return (

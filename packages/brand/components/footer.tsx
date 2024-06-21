@@ -102,25 +102,21 @@ const Footer: React.FC<{
                 Follow Us
               </span>
               <div className='grid grid-cols-2 gap-3 text-[16px] lg:mt-[43.1px] mt-[30px]'>
-                <Link className='' href={"#"}>
+                <Link className='' href={"https://x.com/hanzoai"}>
                   X
                 </Link>
-                <Link className='' href={"#"}>
+                <Link className='' href={"https://linkedin.com/company/hanzoai"}>
                   Linkedin
                 </Link>
-                <Link className='' href={"#"}>
+                <Link className='' href={"https://facebook.com/hanzoinc"}>
                   Facebook
                 </Link>
-                <Link className='' href={"#"}>
+                <Link className='' href={"https://github.com/hanzoai"}>
                   Github
                 </Link>
-                <Link className='' href={"#"}>
+                <Link className='' href={"https://instagram.com/hanzoinc"}>
                   Instagram
                 </Link>
-                <Link className='' href={"#"}>
-                  Stack Overflow
-                </Link>
-
               </div>
             </div>
           </div>
