@@ -117,7 +117,6 @@ const Footer: React.FC<{
                 <Link className='' href={"http://instagram.com/hanzoinc"}>
                   Instagram
                 </Link>
-
               </div>
             </div>
           </div>
