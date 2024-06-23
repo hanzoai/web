@@ -232,35 +232,35 @@ export default [
         groupName:"Company",
         title: "Customers",
         icon: <Customers  size={25}/>,
-        href: "#",
+        href: "http://docs.hanzo.ai/",
         newTab: false,
         contents:"Trusted by the best teams" //insert string to here
       },{
         groupName:"Company",
         title: "Blog",
         icon: <Blog  size={25}/>,
-        href: "#",
+        href: "https://docs.google.com/document/d/1HQlLuWAmnT42oNjWKsmhlsRarUbSIZ2ZgVzJspS7aLE/edit?usp=sharing",
         newTab: false,
         contents:"Latest posts and changes" //insert string to here
       },{
         groupName:"Company",
         title: "Changelog",
         icon: <Changelog  size={25}/>,
-        href: "#",
+        href: "http://docs.hanzo.ai/",
         newTab: false,
         contents:"Manage deployments" //insert string to here
       },{
         groupName:"More",
         title: "Developer docs",
         icon: <DeveloperDocs  size={25}/>,
-        href: "#",
+        href: "http://docs.hanzo.ai/",
         newTab: false,
         contents:"Software explained" //insert string to here
       },{
         groupName:"More",
         title: "Customer Support",
         icon: <CustomerSupport  size={25}/>,
-        href: "#",
+        href: "https://docs.google.com/document/d/1Kk4VmVf6RyVF8Bi3lCawFV9zAr7zV8O96pRU_YfHrf4/edit?usp=sharing",
         newTab: false,
         contents:"Dedicated help 24/7" //insert string to here
       },
@@ -268,7 +268,7 @@ export default [
         groupName:"More",
         title: "FAQs",
         icon: <FAQs size={25}/>,
-        href: "#",
+        href: "http://docs.hanzo.ai/",
         newTab: false,
         contents:"Common queries" //insert string to here
       },
