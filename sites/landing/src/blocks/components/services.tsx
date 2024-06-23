@@ -94,14 +94,14 @@ const ServiceBlockComponent: React.FC<{
         <div className="w-full h-screen flex flex-col justify-center sticky top-0 left-0">
           <div className='w-full'>
             <div className='lg:pl-13 lg:pb-31 flex pl-[14px]'>
-              <div className="w-[45%]">
+              <div className="w-[40%]">
                 <span className='lg:text-xl text-sm font-bold'>POWERED BY</span>
                 <div className='flex lg:align-top lg:items-start items-center'>
                   <HanzoLogo className='lg:w-[80px] w-[23px]' />
                   <span className='lg:pr-20 lg:ml-5 lg:text-5xl text-base'>Hanzo</span>
                 </div>
               </div>
-              <p className='lg:text-2xl lg:mt-18 lg:font-medium italic font-thin'>The game-changer in  your go-to-market strategy.</p>
+              <p className='lg:text-2xl lg:mt-18 lg:font-medium font-thin'>The game-changer in  your go-to-market strategy.</p>
             </div>
           </div>
           <style>
@@ -118,7 +118,7 @@ const ServiceBlockComponent: React.FC<{
                     <div className=" border-r border-t w-full h-[33.42px]"></div>
                     <div className="card lg:flex lg:px-7 ">
                       <div className="lg:flex-1 lg:text-4xl lg:font-medium lg:leading-[43px] lg:px-2 text-base leading-5 font-light">{service.title[index]}</div>
-                      <div className="lg:flex-1 lg:gap-4 lg:text-sm lg:text-muted-1 leading-[14px] lg:font-normal mt-[18px] text-sm text-primary">
+                      <div className="lg:flex-1 lg:gap-4 lg:text-sm lg:text-muted-1 leading-[18px] lg:font-medium text-sm text-primary">
                         <p>
                           {service.details[index][0]}
                         </p>
