@@ -108,13 +108,13 @@ const Footer: React.FC<{
                 <Link className='social-link' href={"https://linkedin.com/company/hanzoai"}>
                   Linkedin
                 </Link>
-                <Link className='social' href={"https://facebook.com/hanzoinc"}>
+                <Link className='social-link' href={"https://facebook.com/hanzoinc"}>
                   Facebook
                 </Link>
-                <Link className='social' href={"https://github.com/hanzoai"}>
+                <Link className='social-link' href={"https://github.com/hanzoai"}>
                   Github
                 </Link>
-                <Link className='social' href={"https://instagram.com/hanzoinc"}>
+                <Link className='social-link' href={"https://instagram.com/hanzoinc"}>
                   Instagram
                 </Link>
               </div>
