@@ -8,7 +8,6 @@ export * as Icons from './icons'
 export { default as Logo } from './logo'
 export { default as Main } from './main'
 export { default as MiniChart } from './mini-chart'
-
 export { default as NotFound } from './not-found'
 
 
