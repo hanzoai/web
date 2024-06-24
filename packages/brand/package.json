@@ -1,25 +1,25 @@
 {
   "name": "@hanzo/brand",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "Library that contains shared UI primitives, support for a common design system, and other boilerplate support.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
-    "scope": "@luxfi"
+    "scope": "@hanzo"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luxfi/web.git",
-    "directory": "packages/core"
+    "url": "git+https://github.com/hanzo/web.git",
+    "directory": "packages/brand"
   },
   "keywords": [
     "components",
     "radix-ui",
     "hanzo",
-    "luxdefi"
+    "luxfi"
   ],
   "scripts": {
-    "lat": "npm show @luxfi/core version",
+    "lat": "npm show @hanzo/brand version",
     "pub": "npm publish",
     "build": "tsc",
     "tc": "tsc",

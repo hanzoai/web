@@ -42,7 +42,6 @@ export interface ChildMenu extends LinkDef {
   groupName?: string
 }
 
-
 export default [
     {
       title: "Products",
@@ -201,7 +200,7 @@ export default [
     {
       title: "Resources",
       icon: "",    
-      href: "https://lux.credit",
+      href: "https://docs.hanzo.ai",
       newTab: false,
       childMenu: [
         {
