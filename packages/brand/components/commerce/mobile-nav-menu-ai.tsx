@@ -16,7 +16,7 @@ const MobileNavMenuAI: React.FC<MobileNavMenuAIProps> = ({ setMenuOpen }) => {
         <>
             <div className="w-full px-[10.8px] py-4 text-2xl cursor-pointer">
                 <div className='flex justify-between'>
-                    <Logo variant='full' />
+                    <Logo size='sm'  layout='full'/>
                     <Plus className='w-[17.7px] h-[17.7px] flex-none rotate-45 transition-transform' onClick={() => setMenuOpen(false)} />
                 </div>
                 <div className="flex items-center gap-5 border-b border-[#3A3A3A] mt-4 rounded-2xl bg-muted-4">

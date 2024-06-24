@@ -38,7 +38,6 @@ const Header: React.FC<{
         currentAs={currentAs}
         setChatbotOpen={setOpen}
       />
-      {console.log('isDesktopView', isDesktopView())}
       {!isDesktopView() && (
         <ChatWidget
           title='Hanzo'
