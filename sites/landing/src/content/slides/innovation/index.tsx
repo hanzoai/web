@@ -27,7 +27,7 @@ export default {
                 </Link>
                 <GotoBtn className='lg:hidden ml-4 w-[17px]' />
               </div>
-              <p className='lg:text-[150px] text-2xl font-medium leading-[181px] drop-shadow-[0_4px_4px_rgba(255, 255, 255, 0.25)]'>{title}</p>
+              <p className='xl:text-[90px] md:text-[60px] text-[30px] text-center sm:text-left font-medium leading-[50px]'>{title}</p>
             </ApplyTypography>
             <ImageCarousel className='lg:mt-11'/>
           </div>

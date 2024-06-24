@@ -3,7 +3,7 @@ import { type LucideProps } from 'lucide-react'
 
 const Platform: React.FC<LucideProps> = (props: LucideProps) => (
   <svg
-    width={25}
+    width={26}
     height={26}
     viewBox="0 0 25 26"
     fill="none"
