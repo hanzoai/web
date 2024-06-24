@@ -22,7 +22,7 @@
       "@types/react": "^18.3.2",
       "@types/react-dom": "^18.3.0",
       "supports-color": "8.1.1",
-      "@hanzo/brand": "0.1.7",
+      "@hanzo/brand": "0.1.8",
       "@luxfi/data": "1.0.6",
       "@hanzo/auth": "2.4.12",
       "@hanzo/commerce": "7.1.5",
