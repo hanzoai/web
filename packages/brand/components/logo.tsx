@@ -46,7 +46,7 @@ const Logo: React.FC<{
       classesTemp.icon = 'h-10 w-10 mr-4 color-inherit' + toAdd.icon
       classesTemp.span = 'text-3xl' + toAdd.span
     }
-      // match lux.network
+      //match for hanzo
     else if (size === 'md') {
       classesTemp.icon = 'h-[40.82px] w-[40.82px] mr-[12px] color-inherit' + toAdd.icon
       classesTemp.span = 'text-[1.8rem]/[1.8rem] tracking-tighter' + toAdd.span
