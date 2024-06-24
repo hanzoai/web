@@ -80,7 +80,7 @@ const Footer: React.FC<{
                 Connect with us
               </span>
               <div>
-                <Link href={"#"} className='lg:mt-[33.8px] mt-5 underline'>
+                <Link href={"mailto:info@hanzo.ai"} className='lg:mt-[33.8px] mt-5 underline'>
                   info@hanzo.ai
                 </Link>
               </div>
