@@ -38,7 +38,7 @@ const DesktopHeader: React.FC<{
             <DesktopNav links={links} />
           </div>
           <div className='flex items-center'>
-            <Link href={"#"} className='m-[14px]'>
+            <Link href={"#"} className='m-[14px] hover:font-black'>
               Contact
             </Link>
             <AuthWidget />
