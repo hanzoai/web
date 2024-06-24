@@ -42,17 +42,6 @@ const DesktopNav: React.FC<{
                 <NavigationMenuItem key={index}>
                   <NavigationMenuTrigger>{el.title}</NavigationMenuTrigger>
                   <NavigationMenuContent className="!left-0">
-                    {/* <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[500px] " key={index}>
-                      {el.childMenu?.map((component, index) => (
-                        <ListItem
-                          key={index}
-                          title={component.title}
-                          href={component.href}
-                        >
-                          {component.contents}
-                        </ListItem>
-                      ))}
-                    </ul> */}
                     <div className="flex flex-row">
                       {GroupChildMenu(el.childMenu)}
                     </div>
@@ -79,7 +68,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-level-1 hover:text-accent-foreground focus:bg-level-1 focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:text-accent-foreground focus:bg-level-1 focus:text-accent-foreground text-muted-1 hover:text-primary hover:bg-transparent",
             className
           )}
           {...props}
