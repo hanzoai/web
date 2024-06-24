@@ -33,11 +33,12 @@ const Header: React.FC<{
         currentAs={currentAs}
       />
       <MobileHeader
-        className={cn(className, 'md:hidden')}
+        className={cn(className, 'md:hidden z-[20]')}
         links={links}
         currentAs={currentAs}
         setChatbotOpen={setOpen}
       />
+      {console.log('isDesktopView', isDesktopView())}
       {!isDesktopView() && (
         <ChatWidget
           title='Hanzo'

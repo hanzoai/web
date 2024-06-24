@@ -197,7 +197,7 @@ export default [
   {
     title: "Resources",
     icon: "",    
-    href: "https://lux.credit",
+    href: "",
     newTab: false,
     childMenu: [
       {
