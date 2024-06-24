@@ -26,6 +26,7 @@ const ServiceBlockComponent: React.FC<{
     const scrollRef = useRef<HTMLDivElement>(null)
     const [topScroll, setTopScroll] = useState(0)
     const [scrollHeight, setScrollHeight] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
       // const sections = gsap.utils.toArray(".panel")
@@ -72,23 +73,34 @@ const ServiceBlockComponent: React.FC<{
           setScrollHeight(scroller?.scrollWidth - scroller?.clientWidth)
         }
       }
-
+  
       resize();
-
+  
       window.addEventListener('resize', () => {
         resize();
       })
     }, [scrollRef])
-
+  
     useEffect(() => {
-      window.addEventListener('scroll', () => {
+      const handleScroll = () => {
         const scroller = scrollRef.current;
         if (scroller && window.scrollY > topScroll) {
           scroller.scrollLeft = window.scrollY - topScroll;
+          const newIndex = Math.floor(scroller.scrollLeft / (scroller.scrollWidth / 8));
+          if (newIndex !== currentIndex) {
+            setCurrentIndex(newIndex);
+            // Show the next component here
+            console.log(`Showing component ${newIndex + 1}`);
+          }
         }
-      })
-    }, [topScroll])
-
+      }
+  
+      window.addEventListener('scroll', handleScroll)
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }, [topScroll, currentIndex])
     return (
       <div className="!w-full slide snap-start relative" ref={containerRef}>
         <div className="w-full h-screen flex flex-col justify-center sticky top-0 left-0">
