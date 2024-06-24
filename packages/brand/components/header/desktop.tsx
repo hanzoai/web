@@ -38,10 +38,11 @@ const DesktopHeader: React.FC<{
             <DesktopNav links={links} />
           </div>
           <div className='flex items-center'>
-            <Link href={"#"} className='m-[14px] hover:font-black'>
+            <Link href={"https://docs.google.com/document/d/1Kk4VmVf6RyVF8Bi3lCawFV9zAr7zV8O96pRU_YfHrf4/edit?usp=sharing"} className='m-[14px] hover:font-black'>
               Contact
             </Link>
-            <AuthWidget />
+            {/* <AuthWidget /> */}
+            <Link href={"https://dash.hanzo.ai/"} className='login hover:font-black px-[15px] py-[10px] border bg-white rounded'>Login</Link>
           </div>
         </div>
       </header>
