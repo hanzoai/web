@@ -74,7 +74,7 @@ const ChatWidget: React.FC<{
           // z-index should be below anything in commerce-iu (buy drawer and checkout widget)
           'fixed bottom-[350px] right-5 z-floating cursor-pointer',
           'hover:drop-shadow-[0_2px_6px_rgba(255,255,255,1)]',
-          'transition-transform -mr-4 z-[17]',
+          'transition-transform -mr-4 z-[16]',
           showChatbot ? 'hidden' : '',
           buttonClx
         )}
