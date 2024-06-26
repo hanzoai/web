@@ -77,7 +77,7 @@ const Logo: React.FC<{
 
   const Inner: React.FC = () => (<>
       <Icons.HanzoMenuLogo className={classes.icon}/>
-      {/* <span className={cn(spanClasses, ' text-inherit ')}>Hanzo</span> */}
+      <span className={cn(spanClasses, ' text-inherit hidden md:block')}>Hanzo</span>
   </>)
 
 
