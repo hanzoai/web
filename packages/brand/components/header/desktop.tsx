@@ -31,8 +31,8 @@ const DesktopHeader: React.FC<{
           'px-[8px] w-full mx-auto max-w-screen'
         }>
           <div className='flex gap-4 items-center'>
-            <Logo size='md' href='/' className='hidden lg:flex' key='two' layout='full' />
-            <Logo size='sm' href='/' className='hidden md:flex lg:hidden' key='one' layout='full' />
+            <Logo size='md' href='https://hanzo.ai/' className='flex ml-[25px]' key='two' layout='logo-only' />
+            {/* <Logo size='sm' href='/' className='md:flex lg:hidden ml-[15px]' key='one' layout='full' /> */}
             {/* md or larger */}
 
             <DesktopNav links={links} />

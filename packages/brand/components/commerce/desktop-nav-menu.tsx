@@ -23,7 +23,7 @@ const DesktopNav: React.FC<{
   links
 }) => (
     links.length > 0 ? (
-      <NavigationMenu className={cn("ml-[37px]")}>
+      <NavigationMenu className={cn("")}>
         <NavigationMenuList>
           {links.map((el, index) => {
 
