@@ -29,10 +29,10 @@ export function ErrorPage() {
   return (
     <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-black text-[white] font-inter">
       <div className="mx-auto max-w-md text-center">
-        <h1 className="text-8xl font-bold text-[white]">404</h1>
+        <h1 className="text-[90px] font-bold text-[white]">404</h1>
         <p className="mt-4 text-2xl text-[white]">Oops, page not found</p>
         <Link
-          href="#"
+          href="/"
           className="mt-6 inline-flex items-center rounded-[5px] bg-[white] px-4 py-2 text-sm font-medium text-[black] shadow-sm transition-colors hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
           prefetch={false}
         >
