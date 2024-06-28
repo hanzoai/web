@@ -12,7 +12,7 @@ type Props = {
   searchParams?: { [key: string]: string | string[] | undefined };
 };
 
-import {HelpCenter} from "../../../components/component/help-center"
+import {HelpCenter} from "../../../components/component/helpCenter"
 
 const page = ({ searchParams }: Props) => {
   const agent = searchParams?.agent as string;
@@ -22,7 +22,7 @@ const page = ({ searchParams }: Props) => {
   const swipeInnerTouch = swipeInner + "h-[100svh] ";
   return (
     <>
-    <div className="flex justify-center w-[100%] md:w-[60%] m-auto mt-[70px] md:mt-[120px]">
+    <div className="mt-[90px] md:mt-[140px]">
       <Header siteDef={siteDef} />
       <HelpCenter />
       {/* <FooterSlide agent={agent} /> */}

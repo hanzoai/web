@@ -32,10 +32,10 @@ import Link from "next/link"
 
 export function HelpCenter() {
   return (
-    <div className="flex flex-col bg-gray-950 text-gray-50" >
-      <main className="flex-1 py-8">
-        <div className="space-y-8 p-6"  >
-          <div className="p-6">
+    <div className=" w-[100%] lg:w-[900px] m-auto" >
+      <main className="flex-1 px-4 py-8 sm:px-6 md:px-8">
+        <div className="mx-auto max-w-4xl space-y-8">
+          <div>
             <h1 className="text-3xl font-bold">Help Center</h1>
             <p className="text-gray-400">Get the support you need to make the most of Hanzo.</p>
           </div>
