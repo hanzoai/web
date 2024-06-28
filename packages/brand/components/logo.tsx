@@ -52,16 +52,16 @@ const Logo: React.FC<{
       classesTemp.span = 'text-[1.8rem]/[1.8rem] tracking-tighter' + toAdd.span
     }
     else if (size === 'sm' ) {
-      classesTemp.icon = 'h-6 w-6 mr-2 color-inherit' + toAdd.icon
+      classesTemp.icon = 'h-6 w-6 mr-[12px] color-inherit' + toAdd.icon
       classesTemp.span = ' text-[40px] drop-shadow-md ' + toAdd.span
     }
       // xs
     else {
-      classesTemp.icon = 'h-4 w-4 mr-1 color-inherit' + toAdd.icon
+      classesTemp.icon = 'h-4 w-4 mr-[12px] color-inherit' + toAdd.icon
       classesTemp.span = 'text-base' + toAdd.span
     }
   
-    const outerClassesTemp = 'flex flex-row items-center ' + className
+    const outerClassesTemp = 'flex flex-row items-center pr-5 pt-5' + className
     const spanClassesTemp = 'inline-block font-sans pl-[5px] ' 
       + spanClassName
       + (href ? ' hover:text-accent ' : ' cursor-default ') 

@@ -207,7 +207,7 @@ export default [
           groupName:"Tools",
           title: "Resource Center",
           icon: <ResourceCenter  size={25}/>,
-          href: "https://docs.google.com/document/d/1Kk4VmVf6RyVF8Bi3lCawFV9zAr7zV8O96pRU_YfHrf4/edit?usp=sharing",
+          href: "/help",
           newTab: false,
           contents:"Dynamic solutions" //insert string to here
         },{
