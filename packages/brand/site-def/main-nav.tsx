@@ -29,11 +29,7 @@ import {
 import SocialIcon from '../components/icons/social-icon'
 import Warpcast from '../components/icons/warpcast'
 
-export interface LinkDefExtendedDesktop extends LinkDef {
-  icon?: any,
-  childMenu?: ChildMenu[]
-}
-export interface LinkDefExtendedMobile extends LinkDef {
+export interface LinkDefExtended extends LinkDef {
   icon?: any,
   childMenu?: ChildMenu[]
 }
