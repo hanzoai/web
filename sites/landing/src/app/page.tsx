@@ -35,6 +35,7 @@ const Page = ({ searchParams }: Props) => {
       else {
         return (
           <BlocksComponent blocks={[banner]} key={`section-${index}`}></BlocksComponent>
+          
         )
       }
     })}
