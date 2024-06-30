@@ -26,6 +26,7 @@ const ServiceBlockComponent: React.FC<{
     const scrollRef = useRef<HTMLDivElement>(null)
     const [topScroll, setTopScroll] = useState(0)
     const [scrollHeight, setScrollHeight] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
       // const sections = gsap.utils.toArray(".panel")
@@ -72,30 +73,39 @@ const ServiceBlockComponent: React.FC<{
           setScrollHeight(scroller?.scrollWidth - scroller?.clientWidth)
         }
       }
-
+  
       resize();
-
+  
       window.addEventListener('resize', () => {
         resize();
       })
     }, [scrollRef])
-
+  
     useEffect(() => {
-      window.addEventListener('scroll', () => {
+      const handleScroll = () => {
         const scroller = scrollRef.current;
         if (scroller && window.scrollY > topScroll) {
           scroller.scrollLeft = window.scrollY - topScroll;
+          const newIndex = Math.floor(scroller.scrollLeft / (scroller.scrollWidth / 8));
+          if (newIndex !== currentIndex) {
+            setCurrentIndex(newIndex)
+          }
         }
-      })
-    }, [topScroll])
-
+      }
+  
+      window.addEventListener('scroll', handleScroll)
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }, [topScroll, currentIndex])
     return (
       <div className="!w-full slide snap-start relative" ref={containerRef}>
         <div className="w-full h-screen flex flex-col justify-center sticky top-0 left-0">
           <div className='w-full'>
             <div className='lg:pl-13 lg:pb-31 flex pl-[14px]'>
-              <div className="w-[35%]">
-                <span className='lg:text-xl text-sm font-bold sm:text-sx'>POWERED BY</span>
+              <div className="w-[40%]">
+                <span className='lg:text-xl text-sm font-bold'>POWERED BY</span>
                 <div className='flex lg:align-top lg:items-start items-center'>
                   <HanzoLogo className='lg:w-[80px] w-[23px] mr-[5px]' />
                   <span className='lg:pr-20 lg:ml-5 lg:text-5xl text-base'>Hanzo</span>
@@ -117,8 +127,8 @@ const ServiceBlockComponent: React.FC<{
                   <div className=" lg:pl-[22px] lg:w-[762.08px] w-[324.8px] pl-2 pt-1">
                     <div className=" border-r border-t w-full h-[33.42px]"></div>
                     <div className="card lg:flex lg:px-7 ">
-                      <div className="lg:flex-1 lg:text-4xl lg:font-medium lg:leading-[43px] lg:px-2 text-base leading-15 mb-[10px] font-light">{service.title[index]}</div>
-                      <div className="lg:flex-1 lg:gap-4 lg:text-sm lg:text-muted-1 leading-[20px] font-medium text-sm text-primary">
+                      <div className="lg:flex-1 lg:text-4xl lg:font-medium lg:leading-[43px] lg:px-2 text-base leading-5 font-light">{service.title[index]}</div>
+                      <div className="lg:flex-1 lg:gap-4 lg:text-sm lg:text-muted-1 leading-[14px] lg:font-normal mt-[18px] text-sm text-primary">
                         <p>
                           {service.details[index][0]}
                         </p>

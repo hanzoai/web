@@ -32,11 +32,11 @@ const FooterSlide: React.FC<{
             <div className='text-base max-w-[415px] leading-5 '>We are excited to understand your organization's unique needs and help you develop a distinctive, effective digital strategy and campaign that stands out.</div>
             <div>
               <div className='text-[16px] max-w-[173px] mt-0'>You can contact us at: </div>
-              <div className='text-[16px] max-w-[173px] mt-0'>info@hanzo.ai</div>
+              <div className='text-[16px] max-w-[173px] mt-0'><Link href={'mailto:info@hanzo.ai'} className=' underline'>info@hanzo.ai</Link></div>
             </div>
 
             <div className='text-[24px] text-base font-bold max-w-[179px] flex mt-0'>
-              <Link href={'#'} className=' underline'>Get in Touch </Link>
+              <Link href={'mailto:info@hanzo.ai'} className=' underline'>Get in Touch </Link>
               <GotoBtn className='hidden w-[16px] ml-3' />
             </div>
           </div>

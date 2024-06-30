@@ -80,7 +80,7 @@ const Footer: React.FC<{
                 Connect with us
               </span>
               <div>
-                <Link href={"#"} className='lg:mt-[33.8px] mt-5 underline'>
+                <Link href={"mailto:info@hanzo.ai"} className='lg:mt-[33.8px] mt-5 underline'>
                   info@hanzo.ai
                 </Link>
               </div>
@@ -102,19 +102,19 @@ const Footer: React.FC<{
                 Follow Us
               </span>
               <div className='grid grid-cols-2 gap-3 text-[16px] lg:mt-[43.1px] mt-[30px]'>
-                <Link className='' href={"https://x.com/hanzoai"}>
+                <Link className='social-link' href={"https://x.com/hanzoai"}>
                   X
                 </Link>
-                <Link className='' href={"https://linkedin.com/company/hanzoai"}>
+                <Link className='social-link' href={"https://linkedin.com/company/hanzoai"}>
                   Linkedin
                 </Link>
-                <Link className='' href={"https://facebook.com/hanzoinc"}>
+                <Link className='social-link' href={"https://facebook.com/hanzoinc"}>
                   Facebook
                 </Link>
-                <Link className='' href={"https://github.com/hanzoai"}>
+                <Link className='social-link' href={"https://github.com/hanzoai"}>
                   Github
                 </Link>
-                <Link className='' href={"https://instagram.com/hanzoinc"}>
+                <Link className='social-link' href={"https://instagram.com/hanzoinc"}>
                   Instagram
                 </Link>
               </div>

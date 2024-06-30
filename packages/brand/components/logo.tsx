@@ -46,22 +46,22 @@ const Logo: React.FC<{
       classesTemp.icon = 'h-10 w-10 mr-4 color-inherit' + toAdd.icon
       classesTemp.span = 'text-3xl' + toAdd.span
     }
-      // match lux.network
+      //match for hanzo
     else if (size === 'md') {
       classesTemp.icon = 'h-[40.82px] w-[40.82px] mr-[12px] color-inherit' + toAdd.icon
       classesTemp.span = 'text-[1.8rem]/[1.8rem] tracking-tighter' + toAdd.span
     }
     else if (size === 'sm' ) {
-      classesTemp.icon = 'h-6 w-6 mr-2 color-inherit' + toAdd.icon
+      classesTemp.icon = 'h-6 w-6 mr-[12px] color-inherit' + toAdd.icon
       classesTemp.span = ' text-[40px] drop-shadow-md ' + toAdd.span
     }
       // xs
     else {
-      classesTemp.icon = 'h-4 w-4 mr-1 color-inherit' + toAdd.icon
+      classesTemp.icon = 'h-4 w-4 mr-[12px] color-inherit' + toAdd.icon
       classesTemp.span = 'text-base' + toAdd.span
     }
   
-    const outerClassesTemp = 'flex flex-row items-center ' + className
+    const outerClassesTemp = 'flex flex-row items-center pr-5' + className
     const spanClassesTemp = 'inline-block font-sans pl-[5px] ' 
       + spanClassName
       + (href ? ' hover:text-accent ' : ' cursor-default ') 
@@ -76,8 +76,8 @@ const Logo: React.FC<{
   }, [layout, size, className, spanClassName, href])
 
   const Inner: React.FC = () => (<>
-      <Icons.logo className={classes.icon} />
-      <span className={cn(spanClasses, ' text-inherit ')}>Hanzo</span>
+      <Icons.HanzoMenuLogo className={classes.icon}/>
+      <span className={cn(spanClasses, ' text-inherit hidden md:block')}>Hanzo</span>
   </>)
 
 

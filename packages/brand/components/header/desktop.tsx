@@ -31,17 +31,18 @@ const DesktopHeader: React.FC<{
           'px-[8px] w-full mx-auto max-w-screen'
         }>
           <div className='flex gap-4 items-center'>
-            <Logo size='md' href='/' className='hidden lg:flex' key='two' layout='full' />
-            <Logo size='sm' href='/' className='hidden md:flex lg:hidden' key='one' layout='full' />
+            <Logo size='md' href='https://hanzo.ai/' className='flex ml-[25px]' key='two' layout='logo-only' />
+            {/* <Logo size='sm' href='/' className='md:flex lg:hidden ml-[15px]' key='one' layout='full' /> */}
             {/* md or larger */}
 
             <DesktopNav links={links} />
           </div>
           <div className='flex items-center'>
-            <Link href={"#"} className='m-[14px]'>
+            <Link href={"https://docs.google.com/document/d/1Kk4VmVf6RyVF8Bi3lCawFV9zAr7zV8O96pRU_YfHrf4/edit?usp=sharing"} className='m-[14px] hover:font-bold ease-in duration-200'>
               Contact
             </Link>
-            <AuthWidget />
+            {/* <AuthWidget /> */}
+            <Link href={"https://dash.hanzo.ai/"} className='login hover:font-bold ease-in duration-200 px-[15px] py-[10px] border bg-white rounded'>Login</Link>
           </div>
         </div>
       </header>

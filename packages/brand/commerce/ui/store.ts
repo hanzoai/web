@@ -10,11 +10,7 @@ import {
 import type { CommerceService, LineItem, ObsLineItemRef } from '@hanzo/commerce/types'
 
 const logOn = false
-const log = (s: string) => {
-  if (logOn) {
-    console.log('COMMERCE_UI ' + s)
-  }
-}
+
 
 type SnapPoint = number | string
 

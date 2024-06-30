@@ -70,7 +70,7 @@ const DetailsBlockComponent: React.FC<{
 
         <div className="sections-container relative">
           <section
-            className='grid  sm:grid-cols-2 grid-cols-1 detailSection animated-section h-screen'
+            className='grid  md:grid-cols-2 grid-cols-1 detailSection animated-section h-screen md:h-auto'
           >
             <div className='2xl:lg:pl-24 outer lg:pl-2 lg:order-1 order-2 px-[12px]'>
               <div className='lg:w-4/5 w-full '>

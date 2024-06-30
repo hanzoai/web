@@ -5,6 +5,7 @@ import type {
 } from '@hanzo/ui/blocks'
 
 import HanzoLogo from 'node_modules/@hanzo/brand/components/icons/hanzo-logo'
+// import 
 import { Button } from '@hanzo/ui/primitives'
 import type ScrollNumBlock from '@/blocks/def/scroll-num'
 
@@ -18,7 +19,7 @@ export default {
       {
         blockType: 'element',
         element: (
-          <div className='flex items-center justify-center w-full mb-21'>
+          <div className='flex items-center justify-center w-full mb-15 mt-20'>
             <HanzoLogo />
           </div>
         )

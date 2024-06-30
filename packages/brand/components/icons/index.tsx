@@ -9,6 +9,7 @@ import {
 import gitHub from './github'
 import bag from './bag-icon'
 import logo from './hanzo-logo'
+import HanzoMenuLogo from './hanzo-menu-logo'
 import youtube from './youtube-logo'
 import secureDelivery from './secure-delivery'
 import RightArrow from './right-arrow'
@@ -55,6 +56,7 @@ export {
   sun,
   moon,
   logo,
+  HanzoMenuLogo,
   burger,
   gitHub,
   linkOut,

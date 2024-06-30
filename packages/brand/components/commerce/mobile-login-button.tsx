@@ -29,7 +29,8 @@ const MobileAuthWidget: React.FC<{
 }) => {
     const auth = useAuth()
     const handleLogin = () => {
-        window.location.href = "https://lux.id";
+        // window.location.href = "https://lux.id";
+        window.location.href = "https://dash.hanzo.ai/";
       };
 
     if (!auth) {
