@@ -23,7 +23,7 @@ const page = ({ searchParams }: Props) => {
   return (
     <>
     <div className="mt-[90px] md:mt-[140px]">
-      <Header siteDef={siteDef} />
+      <Header siteDef={siteDef}/>
       <HelpCenter />
       {/* <FooterSlide agent={agent} /> */}
 

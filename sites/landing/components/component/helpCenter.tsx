@@ -34,7 +34,7 @@ import Link from "next/link"
 
 export function HelpCenter() {
   return (
-    <div className=" w-[100%] lg:w-[900px] m-auto" >
+    <div className="border m-auto" >
       <main className="flex-1 px-4 py-8 sm:px-6 md:px-8">
         <div className="mx-auto max-w-4xl space-y-8">
           <div>
@@ -53,7 +53,7 @@ export function HelpCenter() {
                   <Input
                     id="name"
                     placeholder="Your name"
-                    className="font-inter bg-black border border-gray-600 text-gray-400"
+                    className="font-inter border border-gray-600 text-gray-400"
                   />
                 </div>
                 <div>
@@ -64,7 +64,7 @@ export function HelpCenter() {
                     id="email"
                     type="email"
                     placeholder="Your email"
-                    className="font-inter bg-black border border-gray-600 text-gray-400"
+                    className="font-inter border border-gray-600 text-gray-400"
                   />
                 </div>
                 <div>
@@ -74,10 +74,10 @@ export function HelpCenter() {
                   <Textarea
                     id="message"
                     placeholder="Describe your issue"
-                    className="min-h-[120px] font-inter bg-black border border-gray-600 text-gray-400"
+                    className="min-h-[120px] font-inter border border-gray-600 text-gray-400"
                   />
                 </div>
-                <Button type="submit" className="w-full font-inter bg-white text-black">
+                <Button type="submit" className="w-full font-inter bg-[white] text-[black]">
                   Submit Ticket
                 </Button>
               </form>
@@ -99,7 +99,7 @@ export function HelpCenter() {
                   onClick={() => {
                     window.location.href = "mailto:hi@hanzo.ai?subject=Help Request&body=Dear Hanzo Team,"
                   }}
-                  className="w-full font-inter bg-white text-black"
+                  className="w-full font-inter bg-[white] text-[black]"
                 >
                   Open Email Client
                 </Button>
@@ -112,7 +112,7 @@ export function HelpCenter() {
               </div>
               <p className="text-gray-400">Get instant answers to your questions from our AI assistant.</p>
               <div className="mt-4">
-                <Button variant="outline" onClick={() => {}} className="w-full font-inter bg-white text-black">
+                <Button variant="outline" onClick={() => {}} className="w-full font-inter bg-[white] text-[black]">
                   Ask AI
                 </Button>
               </div>
