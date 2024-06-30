@@ -86,11 +86,11 @@ const MobileHeader: React.FC<{
     // header element MUST be fixed, and NOT sticky.  Or else drawer breaks on mobile browsers
     return (<>
       <header className={cn(
-        `bg-background fixed z-header top-0 left-0 w-full h-10 border-b border-primary ${menuOpen() ? 'hidden' : 'block'}`,
+        `bg-background fixed z-header top-0 left-0 w-full h-10 border-primary ${menuOpen() ? 'hidden' : 'block'}`,
         className
       )}>
         {/* smaller than md: mobile style drawer menu; h-11 is 44px, the standard mobile header height */}
-        <div className="flex h-11 items-center justify-between pr-4 pl-4">
+        <div className="flex h-11 items-center justify-between px-4 my-4 bg-background">
           <div className='h-[74px] w-pr-100 flex flex-row justify-between items-center font-bold'>
           <Logo href='https://hanzo.ai' size='sm' className={'top-[3px] h-full'} layout='text-only' />
             {/* Not that key to the cross-fade effect 
