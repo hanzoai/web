@@ -121,12 +121,10 @@ class CommerceUIStore implements
       () => ( this.state ),
       (s) => {
         if (this.ignoreStateChange) {
-          log(`STATE CHANGE to "${s}" (IGNORED)`) // ===========
           this.setIgnoreStateChange(false)
           return
         }
         else {
-          log(`STATE CHANGE to "${s}" (UI REACTED)`) // ===========
           this._syncUIToState(s)
         }
       }
@@ -141,7 +139,7 @@ class CommerceUIStore implements
   }
 
   onActivePointChanged = (pt: SnapPoint | null): void => { 
-    log("ON onActivePointChanged: " +  pt) // ===========
+
     if (pt === this._points.micro && this.activePoint === this._points.full) {
       this.setIgnoreStateChange(true)
       this.hideVariants()  
@@ -204,7 +202,6 @@ class CommerceUIStore implements
   }
 
   _syncUIToState = (s: DrawerState) => {
-    log("_syncUIToState: " +  s) // ===========
     if (s === 'micro') {
       this.setActivePoint(this.points[0])
     }
@@ -242,7 +239,6 @@ class CommerceUIStore implements
 
   get isMobile(): boolean { return this._pointsConfig.mb === this._points }
   setMobile = (b: boolean): void => { 
-    log("setMobile: " +  b) // ===========
     this._points = b ? this._pointsConfig.mb : this._pointsConfig.dt
   }
 

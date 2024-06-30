@@ -33,7 +33,6 @@ export interface LinkDefExtended extends LinkDef {
   icon?: any,
   childMenu?: ChildMenu[]
 }
-
 export interface ChildMenu extends LinkDef {
   groupName?: string
 }
