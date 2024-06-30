@@ -26,7 +26,7 @@ To read more about using these font, please visit the Next.js documentation:
 import React from 'react';
 import Link from "next/link";
 
-const ErrorPage: React.FC = () => {
+const ErrorPage = () => {
   return (
     <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-black text-[white] font-inter">
       <div className="mx-auto max-w-md text-center">
