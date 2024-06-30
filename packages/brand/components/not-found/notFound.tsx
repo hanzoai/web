@@ -10,6 +10,7 @@ const ErrorPage: React.FC = () => {
         <Link
           href="/"
           className="mt-6 inline-flex items-center rounded-[5px] bg-[white] px-4 py-2 text-sm font-medium !text-[black] shadow-sm transition-colors hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+          style={{textDecoration:'none'}}
           prefetch={false}
         >
           Go to Homepage
