@@ -4,7 +4,6 @@ import type {
   ElementBlock,
 } from '@hanzo/ui/blocks'
 import Link from 'next/link'
-import ImpactCard from './impactCard'
 //types
 import type { Impact } from '@/types';
 
