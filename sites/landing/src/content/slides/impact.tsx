@@ -34,7 +34,7 @@ export default {
       {
         blockType: 'element',
         element: (
-          <div className='w-full lg:pl-6 '>
+          <div id='impact' className='w-full lg:pl-6'>
             <div className="border-t-2 lg:flex lg:pt-8 lg:mb-19 px-4">
               <div className='lg:flex lg:flex-1'>
                 <h5 className='lg:flex-[30%] text-muted-1 lg:text-primary font-semibold lg:text-xl text-base'>OUR IMPACT</h5>

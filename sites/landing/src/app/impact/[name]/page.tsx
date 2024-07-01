@@ -78,7 +78,7 @@ const ImpactDetailPage: React.FC<Props> = ({ params }: Props) => {
         <div className="w-full border-b border-t border-[#45423A] h-full">
           <div className='flex justify-between'>
             <h2 className='text-xl my-6'>{_data?.name}</h2>
-            <div className='pt-2 cursor-pointer hover:opacity-60'><X onClick={() => router.push("/")} /></div>
+            <div className='pt-2 cursor-pointer hover:opacity-60'><X onClick={() => router.push("/#impact")} /></div>
           </div>
           <h2 className='text-xl mt-4'>{_data?.founder}</h2>
           <h2 className='text-xl mt-4'>{_data?.role}</h2>
