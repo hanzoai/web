@@ -29,9 +29,8 @@ const MobileAuthWidget: React.FC<{
 }) => {
     const auth = useAuth()
     const handleLogin = () => {
-        // window.location.href = "https://lux.id";
-        window.location.href = "https://dash.hanzo.ai/";
-      };
+        window.location.href = "https://dash.hanzo.ai/"
+      }
 
     if (!auth) {
         return null
@@ -39,14 +38,20 @@ const MobileAuthWidget: React.FC<{
     if (!auth.loggedIn && typeof window !== 'undefined') {
         return (noLogin ? null : (
             (handleLogin) ? (
-                <div className="flex items-center py-3 px-5 gap-4">
-                    <Icons.Avatar className='self-center w-6 h-6' />
+                <div className="flex items-center py-1 px-1 gap-1">
                     <Button
-                        variant='link'
-                        className='text-2xl !min-w-0 self-center'
+                        variant='primary'
+                        className='text-base font-semibold !min-w-0 self-center flex-1'
                         onClick={handleLogin}
                     >
-                        Log In / Sign Up
+                        Sign Up
+                    </Button>
+                    <Button
+                        variant='outline'
+                        className=' text-base font-semibold !min-w-0 self-center flex-1'
+                        onClick={handleLogin}
+                    >
+                        Log In
                     </Button>
                 </div>
             ) : (

@@ -88,9 +88,7 @@ const ServiceBlockComponent: React.FC<{
           scroller.scrollLeft = window.scrollY - topScroll;
           const newIndex = Math.floor(scroller.scrollLeft / (scroller.scrollWidth / 8));
           if (newIndex !== currentIndex) {
-            setCurrentIndex(newIndex);
-            // Show the next component here
-            console.log(`Showing component ${newIndex + 1}`);
+            setCurrentIndex(newIndex)
           }
         }
       }
@@ -109,7 +107,7 @@ const ServiceBlockComponent: React.FC<{
               <div className="w-[40%]">
                 <span className='lg:text-xl text-sm font-bold'>POWERED BY</span>
                 <div className='flex lg:align-top lg:items-start items-center'>
-                  <HanzoLogo className='lg:w-[80px] w-[23px]' />
+                  <HanzoLogo className='lg:w-[80px] w-[23px] mr-[5px]' />
                   <span className='lg:pr-20 lg:ml-5 lg:text-5xl text-base'>Hanzo</span>
                 </div>
               </div>
@@ -130,11 +128,11 @@ const ServiceBlockComponent: React.FC<{
                     <div className=" border-r border-t w-full h-[33.42px]"></div>
                     <div className="card lg:flex lg:px-7 ">
                       <div className="lg:flex-1 lg:text-4xl lg:font-medium lg:leading-[43px] lg:px-2 text-base leading-5 font-light">{service.title[index]}</div>
-                      <div className="lg:flex-1 lg:gap-4 lg:text-sm lg:text-muted-1 leading-[18px] lg:font-medium text-sm text-primary">
+                      <div className="lg:flex-1 lg:gap-4 lg:text-sm lg:text-muted-1 leading-[14px] lg:font-normal mt-[18px] text-sm text-primary">
                         <p>
                           {service.details[index][0]}
                         </p>
-                        <p className="lg:mt-2 mt-3">
+                        <p className="lg:mt-3 mt-4">
                           {service.details[index][1]}
                         </p>
                       </div>
