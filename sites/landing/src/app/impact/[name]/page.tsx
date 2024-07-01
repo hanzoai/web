@@ -75,7 +75,7 @@ const ImpactDetailPage: React.FC<Props> = ({ params }: Props) => {
   return (
     <div ref={containerRef}>
       <div className="w-full h-screen flex] sticky top-0 left-0 p-2">
-        <div className="w-full border-b border-t border-[red] h-full">
+        <div className="w-full border-b border-t border-[#45423A] h-full">
           <div className='flex justify-between'>
             <h2 className='text-xl my-6'>{_data?.name}</h2>
             <div className='pt-2 cursor-pointer hover:opacity-60'><X onClick={() => router.push("/")} /></div>
