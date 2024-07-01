@@ -49,7 +49,7 @@ export default {
               {
                 _data.map((_item: Impact, index: number) => (
                   <div key={'title' + _item.name} className="border-t py-4">
-                    <Link href={`/impact/${_item.name}`} className='font-light text-muted-1 no-underline'>
+                    <Link href={`/impact/${index}`} className='font-light text-muted-1 no-underline'>
                       {_item.name}
                     </Link>
                   </div>
@@ -57,7 +57,7 @@ export default {
               }
             </div>
             {
-              _data.map((_item: Impact, index: number) => <ImpactItem key={index + '_impact'} name={_item.name} role={_item.role} founder={_item.founder} description={_item.description}/>)
+              _data.map((_item: Impact, index: number) => <ImpactItem key={index + '_impact'} name={_item.name} role={_item.role} founder={_item.founder} description={_item.description} />)
             }
 
           </div>
