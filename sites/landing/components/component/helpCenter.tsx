@@ -34,9 +34,9 @@ import Link from "next/link"
 
 export function HelpCenter() {
   return (
-    <div className="border m-auto" >
+    <div className="m-auto" >
       <main className="flex-1 px-4 py-8 sm:px-6 md:px-8">
-        <div className="mx-auto max-w-4xl space-y-8">
+        <div className="mx-auto w-[100%] lg:w-[900px] space-y-8">
           <div>
             <h1 className="text-3xl font-bold">Help Center</h1>
             <p className="text-gray-400">Get the support you need to make the most of Hanzo.</p>
@@ -74,7 +74,7 @@ export function HelpCenter() {
                   <Textarea
                     id="message"
                     placeholder="Describe your issue"
-                    className="min-h-[120px] font-inter border border-gray-600 text-gray-400"
+                    className="h-[120px] font-inter border border-gray-600 text-gray-400"
                   />
                 </div>
                 <Button type="submit" className="w-full font-inter bg-[white] text-[black]">

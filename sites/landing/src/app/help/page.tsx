@@ -2,6 +2,7 @@ import React from "react";
 
 import { ScreenfulBlockComponent as Screenful,BlocksComponent} from "@hanzo/ui/blocks";
 import { DrawerMargin, Footer, Header } from "@hanzo/brand";
+// import { Footer } from '@hanzo/brand'
 
 import { desktopTiles, mobileTiles } from "@/content";
 import FooterSlide from "@/components/footer-slide";
@@ -25,7 +26,7 @@ const page = ({ searchParams }: Props) => {
     <div className="mt-[90px] md:mt-[140px]">
       <Header siteDef={siteDef}/>
       <HelpCenter />
-      {/* <FooterSlide agent={agent} /> */}
+      <Footer siteDef={siteDef} className='grow-0 w-full sm:pt-6 border-t-0 flex flex-col justify-between md:justify-start px-auto mt-[50px]' />
 
     </div>
     </>
