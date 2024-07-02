@@ -4,6 +4,26 @@ import type {
   ElementBlock,
 } from '@hanzo/ui/blocks'
 import Link from 'next/link'
+//types
+import type { Impact } from '@/types';
+
+const _data: Impact[] = [
+  { name: 'Triller', founder: 'Jeniffer Patel', role: 'Founder & CEO', description: `Jenifer has spearheaded the green technology industry for over a decade, turning her stgartup into a leading provider of eco-friendly products. GG engergy is a pioneer in green solutions across global markets.."We were Greatefull for the opportunity to work with Hanzo and take the company public."` },
+  { name: 'Impact Hub Bali', founder: 'Rebecca Rocco', role: 'Managing Director', description: `Her expertise in deploying new technologies has streamlined operations for numberous finanical institutions. "hanzo's multi-currency payment system is robust and reliable, making it easier for us to handle a global clientele. There commitment to innovation and security is unmatched` },
+]
+
+const ImpactItem = ({ name, founder, role, description }: Impact) => (
+  <div className="hidden border-t-2 lg:flex pt-8 mb-19 ">
+    <div className='flex flex-1'>
+      <span className='text-2xl text-muted-1 flex-[30%] '>{name}</span>
+      <span className='text-2xl text-muted-1 flex-[35%]'>{founder}</span>
+      <span className='text-2xl text-muted-1 flex-[35%]'>{role}</span>
+    </div>
+    <div className="flex-1 text-xl">
+      <p>{description}</p>
+    </div>
+  </div>
+)
 
 export default {
   blockType: 'screenful',
@@ -14,7 +34,7 @@ export default {
       {
         blockType: 'element',
         element: (
-          <div className='w-full lg:pl-6 '>
+          <div id='impact' className='w-full lg:pl-6'>
             <div className="border-t-2 lg:flex lg:pt-8 lg:mb-19 px-4">
               <div className='lg:flex lg:flex-1'>
                 <h5 className='lg:flex-[30%] text-muted-1 lg:text-primary font-semibold lg:text-xl text-base'>OUR IMPACT</h5>
@@ -25,40 +45,19 @@ export default {
               </div>
             </div>
             <div className='text-base mt-9 lg:hidden'>
-              <div className="border-t py-4">
-                <Link href={"#"} className='font-light text-muted-1 no-underline'>
-                  Damon Motorcycles
-                </Link>
-              </div>
-              <div className="border-t py-4">
-                <Link href={"#"} className='font-light text-muted-1 no-underline'>
-                  Triller
-                </Link>
-              </div>
-              <div className="border-t py-4">
-                <Link href={"#"} className='font-light text-muted-1 no-underline'>
-                  Keek.com
-                </Link>
-              </div>
+              {
+                _data.map((_item: Impact, index: number) => (
+                  <div key={'title' + _item.name} className="border-t py-4">
+                    <Link href={`/impact/${index}`} className='font-light text-muted-1 no-underline'>
+                      {_item.name}
+                    </Link>
+                  </div>
+                ))
+              }
             </div>
-            <div className="hidden border-t-2 lg:flex pt-8 mb-19 ">
-              <div className='flex flex-1'>
-                <span className='text-2xl text-muted-1 flex-[30%] '>Triller</span>
-                <span className='text-2xl text-muted-1 flex-[35%]'>Jeniffer Patel</span>
-                <span className='text-2xl text-muted-1 flex-[35%]'>Founder & CEO</span>
-              </div>
-              <div className="flex-1 text-xl">
-                <p>Jenifer has spearheaded the green technology industry for over a decade, turning her stgartup into a leading provider of eco-friendly products. GG engergy is a pioneer in green solutions across global markets.."We were Greatefull for the opportunity to work with Hanzo and take the company public."</p>
-              </div>
-            </div>
-            <div className="border-t-2 lg:flex pt-8 mb-19 hidden">
-              <div className="flex flex-1">
-                <span className='text-2xl flex-[30%] text-muted-1'>Impact Hub Bali</span>
-                <span className='text-2xl text-muted-1 flex-[35%]'>Rebecca Rocco</span>
-                <span className='text-2xl text-muted-1 flex-[35%]'>Managing Director</span>
-              </div>
-              <p className='flex-1 text-xl'>Her expertise in deploying new technologies has streamlined operations for numberous finanical institutions. "hanzo's multi-currency payment system is robust and reliable, making it easier for us to handle a global clientele. There commitment to innovation and security is unmatched</p>
-            </div>
+            {
+              _data.map((_item: Impact, index: number) => <ImpactItem key={index + '_impact'} name={_item.name} role={_item.role} founder={_item.founder} description={_item.description} />)
+            }
 
           </div>
         )

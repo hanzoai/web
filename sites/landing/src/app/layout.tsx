@@ -4,6 +4,7 @@ import {
   RootLayout as RootLayoutCore, 
   viewport as ViewportCode, 
 } from '@hanzo/brand/root-layout'
+import './global.css'
 
 
 import siteDef from '@/site-def'
