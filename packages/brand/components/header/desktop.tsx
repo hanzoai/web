@@ -5,7 +5,7 @@ import { AuthWidget } from '@hanzo/auth/components'
 
 import { Logo } from '..'
 
-import DesktopNav from '../commerce/desktop-nav-menu'
+import DesktopNavHanzo from '../commerce/desktop-nav-menu-hanzo'
 import Link from 'next/link'
 
 
@@ -34,8 +34,9 @@ const DesktopHeader: React.FC<{
             <Logo size='md' href='https://hanzo.ai/' className='flex ml-[25px]' key='two' layout='logo-only' />
             {/* <Logo size='sm' href='/' className='md:flex lg:hidden ml-[15px]' key='one' layout='full' /> */}
             {/* md or larger */}
-
-            <DesktopNav links={links} />
+          </div>
+          <div className=' justify-center'>
+          <DesktopNavHanzo links={links} />
           </div>
           <div className='flex items-center'>
             <Link href={"https://docs.google.com/document/d/1Kk4VmVf6RyVF8Bi3lCawFV9zAr7zV8O96pRU_YfHrf4/edit?usp=sharing"} className='m-[14px] hover:font-bold ease-in duration-200'>

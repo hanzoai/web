@@ -48,7 +48,7 @@ const MobileNav: React.FC<{
 
               return (
                 <AccordionItem key={index} value={el.title ? el.title : ""} className='!no-underline !border-0'>
-                  <AccordionTrigger className={cn(internalClx, itemClx, '')}>
+                  <AccordionTrigger className={cn(internalClx, itemClx, 'hover:no-underline')}>
                     {el.title == "Docs" || el.title == "Pricing" ?
                     (
                       <Link href={el.href} className='text-muted-2 pl-3 text-base font-normal leading-6'>
@@ -57,7 +57,7 @@ const MobileNav: React.FC<{
                     ):
                   (
                     <>                    
-                    <div className={cn(internalClx, itemClx, 'flex items-center justify-between w-full pl-3 text-base font-normal leading-6')}>
+                    <div className={cn(internalClx, itemClx, 'flex items-center justify-between w-full pl-3 text-base font-normal leading-6 hover:no-underline')}>
                       {el.title}
                     </div>
                     <ChevronDown className="w-4 h-4 mr-3" />
@@ -84,7 +84,7 @@ const MobileNav: React.FC<{
                                   </span>
                                   <Link
                                     href={child.href}
-                                    className="text-muted-2 hover:underline ml-5 hover:text-primary"
+                                    className="text-muted-2 hover:underline ml-5 hover:text-primary hover:no-underline"
                                     target={child.newTab ? '_blank' : '_self'}
                                     rel="noopener noreferrer"
                                   >

@@ -10,7 +10,7 @@ import Beallabeat from './svg/beallabeat'
 import Casperlabs from './svg/casperlabs'
 import Cove from './svg/cove'
 import Cover from './svg/cover'
-import Ccliq from './svg/ccliq'
+import Cycliq from './svg/cycliq'
 import Daemon from './svg/damon'
 import Devxdao from './svg/devxdao'
 import Forstman from './svg/forstman'
@@ -45,17 +45,17 @@ export default {
                   <span className='lg:pr-20 lg:ml-5 lg:text-5xl text-base pl-2'>Hanzo</span>
                 </div>
               </div>
-              <p className='lg:block text-2xl hidden'>Hanzo has powerd over 1000 companies from zero to millions of dollars in revenue per month.</p>
-              <p className='lg:hidden text-base italic font-light'>Some of our favorite projects we’ve worked on.</p>
+              <p className='lg:block text-2xl hidden'>Hanzo has powered over 100 companies from zero to millions of dollars in revenue per month.</p>
+              <p className='lg:hidden text-base'>Hanzo has powered over 100 companies from zero to millions of dollars in revenue per month.</p>
             </div>
-            <div className='grid lg:grid-cols-5 border lg:gap-12 grid-cols-2 gap-10 lg:pt-31 pt-20' style={{alignItems: "center",justifyContent:"center"}}>
+            <div className='grid lg:grid-cols-5 lg:gap-12 grid-cols-2 gap-10 lg:pt-31 pt-20' style={{alignItems: "center",justifyContent:"center"}}>
               <AAAA className='lg:block hidden w-[100%]'  />
               <Arca className='lg:block hidden w-[100%]'/>
               <Beallabeat className='lg:block hidden w-[100%]'/>
               <Casperlabs className='lg:block hidden w-[100%]'/>
               <Cove className='w-[100%]'/>
               <Cover className='w-[100%]'/>
-              <Ccliq className='w-[100%]'/>
+              <Cycliq className='w-[100%]'/>
               <Daemon className='w-[100%]'/>
               <Devxdao className='lg:block hidden w-[100%]'/>
               <Forstman className='lg:block hidden w-[100%]'/>

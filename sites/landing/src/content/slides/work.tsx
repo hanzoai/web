@@ -19,7 +19,7 @@ export default {
               <div className='text-2xl font-medium leading-[29px]'>Hanzo doesn't just innovate; we transform our clients into industry leaders through unparalleled technological support.</div>
               <div className=' text-xl font-light leading-6 mt-[27px]'>We're dedicated to advancing finance with a focus on impactful, global change. At Hanzo, we see the transformative potential in every business—that's why we're here: to enhance your financial solutions and extend your reach.</div>
             </div>
-            <div className='border-t-2 justify-around pt-8 mb-19 w-full'>
+            <div className='justify-around pt-8 mb-19 w-full'>
               <div className='max-w-[324px] text-[32px] font-normal'>Work with us</div>
               <div className='text-base max-w-[415px]  mt-[20px]'>We are excited to understand your organization's unique needs and help you develop a distinctive, effective digital strategy and campaign that stands out.</div>
               <div className='text-[16px] max-w-[173px] mt-[20px]'>You can contact us at: </div>

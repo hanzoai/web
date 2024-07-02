@@ -11,15 +11,19 @@
     "tc": "tsc --noEmit"
   },
   "dependencies": {
-    "@hanzo/brand": "*",
-    "@luxfi/data": "*",
     "@hanzo/auth": "*",
+    "@hanzo/brand": "*",
     "@hanzo/commerce": "*",
     "@hanzo/ui": "*",
     "@hookform/resolvers": "^3.3.4",
+    "@luxfi/data": "*",
     "@next/mdx": "14.1.0",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^1.0.68",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "ethers": "^6.11.1",
     "lucide-react": "^0.344.0",
     "mobx": "^6.12.3",
@@ -33,6 +37,7 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.51.4",
     "supports-color": "8.1.1",
+    "tailwind-merge": "^2.3.0",
     "zod": "3.23.8"
   },
   "devDependencies": {
