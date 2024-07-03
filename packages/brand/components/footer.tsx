@@ -33,7 +33,7 @@ const Footer: React.FC<{
     const _aboveCopyright = (typeof aboveCopyright === 'undefined') ? legal : aboveCopyright
 
     return (
-      <footer className={cn('grow flex flex-col justify-between gap-6 pb-[2vh]', className)}>
+      <footer className={cn('grow flex flex-col justify-between border mt-[120px] sm:mt-[100px] md:mt-[80px] lg:mt-0 gap-6 pb-[2vh] ', className)}>
         <div className={
           (noHorizPadding ? '' : 'px-5 md:px-8 ') +
           'gap-4 gap-y-6 md:gap-x-6 lg:gap-8 ' + smGridColsClx +
