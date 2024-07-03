@@ -34,7 +34,9 @@
     }
   },
   "dependencies": {
+    "@types/nodemailer": "^6.4.15",
     "gsap": "^3.12.5",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "nodemailer": "^6.9.14"
   }
 }
