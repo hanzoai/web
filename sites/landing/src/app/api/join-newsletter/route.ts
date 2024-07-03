@@ -1,5 +1,17 @@
-const nodemailer = require('nodemailer')
+import Mailchimp from '@mailchimp/mailchimp_transactional'
 import { NextRequest, NextResponse } from 'next/server'
+
+let mailchimpClient: Mailchimp.ApiClient | undefined
+
+async function getMailchimpClient(): Promise<Mailchimp.ApiClient> {
+    if (mailchimpClient) {
+        return mailchimpClient
+    }
+
+    mailchimpClient = Mailchimp(process.env.MANDRILL_API_KEY as string)
+
+    return mailchimpClient
+}
 
 export async function POST(req: NextRequest, res: NextResponse) {
 
@@ -8,26 +20,28 @@ export async function POST(req: NextRequest, res: NextResponse) {
         console.log(email, username)
 
         // Create a transporter object
-        const transporter = nodemailer.createTransport({
-            service: 'Mandrill',
-            secure: false,
-            auth: {
-                user: 'Lux Partners Limited',
-                pass: 'md-lTIQW-EUpF2pyssaOEesIA',
-            },
-        });
-
-        // Define the email options
-        const mailOptions = {
-            from: 'ai@lux.network',
-            to: 'musordmt@proton.me',
-            subject: 'New message from HanzoAI',
-            text: `Email: ${email}\nUsername: ${username}`,
-        };
 
         try {
             // Send the email
-            await transporter.sendMail(mailOptions);
+            const mailchimpClient = await getMailchimpClient()
+
+            console.log("mailchimpclient: ", mailchimpClient)
+
+            const response = await mailchimpClient.messages.send({
+                message: {
+                    from_email: 'ai@lux.network',
+                    subject: '[mailchimp] Please verify your email address',
+                    text: '!!!Suprize!!!',
+                    to: [
+                        {
+                            email,
+                            type: 'to',
+                        },
+                    ],
+                },
+            })
+            console.log('Mailchimp responded with:')
+            console.log(response)
             return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
         } catch (error) {
             console.error(error);
