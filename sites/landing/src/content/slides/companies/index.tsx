@@ -37,16 +37,15 @@ export default {
         blockType: 'element',
         element: (
           <div className='w-full lg:h-[80vh] h-[80vh] lg:align-middle'>
-            <div className='lg:pl-13 lg:pt-6 flex'>
-              <div className='lg:w-[300px] w-[150px]'>
-                <span className='lg:text-xl text-sm font-semibold'>POWERED BY</span>
-                <div className='flex  align-middle lg'>
-                  <HanzoLogo className='lg:w-[81px] w-[23px]' />
-                  <span className='lg:pr-20 lg:ml-5 lg:text-5xl text-base pl-2'>Hanzo</span>
+            <div className='lg:pl-13 lg:pb-31 flex'>
+              <div className="w-[300px]">
+                <span className='lg:text-xl sm:text-sm text-[10px] font-bold'>POWERED BY</span>
+                <div className='flex lg:align-top lg:items-start items-center'>
+                  <HanzoLogo className='lg:w-[80px] w-[23px] mr-[5px]' />
+                  <span className='lg:pr-20 lg:ml-5 lg:text-5xl sm:text-base text-[10px]'>Hanzo</span>
                 </div>
               </div>
-              <p className='lg:block text-2xl hidden'>Hanzo has powered over 100 companies from zero to millions of dollars in revenue per month.</p>
-              <p className='lg:hidden text-base'>Hanzo has powered over 100 companies from zero to millions of dollars in revenue per month.</p>
+              <p className='lg:text-2xl sm:text-sm text-[14px] lg:font-medium pl-2'>Hanzo has powered over 100 companies from zero to millions of dollars in revenue per month.</p>
             </div>
             <div className='grid lg:grid-cols-5 lg:gap-12 grid-cols-2 gap-10 lg:pt-31 pt-20' style={{alignItems: "center",justifyContent:"center"}}>
               <AAAA className='lg:block hidden w-[100%]'  />

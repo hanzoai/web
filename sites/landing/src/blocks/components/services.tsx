@@ -104,14 +104,14 @@ const ServiceBlockComponent: React.FC<{
         <div className="w-full h-screen flex flex-col justify-center sticky top-0 left-0">
           <div className='w-full'>
             <div className='lg:pl-13 lg:pb-31 flex pl-[14px]'>
-              <div className="w-[40%]">
-                <span className='lg:text-xl text-sm font-bold'>POWERED BY</span>
+              <div className="w-[150px] lg:w-[40%]">
+                <span className='lg:text-xl sm:text-sm text-[10px] font-bold'>POWERED BY</span>
                 <div className='flex lg:align-top lg:items-start items-center'>
                   <HanzoLogo className='lg:w-[80px] w-[23px] mr-[5px]' />
-                  <span className='lg:pr-20 lg:ml-5 lg:text-5xl text-base'>Hanzo</span>
+                  <span className='lg:pr-20 lg:ml-5 lg:text-5xl sm:text-base text-[10px]'>Hanzo</span>
                 </div>
               </div>
-              <p className='lg:text-2xl lg:mt-18 lg:font-medium font-thin'>The game-changer in  your go-to-market strategy.</p>
+              <p className='lg:text-2xl sm:text-sm text-[14px] lg:font-medium pt-[5px] px-3'>The game-changer in  your go-to-market strategy.</p>
             </div>
           </div>
           <style>
