@@ -70,7 +70,7 @@ const DetailsBlockComponent: React.FC<{
 
         <div className="sections-container relative">
           <section
-            className='grid  md:grid-cols-2 grid-cols-1 detailSection animated-section h-screen md:h-auto'
+            className='grid md:grid-cols-2 grid-cols-1 detailSection animated-section h-screen md:h-auto'
           >
             <div className='2xl:lg:pl-24 outer lg:pl-2 lg:order-1 order-2 px-[12px]'>
               <div className='lg:w-4/5 w-full '>
@@ -89,7 +89,7 @@ const DetailsBlockComponent: React.FC<{
                 <span className='text-sm lg:hidden'>{detail.pretitle[getCurrentBlockIndex()]}</span>
               </div>
             </div>
-            <div className='lg:order-2 order-1 justify-center lg:w-full w-[300px] flex mx-auto'>{detail.image[getCurrentBlockIndex()]}</div>
+            <div className='lg:order-2 order-1 justify-center lg:w-full w-[300px] flex mx-auto mt-20 md:mt-0'>{detail.image[getCurrentBlockIndex()]}</div>
           </section>
         </div>
         <div className='absolute top-20 right-0 w-3 bg-transparent h-[calc(100vh-80px)] overflow-hidden'>
