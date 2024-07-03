@@ -17,7 +17,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     if (req.method === 'POST') {
         const { email, username } = await req.json();
-        console.log(email, username)
 
         // Create a transporter object
 
@@ -25,13 +24,11 @@ export async function POST(req: NextRequest, res: NextResponse) {
             // Send the email
             const mailchimpClient = await getMailchimpClient()
 
-            console.log("mailchimpclient: ", mailchimpClient)
-
-            const response = await mailchimpClient.messages.send({
+            await mailchimpClient.messages.send({
                 message: {
                     from_email: 'ai@lux.network',
                     subject: '[mailchimp] Please verify your email address',
-                    text: '!!!Suprize!!!',
+                    text: `!!!Suprize!!! ${username}`,
                     to: [
                         {
                             email,
@@ -40,8 +37,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
                     ],
                 },
             })
-            console.log('Mailchimp responded with:')
-            console.log(response)
+
             return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
         } catch (error) {
             console.error(error);
