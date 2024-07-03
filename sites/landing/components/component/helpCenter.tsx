@@ -53,7 +53,7 @@ export function HelpCenter() {
                   <Input
                     id="name"
                     placeholder="Your name"
-                    className="font-inter bg-black border border-gray-600 text-gray-400"
+                    className="font-inter bg-[#000] border border-gray-600 text-gray-400"
                   />
                 </div>
                 <div>
@@ -64,7 +64,7 @@ export function HelpCenter() {
                     id="email"
                     type="email"
                     placeholder="Your email"
-                    className="font-inter bg-black border border-gray-600 text-gray-400"
+                    className="font-inter bg-[#000] border border-gray-600 text-gray-400"
                   />
                 </div>
                 <div>
@@ -74,10 +74,10 @@ export function HelpCenter() {
                   <Textarea
                     id="message"
                     placeholder="Describe your issue"
-                    className="min-h-[120px] font-inter bg-black border border-gray-600 text-gray-400"
+                    className="min-h-[120px] font-inter bg-[#000] border border-gray-600 text-gray-400"
                   />
                 </div>
-                <Button type="submit" className="w-full font-inter bg-white text-black">
+                <Button type="submit" className="w-full font-inter bg-[#fff] text-[#000]">
                   Submit Ticket
                 </Button>
               </form>
