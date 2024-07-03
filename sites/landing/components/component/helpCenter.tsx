@@ -41,8 +41,8 @@ export function HelpCenter() {
             <h1 className="text-3xl font-bold">Help Center</h1>
             <p className="text-gray-400">Get the support you need to make the most of Hanzo.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-[#000]">
-            <div className="rounded-lg bg-black p-6 text-gray-300 md:col-span-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="rounded-lg bg-black p-6 text-gray-300 md:col-span-2 bg-[#000]">
               <h2 className="text-xl font-bold">Create Support Ticket</h2>
               <p className="text-gray-400">Fill out the form below to create a support ticket.</p>
               <form className="mt-4 space-y-4">
@@ -82,37 +82,41 @@ export function HelpCenter() {
                 </Button>
               </form>
             </div>
-            <div className="rounded-lg bg-black p-6 text-gray-300">
-              <div className="flex items-center">
-                <h2 className="text-xl font-bold">Email Us</h2>
-                <MailIcon className="h-5 w-5 ml-2 stroke-current" />
+            <div className="flex flex-col justify-between rounded-lg bg-black p-6 text-gray-300 mt-5 bg-[#000]">
+              <div>
+                <div className="flex items-center">
+                  <h2 className="text-xl font-bold">Email Us</h2>
+                  <MailIcon className="h-5 w-5 ml-2 stroke-current" />
+                </div>
+                <p className="text-gray-400">
+                  If you would like to talk to a real person that wants to help you email us at{" "}
+                  <Link href="#" className="text-gray-400 hover:underline" prefetch={false}>
+                    hi@hanzo.ai
+                  </Link>
+                </p>
               </div>
-              <p className="text-gray-400">
-                If you would like to talk to a real person that wants to help you email us at{" "}
-                <Link href="#" className="text-gray-400 hover:underline" prefetch={false}>
-                  hi@hanzo.ai
-                </Link>
-              </p>
               <div className="mt-4">
                 <Button
                   variant="outline"
                   onClick={() => {
                     window.location.href = "mailto:hi@hanzo.ai?subject=Help Request&body=Dear Hanzo Team,"
                   }}
-                  className="w-full font-inter bg-white text-black"
+                  className="w-full font-inter bg-[#fff] text-[#000]"
                 >
                   Open Email Client
                 </Button>
               </div>
             </div>
-            <div className="rounded-lg bg-black p-6 text-gray-300">
-              <div className="flex items-center">
-                <h2 className="text-xl font-bold">Ask AI</h2>
-                <BotIcon className="h-5 w-5 ml-2 stroke-current" />
+            <div className="flex flex-col justify-between rounded-lg bg-black p-6 text-gray-300 mt-5 bg-[#000]">
+              <div>
+                <div className="flex items-center">
+                  <h2 className="text-xl font-bold">Ask AI</h2>
+                  <BotIcon className="h-5 w-5 ml-2 stroke-current" />
+                </div>
+                <p className="text-gray-400">Get instant answers to your questions from our AI assistant.</p>
               </div>
-              <p className="text-gray-400">Get instant answers to your questions from our AI assistant.</p>
               <div className="mt-4">
-                <Button variant="outline" onClick={() => {}} className="w-full font-inter bg-white text-black">
+                <Button variant="outline" onClick={() => { }} className="w-full font-inter bg-[#fff] text-[#000]">
                   Ask AI
                 </Button>
               </div>
