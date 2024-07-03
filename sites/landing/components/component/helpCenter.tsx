@@ -34,14 +34,14 @@ import Link from "next/link"
 
 export function HelpCenter() {
   return (
-    <div className=" w-[100%] lg:w-[900px] m-auto" >
-      <main className="flex-1 px-4 py-8 sm:px-6 md:px-8">
+    <div className="w-[100%] lg:w-[900px] m-auto" >
+      <main className="flex-1 px-4 py-8 sm:px-6 md:px-8 mt-[100px] bg-[#020712]">
         <div className="mx-auto max-w-4xl space-y-8">
           <div>
             <h1 className="text-3xl font-bold">Help Center</h1>
             <p className="text-gray-400">Get the support you need to make the most of Hanzo.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-[#000]">
             <div className="rounded-lg bg-black p-6 text-gray-300 md:col-span-2">
               <h2 className="text-xl font-bold">Create Support Ticket</h2>
               <p className="text-gray-400">Fill out the form below to create a support ticket.</p>
