@@ -9,6 +9,7 @@ import innovation from './slides/innovation'
 import services from './slides/services'
 import intro_mobile from './slides/intro_mobile'
 import work from './slides/work'
+import studies_portion from './slides/studies-portion'
 
 
 const mobileTiles = [
@@ -16,6 +17,7 @@ const mobileTiles = [
   details,
   companies,
   impact,
+  studies_portion,
   innovation,
   services,
   work
@@ -27,6 +29,7 @@ const desktopTiles = [
   details,
   companies,
   impact,
+  studies_portion,
   innovation,
   services,
 ] satisfies Block[] as ScreenfulBlock[]
