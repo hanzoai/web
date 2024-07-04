@@ -26,7 +26,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
             const response = await mailchimpClient.messages.send({
                 message: {
-                    from_email: 'ai@lux.network',
+                    from_email: 'ai@hanzo.ai',
                     subject: '[mailchimp] Please verify your email address',
                     text: `!!!Suprize!!! ${username}`,
                     to: [
