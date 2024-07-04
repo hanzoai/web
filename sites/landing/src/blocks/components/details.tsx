@@ -66,7 +66,7 @@ const DetailsBlockComponent: React.FC<{
   return (
     <div className='relative snap-start' ref={elementRef}>
 
-      <div className="z-10 w-full h-[120vh] p-0 sticky top-0 lg:pt-[180px]">
+      <div className="z-10 w-full h-[120vh] pt-20 sticky top-0 lg:pt-[180px] ">
 
         <div className="sections-container relative">
           <section
