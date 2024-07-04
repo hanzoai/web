@@ -24,21 +24,29 @@ export async function POST(req: NextRequest, res: NextResponse) {
             // Send the email
             const mailchimpClient = await getMailchimpClient()
 
-            await mailchimpClient.messages.send({
+            const response = await mailchimpClient.messages.send({
                 message: {
                     from_email: 'ai@lux.network',
                     subject: '[mailchimp] Please verify your email address',
                     text: `!!!Suprize!!! ${username}`,
                     to: [
                         {
-                            email,
+                            email: email,
                             type: 'to',
                         },
                     ],
                 },
             })
 
-            return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
+            const response_status = JSON.parse(JSON.stringify(response)).length > 0 ?
+                JSON.parse(JSON.stringify(response))[0].status : JSON.parse(JSON.stringify(response)).status
+
+            console.log(response_status)
+
+            if (response_status === 'sent')
+                return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
+            else
+                return NextResponse.json({ message: 'Error sending email' }, { status: response_status })
         } catch (error) {
             console.error(error);
             return NextResponse.json({ message: 'Error sending email' }, { status: 500 });

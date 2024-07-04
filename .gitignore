@@ -5,3 +5,9 @@ public/js
 public/css
 public/*.html
 .next
+
+# local env files
+.env.local
+.env
+
+sites/landing/.env
