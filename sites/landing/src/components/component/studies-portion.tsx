@@ -19,14 +19,14 @@ To read more about using these font, please visit the Next.js documentation:
 **/
 export function StudiesPortion() {
   return (
-    <section className="py-16 md:py-32 lg:py-40 bg-black text-white font-inter self-center">
-      <div className="container flex flex-col gap-24">
+    <section className="!py-24 !md:py-32 !lg:py-40 bg-black text-white font-inter self-center h-pr-100 aspect-[7/4] ">
+      <div className="container flex flex-col gap-12 2xl:gap-24">
         <div className="grid gap-12 md:grid-cols-2 md:items-center h-pr-50">
           <div className="space-y-6 text-center md:text-left">
-            <div className="text-3xl font-semibold tracking-tighter md:text-4xl">
+            <div className="text-3xl 2xl:text-4xl font-semibold tracking-tighter ">
               Hanzo: Powering the Launch of the Damon Motorbike
             </div>
-            <p className="max-w-[600px] text-white/80 md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed">
+            <p className="max-w-[600px] text-white/80 md:text-/relaxed lg:text-base/relaxed xl:text-sm/relaxed 2xl:text-lg/relaxed">
               With the announcement of over 100 Million in Sales, Hanzo is proud to be the agency of record since launch
               of the most exciting motorbike of our lifetimes. Hanzo has been responsible for the marketing efforts
               starting with the launch at CES 2020 (we won) and into CES 2022 (we won again), and into the first units
@@ -55,8 +55,8 @@ export function StudiesPortion() {
             />
           </div>
           <div className="space-y-6 text-center md:text-left">
-            <div className="text-3xl font-semibold tracking-tighter md:text-4xl">Case Study: TRILLER</div>
-            <p className="max-w-[600px] text-white/80 md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed">
+            <div className="text-3xl 2xl:text-4xl font-semibold tracking-tighter">Case Study: TRILLER</div>
+            <p className="max-w-[600px] text-white/80 md:text-/relaxed lg:text-base/relaxed xl:text-sm/relaxed 2xl:text-lg/relaxed">
               Some highlights from Triller's 1st ever paid marketing launch:
               <br />
               over 169 million people reached on less than $60,000 ad spend
