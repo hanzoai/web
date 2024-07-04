@@ -5,6 +5,7 @@ export default {
   content: {
     files: [
       'src/**/*.tsx',
+      'components/**/*.tsx',
       './node_modules/@hanzo/brand/**/*.{ts,tsx}',
       './node_modules/@hanzo/**/*.{ts,tsx}'
     ]

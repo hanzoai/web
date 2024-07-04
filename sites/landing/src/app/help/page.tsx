@@ -22,12 +22,9 @@ const page = ({ searchParams }: Props) => {
   const swipeInnerTouch = swipeInner + "h-[100svh] ";
   return (
     <>
-    <div className="mt-[90px] md:mt-[140px]">
       <Header siteDef={siteDef} />
       <HelpCenter />
       {/* <FooterSlide agent={agent} /> */}
-
-    </div>
     </>
   );
 };
