@@ -42,7 +42,7 @@ export function HelpCenter() {
             <p className="text-gray-400">Get the support you need to make the most of Hanzo.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-lg bg-black p-6 text-gray-300 md:col-span-2 bg-[#000]">
+            <div className="rounded-lg bg-black p-6 text-gray-300 md:col-span-2 bg-background">
               <h2 className="text-xl font-bold">Create Support Ticket</h2>
               <p className="text-gray-400">Fill out the form below to create a support ticket.</p>
               <form className="mt-4 space-y-4">
@@ -53,7 +53,7 @@ export function HelpCenter() {
                   <Input
                     id="name"
                     placeholder="Your name"
-                    className="font-inter bg-[#000] border border-gray-600 text-gray-400"
+                    className="font-inter bg-background border border-gray-600 text-gray-400"
                   />
                 </div>
                 <div>
@@ -64,7 +64,7 @@ export function HelpCenter() {
                     id="email"
                     type="email"
                     placeholder="Your email"
-                    className="font-inter bg-[#000] border border-gray-600 text-gray-400"
+                    className="font-inter bg-background border border-gray-600 text-gray-400"
                   />
                 </div>
                 <div>
@@ -74,15 +74,15 @@ export function HelpCenter() {
                   <Textarea
                     id="message"
                     placeholder="Describe your issue"
-                    className="min-h-[120px] font-inter bg-[#000] border border-gray-600 text-gray-400"
+                    className="min-h-[120px] font-inter bg-background border border-gray-600 text-gray-400"
                   />
                 </div>
-                <Button type="submit" className="w-full font-inter bg-[#fff] text-[#000]">
+                <Button type="submit" className="w-full font-inter bg-primary text-background">
                   Submit Ticket
                 </Button>
               </form>
             </div>
-            <div className="flex flex-col justify-between rounded-lg bg-black p-6 text-gray-300 mt-5 bg-[#000]">
+            <div className="flex flex-col justify-between rounded-lg bg-black p-6 text-gray-300 mt-5 bg-background">
               <div>
                 <div className="flex items-center">
                   <h2 className="text-xl font-bold">Email Us</h2>
@@ -101,13 +101,13 @@ export function HelpCenter() {
                   onClick={() => {
                     window.location.href = "mailto:hi@hanzo.ai?subject=Help Request&body=Dear Hanzo Team,"
                   }}
-                  className="w-full font-inter bg-[#fff] text-[#000]"
+                  className="w-full font-inter bg-primary text-background"
                 >
                   Open Email Client
                 </Button>
               </div>
             </div>
-            <div className="flex flex-col justify-between rounded-lg bg-black p-6 text-gray-300 mt-5 bg-[#000]">
+            <div className="flex flex-col justify-between rounded-lg bg-black p-6 text-gray-300 mt-5 bg-background">
               <div>
                 <div className="flex items-center">
                   <h2 className="text-xl font-bold">Ask AI</h2>
@@ -116,7 +116,7 @@ export function HelpCenter() {
                 <p className="text-gray-400">Get instant answers to your questions from our AI assistant.</p>
               </div>
               <div className="mt-4">
-                <Button variant="outline" onClick={() => { }} className="w-full font-inter bg-[#fff] text-[#000]">
+                <Button variant="outline" onClick={() => { }} className="w-full font-inter bg-primary text-background">
                   Ask AI
                 </Button>
               </div>
