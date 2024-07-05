@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { cn } from '@hanzo/ui/util';
 import type { ChildMenu, LinkDefExtended } from "../../site-def/main-nav";
@@ -16,10 +17,24 @@ import {
 import Warpcast from "../icons/warpcast";
 import type { LinkDef } from "@hanzo/ui/types";
 
+const preventDefault = (e: WheelEvent | TouchEvent) => e.preventDefault();
+const handleMouseOver = () => {
+  document.addEventListener('wheel', preventDefault, { passive: false });
+  document.addEventListener('touchmove', preventDefault, { passive: false });
+};
+
+const handleMouseOut = () => {
+  document.removeEventListener('wheel', preventDefault);
+  document.removeEventListener('touchmove', preventDefault);
+};
+
+
 const DesktopNavHanzo: React.FC<{ 
   links: LinkDefExtended[], 
-  className?: string 
-}> = ({ links, className = '' }) => (
+  className?: string,
+  menuFlag: boolean,
+  setMenuFlag: React.Dispatch<React.SetStateAction<boolean>>
+}> = ({ links, className = '', setMenuFlag, menuFlag }) => (
   links.length > 0 ? (
     <NavigationMenu>
       <NavigationMenuList>
@@ -33,9 +48,36 @@ const DesktopNavHanzo: React.FC<{
               </Link>
             ) : (
               <>
-                <NavigationMenuTrigger className="rounded-full">{el.title}</NavigationMenuTrigger>
-                <NavigationMenuContent className="fixed left-0 top-20 w-screen h-full border-0 !backdrop-blur-3xl bg-transparent">
-                  <div className="flex flex-row w-full justify-center">
+                <NavigationMenuTrigger className="rounded-full"
+                  onMouseOver={ () => {
+                    setMenuFlag(true)
+                    handleMouseOver()
+                  }}
+                  onMouseOut={ () => {
+                    setMenuFlag(false)
+                    handleMouseOut()
+                  } }
+                  onClick={ () => {
+                    if (menuFlag) {
+                      setMenuFlag(false)
+                      handleMouseOut()
+                    } else {
+                      setMenuFlag(true)
+                      handleMouseOver()
+                    }
+                  }}
+                >{el.title}</NavigationMenuTrigger>
+                <NavigationMenuContent className="fixed left-0 top-15 w-screen border-r-0 rounded-none h-full border-0 !backdrop-blur-3xl mt-0 bg-transparent"
+                  onMouseOver={ () => {
+                    setMenuFlag(true)
+                    handleMouseOver()
+                  }}
+                  onMouseOut={ () => {
+                    setMenuFlag(false)
+                    handleMouseOut()
+                  } }
+                >
+                  <div className="flex flex-row w-full justify-center border-r-0">
                     {GroupChildMenu(el.childMenu)}
                   </div>
                 </NavigationMenuContent>
@@ -59,7 +101,7 @@ const ListItem = React.forwardRef<
       <a
         ref={ref}
         className={cn(
-          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:text-accent-foreground focus:bg-level-1 focus:text-accent-foreground text-muted-1 hover:text-primary hover:bg-transparent",
+          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:text-accent-foreground focus:bg-level-1 focus:text-accent-foreground text-muted-1 hover:text-primary hover:bg-transparent duration-500 ease-in-out",
           className
         )}
         {...props}

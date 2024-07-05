@@ -15,7 +15,7 @@ export default {
             {
                 blockType: 'element',
                 element: (
-                    <div className='flex flex-col md:px-4 pt-20 gap-10 md:gap-20 justify-start h-screen'>
+                    <div className='flex flex-col md:px-4 pt-20 gap-10 md:gap-20 justify-start'>
                         <div className='flex md:flex-row flex-col gap-8'>
                             <div className='2xl:text-5xl xl:text-4xl md:text-3xl text-xl md:font-normal font-medium md:leading-10 leading-7'>Hanzo doesn't just innovate; we transform our clients into industry leaders through unparalleled technological support.</div>
                             <div className='2xl:text-3xl md:text-2xl text-lg font-light md:leading-8 leading-6'>We're dedicated to advancing technology with a focus on impactful, global change. At Hanzo, we see the transformative potential in every business—that's why we're here to enhance your solutions and extend your reach.</div>
