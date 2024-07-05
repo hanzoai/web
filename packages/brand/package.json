@@ -1,6 +1,6 @@
 {
   "name": "@hanzo/brand",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Library that contains shared UI primitives, support for a common design system, and other boilerplate support.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",

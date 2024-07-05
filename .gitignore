@@ -5,3 +5,4 @@ public/js
 public/css
 public/*.html
 .next
+.env.local
