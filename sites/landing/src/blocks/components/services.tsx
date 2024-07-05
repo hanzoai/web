@@ -100,7 +100,7 @@ const ServiceBlockComponent: React.FC<{
       }
     }, [topScroll, currentIndex])
     return (
-      <div className="!w-full slide snap-start relative" ref={containerRef}>
+      <div className="!w-full slide snap-start relative h-screen" ref={containerRef}>
         <div className="w-full h-screen flex flex-col justify-center sticky top-0 left-0">
           <div className='w-full'>
             <div className='lg:pl-13 lg:pb-31 flex pl-[14px]'>
