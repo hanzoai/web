@@ -17,7 +17,7 @@ import {
 import Warpcast from "../icons/warpcast";
 import type { LinkDef } from "@hanzo/ui/types";
 
-const preventDefault = (e) => e.preventDefault();
+const preventDefault = (e: WheelEvent | TouchEvent) => e.preventDefault();
 const handleMouseOver = () => {
   document.addEventListener('wheel', preventDefault, { passive: false });
   document.addEventListener('touchmove', preventDefault, { passive: false });
@@ -31,7 +31,9 @@ const handleMouseOut = () => {
 
 const DesktopNavHanzo: React.FC<{ 
   links: LinkDefExtended[], 
-  className?: string 
+  className?: string,
+  menuFlag: boolean,
+  setMenuFlag: React.Dispatch<React.SetStateAction<boolean>>
 }> = ({ links, className = '', setMenuFlag, menuFlag }) => (
   links.length > 0 ? (
     <NavigationMenu>
