@@ -12,24 +12,24 @@ const title = 'We believe in Innovation'
 
 export default {
   blockType: 'screenful',
-  specifiers: 'vert-center full-screen-width mobile-vert-center',
-  columnSpecifiers: ['bottom mobile-vert-center'],
+  specifiers: 'vert-center full-screen-width',
+  columnSpecifiers: ['bottom'],
   contentColumns: [
     [
       {
         blockType: 'element',
         element: (
-          <div className='lg:m-auto '>
-            <ApplyTypography className='lg:justify-items-start'>
+          <div className='pt-20 h-full w-full flex flex-col'>
+            <div className='md:px-4 items-center'>
               <div className='lg:hidden w-full flex'>
                 <Link href={"#"} className='font-bold lg:underline justify-items-end no-underline'>
                   Our Story
                 </Link>
                 <GotoBtn className='lg:hidden ml-4 w-[17px]' />
               </div>
-              <p className='xl:text-[90px] md:text-[60px] text-[30px] text-center sm:text-left font-medium leading-[50px]'>{title}</p>
-            </ApplyTypography>
-            <ImageCarousel className='lg:mt-11'/>
+              <p className='2xl:text-[150px] xl:text-[100px] text-[30px] text-left font-medium'>{title}</p>
+            </div>
+            <ImageCarousel className='pt-11 items-center'/>
           </div>
         )
       } satisfies ElementBlock as Block

@@ -36,60 +36,60 @@ export default {
       {
         blockType: 'element',
         element: (
-          <div className='w-full lg:h-[80vh] h-[80vh] lg:align-middle'>
-            <div className='lg:pl-13 lg:pt-6 flex'>
-              <div className='lg:w-[300px] w-[150px]'>
-                <span className='lg:text-xl text-sm font-semibold'>POWERED BY</span>
-                <div className='flex  align-middle lg'>
-                  <HanzoLogo className='lg:w-[81px] w-[23px]' />
-                  <span className='lg:pr-20 lg:ml-5 lg:text-5xl text-base pl-2'>Hanzo</span>
+          <div className='w-full h-full flex flex-col justify-between gap-5 pt-20'>
+            <div className='flex flex-row 2xl:gap-20 xl:gap-16 lg:gap-12 gap-10 items-center md:px-6 px-1'>
+              <div className='flex flex-col 2xl:gap-6 xl:gap-5 gap-4'>
+                <span className='2xl:text-xl xl:text-base text-sm font-semibold whitespace-nowrap'>POWERED BY</span>
+                <div className='flex flex-row 2xl:gap-5 xl:gap-4 gap-3'>
+                  <HanzoLogo className='2xl:w-[81px] xl:w-[70px] md:w-[60px] w-[23px]' />
+                  <span className='2xl:text-5xl xl:text-4xl md:text-3xl text-base'>Hanzo</span>
                 </div>
               </div>
-              <p className='lg:block text-2xl hidden'>Hanzo has powered over 100 companies from zero to millions of dollars in revenue per month.</p>
-              <p className='lg:hidden text-base'>Hanzo has powered over 100 companies from zero to millions of dollars in revenue per month.</p>
+              <p className='lg:block hidden text-2xl'>Hanzo has powered over 100 companies from zero to millions of dollars in revenue per month.</p>
+              <p className='lg:hidden block text-base'>Some of our favourite projects we've worked on.</p>
             </div>
-            <div className='grid lg:grid-cols-5 lg:gap-12 grid-cols-2 gap-10 lg:pt-31 pt-20' style={{alignItems: "center",justifyContent:"center"}}>
-              <AAAA className='lg:block hidden w-[100%]'  />
-              <Arca className='lg:block hidden w-[100%]'/>
-              <Beallabeat className='lg:block hidden w-[100%]'/>
-              <Casperlabs className='lg:block hidden w-[100%]'/>
-              <Cove className='w-[100%]'/>
-              <Cover className='w-[100%]'/>
-              <Cycliq className='w-[100%]'/>
-              <Daemon className='w-[100%]'/>
-              <Devxdao className='lg:block hidden w-[100%]'/>
-              <Forstman className='lg:block hidden w-[100%]'/>
-              <Karma className='w-[100%]'/>
-              <Keek className='w-[100%]'/>
-              <Lux className='lg:block hidden w-[100%]'/>
-              <Myle className='lg:block hidden  w-[70%] md:w-[100%]'/>
-              <Nasa className='lg:block hidden w-[100%]'/>
-              <Snapchat className='w-[100%]'/>
-              <Skully className='w-[100%]' />
-              <Triller className='lg:block hidden w-[100%]'/>
-              <Unikain className='lg:block hidden w-[100%]'/>
-              <Zoo className='lg:block hidden w-[100%]'/>
+            <div className='grid md:grid-cols-5 2xl:gap-12 xl:gap-8 grid-cols-2 gap-8 md:px-6 px-1 items-center justify-center'>
+              <Arca className='w-[100%]' />
+              <Cove className='w-[100%]' />
+              <Cover className='w-[100%]' />
+              <Lux className='w-[100%]' />
+              <Nasa className='w-[100%]' />
+              <Zoo className='w-[100%]' />
+              <AAAA className='md:block hidden w-[100%]' />
+              <Beallabeat className='md:block hidden w-[100%]' />
+              <Casperlabs className='md:block hidden w-[100%]' />
+              <Devxdao className='md:block hidden w-[100%]' />
+              <Cycliq className='md:block hidden w-[100%]' />
+              <Daemon className='md:block hidden w-[100%]' />
+              <Forstman className='md:block hidden w-[100%]' />
+              <Karma className='md:block hidden w-[100%]' />
+              <Keek className='md:block hidden w-[100%]' />
+              <Myle className='2xl:block hidden md:w-[100%]' />
+              <Snapchat className='2xl:block hidden w-[100%]' />
+              <Skully className='2xl:block hidden w-[100%]' />
+              <Triller className='2xl:block hidden w-[100%]' />
+              <Unikain className='2xl:block hidden  w-[100%]' />
             </div>
-            <div className=' border-t-2 lg:text-2xl mt-14 lg:flex text-base lg:font-semibold w-full'>
-            <div className="flex lg:mt-12 lg:pl-13 lg:flex-[80%] lg:flex-row flex-col mt-3">
-                <span className=' no-underline lg:text-primary text-muted-1 '>
-                  HOW?
-                </span>
-                <Link href={"#"} className='lg:pl-[250px] no-underline lg:mt-0 mt-4 font-light'>
+            <div className='border-t-2 2xl:text-2xl md:text-lg text-base py-4 flex md:flex-row flex-col justify-between md:gap-6 gap-2'>
+              <span className='lg:text-primary text-[#525252] lg:px-8 md:px-4 px-2 '>
+                HOW?
+              </span>
+              <div className='flex md:flex-row flex-col justify-between xl:gap-32 md:gap-16 gap-1 px-2'>
+                <Link href={"#"} className='!no-underline md:!font-semibold !font-thin'>
                   Scaling?
                 </Link>
-                <Link href={"#"} className='lg:pl-[250px] no-underline font-light'>
+                <Link href={"#"} className='!no-underline md:!font-semibold !font-thin'>
                   Securing?
                 </Link>
-                <Link href={"#"} className='lg:pl-[250px] no-underline font-light'>
+                <Link href={"#"} className='!no-underline md:!font-semibold !font-thin'>
                   Simplifying?
                 </Link>
               </div>
-              <div className='mt-12 w-full lg:flex-[20%] flex'>
-                <Link href={"#"} className=' lg:text-muted-1 lg:font-thin font-bold lg:underline justify-items-end no-underline'>
+              <div className='flex flex-row lg:px-8 md:px-4 px-2'>
+                <Link href={"#"} className=' md:text-muted-1 md:font-light font-bold md:!underline justify-items-end !no-underline'>
                   Learn More
                 </Link>
-                <GotoBtn className='lg:hidden ml-4 w-[17px]'/>
+                <GotoBtn className='md:hidden ml-4 w-[17px]' />
               </div>
             </div>
           </div>
