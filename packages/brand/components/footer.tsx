@@ -189,14 +189,14 @@ const Footer: React.FC<{
               </div>
             </div>
           </div>
-        </div>
-        <div className='md:mt-[2vh] flex justify-start gap-8 lg:pl-[27px] mb-0'>
-          <Nvidia />
-          <Techstars />
-          <Stripe />
-          <Google />
-          <Amazon />
-          <Microsoft />
+          <div className='mt-8 flex flex-row md:justify-start justify-between md:gap-8'>
+            <Nvidia />
+            <Techstars />
+            <Stripe />
+            <Google />
+            <Amazon />
+            <Microsoft />
+          </div>
         </div>
       </footer>
     )
