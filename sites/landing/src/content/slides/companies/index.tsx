@@ -71,25 +71,25 @@ export default {
               <Unikain className='2xl:block hidden  w-[100%]' />
             </div>
             <div className='border-t-2 2xl:text-2xl md:text-lg text-base py-4 flex md:flex-row flex-col justify-between md:gap-6 gap-2'>
-              <span className='lg:text-primary text-[#525252] lg:px-8 md:px-4 px-2 '>
+              <Link href={"#"} className='px-2 !no-underline !text-muted-1 hover:!text-primary transition duration-500 z-10'>
                 HOW?
-              </span>
+              </Link>
               <div className='flex md:flex-row flex-col justify-between xl:gap-32 md:gap-16 gap-1 px-2'>
-                <Link href={"#"} className='!no-underline md:!font-semibold !font-thin'>
+                <Link href={"#"} className='!no-underline !text-muted-1 hover:!text-primary transition duration-500 z-10'>
                   Scaling?
                 </Link>
-                <Link href={"#"} className='!no-underline md:!font-semibold !font-thin'>
+                <Link href={"#"} className='!no-underline !text-muted-1 hover:!text-primary transition duration-500 z-10'>
                   Securing?
                 </Link>
-                <Link href={"#"} className='!no-underline md:!font-semibold !font-thin'>
+                <Link href={"#"} className='!no-underline !text-muted-1 hover:!text-primary transition duration-500 z-10'>
                   Simplifying?
                 </Link>
               </div>
               <div className='flex flex-row lg:px-8 md:px-4 px-2'>
-                <Link href={"#"} className=' md:text-muted-1 md:font-light font-bold md:!underline justify-items-end !no-underline'>
+                <Link href={"#"} className='md:!underline justify-items-end !no-underline !text-muted-1 hover:!text-primary transition duration-500 z-10'>
                   Learn More
                 </Link>
-                <GotoBtn className='md:hidden ml-4 w-[17px]' />
+                <GotoBtn className='md:hidden ml-4 w-[17px] z-10' />
               </div>
             </div>
           </div>
