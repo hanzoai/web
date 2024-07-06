@@ -144,7 +144,6 @@ const ServiceBlockComponent: React.FC<{
           </div>
 
         </div>
-        <div className="" style={{ height: scrollHeight }}></div>
       </div>
     )
   }
