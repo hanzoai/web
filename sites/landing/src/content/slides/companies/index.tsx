@@ -25,7 +25,7 @@ import Triller from './svg/triller'
 import Unikain from './svg/unikain'
 import Zoo from './svg/zoo'
 import Link from 'next/link'
-import GotoBtn from '../details/svg/Gotobtn'
+import GotoBtn from '../details/video/Gotobtn'
 
 export default {
   blockType: 'screenful',

@@ -6,7 +6,7 @@ import { ApplyTypography } from '@hanzo/ui/primitives'
 
 import siteDef from '@/site-def'
 import CardsCarousel from './cards-carousel-browse'
-import GotoBtn from '@/content/slides/details/svg/Gotobtn'
+import GotoBtn from '@/content/slides/details/video/Gotobtn'
 import Link from 'next/link'
 
 const title = 'CHOOSE YOUR CARDS'

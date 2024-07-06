@@ -132,7 +132,7 @@ const GroupChildMenu = (childs: ChildMenu[] | undefined) => {
   return Object.entries(groupedChildMenus).map(([groupName, childLinks]) => (
     <div key={groupName} className="py-4 px-4">
       <h2 className="text-muted-1">{groupName}</h2>
-      <ul className="w-[200px] gap-3 md:w-[250px] lg:w-[250px]">
+      <ul className="w-[200px] gap-3 md:w-[200px] lg:w-[250px]">
         {childLinks.map((link) => (
           <div className="flex justify-start items-center" key={link.title}>
             {link.icon}

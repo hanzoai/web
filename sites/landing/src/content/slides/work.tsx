@@ -3,7 +3,7 @@ import type {
   ScreenfulBlock,
   ElementBlock,
 } from '@hanzo/ui/blocks'
-import GotoBtn from './details/svg/Gotobtn'
+import GotoBtn from './details/video/Gotobtn'
 
 export default {
   blockType: 'screenful',
