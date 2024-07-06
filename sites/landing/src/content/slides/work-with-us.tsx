@@ -25,10 +25,10 @@ export default {
                             <div className='flex-1 text-base font-light leading-5 '>We are excited to understand your organization's unique needs and help you develop a distinctive, effective digital strategy and campaign that stands out.</div>
                             <div className='flex-1 text-left md:text-center'>
                                 <div className='text-base'>You can contact us at: </div>
-                                <div className='text-base'><Link href={'mailto:info@hanzo.ai'} className=' underline'>info@hanzo.ai</Link></div>
+                                <div className='text-base'><Link href={'mailto:info@hanzo.ai'} className=' underline text-muted-1 hover:text-primary transition duration-500'>info@hanzo.ai</Link></div>
                             </div>
                             <div className='flex-1 2xl:text-2xl md:text-xl text-base font-bold md:font-normal flex justify-start md:justify-center'>
-                                <Link href={'mailto:info@hanzo.ai'} className='md:!underline !no-underline'>Get in Touch </Link>
+                                <Link href={'mailto:info@hanzo.ai'} className='md:!underline !no-underline text-muted-1 hover:text-primary transition duration-500'>Get in Touch </Link>
                                 <GotoBtn className='hidden w-[16px] ml-3' />
                             </div>
                         </div>

@@ -102,35 +102,35 @@ const Footer: React.FC<{
               </span>
               <div className='flex flex-row gap-6 text-muted-1 lg:items-center text-base'>
                 <div className='flex flex-col gap-3'>
-                  <Link className='hover:text-primary' href={"#"}>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
                     Home
                   </Link>
-                  <Link className='hover:text-primary' href={"#"}>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
                     Docs
                   </Link>
-                  <Link className='hover:text-primary' href={"#"}>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
                     Guides
                   </Link>
                 </div>
                 <div className='flex flex-col gap-3'>
-                  <Link className='hover:text-primary' href={"#"}>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
                     Help
                   </Link>
-                  <Link className='hover:text-primary' href={"#"}>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
                     Sales
                   </Link>
-                  <Link className='hover:text-primary' href={"#"}>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
                     Blog
                   </Link>
                 </div>
                 <div className='flex flex-col gap-3'>
-                  <Link className='hover:text-primary' href={"#"}>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
                     Changelog
                   </Link>
-                  <Link className='hover:text-primary' href={"#"}>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
                     Pricing
                   </Link>
-                  <Link className='hover:text-primary' href={"#"}>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
                     Legal
                   </Link>
                 </div>
@@ -141,7 +141,7 @@ const Footer: React.FC<{
                 Connect with us
               </span>
               <div>
-                <Link href={"mailto:info@hanzo.ai"} className='underline text-base font-light text-muted-1 hover:text-primary'>
+                <Link href={"mailto:info@hanzo.ai"} className='underline text-base font-light text-muted-1 hover:text-primary transition duration-500'>
                   info@hanzo.ai
                 </Link>
               </div>
@@ -167,21 +167,21 @@ const Footer: React.FC<{
                 </span>
                 <div className='flex flex-row gap-6 text-[16px] text-muted-1'>
                   <div className='flex flex-col gap-3'>
-                    <Link className='social-link hover:text-primary' href={"https://x.com/hanzoai"}>
+                    <Link className='social-link hover:text-primary transition duration-500' href={"https://x.com/hanzoai"}>
                       X
                     </Link>
-                    <Link className='social-link hover:text-primary' href={"https://facebook.com/hanzoinc"}>
+                    <Link className='social-link hover:text-primary transition duration-500' href={"https://facebook.com/hanzoinc"}>
                       Facebook
                     </Link>
-                    <Link className='social-link hover:text-primary' href={"https://instagram.com/hanzoinc"}>
+                    <Link className='social-link hover:text-primary transition duration-500' href={"https://instagram.com/hanzoinc"}>
                       Instagram
                     </Link>
                   </div>
                   <div className='flex flex-col gap-3'>
-                    <Link className='social-link hover:text-primary' href={"https://linkedin.com/company/hanzoai"}>
+                    <Link className='social-link hover:text-primary transition duration-500' href={"https://linkedin.com/company/hanzoai"}>
                       Linkedin
                     </Link>
-                    <Link className='social-link hover:text-primary' href={"https://github.com/hanzoai"}>
+                    <Link className='social-link hover:text-primary transition duration-500' href={"https://github.com/hanzoai"}>
                       Github
                     </Link>
                   </div>
