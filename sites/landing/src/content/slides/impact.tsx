@@ -13,14 +13,14 @@ const _data: Impact[] = [
 ]
 
 const ImpactItem = ({ name, founder, role, description }: Impact) => (
-  <div className="hidden border-t-2 lg:flex pt-8 mb-19 ">
-    <div className='flex flex-1'>
-      <span className='text-2xl text-muted-1 flex-[30%] '>{name}</span>
-      <span className='text-2xl text-muted-1 flex-[35%]'>{founder}</span>
-      <span className='text-2xl text-muted-1 flex-[35%]'>{role}</span>
+  <div className="hidden border-t-2 lg:flex 2xl:pt-8 lg:pt-4 pt-8 2xl:mb-19 lg:mb-10">
+    <div className='flex flex-1 px-2'>
+      <span className='2xl:text-2xl xl:text-xl text-lg text-muted-1 flex-[30%] '>{name}</span>
+      <span className='2xl:text-2xl xl:text-xl text-lg text-muted-1 flex-[35%]'>{founder}</span>
+      <span className='2xl:text-2xl xl:text-xl text-lg text-muted-1 flex-[35%]'>{role}</span>
     </div>
-    <div className="flex-1 text-xl">
-      <p>{description}</p>
+    <div className="flex-1 text-xl px-2">
+      <p className='2xl:text-xl xl:text-lg text-base'>{description}</p>
     </div>
   </div>
 )
@@ -34,13 +34,13 @@ export default {
       {
         blockType: 'element',
         element: (
-          <div id='impact' className='w-full lg:pl-6'>
-            <div className="border-t-2 lg:flex lg:pt-8 lg:mb-19 px-4">
-              <div className='lg:flex lg:flex-1'>
-                <h5 className='lg:flex-[30%] text-muted-1 lg:text-primary font-semibold lg:text-xl text-base'>OUR IMPACT</h5>
-                <span className=' lg:text-5xl lg:flex-[70%] lg:font-light font-medium text-2xl'>You don't have to take our word for it.</span>
+          <div id='impact' className='w-full pt-20'>
+            <div className="border-t-2 lg:flex 2xl:pt-8 lg:pt-4 pt-8 mt-8 2xl:mb-19 lg:mb-10 mb-19">
+              <div className='lg:flex lg:flex-1 lg:px-2'>
+                <h5 className='lg:flex-[30%] !text-muted-1 !lg:text-primary !font-semibold !2xl:text-xl !xl:text-lg !text-base'>OUR IMPACT</h5>
+                <span className='2xl:text-5xl xl:text-4xl lg:text-3xl lg:flex-[70%] lg:font-light font-medium text-2xl'>You don't have to take our word for it.</span>
               </div>
-              <div className='lg:text-4xl lg:flex-1 text-xl font-light leading-6 lg:mt-0 mt-4'>
+              <div className='2xl:text-4xl xl:text-3xl lg:text-2xl lg:flex-1 text-xl font-light leading-6 lg:mt-0 mt-4 lg:px-2'>
                 <p>Here's what some of our clients have to say about the power of a well-defined campaign and data driven strategy.</p>
               </div>
             </div>
@@ -48,7 +48,7 @@ export default {
               {
                 _data.map((_item: Impact, index: number) => (
                   <div key={'title' + _item.name} className="border-t py-4">
-                    <Link href={`/impact/${index}`} className='font-light text-muted-1 no-underline'>
+                    <Link href={`/impact/${index}`} className='!font-light !text-muted-1 !no-underline'>
                       {_item.name}
                     </Link>
                   </div>
