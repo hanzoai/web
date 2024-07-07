@@ -52,13 +52,13 @@ const DesktopNavHanzo: React.FC<{
     }
   };
 
-  const handleMouseEnter = React.useCallback(() => {
+  const handleMouseEnter = () => {
     setIsMenuOpen(true);
-  }, [setIsMenuOpen]);
+  };
 
-  const handleMouseLeave = React.useCallback(() => {
+  const handleMouseLeave = () => {
     setIsMenuOpen(false);
-  }, [setIsMenuOpen]);
+  };
 
   const menuHiddenClass = !isMenuOpened ? "invisible" : "";
 
