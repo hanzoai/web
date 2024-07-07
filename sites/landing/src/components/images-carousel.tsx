@@ -29,84 +29,84 @@ const ImageComponent: React.FC<{
   onSelectImage
 }) => {
 
-  const roundedClass = img.rounded ? `rounded-${img.rounded}` : ''
-  
-  return (
-    <ApplyTypography>
-      <div onClick={onSelectImage}>
-        <ImageBlockComponent
-          block={{
-            blockType: 'image',
-            props: {
-              style: {
-                width: 'auto',
-                objectFit: 'cover'
+    return (
+      <ApplyTypography className='flex flex-col !gap-4 items-center h-full'>
+        <div className='h-full' onClick={onSelectImage}>
+          <ImageBlockComponent
+            block={{
+              blockType: 'image',
+              props: {
+                style: {
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                },
               },
-            },
-            ...img
-          } as ImageBlock}
-          className={cn('mx-auto', current !== index ? 'cursor-pointer' : '', roundedClass, 'lg:h-[576px] h-[398px]')}
-        />
-      </div>
-    </ApplyTypography>
-  )
-}
+              ...img
+            } as ImageBlock}
+            className={cn('mx-auto', current !== index ? 'cursor-pointer' : '', 'rounded-lg')}
+          />
+        </div>
+      </ApplyTypography>
+    )
+  }
 
 const ImageCarousel: React.FC<{
   className?: string,
 }> = ({
   className,
 }) => {
-  const [api, setApi] = useState<CarouselApi | undefined>()
-  const [current, setCurrent] = useState(0)
+    const [api, setApi] = useState<CarouselApi | undefined>()
+    const [current, setCurrent] = useState(0)
 
-  useEffect(() => {
-    if (!api) {
+    useEffect(() => {
+      if (!api) {
+        return
+      }
 
-      return
+      const onSelect = () => {
+        setCurrent(api.selectedScrollSnap())
+      }
+
+      api.on("select", onSelect)
+
+      return () => {
+        api.off("select", onSelect)
+      }
+    }, [api])
+
+    const selectedImage = (index: number) => {
+      if (api) {
+        api.scrollTo(index)
+      }
     }
 
-    
-    const onSelect = () => {
-      setCurrent(api.selectedScrollSnap())
-    }
+    useEffect(() => {
+      const handleScroll = () => {
+        const target = Math.floor(window.pageYOffset / window.innerHeight)
+        if (target !== current) {
+          selectedImage(target)
+        }
+      }
+      window.addEventListener("scroll", handleScroll)
+      return () => window.removeEventListener("scroll", handleScroll)
+    }, [current, selectedImage])
 
-    api.on("select", onSelect)
-
-    return () => {
-      api.off("select", onSelect)
-    }
-  }, [api])
-
-  const selectedImage = (index: number) => {
-    if (api) {
-      api.scrollTo(index)
-    }
-  }
-
-  return (
-    <Carousel
-      setApi={setApi}
-      options={{ align: 'start', loop: true }}
-      className={cn('w-full overflow-hidden max-w-[100vw]', className)}
-    >
-      <CarouselContent>
-        {images.map((image: ImageDef, index) => {
-          const basisClass = index === 0 || index === images.length - 1
-            ? 'lg:basis-1/4 '
-            : index === 1
-              ? 'lg:basis-2/4 '
-              : 'lg:basis-1/4';
-
-          return (
-            <CarouselItem key={index} className={basisClass}>
+    return (
+      <Carousel
+        setApi={setApi}
+        options={{ align: 'center', loop: true }}
+        className={cn('w-full', className)}
+      >
+        <CarouselContent>
+          {images.map((image: ImageDef, index) => (
+            <CarouselItem key={index} className={cn('basis-auto')}>
               <ImageComponent img={image} current={current} index={index} onSelectImage={() => selectedImage(index)} />
             </CarouselItem>
-          )
-        })}
-      </CarouselContent>
-    </Carousel>
-  )
-}
+          ))}
+        </CarouselContent>
+      </Carousel>
+    )
+  }
 
 export default ImageCarousel
