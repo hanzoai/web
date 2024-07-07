@@ -1,45 +1,45 @@
 import type { Metadata } from 'next'
 
 export default {
-  metadataBase: new URL('https://lux.credit'),
+  metadataBase: new URL('https://dash.hanzo.ai'),
   title: {
-    default: 'Lux Blank',
-    template: '%s | Lux Blank',
+    default: 'Hanzo Dashboard',
+    template: '%s | Hanzo',
   },
-  description: 'Explore your swaps',
-  applicationName: 'Lux Bridge Explorer',
-  authors: {name: 'Lux Dev team'},
-  keywords: "Lux Network, Blockchain Bridge, Multi-Chain, EVM, Solana, Bitcoin, Cross-Chain, Interoperability, Cryptocurrency, Blockchain Technology",
+  description: 'Hanzo DX Platform dashboard',
+  applicationName: 'Hanzo Platform',
+  authors: {name: 'Hanzo AI, Inc'},
+  keywords: "Hanzo, DX, Web3",
   icons: [
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      url: '/assets/hanzo-site-icons-white/favicon-16x16.png'   
+      url: '/assets/hanzo-site-icons-white/favicon-16x16.png'
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '32x32',
-      url: '/assets/hanzo-site-icons-white/favicon-32x32.png'   
+      url: '/assets/hanzo-site-icons-white/favicon-32x32.png'
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '192x192',
-      url: '/assets/hanzo-site-icons-white/android-chrome-192x192.png'   
+      url: '/assets/hanzo-site-icons-white/android-chrome-192x192.png'
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '512x512',
-      url: '/assets/hanzo-site-icons-white/android-chrome-512x512.png'   
+      url: '/assets/hanzo-site-icons-white/android-chrome-512x512.png'
     },
     {
       rel: 'apple-touch-icon',
       type: 'image/png',
       sizes: "180x180",
-      url: '/assets/hanzo-site-icons-white/apple-touch-icon.png'  
+      url: '/assets/hanzo-site-icons-white/apple-touch-icon.png'
     },
   ],
   //manifest: '/site.webmanifest',
@@ -64,4 +64,4 @@ export default {
   other: {
     'msapplication-TileColor': '#000000'
   },
-} as Metadata 
+} as Metadata
