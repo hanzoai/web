@@ -95,7 +95,7 @@ const DesktopNavHanzo: React.FC<{
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <div className="flex flex-row w-full justify-center border-r-0">
+                    <div className="flex flex-row w-full justify-center border-r-0 flex-wrap md:flex-auto">
                       {GroupChildMenu(el.childMenu)}
                     </div>
                   </NavigationMenuContent>

@@ -1,9 +1,9 @@
 import type DetailsBlock from '@/blocks/def/details'
 import type { Block, ScreenfulBlock } from '@hanzo/ui/blocks'
 import HanzoLogo from 'node_modules/@hanzo/brand/components/icons/hanzo-logo'
-import Product from './video/product'
-import Resources from './video/resources'
-import Solutions from './video/solutions'
+import Product from './svg/product'
+import Resources from './svg/resources'
+import Solutions from './svg/solutions'
 
 export default {
   blockType: 'details',

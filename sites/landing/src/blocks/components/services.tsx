@@ -73,14 +73,14 @@ const ServiceBlockComponent: React.FC<{
           setScrollHeight(scroller?.scrollWidth - scroller?.clientWidth)
         }
       }
-  
+
       resize();
-  
+
       window.addEventListener('resize', () => {
         resize();
       })
     }, [scrollRef])
-  
+
     useEffect(() => {
       const handleScroll = () => {
         const scroller = scrollRef.current;
@@ -92,9 +92,9 @@ const ServiceBlockComponent: React.FC<{
           }
         }
       }
-  
+
       window.addEventListener('scroll', handleScroll)
-  
+
       return () => {
         window.removeEventListener('scroll', handleScroll)
       }
@@ -102,17 +102,15 @@ const ServiceBlockComponent: React.FC<{
     return (
       <div className="!w-full slide snap-start relative" ref={containerRef}>
         <div className="w-full h-screen flex flex-col justify-center sticky top-0 left-0 pt-20">
-          <div className='w-full'>
-            <div className='lg:pl-13 flex pl-[14px]'>
-              <div className="w-[30%]">
-                <span className='lg:text-xl text-sm font-bold'>POWERED BY</span>
-                <div className='flex lg:align-top lg:items-start items-center'>
-                  <HanzoLogo className='lg:w-[80px] w-[23px] mr-[5px]' />
-                  <span className='lg:pr-20 lg:ml-5 lg:text-5xl text-base'>Hanzo</span>
-                </div>
+          <div className='flex flex-row 2xl:gap-20 xl:gap-16 lg:gap-12 gap-10 items-center md:px-6 px-2'>
+            <div className='flex flex-col 2xl:gap-6 xl:gap-5 gap-4'>
+              <span className='2xl:text-xl xl:text-base text-sm font-semibold whitespace-nowrap'>POWERED BY</span>
+              <div className='flex flex-row 2xl:gap-5 xl:gap-4 gap-3'>
+                <HanzoLogo className='2xl:w-[81px] xl:w-[70px] md:w-[60px] w-[23px]' />
+                <span className='2xl:text-5xl xl:text-4xl md:text-3xl text-base'>Hanzo</span>
               </div>
-              <p className='lg:text-2xl lg:mt-18 lg:font-medium font-thin'>The game-changer in  your go-to-market strategy.</p>
             </div>
+            <p className='text-base'>The game-changer in your go-to-market strategy.</p>
           </div>
           <style>
             {`.no-scrollbar::-webkit-scrollbar {
@@ -142,7 +140,6 @@ const ServiceBlockComponent: React.FC<{
               ))}
             </div>
           </div>
-
         </div>
         <div className="" style={{ height: scrollHeight }}></div>
       </div>

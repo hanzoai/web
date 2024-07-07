@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import type DetailsBlock from '../def/details'
 import type { Block } from '@hanzo/ui/blocks'
 import { Button } from '@hanzo/ui/primitives'
-import GotoBtn from '@/content/slides/details/video/Gotobtn'
+import GotoBtn from '@/content/slides/details/svg/Gotobtn'
 
 
 
