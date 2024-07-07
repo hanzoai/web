@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 import { cn } from '@hanzo/ui/util'
 import { AuthWidget } from '@hanzo/auth/components'
@@ -21,14 +21,14 @@ const DesktopHeader: React.FC<{
   className = ''
 }) => {
 
-  const [menuFlag, setMenuFlag] = useState(false)
+    const [isMenuOpened, setIsMenuOpen] = React.useState(false);
+    const opendMenuClass = isMenuOpened ? " h-full" : ""
 
     // TODO move 13px into a size class and configure twMerge to recognize say, 'text-size-nav' 
     // (vs be beat out by 'text-color-nav')
     return (
-      <header 
-      className={cn(`bg-transparent fixed z-header top-0 left-0 right-0 !backdrop-blur-3xl ${menuFlag ? 'h-full' : ''}`, className)} 
-        // className={'fixed z-header top-0 left-0 right-0 '}
+      <header
+        className={cn('bg-transparent fixed z-header top-0 left-0 right-0 !backdrop-blur-3xl', className, opendMenuClass)}
       >
         {/* md or larger */}
         <div className={
@@ -41,7 +41,7 @@ const DesktopHeader: React.FC<{
             {/* md or larger */}
           </div>
           <div className=' justify-center'>
-          <DesktopNavHanzo links={links} menuFlag={menuFlag} setMenuFlag={setMenuFlag} />
+            <DesktopNavHanzo links={links} isMenuOpened={isMenuOpened} setIsMenuOpen={setIsMenuOpen} />
           </div>
           <div className='flex items-center'>
             <Link href={"https://docs.google.com/document/d/1Kk4VmVf6RyVF8Bi3lCawFV9zAr7zV8O96pRU_YfHrf4/edit?usp=sharing"} className='m-[14px] hover:font-bold ease-in duration-200'>
