@@ -6,7 +6,7 @@ import type {
 import { ApplyTypography } from '@hanzo/ui/primitives'
 import ImageCarousel from '@/components/images-carousel'
 import Link from 'next/link'
-import GotoBtn from '../details/video/Gotobtn'
+import GotoBtn from '../details/svg/Gotobtn'
 
 const title = 'We believe in Innovation'
 

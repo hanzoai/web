@@ -48,16 +48,16 @@ const Footer: React.FC<{
 
     const handleSubmit = async () => {
       let valid = true
-      if (!isValidEmail(email)) { 
-        setEmail('Invalid Email Address'); 
+      if (!isValidEmail(email)) {
+        setEmail('Invalid Email Address');
         valid = false
       }
 
-      if (username.length < 1 || username == 'Name') { 
-        setUsername('Invalid Username'); 
-        valid = false 
+      if (username.length < 1 || username == 'Name') {
+        setUsername('Invalid Username');
+        valid = false
       }
-      
+
       if (valid) {
         try {
           const response = await fetch('/api/join-newsletter', {
@@ -95,96 +95,108 @@ const Footer: React.FC<{
           'md:w-full sm:justify-items-center md:mx-0 lg:w-full' +
           'md:flex md:flex-row md:justify-between '
         }>
-          <div className=' lg:grid grid-cols-4 !pointer-events-autow-full w-full' key={0}>
-            <div className=''>
+          <div className='flex md:flex-row flex-col !pointer-events-autow-full w-full gap-8' key={0}>
+            <div className='md:flex-1 flex flex-col 2xl:gap-10 gap-5'>
               <span className='text-2xl font-normal leading-5'>
                 Shortcuts
               </span>
-              <div className='grid grid-cols-3 gap-3 text-muted-1 lg:items-center text-base max-w-[222px] mt-9'>
-                <Link className='max-w-[83px]' href={"#"}>
-                  Home
-                </Link>
-                <Link className='max-w-[83px]' href={"#"}>
-                  Help
-                </Link>
-                <Link className='max-w-[83px]' href={"#"}>
-                  Changelog
-                </Link>
-                <Link className='max-w-[83px]' href={"#"}>
-                  Docs
-                </Link>
-                <Link className='max-w-[83px]' href={"#"}>
-                  Sales
-                </Link>
-                <Link className='max-w-[83px]' href={"#"}>
-                  Pricing
-                </Link>
-                <Link className='max-w-[83px]' href={"#"}>
-                  Guides
-                </Link>
-                <Link className='max-w-[83px]' href={"#"}>
-                  Blog
-                </Link>
-                <Link className='max-w-[83px]' href={"#"}>
-                  Legal
-                </Link>
+              <div className='flex flex-row gap-6 text-muted-1 lg:items-center text-base'>
+                <div className='flex flex-col gap-3'>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
+                    Home
+                  </Link>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
+                    Docs
+                  </Link>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
+                    Guides
+                  </Link>
+                </div>
+                <div className='flex flex-col gap-3'>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
+                    Help
+                  </Link>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
+                    Sales
+                  </Link>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
+                    Blog
+                  </Link>
+                </div>
+                <div className='flex flex-col gap-3'>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
+                    Changelog
+                  </Link>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
+                    Pricing
+                  </Link>
+                  <Link className='hover:text-primary transition duration-500' href={"#"}>
+                    Legal
+                  </Link>
+                </div>
               </div>
             </div>
-            <div className='lg:mt-0 mt-[41.52px]'>
-              <span className=' text-2xl leading-5 font-normal'>
+            <div className='md:flex-1 flex flex-col 2xl:gap-10 gap-5'>
+              <span className='text-2xl leading-5 font-normal'>
                 Connect with us
               </span>
               <div>
-                <Link href={"mailto:info@hanzo.ai"} className='lg:mt-[33.8px] mt-5 underline'>
+                <Link href={"mailto:info@hanzo.ai"} className='underline text-base font-light text-muted-1 hover:text-primary transition duration-500'>
                   info@hanzo.ai
                 </Link>
               </div>
             </div>
-            <div className='lg:mt-0 mt-[52px] lg:-ml-[150px]' >
-              <span className=' text-2xl'>
+            <div className='md:flex-1 flex flex-col 2xl:gap-10 gap-5' >
+              <span className='text-2xl font-normal leading-5'>
                 Join our newsletter
               </span>
-              <div className='flex flex-col max-w-[416px] lg:mt-[31.57px] mt-[21px]'>
+              <div className='flex flex-col gap-6'>
                 <input type='text' value={username} placeholder='Name' onChange={(e) => handleName(e)} className=' bg-transparent text-base outline-none text-muted-1 border-b' />
-                <div className='flex gap-[58px] w-full justify-between lg:mt-[31.57px] mt-[8.57px] lg:border-b-0 border-b'>
-                  <input type='text' value={email} placeholder='E-mail' onChange={(e) => handleEmail(e)} className='w-full bg-transparent text-base outline-none text-muted-1 lg:border-b max-w-[329px]' />
+                <div className='flex flex-row gap-4 w-full md:border-b-0 border-b'>
+                  <input type='text' value={email} placeholder='E-mail' onChange={(e) => handleEmail(e)} className='w-full bg-transparent text-base outline-none text-muted-1 md:border-b' />
                   <button className='bg-transparent' onClick={handleSubmit}>
-                    <Goto className='lg:bg-muted-1 bg-primary' />
+                    <Goto />
                   </button>
                 </div>
               </div>
             </div>
-            <div className='lg:mt-0 mt-12'>
-              <span className=' text-2xl '>
-                Follow Us
-              </span>
-              <div className='grid grid-cols-2 gap-3 text-[16px] lg:mt-[43.1px] mt-[30px]'>
-                <Link className='social-link' href={"https://x.com/hanzoai"}>
-                  X
-                </Link>
-                <Link className='social-link' href={"https://linkedin.com/company/hanzoai"}>
-                  Linkedin
-                </Link>
-                <Link className='social-link' href={"https://facebook.com/hanzoinc"}>
-                  Facebook
-                </Link>
-                <Link className='social-link' href={"https://github.com/hanzoai"}>
-                  Github
-                </Link>
-                <Link className='social-link' href={"https://instagram.com/hanzoinc"}>
-                  Instagram
-                </Link>
+            <div className='md:flex-1 flex md:justify-center'>
+              <div className='flex flex-col 2xl:gap-10 gap-5'>
+                <span className='text-2xl font-normal leading-5'>
+                  Follow Us
+                </span>
+                <div className='flex flex-row gap-6 text-[16px] text-muted-1'>
+                  <div className='flex flex-col gap-3'>
+                    <Link className='social-link hover:text-primary transition duration-500' href={"https://x.com/hanzoai"}>
+                      X
+                    </Link>
+                    <Link className='social-link hover:text-primary transition duration-500' href={"https://facebook.com/hanzoinc"}>
+                      Facebook
+                    </Link>
+                    <Link className='social-link hover:text-primary transition duration-500' href={"https://instagram.com/hanzoinc"}>
+                      Instagram
+                    </Link>
+                  </div>
+                  <div className='flex flex-col gap-3'>
+                    <Link className='social-link hover:text-primary transition duration-500' href={"https://linkedin.com/company/hanzoai"}>
+                      Linkedin
+                    </Link>
+                    <Link className='social-link hover:text-primary transition duration-500' href={"https://github.com/hanzoai"}>
+                      Github
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className='md:mt-[2vh] flex justify-start gap-8 lg:pl-[27px] mb-0'>
-          <Nvidia />
-          <Techstars />
-          <Stripe />
-          <Google />
-          <Amazon />
-          <Microsoft />
+          <div className='mt-8 flex flex-row md:justify-start justify-between md:gap-8'>
+            <Nvidia />
+            <Techstars />
+            <Stripe />
+            <Google />
+            <Amazon />
+            <Microsoft />
+          </div>
         </div>
       </footer>
     )

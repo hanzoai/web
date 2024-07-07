@@ -17,83 +17,102 @@ import {
 import Warpcast from "../icons/warpcast";
 import type { LinkDef } from "@hanzo/ui/types";
 
-const preventDefault = (e: WheelEvent | TouchEvent) => e.preventDefault();
-const handleMouseOver = () => {
-  document.addEventListener('wheel', preventDefault, { passive: false });
-  document.addEventListener('touchmove', preventDefault, { passive: false });
-};
 
-const handleMouseOut = () => {
-  document.removeEventListener('wheel', preventDefault);
-  document.removeEventListener('touchmove', preventDefault);
-};
-
-
-const DesktopNavHanzo: React.FC<{ 
-  links: LinkDefExtended[], 
+const DesktopNavHanzo: React.FC<{
+  links: LinkDefExtended[],
   className?: string,
-  menuFlag: boolean,
-  setMenuFlag: React.Dispatch<React.SetStateAction<boolean>>
-}> = ({ links, className = '', setMenuFlag, menuFlag }) => (
-  links.length > 0 ? (
-    <NavigationMenu>
-      <NavigationMenuList>
-        {links.map((el, index) => (
-          <NavigationMenuItem key={index}>
-            {el.title === 'Docs' || el.title === 'Pricing' ? (
-              <Link href={el.href} legacyBehavior passHref >
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(),' rounded-full')}>
-                  {el.title}
-                </NavigationMenuLink>
-              </Link>
-            ) : (
-              <>
-                <NavigationMenuTrigger className="rounded-full"
-                  onMouseOver={ () => {
-                    setMenuFlag(true)
-                    handleMouseOver()
-                  }}
-                  onMouseOut={ () => {
-                    setMenuFlag(false)
-                    handleMouseOut()
-                  } }
-                  onClick={ () => {
-                    if (menuFlag) {
-                      setMenuFlag(false)
-                      handleMouseOut()
-                    } else {
-                      setMenuFlag(true)
-                      handleMouseOver()
+  isMenuOpened: boolean,
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
+}> = ({ links, className = '', isMenuOpened, setIsMenuOpen }) => {
+  React.useEffect(() => {
+    const preventScroll = (e: WheelEvent | TouchEvent) => {
+      e.preventDefault();
+    };
+
+    if (isMenuOpened) {
+      window.addEventListener('wheel', preventScroll, { passive: false });
+      window.addEventListener('touchmove', preventScroll, { passive: false });
+      window.addEventListener('keydown', preventScrollKeys, { passive: false });
+    } else {
+      window.removeEventListener('wheel', preventScroll);
+      window.removeEventListener('touchmove', preventScroll);
+      window.removeEventListener('keydown', preventScrollKeys);
+    }
+
+    return () => {
+      window.removeEventListener('wheel', preventScroll);
+      window.removeEventListener('touchmove', preventScroll);
+      window.removeEventListener('keydown', preventScrollKeys);
+    };
+  }, [isMenuOpened]);
+
+  const preventScrollKeys = (e: KeyboardEvent) => {
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key)) {
+      e.preventDefault();
+    }
+  };
+
+  const handleMouseEnter = () => {
+    setIsMenuOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsMenuOpen(false);
+  };
+
+  const menuHiddenClass = !isMenuOpened ? "invisible" : "";
+
+  return (
+    links.length > 0 ? (
+      <NavigationMenu>
+        <NavigationMenuList>
+          {links.map((el, index) => (
+            <NavigationMenuItem key={index} className="!m-0">
+              {el.title === 'Docs' || el.title === 'Pricing' ? (
+                <Link href={el.href} legacyBehavior passHref >
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), ' text-muted-1 bg-transparent')}>
+                    {el.title}
+                  </NavigationMenuLink>
+                </Link>
+              ) : (
+                <>
+                  <NavigationMenuTrigger
+                    className="text-muted-1 bg-transparent"
+                    onMouseEnter={handleMouseEnter}
+                    onFocus={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    onBlur={handleMouseLeave}
+                  >
+                    {
+                      el.href && el.href !== "" ?
+                        <Link href={el.href} legacyBehavior passHref>
+                          {el.title}
+                        </Link> : <>{el.title}</>
                     }
-                  }}
-                >{el.title}</NavigationMenuTrigger>
-                <NavigationMenuContent className="fixed left-0 top-15 w-screen border-r-0 rounded-none h-full border-0 !backdrop-blur-3xl mt-0 bg-transparent"
-                  onMouseOver={ () => {
-                    setMenuFlag(true)
-                    handleMouseOver()
-                  }}
-                  onMouseOut={ () => {
-                    setMenuFlag(false)
-                    handleMouseOut()
-                  } }
-                >
-                  <div className="flex flex-row w-full justify-center border-r-0">
-                    {GroupChildMenu(el.childMenu)}
-                  </div>
-                </NavigationMenuContent>
-              </>
-            )}
-          </NavigationMenuItem>
-        ))}
-      </NavigationMenuList>
-    </NavigationMenu>
-  ) : null
-);
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent
+                    className={cn("fixed left-0 top-15 w-screen border-r-0 rounded-none h-full border-0 !backdrop-blur-3xl mt-0 bg-transparent", menuHiddenClass)}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <div className="flex flex-row w-full justify-center border-r-0 flex-wrap md:flex-auto">
+                      {GroupChildMenu(el.childMenu)}
+                    </div>
+                  </NavigationMenuContent>
+                </>
+              )}
+            </NavigationMenuItem>
+          ))}
+        </NavigationMenuList>
+      </NavigationMenu>
+    ) : null
+  )
+};
 
 export default DesktopNavHanzo;
 
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">, 
+  React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
 >(({ className, title, children, key, ...props }, ref) => (
   <li key={key}>
@@ -101,7 +120,7 @@ const ListItem = React.forwardRef<
       <a
         ref={ref}
         className={cn(
-          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:text-accent-foreground focus:bg-level-1 focus:text-accent-foreground text-muted-1 hover:text-primary hover:bg-transparent duration-500 ease-in-out",
+          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:text-accent-foreground focus:bg-level-1 focus:text-accent-foreground text-muted-1 hover:text-primary hover:bg-transparent duration-1000 ease-in-out",
           className
         )}
         {...props}
