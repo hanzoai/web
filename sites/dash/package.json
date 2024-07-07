@@ -11,8 +11,8 @@
     "tc": "tsc --noEmit"
   },
   "dependencies": {
-    "@hanzo/brand": "*",
     "@hanzo/auth": "*",
+    "@hanzo/brand": "*",
     "@hanzo/commerce": "*",
     "@hanzo/ui": "*",
     "@next/mdx": "14.1.0",
@@ -22,7 +22,8 @@
     "next-themes": "^0.2.1",
     "postcss-selector-parser": "^6.0.13",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "recharts": "^2.12.7"
   },
   "devDependencies": {
     "@mdx-js/loader": "^3.0.0",
