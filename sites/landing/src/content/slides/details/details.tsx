@@ -1,6 +1,9 @@
 import type DetailsBlock from '@/blocks/def/details'
 import type { Block, ScreenfulBlock } from '@hanzo/ui/blocks'
 import HanzoLogo from 'node_modules/@hanzo/brand/components/icons/hanzo-logo'
+import Product from './video/product'
+import Resources from './video/resources'
+import Solutions from './video/solutions'
 
 export default {
   blockType: 'details',
@@ -20,5 +23,5 @@ export default {
   buttonName: ["RESCOURCES", "OUR SERVICE", "DATA DRIVEN SOLUTIONS"],
   buttonLink: ["https://docs.hanzo.ai"],
   image: [],
-  video: ['/assets/hanzo-site-animation/02_black.mp4', '/assets/hanzo-site-animation/01_black.mp4', '/assets/hanzo-site-animation/03_black.mp4']
+  video: [<Product />, <Solutions />, <Resources />]
 } satisfies DetailsBlock as Block

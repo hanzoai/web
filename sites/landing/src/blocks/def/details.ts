@@ -11,7 +11,7 @@ interface DetailsBlock extends Block {
   buttonName:string[],
   buttonLink:string[],
   image: ReactElement[],
-  video: string[]
+  video: ReactElement[]
 }
 
 export { type DetailsBlock as default }

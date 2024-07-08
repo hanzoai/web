@@ -8,15 +8,15 @@ import GotoBtn from '@/content/slides/details/svg/Gotobtn'
 
 const throttle = (func: any, limit: any) => {
   let inThrottle: any;
-  return function(self: any) {
-      const args = arguments;
-      if (!inThrottle) {
-          func.apply(self, args);
-          inThrottle = true;
-          setTimeout(() => {
-              inThrottle = false;
-          }, limit);
-      }
+  return function (self: any) {
+    const args = arguments;
+    if (!inThrottle) {
+      func.apply(self, args);
+      inThrottle = true;
+      setTimeout(() => {
+        inThrottle = false;
+      }, limit);
+    }
   };
 }
 
@@ -33,6 +33,7 @@ const DetailsBlockComponent: React.FC<{
   const [topScroll, setTopScroll] = useState(0)
   const [bottomScroll, setBottomScroll] = useState(0)
   const scrollPositionRef = useRef(0)
+  const indexRef = useRef(0)
 
   useEffect(() => {
     const element = elementRef.current
@@ -49,7 +50,6 @@ const DetailsBlockComponent: React.FC<{
       setBottomScroll(bottomScrollPos)
     }
   }, [])
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,12 +103,17 @@ const DetailsBlockComponent: React.FC<{
       let index = Math.floor(scrollPercent * length)
       index = Math.max(0, index)
       index = Math.min(length - 1, index)
+      indexRef.current = index
       return index
     }
     return 0
   }
-  
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
+  }, [indexRef.current]);
 
   return (
     <div className='relative snap-start' ref={elementRef} style={{ scrollBehavior: 'smooth' }}>
@@ -133,7 +138,9 @@ const DetailsBlockComponent: React.FC<{
               </div>
             </div>
             <div className='lg:order-2 order-1 justify-center lg:w-full w-[300px] flex mx-auto'>
-              <video ref={videoRef} src={detail.video[getCurrentBlockIndex()]} muted width={582}></video>
+              <video ref={videoRef} muted width={582}>
+                {detail.video[getCurrentBlockIndex()]}
+              </video>
             </div>
           </section>
         </div>
@@ -142,14 +149,14 @@ const DetailsBlockComponent: React.FC<{
         </div>
       </div>
 
-      <div className="h-[3500px]" style={{ marginTop: '-100vh' }}></div>
-      <div className="h-[11600px]" style={{ marginTop: '-100vh' }}></div>
-      <div className="h-[6700px]" style={{ marginTop: '-100vh' }}></div>
+      <div className="h-[3000px]" style={{ marginTop: '-100vh' }}></div>
+      <div className="h-[11000px]" style={{ marginTop: '-100vh' }}></div>
+      <div className="h-[6000px]" style={{ marginTop: '-100vh' }}></div>
 
       {/* {new Array(length).fill(null).map((_, index) => (
-        <div className="h-[120vh]" key={index} style={{ marginTop: index === 0 ? '-100vh' : '0px' }}></div>
+        <div key={index} style={{ marginTop: index === 0 ? '-100vh' : '0px', height: `${videoDuration[index] * 100}px` }}></div>
       ))} */}
-      
+
       <div className="" style={{ height: '100vh', width: '100%' }}></div>
     </div>
   )
