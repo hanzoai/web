@@ -38,7 +38,7 @@ const FooterSlide: React.FC<{
           </div>
         </div>
       </div>
-      <Footer siteDef={siteDef} className='grow-0 w-full pt-6 border-t-2 flex flex-col justify-center md:justify-start px-auto' />
+      <Footer siteDef={siteDef} className='grow-0 w-full 2xl:pt-6 pt-4 border-t-2 flex flex-col justify-center md:justify-start px-auto' />
     </div>
   )
 

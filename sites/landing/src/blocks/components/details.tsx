@@ -43,7 +43,6 @@ const DetailsBlockComponent: React.FC<{
   useEffect(() => {
     setImageSource()
     if (scrollIndex !== getCurrentBlockIndex()) {
-      console.log(getCurrentBlockIndex())
       setContentAnim('')
       setTimeout(() => {
         setContentAnim('animate-leftIn')
@@ -79,7 +78,6 @@ const DetailsBlockComponent: React.FC<{
         for (let i = 1; i <= frameCounter[block]; i++) {
           const img = new Image();
           img.src = `/assets/hanzo-site-animation/block${block}/${i}.png`
-          console.log(img.src)
         }
       }
     }
