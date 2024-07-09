@@ -5,7 +5,6 @@ import type { Block } from '@hanzo/ui/blocks'
 import { Button } from '@hanzo/ui/primitives'
 import GotoBtn from '@/content/slides/details/svg/Gotobtn'
 import { cn } from '@hanzo/ui/util'
-import video from 'node_modules/@luxfi/data/commerce/families/videos/gold'
 
 const DetailsBlockComponent: React.FC<{
   block: Block,
@@ -15,6 +14,7 @@ const DetailsBlockComponent: React.FC<{
   const detail = block as DetailsBlock
   const length = 3
   const elementRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const [topScroll, setTopScroll] = useState(0)
   const [bottomScroll, setBottomScroll] = useState(0)
   const [isIntersecting, setIntersecting] = useState(false)
@@ -67,12 +67,10 @@ const DetailsBlockComponent: React.FC<{
     if (element) {
       const elementTopOffset = element.offsetTop
       const elementHeight = element.offsetHeight
-
       const viewportHeight = window.innerHeight
 
       const topScrollPos = elementTopOffset
-
-      const bottomScrollPos = elementTopOffset - viewportHeight + elementHeight
+      const bottomScrollPos = elementTopOffset + elementHeight - viewportHeight
 
       setTopScroll(topScrollPos)
       setBottomScroll(bottomScrollPos)
@@ -90,8 +88,7 @@ const DetailsBlockComponent: React.FC<{
 
   useEffect(() => {
     const handleScroll = () => {
-      const position = window.scrollY
-      setScrollPosition(position)
+      setScrollPosition(window.scrollY)
     }
 
     window.addEventListener('scroll', handleScroll)
