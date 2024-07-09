@@ -11,49 +11,6 @@ const _data: Impact[] = [
     { name: 'Impact Hub Bali', founder: 'Rebecca Rocco', role: 'Managing Director', image1: '/assets/hanzo-site-animation/1.png', image2: '/assets/hanzo-site-animation/1.png', description: `Her expertise in deploying new technologies has streamlined operations for numberous finanical institutions. "hanzo's multi-currency payment system is robust and reliable, making it easier for us to handle a global clientele. There commitment to innovation and security is unmatched` },
 ]
 
-const ImpactItem = ({ name, founder, role, description, image1, image2 }: Impact) => {
-    const [isOpen, setIsOpen] = useState(false)
-    const [openItem, setOpenItem] = useState('hidden')
-
-    const handleItemClick = () => {
-        if (openItem == 'hidden') setOpenItem('flex')
-        else setOpenItem('hidden')
-    }
-
-    useEffect(() => {
-        const handleClick = () => {
-            // setIsOpen(!isOpen)
-        }
-        window.addEventListener('click', handleClick)
-
-        return () => {
-            window.removeEventListener('click', handleClick)
-        }
-    }, [])
-    return (
-        <div className="hidden border-t-2 lg:flex flex-col 2xl:pt-8 lg:pt-4 pt-8 2xl:mt-19 lg:mt-10 gap-10" onClick={handleItemClick}>
-            <div className='flex flex-row'>
-                <div className='flex flex-1 px-2'>
-                    <span className='2xl:text-2xl xl:text-xl text-lg text-muted-1 flex-[30%] '>{name}</span>
-                    <span className='2xl:text-2xl xl:text-xl text-lg text-muted-1 flex-[35%]'>{founder}</span>
-                    <span className='2xl:text-2xl xl:text-xl text-lg text-muted-1 flex-[35%]'>{role}</span>
-                </div>
-                <div className="flex-1 text-xl px-2">
-                    <p className='2xl:text-xl xl:text-lg text-base'>{description}</p>
-                </div>
-            </div>
-            <div className={cn('flex-row items-center gap-10 transition duration-500', openItem)}>
-                <div className='rounded-2xl overflow-hidden'>
-                    <img src={image1} className='' />
-                </div>
-                <div className='rounded-2xl overflow-hidden'>
-                    <img src={image2} className='' />
-                </div>
-            </div>
-        </div>
-    )
-}
-
 export function Accordion(
     props: {
         index: number;
