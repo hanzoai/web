@@ -2,9 +2,8 @@
 import HanzoLogo from "@/content/slides/companies/svg/hanzo"
 import type ServiceBlock from "../def/services"
 import type { Block } from "@hanzo/ui/blocks"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type RefObject } from "react"
+import { cn } from "lib/utils"
 
 
 const ServiceBlockComponent: React.FC<{
@@ -28,26 +27,35 @@ const ServiceBlockComponent: React.FC<{
     const [scrollHeight, setScrollHeight] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    useEffect(() => {
-      // const sections = gsap.utils.toArray(".panel")
-      // const container = containerRef.current
-      // if (!container) return
+    const [isIntersecting, setIntersecting] = useState(false)
+    const [titleAnim, setTitleAnim] = useState('')
+    const [bodyAnim, setBodyAnim] = useState('')
+    const ref = useRef<HTMLDivElement>(null)
 
-      // const scrollTween = gsap.to(sections, {
-      //   xPercent: -100 * (sections.length - 1),
-      //   ease: "none",
-      //   scrollTrigger: {
-      //     trigger: container,
-      //     pin: true,
-      //     scrub: 0.1,
-      //     end: () => `+=${container.clientWidth * (sections.length - 1)}`,
-      //     markers: true
-      //   }
-      // })
-      // return () => {
-      //   ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-      // }
-    }, [])
+    useEffect(() => {
+      const observer = new IntersectionObserver(([entry]) => {
+        setIntersecting(entry.isIntersecting)
+      })
+
+      if (ref.current) {
+        observer.observe(ref.current);
+        return () => {
+          observer.disconnect();
+          setIntersecting(false)
+        }
+      }
+    }, [ref]);
+
+    useEffect(() => {
+      if (isIntersecting) {
+        setTitleAnim('animate-topIn')
+        setBodyAnim('animate-bottomIn')
+      }
+      else {
+        setTitleAnim('')
+        setBodyAnim('')
+      }
+    }, [isIntersecting])
 
     useEffect(() => {
       const element = containerRef.current
@@ -87,6 +95,7 @@ const ServiceBlockComponent: React.FC<{
         if (scroller && window.scrollY > topScroll) {
           scroller.scrollLeft = window.scrollY - topScroll;
           const newIndex = Math.floor(scroller.scrollLeft / (scroller.scrollWidth / 8));
+          console.log("newIndex: ", newIndex)
           if (newIndex !== currentIndex) {
             setCurrentIndex(newIndex)
           }
@@ -102,7 +111,7 @@ const ServiceBlockComponent: React.FC<{
     return (
       <div className="!w-full slide snap-start relative" ref={containerRef}>
         <div className="w-full h-screen flex flex-col justify-center sticky top-0 left-0 pt-20">
-          <div className='flex flex-row 2xl:gap-20 xl:gap-16 lg:gap-12 gap-10 items-center md:px-6 px-2'>
+          <div ref={ref} className={cn('flex flex-row 2xl:gap-20 xl:gap-16 lg:gap-12 gap-10 items-center md:px-6 px-2', titleAnim)}>
             <div className='flex flex-col 2xl:gap-6 xl:gap-5 gap-4'>
               <span className='2xl:text-xl xl:text-base text-sm font-semibold whitespace-nowrap'>POWERED BY</span>
               <div className='flex flex-row 2xl:gap-5 xl:gap-4 gap-3'>
@@ -117,7 +126,7 @@ const ServiceBlockComponent: React.FC<{
               display: none;
             }`}
           </style>
-          <div className="w-full overflow-x-auto overflow-y-hidden no-scrollbar " ref={scrollRef}>
+          <div className={cn("w-full overflow-x-auto overflow-y-hidden no-scrollbar", bodyAnim)} ref={scrollRef}>
             <div className="grid grid-rows-2 grid-flow-col gap-x-12 gap-y-10 w-max px-4 mt-15">
               {new Array(8).fill(null).map((_, index) => (
                 <section key={index} className={`panel flex box-${index + 1} ${className}`}>
