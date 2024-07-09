@@ -13,7 +13,7 @@ import {
 import { ImageBlockComponent, type ImageBlock } from '@hanzo/ui/blocks'
 import type React from 'react'
 import { cn } from '@hanzo/ui/util'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 import images from '@/content/images'
 
@@ -21,11 +21,13 @@ const ImageComponent: React.FC<{
   img: ImageDef
   current: number
   index: number
+  className?: string
   onSelectImage: () => void
 }> = ({
   img,
   current,
   index,
+  className = '',
   onSelectImage
 }) => {
 
@@ -44,7 +46,7 @@ const ImageComponent: React.FC<{
               },
               ...img
             } as ImageBlock}
-            className={cn('mx-auto', current !== index ? 'cursor-pointer' : '', 'rounded-lg')}
+            className={cn('mx-auto', current !== index ? 'cursor-pointer' : '', 'rounded-lg', className)}
           />
         </div>
       </ApplyTypography>
@@ -58,6 +60,33 @@ const ImageCarousel: React.FC<{
 }) => {
     const [api, setApi] = useState<CarouselApi | undefined>()
     const [current, setCurrent] = useState(0)
+    const [isIntersecting, setIntersecting] = useState(false)
+    const [content, setContentAnim] = useState('')
+
+    const ref = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            setIntersecting(entry.isIntersecting)
+        })
+
+        if (ref.current) {
+            observer.observe(ref.current);
+            return () => {
+                observer.disconnect();
+                setIntersecting(false)
+            }
+        }
+    }, [ref]);
+
+    useEffect(() => {
+        if (isIntersecting) {
+          setContentAnim('animate-bottomIn')
+        }
+        else {
+          setContentAnim('')
+        }
+    }, [isIntersecting])
 
     useEffect(() => {
       if (!api) {
@@ -93,19 +122,22 @@ const ImageCarousel: React.FC<{
     }, [current, selectedImage])
 
     return (
-      <Carousel
-        setApi={setApi}
-        options={{ align: 'center', loop: true }}
-        className={cn('w-full', className)}
-      >
-        <CarouselContent>
-          {images.map((image: ImageDef, index) => (
-            <CarouselItem key={index} className={cn('basis-auto')}>
-              <ImageComponent img={image} current={current} index={index} onSelectImage={() => selectedImage(index)} />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+      <div className={cn('h-full', content)}>
+        <Carousel
+          setApi={setApi}
+          options={{ align: 'center', loop: true }}
+          className={cn('w-full', className)}
+          ref={ref}
+        >
+          <CarouselContent>
+            {images.map((image: ImageDef, index) => (
+              <CarouselItem key={index} className={cn('basis-auto')}>
+                <ImageComponent img={image} current={current} index={index} onSelectImage={() => selectedImage(index)} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
     )
   }
 

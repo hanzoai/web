@@ -10,7 +10,6 @@ interface DetailsBlock extends Block {
   explain2: string[],
   buttonName:string[],
   buttonLink:string[],
-  image: ReactElement[]
 }
 
 export { type DetailsBlock as default }

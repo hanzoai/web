@@ -5,7 +5,7 @@ import type {
   ElementBlock,
 } from '@hanzo/ui/blocks'
 
-
+import VisionTitle from '@/components/component/vision-title'
 
 export default {
   blockType: 'screenful',
@@ -16,12 +16,7 @@ export default {
       {
         blockType: 'element',
         element: (
-          <div className='w-full px-9 2xl:mb-30 xl:mb-20 mb-10 mt-20'>
-            <p className='text-muted-1 !mb-10 2xl:text-[20px] xl:text-base text-sm font-normal'>OUR VISION</p>
-            <span className='2xl:text-[52px] lg:text-4xl text-2xl 2xl:leading-[64px] font-light'>
-              We <b className='font-bold '>empower businesses</b> to transcend traditional boundaries and redefine success with pioneering digital solutions - enabling acceleration and growth that expand companies reach by providing a suite of digital tools that simplify complex challenges when launching, scaling, and innovating.
-            </span>
-          </div>
+          <VisionTitle></VisionTitle>
         )
       } satisfies ElementBlock as Block,
       {
