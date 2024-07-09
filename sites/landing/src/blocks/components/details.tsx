@@ -121,12 +121,12 @@ const DetailsBlockComponent: React.FC<{
       <div className="flex z-10 w-full h-[100vh] px-5 pt-20 sticky top-0">
         <div className="flex sections-container relative self-center w-full h-full">
           <section className='flex flex-col md:flex-row detailSection animated-section h-full w-full py-5 self-center'>
-            <div ref={detailRef} className={cn('flex flex-col justify-center 2xl:lg:pl-24 outer lg:pl-2 md:order-1 order-2 px-[12px] h-pr-50 md:h-pr-100 w-full md:w-pr-40', contentAnim)}>
+            <div ref={detailRef} className={cn('flex flex-col justify-start md:justify-center 2xl:lg:pl-24 outer lg:pl-2 md:order-1 order-2 px-[12px] h-pr-50 md:h-pr-100 w-full md:w-pr-40', contentAnim)}>
               <span className='2xl:text-[20px] lg:text-[12px] lg:block hidden'>{detail.pretitle[getCurrentBlockIndex()]}</span>
               <p className='2xl:text-[32px] lg:text-[24px] lg:block mt-2 2xl:mt-4 hidden'>{detail.title[getCurrentBlockIndex()]}</p>
-              <p className='2xl:text-[55px] 2xl:leading-[64px] font-sans section-heading text-2xl leading-[29px] font-bold 2xl:mt-22 xl:mt-16 mt-10'>{detail.subtitle[getCurrentBlockIndex()]}</p>
-              <p className='2xl:text-[20px] lg:text-[16px] lg:leading-6 text-xl leading-5 mt-4 xl:mt-5 2xl:mt-6'>{detail.explain1[getCurrentBlockIndex()]}</p>
-              <p className='2xl:text-[20px] lg:text-[16px] lg:leading-6 text-xl leading-5 mt-4 xl:mt-5 2xl:mt-6'>{detail.explain2[getCurrentBlockIndex()]}</p>
+              <p className='2xl:text-[55px] 2xl:leading-[64px] font-sans section-heading lg:text-2xl text-xl leading-[29px] font-bold 2xl:mt-22 xl:mt-16 mt-10'>{detail.subtitle[getCurrentBlockIndex()]}</p>
+              <p className='2xl:text-[20px] lg:text-[16px] lg:leading-6 text-base leading-5 mt-4 xl:mt-5 2xl:mt-6'>{detail.explain1[getCurrentBlockIndex()]}</p>
+              <p className='2xl:text-[20px] lg:text-[16px] lg:leading-6 text-base leading-5 mt-4 xl:mt-5 2xl:mt-6'>{detail.explain2[getCurrentBlockIndex()]}</p>
               <Button variant={'outline'} rounded={'none'} className='hidden lg:block w-[248px] h-[66.76px] md:text-base 2xl:mt-26 xl:mt-20 mt-16'>
                 {detail.buttonName[getCurrentBlockIndex()]}
               </Button>
@@ -136,7 +136,7 @@ const DetailsBlockComponent: React.FC<{
               </Button>
               <span className='text-sm lg:hidden'>{detail.pretitle[getCurrentBlockIndex()]}</span>
             </div>
-            <div className={cn('md:order-2 order-1 self-center justify-center h-pr-50 md:h-pr-90 w-full md:w-pr-60 flex mx-auto px-10')}><img src={imgSrc}></img></div>
+            <div className={cn('md:order-2 order-1 self-center justify-center h-pr-50 md:h-pr-90 w-pr-80 md:w-pr-50 flex mx-auto px-10 items-center')}><img src={imgSrc} className=''></img></div>
           </section>
         </div>
         <div className='absolute top-20 right-0 w-3 bg-transparent h-[calc(100vh-80px)] overflow-hidden'>
