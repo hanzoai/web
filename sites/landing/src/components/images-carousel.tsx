@@ -61,31 +61,31 @@ const ImageCarousel: React.FC<{
     const [api, setApi] = useState<CarouselApi | undefined>()
     const [current, setCurrent] = useState(0)
     const [isIntersecting, setIntersecting] = useState(false)
-    const [content, setContentAnim] = useState('')
+    const [contentAnim, setContentAnim] = useState('')
 
-    const ref = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(([entry]) => {
-            setIntersecting(entry.isIntersecting)
-        })
-
-        if (ref.current) {
-            observer.observe(ref.current);
-            return () => {
-                observer.disconnect();
-                setIntersecting(false)
-            }
-        }
-    }, [ref]);
+    const carouselRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        if (isIntersecting) {
-          setContentAnim('animate-bottomIn')
+      const observer = new IntersectionObserver(([entry]) => {
+        setIntersecting(entry.isIntersecting)
+      })
+
+      if (carouselRef.current) {
+        observer.observe(carouselRef.current);
+        return () => {
+          observer.disconnect();
+          setIntersecting(false)
         }
-        else {
-          setContentAnim('')
-        }
+      }
+    }, [carouselRef]);
+
+    useEffect(() => {
+      if (isIntersecting) {
+        setContentAnim('animate-rightIn')
+      }
+      else {
+        setContentAnim('')
+      }
     }, [isIntersecting])
 
     useEffect(() => {
@@ -122,12 +122,11 @@ const ImageCarousel: React.FC<{
     }, [current, selectedImage])
 
     return (
-      <div className={cn('h-full', content)}>
+      <div ref={carouselRef} className={cn('overflow-hidden', contentAnim)}>
         <Carousel
           setApi={setApi}
           options={{ align: 'center', loop: true }}
-          className={cn('w-full', className)}
-          ref={ref}
+          className={cn('flex justify-center pt-11 overflow-hidden', className)}
         >
           <CarouselContent>
             {images.map((image: ImageDef, index) => (

@@ -5,6 +5,8 @@ interface Impact {
   founder: string,
   role: string,
   description: string
+  image1: string
+  image2: string
 }
 
 export {

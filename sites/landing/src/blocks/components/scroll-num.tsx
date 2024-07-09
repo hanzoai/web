@@ -54,19 +54,29 @@ const ScrollNumBlockComponent: React.FC<{
     }, [ref]);
 
     useEffect(() => {
-      if (isIntersecting) setClassname('animate-bottomIn')
+      if (isIntersecting) {
+        numberAnim()
+        setClassname('animate-bottomIn')
+      }
       else setClassname('')
     }, [isIntersecting])
 
     const scrollNum = block as ScrollNumBlock
 
     useEffect(() => {
-      const counters = document.querySelectorAll('.animCounter')
+      numberAnim()
+    }, []);
 
-      counters.forEach(counter => {
+    function numberAnim() {
+      const counters = document.querySelectorAll('.animCounter')
+      const content = ["11", "100", "1B", "120"]
+
+      counters.forEach((counter, index) => {
         if (counter instanceof HTMLElement) {
-          const finalText = counter.textContent || "0";
+          const finalText = content[index] || "0";
           const finalValue = parseNumber(finalText);
+
+          console.log("index: ", index)
 
           const animationTarget = { value: 0 }
           gsap.to(animationTarget, {
@@ -82,10 +92,11 @@ const ScrollNumBlockComponent: React.FC<{
               end: "bottom 20%",
               toggleActions: "play none none reverse",
             },
+            delay: index * 0.5
           });
         }
       });
-    }, []);
+    }
 
     return (
       <div id='fast-facts' ref={ref} className={cn('grid lg:grid-cols-4 gap-10 px-9 w-full my-8 sm:grid-cols-2 xs:grid-cols-2', classname)}>
