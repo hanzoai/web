@@ -95,7 +95,6 @@ const ServiceBlockComponent: React.FC<{
         if (scroller && window.scrollY > topScroll) {
           scroller.scrollLeft = window.scrollY - topScroll;
           const newIndex = Math.floor(scroller.scrollLeft / (scroller.scrollWidth / 8));
-          console.log("newIndex: ", newIndex)
           if (newIndex !== currentIndex) {
             setCurrentIndex(newIndex)
           }

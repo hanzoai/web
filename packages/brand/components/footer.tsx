@@ -6,7 +6,6 @@ import type { LinkDef } from '@hanzo/ui/types'
 import { Form, NavItems } from '@hanzo/ui/primitives'
 import { cn } from '@hanzo/ui/util'
 
-import Copyright from './copyright'
 import type { SiteDef } from '../site-def'
 import { legal } from '../site-def/footer/legal'
 import Logo from './logo'
@@ -90,14 +89,19 @@ const Footer: React.FC<{
     return (
       <footer className={cn('grow flex flex-col justify-between gap-6 pb-[2vh]', className)}>
         <div className={
-          (noHorizPadding ? '' : 'px-5 md:px-8 ') +
+          (noHorizPadding ? '' : 'px-4 md:px-8 ') +
           'gap-4 gap-y-6 md:gap-x-6 lg:gap-8 ' + smGridColsClx +
           'md:w-full sm:justify-items-center md:mx-0 lg:w-full' +
           'md:flex md:flex-row md:justify-between '
         }>
           <div className='flex md:flex-row flex-col !pointer-events-autow-full w-full gap-8' key={0}>
-            <div className='md:flex-1 flex flex-col 2xl:gap-10 gap-5'>
-              <span className='text-2xl font-normal leading-5'>
+            <div className='md:flex-[19%] flex flex-col 2xl:gap-10 gap-4'>
+              <div className='flex flex-row 2xl:gap-5 xl:gap-4 gap-3'>
+                <Logo size='md' href='https://hanzo.ai/' className='flex' key='two' layout='logo-only'/>
+              </div>
+            </div>
+            <div className='md:flex-[27%] flex flex-col 2xl:gap-10 gap-4'>
+              <span className='2xl:text-2xl md:text-xl text-2xl font-normal leading-5'>
                 Shortcuts
               </span>
               <div className='flex flex-row gap-6 text-muted-1 lg:items-center text-base'>
@@ -136,21 +140,11 @@ const Footer: React.FC<{
                 </div>
               </div>
             </div>
-            <div className='md:flex-1 flex flex-col 2xl:gap-10 gap-5'>
-              <span className='text-2xl leading-5 font-normal'>
-                Connect with us
-              </span>
-              <div>
-                <Link href={"mailto:info@hanzo.ai"} className='underline text-base font-light text-muted-1 hover:text-primary transition duration-500'>
-                  info@hanzo.ai
-                </Link>
-              </div>
-            </div>
-            <div className='md:flex-1 flex flex-col 2xl:gap-10 gap-5' >
-              <span className='text-2xl font-normal leading-5'>
+            <div className='md:flex-[27%] flex flex-col 2xl:gap-10 md:gap-4 gap-8' >
+              <span className='2xl:text-2xl md:text-xl text-2xl font-normal leading-5'>
                 Join our newsletter
               </span>
-              <div className='flex flex-col gap-6'>
+              <div className='flex flex-col gap-3'>
                 <input type='text' value={username} placeholder='Name' onChange={(e) => handleName(e)} className=' bg-transparent text-base outline-none text-muted-1 border-b' />
                 <div className='flex flex-row gap-4 w-full md:border-b-0 border-b'>
                   <input type='text' value={email} placeholder='E-mail' onChange={(e) => handleEmail(e)} className='w-full bg-transparent text-base outline-none text-muted-1 md:border-b' />
@@ -159,10 +153,20 @@ const Footer: React.FC<{
                   </button>
                 </div>
               </div>
+              <div className='md:flex-1 flex flex-col 2xl:gap-10 gap-3'>
+                <span className='2xl:text-2xl md:text-xl text-2xl leading-5 font-normal'>
+                  Connect with us
+                </span>
+                <div>
+                  <Link href={"mailto:info@hanzo.ai"} className='underline text-base font-light text-muted-1 hover:text-primary transition duration-500'>
+                    info@hanzo.ai
+                  </Link>
+                </div>
+              </div>
             </div>
-            <div className='md:flex-1 flex md:justify-center'>
-              <div className='flex flex-col 2xl:gap-10 gap-5'>
-                <span className='text-2xl font-normal leading-5'>
+            <div className='md:flex-[27%] flex md:justify-center'>
+              <div className='flex flex-col 2xl:gap-10 gap-4'>
+                <span className='2xl:text-2xl md:text-xl text-2xl font-normal leading-5'>
                   Follow Us
                 </span>
                 <div className='flex flex-row gap-6 text-[16px] text-muted-1'>
