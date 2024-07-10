@@ -46,9 +46,9 @@ export default function Innovation() {
                     </Link>
                     <GotoBtn className='lg:hidden ml-4 w-[17px]' />
                 </div>
-                <p className='2xl:text-[150px] xl:text-[100px] text-[30px] text-left font-medium'>{title}</p>
+                <p className='2xl:text-[130px] xl:text-[100px] lg:text-6xl md:text-4xl text-[30px] text-left font-medium'>{title}</p>
             </div>
-            <ImageCarousel className='pt-11 items-center' />
+            <ImageCarousel />
         </div>
     )
 }

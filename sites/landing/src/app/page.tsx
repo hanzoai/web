@@ -30,6 +30,8 @@ const Page = ({ searchParams }: Props) => {
             agent={agent}
             snapTile
             key={`section-${index}`}
+            contentClx='overflow-hidden'
+            clx='overflow-hidden'
           />
         )
       else {

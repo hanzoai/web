@@ -40,7 +40,7 @@ export default {
         },
         'right-in': {
           '0%': {
-            transform: 'translateX(50)',
+            transform: 'translateX(1000px)',
             opacity: 0
           },
           '100%': {

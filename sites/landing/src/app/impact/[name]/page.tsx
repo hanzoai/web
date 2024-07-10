@@ -6,8 +6,8 @@ import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react'
 // data
 const data: Impact[] = [
-  { name: 'Triller', founder: 'Jeniffer Patel', role: 'Founder & CEO', description: `Jenifer has spearheaded the green technology industry for over a decade, turning her stgartup into a leading provider of eco-friendly products. GG engergy is a pioneer in green solutions across global markets.."We were Greatefull for the opportunity to work with Hanzo and take the company public."` },
-  { name: 'Impact Hub Bali', founder: 'Rebecca Rocco', role: 'Managing Director', description: `Her expertise in deploying new technologies has streamlined operations for numberous finanical institutions. "hanzo's multi-currency payment system is robust and reliable, making it easier for us to handle a global clientele. There commitment to innovation and security is unmatched` },
+  { name: 'Triller', founder: 'Jeniffer Patel', role: 'Founder & CEO', image1: '/assets/hanzo-site-animation/1.png', image2: '/assets/hanzo-site-animation/1.png', description: `Jenifer has spearheaded the green technology industry for over a decade, turning her stgartup into a leading provider of eco-friendly products. GG engergy is a pioneer in green solutions across global markets.."We were Greatefull for the opportunity to work with Hanzo and take the company public."` },
+  { name: 'Impact Hub Bali', founder: 'Rebecca Rocco', role: 'Managing Director', image1: '/assets/hanzo-site-animation/1.png', image2: '/assets/hanzo-site-animation/1.png', description: `Her expertise in deploying new technologies has streamlined operations for numberous finanical institutions. "hanzo's multi-currency payment system is robust and reliable, making it easier for us to handle a global clientele. There commitment to innovation and security is unmatched` },
 ]
 interface Props {
   params: { name: string }; // Existing prop
