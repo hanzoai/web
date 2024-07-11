@@ -3,11 +3,11 @@ import { BarChart, User2, ShoppingBasket, Notebook, Settings } from "lucide-reac
 import SideBarMenuItem from "@/components/SideBarMenuItem";
 
 const sidebarData = [
-  { label: "Overview", icon: <BarChart />, href: "" },
-  { label: "Users", icon: <User2 />, href: "" },
-  { label: "Products", icon: <ShoppingBasket />, href: "" },
-  { label: "Orders", icon: <Notebook />, href: "" },
-  { label: "Integrations", icon: <Settings />, href: "" },
+  { label: "Overview", icon: <BarChart />, href: "/dashboard" },
+  { label: "Users", icon: <User2 />, href: "/users" },
+  { label: "Products", icon: <ShoppingBasket />, href: "/products" },
+  { label: "Orders", icon: <Notebook />, href: "/orders" },
+  { label: "Integrations", icon: <Settings />, href: "/integrations" },
 ];
 
 const SideBar: FC = () => {
