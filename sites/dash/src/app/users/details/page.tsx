@@ -59,7 +59,7 @@ const Page = () => {
   const [postalCode, setPostalCode] = useState<string>('');
 
   return (
-    <div className="flex-1 space-y-4 p-8 pt-6">
+    <div className="flex-1 space-y-4 p-8 pt-6 overflow-y-auto">
       <div className="flex flex-col space-y-2 w-full rounded-[0.5rem] border bg-background shadow p-2">
         <div>
           <h1 className="text-primary text-2xl">Statistics</h1>
@@ -115,7 +115,7 @@ const Page = () => {
           <Button>Save</Button>
         </div>
       </div>
-      <div className="flex flex-col space-y-4 w-full rounded-[0.5rem] border bg-background shadow p-2 text-muted-1">
+      <div className="flex flex-col space-y-4 w-full rounded-[0.5rem] border bg-background shadow p-2 text-muted-1 max-w-[calc(100vw-366px)]">
         <div>
           <h1 className="text-primary text-2xl">Orders</h1>
         </div>
