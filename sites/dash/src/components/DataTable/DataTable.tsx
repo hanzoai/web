@@ -48,7 +48,7 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
         filterKey &&
         <div className="flex items-center py-4">
           <Input
-            placeholder={`Filter ${filterKey}..."`}
+            placeholder={`Filter ${filterKey}...`}
             value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
             onChange={(event) =>
               table.getColumn(filterKey)?.setFilterValue(event.target.value)
@@ -57,7 +57,7 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
           />
         </div>
       }
-      <div className="rounded-md border">
+      <div className="rounded-md border custom-scroll">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
