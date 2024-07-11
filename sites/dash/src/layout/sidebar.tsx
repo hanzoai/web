@@ -12,7 +12,7 @@ const sidebarData = [
 
 const SideBar: FC = () => {
   return (
-    <div className="flex w-[300px] flex-col p-3 pt-6 gap-2">
+    <div className="flex w-[300px] flex-col p-3 pt-6 gap-2 flex-none">
       {sidebarData.map((item, index) => <SideBarMenuItem label={item.label} href={item.href} icon={item.icon} />)}
     </div>
   )
