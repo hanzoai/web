@@ -9,7 +9,6 @@
     "clean:nm": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
     "clean:nxt": "find . -name '.next' -type d -prune -exec rm -rf '{}' +",
     "clean:all": "pnpm clean:nm && pnpm clean:nxt && rm pnpm-lock.yaml"
-   
   },
   "devDependencies": {
     "@types/jquery": "^3.5.30",
@@ -24,6 +23,7 @@
       "@types/react-dom": "^18.3.0",
       "supports-color": "8.1.1",
       "@hanzo/brand": "link://packages/brand",
+      "@hanzo/brand": "0.1.22",
       "@luxfi/data": "1.0.6",
       "@hanzo/auth": "2.4.12",
       "@hanzo/commerce": "7.1.5",
@@ -35,6 +35,7 @@
     }
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.2",
     "@mailchimp/mailchimp_transactional": "^1.0.59",
     "@types/mailchimp__mailchimp_transactional": "^1.0.10",
     "@types/nodemailer": "^6.4.15",
