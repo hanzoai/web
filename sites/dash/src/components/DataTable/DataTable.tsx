@@ -10,81 +10,11 @@ import {
 } from "@tanstack/react-table"
 import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table"
 
-import { Button, Checkbox, Input, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@hanzo/ui/primitives"
-import { ArrowUpDown } from "lucide-react"
+import { Button, Input, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@hanzo/ui/primitives"
 import React from "react"
 
-export type Payment = {
-  id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
-}
-
-export const columns: ColumnDef<Payment>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
-    ),
-  },
-  {
-    accessorKey: "email",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
-  },
-  {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"))
-
-      // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount)
-
-      return <div className="text-right font-medium">{formatted}</div>
-    },
-  },
-]
-
-export function DataTableDemo(props: { data: Payment[] }) {
-  const { data } = props;
+export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; onClickHandler?: (id: string) => void; filterKey?: string; }) {
+  const { data, columns, filterKey, onClickHandler } = props;
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -114,16 +44,19 @@ export function DataTableDemo(props: { data: Payment[] }) {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-      </div>
+      {
+        filterKey &&
+        <div className="flex items-center py-4">
+          <Input
+            placeholder={`Filter ${filterKey}..."`}
+            value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
+            onChange={(event) =>
+              table.getColumn(filterKey)?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm"
+          />
+        </div>
+      }
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -150,6 +83,8 @@ export function DataTableDemo(props: { data: Payment[] }) {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  onClick={() => onClickHandler?.(row.id)}
+                  className="hover:cursor-pointer"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -179,7 +114,7 @@ export function DataTableDemo(props: { data: Payment[] }) {
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
-        <div className="space-x-2">
+        <div className="space-x-2 flex">
           <Button
             variant="outline"
             size="sm"

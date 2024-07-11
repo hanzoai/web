@@ -1,39 +1,85 @@
-import { DataTableDemo, type Payment } from "@/components/DataTable/DataTable";
+"use client"
 
-const data: Payment[] = [
+import { DataTableDemo } from "@/components/DataTable/DataTable";
+import { UserTableColumn, type UserTableDataType } from "@/components/DataTable/UserTableColumn";
+import { useRouter } from "next/navigation";
+
+const data: UserTableDataType[] = [
   {
-    id: "m5gr84i9",
-    amount: 316,
-    status: "success",
-    email: "ken99@yahoo.com",
+    email: "sharonwescorn@gmail.com",
+    firstName: "Hope",
+    lastName: "Broussard",
+    city: "Paris",
+    postalCode: "020304",
+    state: "CS",
+    country: "France",
+    created: new Date().toLocaleDateString(),
+    updated: "3 years ago"
   },
   {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
+    email: "sharonwescorn@gmail.com",
+    firstName: "Hope",
+    lastName: "Broussard",
+    city: "Paris",
+    postalCode: "020304",
+    state: "CS",
+    country: "France",
+    created: new Date().toLocaleDateString(),
+    updated: "3 years ago"
   },
   {
-    id: "derv1ws0",
-    amount: 837,
-    status: "processing",
-    email: "Monserrat44@gmail.com",
+    email: "sharonwescorn@gmail.com",
+    firstName: "Hope",
+    lastName: "Broussard",
+    city: "Paris",
+    postalCode: "020304",
+    state: "CS",
+    country: "France",
+    created: new Date().toLocaleDateString(),
+    updated: "3 years ago"
   },
   {
-    id: "5kma53ae",
-    amount: 874,
-    status: "success",
-    email: "Silas22@gmail.com",
+    email: "sharonwescorn@gmail.com",
+    firstName: "Hope",
+    lastName: "Broussard",
+    city: "Paris",
+    postalCode: "020304",
+    state: "CS",
+    country: "France",
+    created: new Date().toLocaleDateString(),
+    updated: "3 years ago"
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
+    email: "sharonwescorn@gmail.com",
+    firstName: "Hope",
+    lastName: "Broussard",
+    city: "Paris",
+    postalCode: "020304",
+    state: "CS",
+    country: "France",
+    created: new Date().toLocaleDateString(),
+    updated: "3 years ago"
+  },
+  {
+    email: "sharonwescorn@gmail.com",
+    firstName: "Hope",
+    lastName: "Broussard",
+    city: "Paris",
+    postalCode: "020304",
+    state: "CS",
+    country: "France",
+    created: new Date().toLocaleDateString(),
+    updated: "3 years ago"
   },
 ]
 
 const UniversalPage = () => {
+  const router = useRouter();
+
+  const onClickUser = (userId: string) => {
+    router.push(`/users/details?id=${userId}`)
+  }
+
   return (
     <div className="flex-1 space-y-4 p-8 pt-6">
       <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
@@ -47,7 +93,7 @@ const UniversalPage = () => {
             </div>
           </div>
           <div className="space-y-4">
-            <DataTableDemo data={data} />
+            <DataTableDemo data={data} columns={UserTableColumn} onClickHandler={onClickUser} filterKey="email" />
           </div>
         </div>
       </div>
