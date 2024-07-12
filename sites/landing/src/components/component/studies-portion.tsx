@@ -17,7 +17,7 @@ export function StudiesPortion() {
           </div>
           <div className="relative aspect-video overflow-hidden rounded-lg bg-background shadow-lg">
             <video
-              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+              src="/assets/studies-portion-video/Damon.mp4"
               autoPlay
               loop
               muted
@@ -28,7 +28,7 @@ export function StudiesPortion() {
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div className="relative aspect-video overflow-hidden rounded-lg bg-background shadow-lg">
             <video
-              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+              src="/assets/studies-portion-video/Triller.mp4"
               autoPlay
               loop
               muted
