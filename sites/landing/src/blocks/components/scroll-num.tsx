@@ -63,10 +63,6 @@ const ScrollNumBlockComponent: React.FC<{
 
     const scrollNum = block as ScrollNumBlock
 
-    useEffect(() => {
-      numberAnim()
-    }, []);
-
     function numberAnim() {
       const counters = document.querySelectorAll('.animCounter')
       const content = ["11", "100", "1B", "120"]
@@ -80,7 +76,7 @@ const ScrollNumBlockComponent: React.FC<{
 
           const animationTarget = { value: 0 }
           gsap.to(animationTarget, {
-            duration: 1,
+            duration: 1 + index * 0.3,
             value: finalValue,
             onUpdate: function () {
               counter.textContent = formatNumber(animationTarget.value)
@@ -91,8 +87,7 @@ const ScrollNumBlockComponent: React.FC<{
               start: "top 80%",
               end: "bottom 20%",
               toggleActions: "play none none reverse",
-            },
-            delay: index * 0.5
+            }
           });
         }
       });
