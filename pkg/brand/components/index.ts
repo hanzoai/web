@@ -19,6 +19,7 @@ export { default as CheckoutButton } from './commerce/checkout-button'
 export { default as CheckoutPanel } from './commerce/checkout-panel'
 export { default as CheckoutWidget } from './commerce/checkout-widget'
 export { default as LoginPanel } from './auth/login-panel'
+export { default as SignupPanel} from './auth/signup-panel'
 export { default as Scripts } from './scripts'
 
 export { default as EmblaAutoplay } from 'embla-carousel-autoplay'
