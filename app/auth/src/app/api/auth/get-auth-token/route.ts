@@ -2,10 +2,7 @@ import { cookies } from 'next/headers'
 import type { NextRequest } from 'next/server'
 
 const domains = [
-  'https://lux.market', 'https://lux.shop', 'https://lux.credit',
-  'https://lux.network', 'https://wallet.lux.network', 'https://safe.lux.network',
-  'https://lux.finance', 'https://lux.exchange', 'https://lux.quest',
-  'https://lux.id'
+  'https://auth.hanzo.ai', 'https://hanzo.ai'
 ]
 
 export async function GET(request: NextRequest) {

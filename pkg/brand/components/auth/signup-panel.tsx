@@ -38,7 +38,7 @@ const LoginPanel: React.FC<{
     // (This was never my intent w the onLoginChanged callback.)
   const onLogin = (token: string) => {
     setCookie('auth-token', token, {
-      domain: 'hanzo.ai',
+      domain: '.hanzo.ai',
       path: '/',
       sameSite: 'none',
       secure: true,
