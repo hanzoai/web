@@ -37,7 +37,7 @@ const LoginPanel: React.FC<{
     // (This was never my intent w the onLoginChanged callback.)
   const onLogin = (token: string) => {
     setCookie('auth-token', token, {
-      domain: 'lux.id',
+      domain: 'hanzo.ai',
       path: '/',
       sameSite: 'none',
       secure: true,
@@ -87,7 +87,7 @@ const LoginPanel: React.FC<{
               onClick={close}
               className='block md:hidden absolute rounded-full p-2 left-0 h-auto hover:bg-background'
             >
-              <LuxLogo className='w-5 h-5'/>
+              {/* <LuxLogo className='w-5 h-5'/> */}
             </Button>
             <Login
               getStartedUrl={getStartedUrl}

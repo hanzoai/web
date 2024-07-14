@@ -15,7 +15,7 @@ export const viewport = { ...ViewportCode}
 const RootLayout: React.FC<PropsWithChildren> = async ({
   children
 }) =>  (
-  <RootLayoutCore siteDef={siteDef} showHeader>
+  <RootLayoutCore siteDef={siteDef}>
     {children}
   </RootLayoutCore>
 )
