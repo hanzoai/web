@@ -29,7 +29,7 @@ const MobileAuthWidget: React.FC<{
 }) => {
     const auth = useAuth()
     const handleLogin = () => {
-        window.location.href = "https://dash.hanzo.ai/"
+        window.location.href = "https://auth.hanzo.ai/"
       }
 
     if (!auth) {

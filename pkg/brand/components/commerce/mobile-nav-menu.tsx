@@ -84,7 +84,7 @@ const MobileNav: React.FC<{
                                   </span>
                                   <Link
                                     href={child.href}
-                                    className="text-muted-2 hover:underline ml-5 hover:text-primary hover:no-underline"
+                                    className="text-muted-2 ml-5 hover:text-primary hover:no-underline"
                                     target={child.newTab ? '_blank' : '_self'}
                                     rel="noopener noreferrer"
                                   >
