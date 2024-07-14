@@ -48,7 +48,7 @@ const DesktopHeader: React.FC<{
               Contact
             </Link>
             {/* <AuthWidget /> */}
-            <Link href={"https://dash.hanzo.ai/"} className='login hover:font-bold ease-in duration-200 px-[15px] py-[10px] border bg-white rounded'>Login</Link>
+            <Link href={"https://auth.hanzo.ai/"} className='login hover:font-bold ease-in duration-200 px-[15px] py-[10px] border bg-white rounded'>Login</Link>
           </div>
         </div>
       </header>

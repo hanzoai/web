@@ -24,7 +24,7 @@
       "supports-color": "8.1.1",
       "@hanzo/brand": "link:./pkg/brand",
       "@hanzo/data": "1.0.6",
-      "@hanzo/auth": "2.4.12",
+      "@hanzo/auth": "2.4.16",
       "@hanzo/commerce": "7.1.5",
       "@hanzo/ui": "3.8.21",
       "react-hook-form": "7.51.4"

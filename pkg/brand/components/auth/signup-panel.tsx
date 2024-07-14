@@ -7,7 +7,7 @@ import { setCookie } from 'cookies-next'
 
 import { cn } from '@hanzo/ui/util'
 import { Button, Carousel, CarouselContent, CarouselItem } from '@hanzo/ui/primitives'
-import { LoginPanel as Login } from '@hanzo/auth/components'
+import { SignupPanel as SignUp } from '@hanzo/auth/components'
 
 import Logo from '../logo'
 import { EmblaAutoplay } from '..'
@@ -90,7 +90,7 @@ const LoginPanel: React.FC<{
             >
               {/* <LuxLogo className='w-5 h-5'/> */}
             </Button>
-            <Login
+            <SignUp
               getStartedUrl={getStartedUrl}
               redirectUrl={redirectUrl}
               className='w-full max-w-sm'

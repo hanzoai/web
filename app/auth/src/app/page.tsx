@@ -1,11 +1,9 @@
 'use client'
 
 import React  from 'react'
-import { Footer, Main } from '@hanzo/brand'
-import { ApplyTypography  } from '@hanzo/ui/primitives'
 
 import { useRouter } from 'next/navigation'
-import { ChatWidget, LoginPanel } from '@hanzo/brand'
+import { ChatWidget, LoginPanel, SignupPanel } from '@hanzo/brand'
 import { useState } from 'react'
 
 
@@ -79,15 +77,16 @@ const UniversalPage = ({ searchParams }: Props) => {
   }
   
   return (<>
-    {/* <div className={isLogin ? '' : 'hidden'}> */}
+    <div className={isLogin ? '' : 'hidden'}>
       <LoginPanel
         close={handleLoginDone}
         getStartedUrl='/'
         redirectUrl={searchParams?.redirectUrl as string ?? undefined}
         reviews={reviews}
+        setIsLogin={setIsLogin}
       />
-    {/* </div> */}
-    {/* <div className={isLogin ? 'hidden' : ''}>
+    </div>
+    <div className={isLogin ? 'hidden' : ''}>
       <SignupPanel
         close={handleLoginDone}
         getStartedUrl='/'
@@ -95,7 +94,7 @@ const UniversalPage = ({ searchParams }: Props) => {
         reviews={reviews}
         setIsLogin={setIsLogin}
       />
-    </div> */}
+    </div>
     <ChatWidget
       title='LUX'
       subtitle='AI'
