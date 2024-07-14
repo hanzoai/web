@@ -1,5 +1,5 @@
 {
-  "name": "@luxfi/auth",
+  "name": "@hanzo/auth",
   "version": "0.0.3",
   "private": true,
   "scripts": {
@@ -11,8 +11,8 @@
     "tc": "tsc --noEmit"
   },
   "dependencies": {
-    "@hanzo/brand": "*",
     "@hanzo/auth": "*",
+    "@hanzo/brand": "*",
     "@hanzo/commerce": "*",
     "@hanzo/ui": "*",
     "@next/mdx": "14.1.0",

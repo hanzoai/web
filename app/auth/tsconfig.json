@@ -11,6 +11,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "@hanzo/brand": ["../pkg/brand/*"],
       "react": ["node_modules/@types/react"],
     },
     "plugins": [ { "name": "next" } ]

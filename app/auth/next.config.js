@@ -16,18 +16,18 @@ const nextConfig = {
         protocol: "http",
         hostname: "localhost",
       }
-    ],    
+    ],
  },
     // https://stackoverflow.com/questions/72621835/how-to-fix-you-may-need-an-appropriate-loader-to-handle-this-file-type-current
   transpilePackages: [
-    '@hanzo/ui', 
-    '@hanzo/auth', 
-    '@hanzo/commerce', 
+    '@hanzo/auth',
     '@hanzo/brand',
-    '@luxfi/data'
+    '@hanzo/commerce',
+    '@hanzo/data',
+    '@hanzo/ui',
   ],
   productionBrowserSourceMaps: true,
-  webpack: svgrWebpackConfig // if we need others, set up a chain of calls. 
+  webpack: svgrWebpackConfig // if we need others, set up a chain of calls.
 }
 
 module.exports = withMDX(nextConfig)

@@ -10,7 +10,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hanzo/web.git",
-    "directory": "packages/brand"
+    "directory": "pkg/brand"
   },
   "keywords": [
     "components",
@@ -28,11 +28,11 @@
   "exports": {
     ".": "./components/index.ts",
     "./commerce": "./commerce/ui/context.tsx",
+    "./next": "./next/index.ts",
     "./root-layout": "./root-layout/index.tsx",
     "./server-actions": "./server-actions/index.ts",
-    "./next": "./next/index.ts",
-    "./style/": "./style/",
     "./site-def": "./site-def/index.ts",
+    "./style/": "./style/",
     "./tailwind": "./tailwind/index.ts"
   },
   "dependencies": {

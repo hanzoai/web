@@ -1,24 +1,16 @@
 import React, { type PropsWithChildren } from 'react'
 
-import { 
-  RootLayout as RootLayoutCore, 
-  viewport as ViewportCode, 
-} from '@hanzo/brand/root-layout'
+import { RootLayout } from '@hanzo/brand/root-layout'
 
 
 import siteDef from '../site-def'
-import _metadata from '../metadata'
 
-export const metadata = { ..._metadata }
-export const viewport = { ...ViewportCode}
-
-const RootLayout: React.FC<PropsWithChildren> = async ({
+const Layout: React.FC<PropsWithChildren> = async ({
   children
 }) =>  (
-  <RootLayoutCore siteDef={siteDef} showHeader>
+  <RootLayout siteDef={siteDef} showHeader>
     {children}
-  </RootLayoutCore>
+  </RootLayout>
 )
 
-export default RootLayout
-
+export default Layout

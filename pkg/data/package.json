@@ -1,23 +1,22 @@
 {
-  "name": "@luxfi/data",
+  "name": "@hanzo/data",
   "version": "1.0.6",
-  "description": "Shared data for all Products, Families, that are available via any eCommrece functions on Lux sites.",
+  "description": "Shared data for all Products, Families, that are available via any eCommrece functions on Hanzo sites.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
-    "scope": "@luxfi"
+    "scope": "@hanzo"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luxfi/web.git",
-    "directory": "packages/data"
+    "url": "git+https://github.com/hanzoai/web.git",
+    "directory": "pkg/data"
   },
   "keywords": [
-    "hanzo",
-    "luxdefi"
+    "hanzo"
   ],
   "scripts": {
-    "lat": "npm show @luxfi/data version",
+    "lat": "npm show @hanzo/data version",
     "pub": "npm publish",
     "build": "tsc",
     "tc": "tsc",

@@ -11,7 +11,7 @@
     "tc": "tsc --noEmit"
   },
   "dependencies": {
-    "@handzo/brand": "link:../../packages/brand",
+    "@handzo/brand": "link:../../pkg/brand",
     "@hanzo/auth": "*",
     "@hanzo/commerce": "*",
     "@hanzo/ui": "*",

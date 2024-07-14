@@ -10,8 +10,8 @@ overrides:
   '@types/react': ^18.3.2
   '@types/react-dom': ^18.3.0
   supports-color: 8.1.1
-  '@hanzo/brand': link:./packages/brand
-  '@luxfi/data': 1.0.6
+  '@hanzo/brand': link:./pkg/brand
+  '@hanzo/data': 1.0.6
   '@hanzo/auth': 2.4.12
   '@hanzo/commerce': 7.1.5
   '@hanzo/ui': 3.8.21
@@ -59,8 +59,8 @@ importers:
         specifier: 2.4.12
         version: 2.4.12(@hanzo/ui@3.8.21(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(@types/react-dom@18.3.0)(@types/react@18.3.3)(date-fns@3.6.0)(embla-carousel@8.1.1)(lucide-react@0.344.0(react@18.3.1))(mobx@6.12.3)(next-themes@0.2.1(next@14.2.3(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.3(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.4)(validator@13.12.0)(zod@3.23.8))(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(firebase@10.12.0)(lucide-react@0.344.0(react@18.3.1))(mobx-react-lite@4.0.7(mobx@6.12.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.12.3)(next@14.2.3(@babel/core@7.24.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(zod@3.23.8)
       '@hanzo/brand':
-        specifier: link:../../packages/brand
-        version: link:../../packages/brand
+        specifier: link:../../pkg/brand
+        version: link:../../pkg/brand
       '@hanzo/commerce':
         specifier: 7.1.5
         version: 7.1.5(nved46vtv4miyafbqdouvtavfa)
@@ -129,8 +129,8 @@ importers:
   app/blank:
     dependencies:
       '@handzo/brand':
-        specifier: link:../../packages/brand
-        version: link:../../packages/brand
+        specifier: link:../../pkg/brand
+        version: link:../../pkg/brand
       '@hanzo/auth':
         specifier: 2.4.12
         version: 2.4.12(@hanzo/ui@3.8.21(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(@types/react-dom@18.3.0)(@types/react@18.3.3)(date-fns@3.6.0)(embla-carousel@8.1.1)(lucide-react@0.344.0(react@18.3.1))(mobx@6.12.3)(next-themes@0.2.1(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(validator@13.12.0)(zod@3.23.8))(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(firebase@10.12.0)(lucide-react@0.344.0(react@18.3.1))(mobx-react-lite@4.0.7(mobx@6.12.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.12.3)(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(zod@3.23.8)
@@ -205,8 +205,8 @@ importers:
         specifier: 2.4.12
         version: 2.4.12(@hanzo/ui@3.8.21(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(@types/react-dom@18.3.0)(@types/react@18.3.3)(date-fns@3.6.0)(embla-carousel@8.1.1)(lucide-react@0.344.0(react@18.3.1))(mobx@6.12.3)(next-themes@0.2.1(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(validator@13.12.0)(zod@3.23.8))(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(firebase@10.12.0)(lucide-react@0.344.0(react@18.3.1))(mobx-react-lite@4.0.7(mobx@6.12.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.12.3)(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(zod@3.23.8)
       '@hanzo/brand':
-        specifier: link:../../packages/brand
-        version: link:../../packages/brand
+        specifier: link:../../pkg/brand
+        version: link:../../pkg/brand
       '@hanzo/commerce':
         specifier: 7.1.5
         version: 7.1.5(lovebytimjtqnejuvitce233z4)
@@ -284,8 +284,8 @@ importers:
         specifier: 2.4.12
         version: 2.4.12(@hanzo/ui@3.8.21(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(@types/react-dom@18.3.0)(@types/react@18.3.3)(date-fns@3.6.0)(embla-carousel@8.1.1)(lucide-react@0.344.0(react@18.3.1))(mobx@6.12.3)(next-themes@0.2.1(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.4)(validator@13.12.0)(zod@3.23.8))(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(firebase@10.12.0)(lucide-react@0.344.0(react@18.3.1))(mobx-react-lite@4.0.7(mobx@6.12.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.12.3)(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(supports-color@8.1.1)(zod@3.23.8)
       '@hanzo/brand':
-        specifier: link:../../packages/brand
-        version: link:../../packages/brand
+        specifier: link:../../pkg/brand
+        version: link:../../pkg/brand
       '@hanzo/commerce':
         specifier: 7.1.5
         version: 7.1.5(pvgq52nbqhsqczukrpjz5aftba)
@@ -296,7 +296,7 @@ importers:
         specifier: ^3.3.4
         version: 3.6.0(react-hook-form@7.51.4(react@18.3.1))
       '@luxfi/data':
-        specifier: 1.0.6
+        specifier: '*'
         version: 1.0.6(@hanzo/commerce@7.1.5(pvgq52nbqhsqczukrpjz5aftba))(@hanzo/ui@3.8.21(@hookform/resolvers@3.6.0(react-hook-form@7.51.4(react@18.3.1)))(@types/react-dom@18.3.0)(@types/react@18.3.3)(date-fns@3.6.0)(embla-carousel@8.1.1)(lucide-react@0.344.0(react@18.3.1))(mobx@6.12.3)(next-themes@0.2.1(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.51.4(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.4)(validator@13.12.0)(zod@3.23.8))(lucide-react@0.344.0(react@18.3.1))
       '@next/mdx':
         specifier: 14.1.0
