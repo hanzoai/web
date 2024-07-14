@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.apps.base.json",
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [ "node_modules" ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@hanzo/brand": ["../pkg/brand/*"],
+      "react": ["node_modules/@types/react"],
+    },
+    "plugins": [ { "name": "next" } ]
+  }
+}
