@@ -1,5 +1,5 @@
 {
-  "name": "@hanzo/auth",
+  "name": "@hanzo/login",
   "version": "0.0.4",
   "private": true,
   "scripts": {
