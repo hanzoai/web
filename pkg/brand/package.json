@@ -40,7 +40,7 @@
     "@types/node": "^20.12.12",
     "cookies-next": "^4.1.1",
     "date-fns": "^3.6.0",
-    "embla-carousel-autoplay": "^8.1.1",
+    "embla-carousel-autoplay": "^8.1.6",
     "firebase": "10.12.0",
     "react-device-detect": "^2.2.3",
     "react-social-icons": "^6.4.0",
