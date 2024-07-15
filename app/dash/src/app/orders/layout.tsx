@@ -5,8 +5,7 @@ import SideBar from '@/layout/sidebar';
 const Layout: React.FC<PropsWithChildren> = async ({
   children
 }) => (<>
-  <AdminHeader />
-  <div className='flex flex-row h-[calc(100vh-80px)]'>
+  <div className='flex flex-row h-full]'>
     <SideBar />
     {children}
   </div>

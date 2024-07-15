@@ -10,8 +10,9 @@ import {
 } from "@tanstack/react-table"
 import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table"
 
-import { Button, Input, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@hanzo/ui/primitives"
+import { Select, SelectItem, SelectContent, SelectTrigger, SelectValue, Button, Input, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@hanzo/ui/primitives"
 import React from "react"
+import { SearchIcon } from "lucide-react"
 
 export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; onClickHandler?: (id: string) => void; filterKey?: string; }) {
   const { data, columns, filterKey, onClickHandler } = props;
@@ -43,28 +44,51 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
   })
 
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col py-4 gap-4">
       {
         filterKey &&
-        <div className="flex items-center py-4">
-          <Input
-            placeholder={`Filter ${filterKey}...`}
-            value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn(filterKey)?.setFilterValue(event.target.value)
-            }
-            className="max-w-sm"
-          />
+        <div className="flex items-center flex-row gap-4">
+          <div className="flex flex-row border rounded-md items-center px-2 w-full">
+            <SearchIcon className="text-muted-2" />
+            <Input
+              placeholder={`Filter ${filterKey}...`}
+              value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
+              onChange={(event) =>
+                table.getColumn(filterKey)?.setFilterValue(event.target.value)
+              }
+              className="w-full border-none hover:border-none focus:border-none focus-visible:border-none"
+            />
+          </div>
+          <Button variant='secondary' className="!h-full !text-sm !font-medium">Search</Button>
+          <Button variant='secondary' className="!h-full !text-sm !font-medium">
+            Create +
+          </Button>
+          <Button variant='secondary' className="!h-full !text-sm !font-medium">
+            CSV
+          </Button>
         </div>
       }
-      <div className="rounded-md border custom-scroll">
+      <div className="w-full">
+        <Select>
+          <SelectTrigger className="text-muted-2">
+            <SelectValue placeholder='More Options' />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value='light' className="text-muted-2">Light</SelectItem>
+            <SelectItem value='dark' className="text-muted-2">Dark</SelectItem>
+            <SelectItem value='system' className="text-muted-2">System</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="rounded-md border custom-scroll text-muted-2 p-4 flex flex-col gap-4">
+        <div className="text-xl text-medium">Users</div>
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id} className="!text-muted-2 rounded-md">
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className="!text-muted-2">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
