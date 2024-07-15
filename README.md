@@ -2,12 +2,12 @@
 
 ## Dev: run locally
 
-Install `pnpm` [like so](https://pnpm.io/installation)
+Install `pnpm` [like so](https://pnpm.io/installation) and use `pnpm install`
+and `pnpm dev` to run the local development server:
 
-The usual scripts for a Next app, using `pnpm`
 ```
 pnpm install
-cd app/<siteName>
+cd app/<credit,finance,market,etc..>
 pnpm dev
 ```
 
