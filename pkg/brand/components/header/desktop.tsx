@@ -47,8 +47,8 @@ const DesktopHeader: React.FC<{
             <Link href={"https://docs.google.com/document/d/1Kk4VmVf6RyVF8Bi3lCawFV9zAr7zV8O96pRU_YfHrf4/edit?usp=sharing"} className='m-[14px] hover:font-bold ease-in duration-200'>
               Contact
             </Link>
-            {/* <AuthWidget /> */}
-            <Link href={"https://auth.hanzo.ai/"} className='login hover:font-bold ease-in duration-200 px-[15px] py-[10px] border bg-white rounded'>Login</Link>
+            <AuthWidget />
+            {/* <Link href={"https://auth.hanzo.ai/"} className='login hover:font-bold ease-in duration-200 px-[15px] py-[10px] border bg-white rounded'>Login</Link> */}
           </div>
         </div>
       </header>
