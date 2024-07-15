@@ -20,7 +20,7 @@
       "@types/react": "^18.3.2",
       "@types/react-dom": "^18.3.0",
       "supports-color": "8.1.1",
-      "@hanzo/brand": "0.2.4",
+      "@hanzo/brand": "0.2.5",
       "@hanzo/data": "1.0.6",
       "@hanzo/auth": "2.4.16",
       "@hanzo/commerce": "7.3.1",

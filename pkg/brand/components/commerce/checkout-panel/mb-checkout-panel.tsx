@@ -4,7 +4,7 @@ import React, { type PropsWithChildren } from 'react'
 import { StepIndicator } from '@hanzo/ui/primitives'
 import { cn } from '@hanzo/ui/util'
 import { AuthWidget } from '@hanzo/auth/components'
-import { CartAccordian } from '@hanzo/commerce'
+// import { CartAccordian } from '@hanzo/commerce'
 
 import CloseButton from './close-button'
 import BagButton from '../bag-button'
@@ -29,7 +29,7 @@ const MobileCheckoutPanel: React.FC<PropsWithChildren & {
       {/* Need wrapper div since 'noLogin' returns null if no logged in user */}
       <div className='w-10 h-10 flex items-center justify-center'><AuthWidget noLogin className=''/></div>
     </div>
-    <CartAccordian 
+    {/* <CartAccordian 
       icon={
         <BagButton 
           animateOnHover={false} 
@@ -40,7 +40,7 @@ const MobileCheckoutPanel: React.FC<PropsWithChildren & {
         />
       } 
       className='flex items-center justify-center w-full' 
-    />
+    /> */}
     <StepIndicator 
       dotSizeRem={1} 
       steps={stepNames} 
