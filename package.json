@@ -2,9 +2,7 @@
   "private": true,
   "name": "@hanzoai/web",
   "version": "0.1.0",
-  "engines": {
-    "pnpm": ">=9"
-  },
+  "packageManager": "pnpm@9.5.0+sha256.dbdf5961c32909fb030595a9daa1dae720162e658609a8f92f2fa99835510ca5",
   "scripts": {
     "clean:nm": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
     "clean:nxt": "find . -name '.next' -type d -prune -exec rm -rf '{}' +",
