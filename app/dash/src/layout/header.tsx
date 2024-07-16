@@ -6,7 +6,7 @@ const AdminHeader: React.FC<{
   content='Karma'
 }) => {
   return (
-    <div className="w-full h-[80px] flex items-center justify-between border-b-[1px] border-dashed">
+    <div className="w-full h-[80px] flex items-center justify-between border-b-[1px] border-dashed border-[#AAAAAA33]">
       <div className="py-2 pl-8">
         <div className="text-xl font-bold">{content}</div>
       </div>

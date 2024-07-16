@@ -7,7 +7,7 @@ const Layout: React.FC<PropsWithChildren> = async ({
 }) => (<>
   <div className='flex flex-row h-full'>
     <SideBar />
-    <div className="flex flex-col m-4 overflow-y-auto border-[1px] rounded-lg">
+    <div className="flex flex-col m-4 overflow-y-auto border border-[#AAAAAA33] rounded-md">
       <div className="flex items-center justify-between space-y-2">
         <AdminHeader content='Karma'/>
       </div>

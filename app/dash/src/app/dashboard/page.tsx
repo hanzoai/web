@@ -1,33 +1,45 @@
-import type { TextCardDataProps } from "@/components/DashTextCard";
+import type { TextCardDataProps } from "@/components/dash-text-card";
 import Dollar from "./icons/Dollar";
-import DashTextCard from "@/components/DashTextCard";
-import type { BarChartDataProps } from "@/components/DashBarCharts";
-import DashBarCharts from "@/components/DashBarCharts";
-import type { DashRecentSalesItemType } from "@/components/DashRecentSalesItem";
-import DashRecentSalesItem from "@/components/DashRecentSalesItem";
+import DashTextCard from "@/components/dash-text-card";
+import type { BarChartDataProps } from "@/components/dash-bar-charts";
+import DashBarCharts from "@/components/dash-bar-charts";
+import type { DashRecentSalesItemType } from "@/components/dash-recent-sales-item";
+import DashRecentSalesItem from "@/components/dash-recent-sales-item";
 import { Tabs, TabsList, TabsTrigger } from "@hanzo/ui/primitives";
 
 const textCardData: TextCardDataProps[] = [
   {
-    cardTitle: "Total Revenue",
+    cardTitle: "Projected Revenue",
     cardIcon: <Dollar />,
     cardMainText: "$45,231.89",
     cardSubText: "+20.1% from last month"
   },
   {
-    cardTitle: "Total Revenue",
+    cardTitle: "Active Preorders",
     cardIcon: <Dollar />,
     cardMainText: "$45,231.89",
     cardSubText: "+20.1% from last month"
   },
   {
-    cardTitle: "Total Revenue",
+    cardTitle: "Deposites",
     cardIcon: <Dollar />,
     cardMainText: "$45,231.89",
     cardSubText: "+20.1% from last month"
   },
   {
-    cardTitle: "Total Revenue",
+    cardTitle: "Deposites Processed",
+    cardIcon: <Dollar />,
+    cardMainText: "$45,231.89",
+    cardSubText: "+20.1% from last month"
+  },
+  {
+    cardTitle: "Refunds",
+    cardIcon: <Dollar />,
+    cardMainText: "$45,231.89",
+    cardSubText: "+20.1% from last month"
+  },
+  {
+    cardTitle: "Refunds Processed",
     cardIcon: <Dollar />,
     cardMainText: "$45,231.89",
     cardSubText: "+20.1% from last month"

@@ -5,10 +5,14 @@ import SideBar from '@/layout/sidebar';
 const Layout: React.FC<PropsWithChildren> = async ({
   children
 }) => (<>
-  <AdminHeader />
   <div className='flex flex-row h-full'>
     <SideBar />
-    {children}
+    <div className="flex flex-col m-4 overflow-y-auto border border-[#AAAAAA33] rounded-md">
+      <div className="flex items-center justify-between space-y-2">
+        <AdminHeader content='Karma'/>
+      </div>
+      {children}
+    </div>
   </div>
 </>)
 

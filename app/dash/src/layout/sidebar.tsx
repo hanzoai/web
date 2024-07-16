@@ -2,7 +2,7 @@
 
 import { useState, type FC } from "react";
 import { BarChart, User2, ShoppingBasket, Notebook, Settings } from "lucide-react";
-import SideBarMenuItem from "@/components/SideBarMenuItem";
+import SideBarMenuItem from "@/components/side-bar-menu-item";
 import { Logo } from "@hanzo/brand"
 
 const sidebarData = [
@@ -16,7 +16,7 @@ const sidebarData = [
 const SideBar: FC = () => {
   return (
     <div className="flex w-[300px] flex-col p-4 gap-2 flex-none">
-      <div className="h-[80px] flex items-center p-2 border-b-[1px] border-dashed">
+      <div className="h-[80px] flex items-center p-2 border-b-[1px] border-dashed border-[#AAAAAA33]">
         <Logo size='md' href='https://hanzo.ai/' className=' flex' key='two' layout='logo-only' />
       </div>
       {sidebarData.map((item, index) => {

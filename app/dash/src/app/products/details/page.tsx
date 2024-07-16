@@ -1,6 +1,6 @@
 "use client"
 
-import InputField from "@/components/DashInput/DashInput";
+import InputField from "@/components/dash-input/dash-input";
 import { Button } from "@hanzo/ui/primitives";
 import { useState } from "react";
 

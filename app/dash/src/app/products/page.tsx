@@ -1,7 +1,7 @@
 "use client";
 
-import { DataTableDemo } from "@/components/DataTable/DataTable";
-import { ProductsTableColumn, type ProductsTableDataType } from "@/components/DataTable/ProductTableColumn";
+import { DataTableDemo } from "@/components/data-table/data-table";
+import { ProductsTableColumn, type ProductsTableDataType } from "@/components/data-table/product-table-column";
 import { useRouter } from "next/navigation";
 
 const data: ProductsTableDataType[] = [
@@ -63,7 +63,7 @@ const UniversalPage = () => {
             </div>
           </div>
           <div className="space-y-2">
-            <DataTableDemo data={data} columns={ProductsTableColumn} onClickHandler={onClickUser} filterKey="slug" />
+            <DataTableDemo data={data} columns={ProductsTableColumn} onClickHandler={onClickUser} filterKey="slug" title='Products' />
           </div>
         </div>
       </div>

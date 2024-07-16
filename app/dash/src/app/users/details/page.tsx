@@ -1,10 +1,39 @@
 "use client"
 
-import InputField from "@/components/DashInput/DashInput";
-import { DataTableDemo } from "@/components/DataTable/DataTable";
-import { UserOrderTableColumn, type UserOrderTableDataType } from "@/components/DataTable/UserOrderTableColumn";
-import { Button } from "@hanzo/ui/primitives";
-import { useState } from "react";
+import { DataTableDemo } from "@/components/data-table/data-table";
+import { UserOrderTableColumn, type UserOrderTableDataType } from "@/components/data-table/user-order-table-column";
+import { Button, Input } from "@hanzo/ui/primitives";
+import { useState, useEffect } from "react";
+
+type UserStatisticsType = {
+  id: string
+  createdAt: Date
+  updatedAt: Date
+}
+
+type UserLocationType = {
+  address: string,
+  suite: string,
+  city: string,
+  postalcode: string,
+  state: string,
+  country: string
+}
+
+const statistics: UserStatisticsType = {
+  id: 'K9idk9KII7',
+  createdAt: new Date('10/11/2020'),
+  updatedAt: new Date('10/11/2020')
+}
+
+const location: UserLocationType = {
+  address: "address",
+  suite: "suite",
+  city: "Bloomington",
+  postalcode: "1234",
+  state: "Minnesota",
+  country: "USA"
+}
 
 const data: UserOrderTableDataType[] = [
   {
@@ -57,72 +86,88 @@ const Page = () => {
   const [suite, setSuite] = useState<string>('');
   const [city, setCity] = useState<string>('');
   const [postalCode, setPostalCode] = useState<string>('');
+  const [country, setCountry] = useState<string>('');
+  const [state, setState] = useState<string>('');
+
+  useEffect(() => {
+    setAddress(location.address)
+    setSuite(location.suite)
+    setCity(location.city)
+    setPostalCode(location.postalcode)
+    setCountry(location.country)
+    setState(location.state)
+  }, [])
 
   return (
-    <div className="flex-1 space-y-4 p-8 pt-6 overflow-y-auto">
-      <div className="flex flex-col space-y-2 w-full rounded-[0.5rem] border bg-background shadow p-2">
-        <div>
-          <h1 className="text-primary text-2xl">Statistics</h1>
+    <div className="flex flex-col space-y-4 p-4 overflow-y-auto">
+      <div className="flex flex-row w-full items-center justify-center bg-background shadow gap-4">
+        <div className="flex-1 flex flex-col border border-[#AAAAAA33] rounded-md p-4 gap-2">
+          <div className="font-medium text-xl text-foreground">Statistics ID</div>
+          <span className="font-medium text-base text-muted-1">{statistics.id}</span>
         </div>
-        <div className="flex align-top justify-between">
-          <div className="flex flex-col text-muted-1 space-y-1">
-            <h5 className="font-bold">ID</h5>
-            <span>K9idk9KII7</span>
+        <div className="flex-1 flex flex-col border border-[#AAAAAA33] rounded-md text-muted-1 p-4 gap-2">
+          <div className="font-medium text-xl text-foreground">Created At</div>
+          <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
+        </div>
+        <div className="flex-1 flex flex-col border border-[#AAAAAA33] rounded-md text-muted-1 p-4 gap-2">
+          <div className="font-medium text-xl text-foreground">Updated At</div>
+          <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
+        </div>
+      </div>
+      <div className="flex flex-col space-y-4 w-full rounded-md border border-[#AAAAAA33] bg-background shadow p-4 text-muted-1">
+        <div>
+          <h1 className="text-primary text-xl">Personal Information</h1>
+        </div>
+        <div className="flex flex-col gap-2">
+          <div className="text-sm text-primary">Email</div>
+          <Input placeholder="Email" value={userEmail} onChange={() => setUserEmail} />
+        </div>
+        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+          <div className="flex-1 flex flex-col gap-2">
+            <div className="text-sm text-primary">First Name</div>
+            <Input placeholder="First Name" value={firstName} onChange={() => setFirstName} />
           </div>
-          <div className="flex flex-col text-muted-1 space-y-1">
-            <h5 className="font-bold">Created At</h5>
-            <span>{new Date().toLocaleDateString()}</span>
-          </div>
-          <div className="flex flex-col text-muted-1 space-y-1">
-            <h5 className="font-bold">Updated At</h5>
-            <span>{new Date().toLocaleDateString()}</span>
+          <div className="flex-1 flex flex-col gap-2">
+            <div className="text-sm text-primary">Last Name</div>
+            <Input placeholder="Last Name" value={lastName} onChange={() => setLastName} />
           </div>
         </div>
       </div>
-      <div className="flex flex-col space-y-4 w-full rounded-[0.5rem] border bg-background shadow p-2 text-muted-1">
+      <div className="flex flex-col space-y-4 w-full rounded-md border border-[#AAAAAA33] bg-background shadow p-4 text-muted-1">
         <div>
-          <h1 className="text-primary text-2xl">Personal Information</h1>
+          <h1 className="text-primary text-xl">Default Shipping Information</h1>
         </div>
-        <div className="flex">
-          <InputField placeHolder="Email" value={userEmail} setValue={setUserEmail} />
-        </div>
-        <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
-          <InputField placeHolder="First Name" value={firstName} setValue={setFirstName} />
-          <InputField placeHolder="Last Name" value={lastName} setValue={setLastName} />
-        </div>
-      </div>
-      <div className="flex flex-col space-y-4 w-full rounded-[0.5rem] border bg-background shadow p-2 text-muted-1">
-        <div>
-          <h1 className="text-primary text-2xl">Default Shipping Information</h1>
-        </div>
-        <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-[70%] md:pr-2 p-0">
-            <InputField placeHolder="Address" value={address} setValue={setAddress} />
+        <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-col gap-2">
+            <div className="text-sm text-primary">Address</div>
+            <Input placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
           </div>
-          <div className="w-full md:w-[30%] md:pl-2 p-0">
-            <InputField placeHolder="Suite" value={suite} setValue={setSuite} />
+          <div className="flex flex-col gap-2">
+            <div className="text-sm text-primary">Suite</div>
+            <Input placeholder="Suite" value={suite} onChange={(e) => setSuite} />
           </div>
-        </div>
-        <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-[60%] md:pr-2 p-0">
-            <InputField placeHolder="City" value={city} setValue={setCity} />
+          <div className="flex flex-col gap-2">
+            <div className="text-sm text-primary">City</div>
+            <Input placeholder="City" value={city} onChange={(e) => setCity} />
           </div>
-          <div className="w-full md:w-[40%] md:pl-2 p-0">
-            <InputField placeHolder="ZIP/Postal Code" value={postalCode} setValue={setPostalCode} />
+          <div className="flex flex-col gap-2">
+            <div className="text-sm text-primary">ZIP/Postal Code</div>
+            <Input placeholder="Zip Code" value={postalCode} onChange={(e) => setPostalCode} />
+          </div>
+          <div className="flex flex-col gap-2">
+            <div className="text-sm text-primary">Region/State</div>
+            <Input placeholder="Select a State" value={state} onChange={(e) => setState} />
+          </div>
+          <div className="flex flex-col gap-2">
+            <div className="text-sm text-primary">Country</div>
+            <Input placeholder="Select a Country" value={country} onChange={(e) => setCountry} />
           </div>
         </div>
         <div>
           <Button>Save</Button>
         </div>
       </div>
-      <div className="flex flex-col space-y-4 w-full rounded-[0.5rem] border bg-background shadow p-2 text-muted-1 max-w-[calc(100vw-366px)]">
-        <div>
-          <h1 className="text-primary text-2xl">Orders</h1>
-        </div>
-        <div className="space-y-4">
-          <DataTableDemo data={data} columns={UserOrderTableColumn} filterKey="number" />
-        </div>
-      </div>
+      <DataTableDemo data={data} columns={UserOrderTableColumn} title='Order' />
     </div>
   )
 }

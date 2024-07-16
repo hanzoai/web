@@ -1,7 +1,7 @@
 "use client"
 
-import { DataTableDemo } from "@/components/DataTable/DataTable";
-import { OrderTableColumn, type OrderTableDataType } from "@/components/DataTable/OrderTableColumn";
+import { DataTableDemo } from "@/components/data-table/data-table";
+import { OrderTableColumn, type OrderTableDataType } from "@/components/data-table/order-table-column";
 import { useRouter } from "next/navigation";
 
 const data: OrderTableDataType[] = [
@@ -71,7 +71,7 @@ const UniversalPage = () => {
             </div>
           </div>
           <div className="space-y-4">
-            <DataTableDemo data={data} columns={OrderTableColumn} onClickHandler={onClickUser} filterKey="number" />
+            <DataTableDemo data={data} columns={OrderTableColumn} onClickHandler={onClickUser} filterKey="number" title="Orders"/>
           </div>
         </div>
       </div>

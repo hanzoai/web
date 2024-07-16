@@ -1,9 +1,9 @@
 "use client";
 
-import InputField from "@/components/DashInput/DashInput";
-import DashSelect from "@/components/DashSelect/DashSelect";
-import { DataTableDemo } from "@/components/DataTable/DataTable";
-import { OrderDetailTableColumn, type OrderDetailTableDataType } from "@/components/DataTable/OrderDetailTableColumn";
+import InputField from "@/components/dash-input/dash-input";
+import DashSelect from "@/components/dash-select/dash-select";
+import { DataTableDemo } from "@/components/data-table/data-table";
+import { OrderDetailTableColumn, type OrderDetailTableDataType } from "@/components/data-table/order-detail-table-column";
 import { Button } from "@hanzo/ui/primitives";
 import { useState } from "react";
 
@@ -157,7 +157,7 @@ const Page = () => {
           <h1 className="text-primary text-2xl">Payments</h1>
         </div>
         <div className="space-y-4">
-          <DataTableDemo data={data} columns={OrderDetailTableColumn} filterKey="externalId" />
+          <DataTableDemo data={data} columns={OrderDetailTableColumn} filterKey="externalId" title="Order Detail"/>
         </div>
       </div>
     </div>
