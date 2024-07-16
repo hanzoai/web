@@ -22,7 +22,7 @@
       "supports-color": "8.1.1",
       "@hanzo/brand": "0.2.7",
       "@hanzo/data": "1.0.6",
-      "@hanzo/auth": "2.4.16",
+      "@hanzo/auth": "2.4.18",
       "@hanzo/commerce": "7.3.1",
       "@hanzo/ui": "3.8.36",
       "react-hook-form": "7.51.4"

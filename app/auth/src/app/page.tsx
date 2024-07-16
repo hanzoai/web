@@ -17,50 +17,30 @@ import siteDef from '../site-def'
 
 const reviews = [
   {
-    text: 'Lux Defi is amazing!',
-    author: 'Giovanna Mingarelli',
-    href: 'https://trstp.lt/a55NNi_j9'
+    text: 'The Hanzo DX platform is absolutely amazing! This AI software has completely changed my perspective on e-commerce, making everything super easy. From building my company to handling daily operations, Hanzo DX has been a huge help every step of the way.',
+    author: 'jxh',
+    href: 'https://www.trustpilot.com/users/6695fa10776b8640cac16cb5'
   },
   {
-    text: 'Lux is revolutionizing the blockchain world by seamlessly merging commodities like gold and silver with digital technology.',
-    author: 'Giovanna Mingarelli',
-    href: 'https://trstp.lt/a55NNi_j9'
+    text: 'Hanzo.ai delivers just as expected. Z and the team are excellent.',
+    author: 'Sanoj Allen',
+    href: 'https://www.trustpilot.com/users/6695f502059eb4be1ef73803'
   },
   {
-    text: 'Lux Credit Card has the ability to make transactions that let you borrow from any of your assets in real time! A total game-changer and I highly recommend it.',
-    author: 'Giovanna Mingarelli',
-    href: 'https://trstp.lt/a55NNi_j9'
+    text: 'Hanzo DX has top-notch customer support. Whenever I encounter technical issues or need advice, their support team is always quick to respond and very professional. They not only fix my problems but also offer lots of helpful suggestions to improve my experience with the platform.',
+    author: 'jxh',
+    href: 'https://www.trustpilot.com/users/6695fa10776b8640cac16cb5'
   },
   {
-    text: 'Lux is the best! Highly recommend this great service for anyone interested in DeFi.',
-    author: 'Ben Chu',
-    href: 'https://trstp.lt/PtpL8qO-U'
+    text: 'A robust solution for e-commerce and online business. Data at scale. Incredibly useful and loved working with the team!',
+    author: 'Michael Filtier',
+    href: 'https://www.trustpilot.com/users/6695f996033f73f063111f05'
   },
   {
-    text: 'Lux is better than several competitors, good interface. Big fan of the product team and the mission.',
-    author: 'Ben Chu',
-    href: 'https://trstp.lt/PtpL8qO-U'
+    text: 'Hanzo DX team and their services are excellent. They support me not only technically but also provide valuable business development advice. These services have helped me streamline my business processes, increase sales, and grow my company quickly.',
+    author: 'jxh',
+    href: 'https://www.trustpilot.com/users/6695fa10776b8640cac16cb5'
   },
-  {
-    text: 'Setting the bar for innovation, development and execution within an ever evolving mix of AI, Blockchain, Design and Finance.',
-    author: 'Ole Brereton',
-    href: 'https://trstp.lt/gOB3GTbOb'
-  },
-  {
-    text: 'World class leaders in the future of metaverse and integrated, financial systems.',
-    author: 'Ole Brereton',
-    href: 'https://trstp.lt/gOB3GTbOb'
-  },
-  {
-    text: 'As an art collector and real estate executive, I value unique investments. Lux Defi, merging real-world assets with blockchain, is a refreshing addition.',
-    author: 'Lisa Goodman',
-    href: 'https://trstp.lt/GfjNiLa7D'
-  },
-  {
-    text: 'Lux, merging real-world assets with blockchain, is a refreshing addition alongside my art works and other assets.',
-    author: 'Lisa Goodman',
-    href: 'https://trstp.lt/GfjNiLa7D'
-  }
 ]
 
 type Props = {
@@ -80,7 +60,7 @@ const UniversalPage = ({ searchParams }: Props) => {
     <div className={isLogin ? '' : 'hidden'}>
       <LoginPanel
         close={handleLoginDone}
-        getStartedUrl='/'
+        getStartedUrl='hanzo.ai'
         redirectUrl={searchParams?.redirectUrl as string ?? undefined}
         reviews={reviews}
         setIsLogin={setIsLogin}
@@ -89,7 +69,7 @@ const UniversalPage = ({ searchParams }: Props) => {
     <div className={isLogin ? 'hidden' : ''}>
       <SignupPanel
         close={handleLoginDone}
-        getStartedUrl='/'
+        getStartedUrl='hanzo.ai'
         redirectUrl={searchParams?.redirectUrl as string ?? undefined}
         reviews={reviews}
         setIsLogin={setIsLogin}
