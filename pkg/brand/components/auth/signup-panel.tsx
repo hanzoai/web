@@ -51,7 +51,7 @@ const LoginPanel: React.FC<{
 
   return (
     <div className={cn('grid grid-cols-1 md:grid-cols-2', className)}>
-      <div className='hidden md:flex w-full h-full bg-level-1 flex-row items-end justify-end overflow-y-auto min-h-screen'>
+      <div className='hidden md:flex w-full h-full bg-[radial-gradient(circle_at_24.1%_68.8%_,_rgba(15,14,14,0)_,_rgba(9,9,9,99.4))] flex-row items-end justify-end overflow-y-auto min-h-screen'>
         <div className='h-full w-full max-w-[750px] px-8 pt-0'>
           <div className='h-full w-full max-w-[550px] mx-auto flex flex-col justify-between min-h-screen py-10'>
             <Button
