@@ -1,71 +1,103 @@
 "use client"
 
-import InputField from "@/components/DashInput/DashInput";
-import { Button } from "@hanzo/ui/primitives";
+import { Button, Input, TextArea, Switch } from "@hanzo/ui/primitives";
 import { useState } from "react";
+
+type UserStatisticsType = {
+  id: string
+  createdAt: Date
+  updatedAt: Date
+  units_sold: number
+}
+
+type ProductInfoType = {
+  slug: string
+  sku: string
+  email: string
+  description: string
+  display_price: number
+  msrf: number
+  projectd_price: number
+}
+
+const statistics: UserStatisticsType = {
+  id: 'K9idk9KII7',
+  createdAt: new Date('10/11/2020'),
+  updatedAt: new Date('10/11/2020'),
+  units_sold: 0
+}
 
 const Page = () => {
   const [slug, setSlug] = useState<string>("trunk-show-XXL-XXL");
   const [sku, setSku] = useState<string>('');
   const [name, setName] = useState<string>('Trunk Show XXL Top XXL Bottom');
-  const [description, setDescription] = useState<string>("For women that will elevate our brank through creative content creation + bikinisthat save the planet. We set up the store and mage the fulfillment, while you make 20% of every sale. Introducing YOU X KARMA");
-  const [displayPrice, setDisplayPrice] = useState<number>(400);
-  const [msrp, setMsrp] = useState<number>(400);
-  const [projectedPrice, setProjectedPrice] = useState<number>(400);
+  const [description, setDescription] = useState<string>("Introducing YOU X KARMA");
+  const [displayPrice, setDisplayPrice] = useState<string>('$400');
+  const [msrf, setMsrf] = useState<string>('$400');
+  const [projectedPrice, setProjectedPrice] = useState<string>('0');
 
   return (
-    <div className="flex-1 space-y-4 p-8 pt-6 overflow-y-auto">
-      <div className="flex flex-col space-y-2 w-full rounded-[0.5rem] border bg-background shadow p-2">
-        <div>
-          <h1 className="text-primary text-2xl">Statistics</h1>
+    <div className="flex flex-col space-y-4 p-4 overflow-y-auto w-full">
+      <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 w-full items-center justify-center bg-background shadow gap-4">
+        <div className="flex flex-col border border-[#AAAAAA33] rounded-md p-4 gap-2">
+          <div className="font-medium text-xl text-foreground">Statistics ID</div>
+          <span className="font-medium text-base text-muted-1">{statistics.id}</span>
         </div>
-        <div className="flex align-top justify-between">
-          <div className="flex flex-col text-muted-1 space-y-1">
-            <h5 className="font-bold">ID</h5>
-            <span>K9idk9KII7</span>
-          </div>
-          <div className="flex flex-col text-muted-1 space-y-1">
-            <h5 className="font-bold">Created At</h5>
-            <span>{new Date().toLocaleDateString()}</span>
-          </div>
-          <div className="flex flex-col text-muted-1 space-y-1">
-            <h5 className="font-bold">Updated At</h5>
-            <span>{new Date().toLocaleDateString()}</span>
-          </div>
-          <div className="flex flex-col text-muted-1 space-y-1">
-            <h5 className="font-bold">Units Sold</h5>
-            <span>0</span>
-          </div>
-          <div></div>
+        <div className="flex flex-col border border-[#AAAAAA33] rounded-md text-muted-1 p-4 gap-2">
+          <div className="font-medium text-xl text-foreground">Created At</div>
+          <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
+        </div>
+        <div className="flex flex-col border border-[#AAAAAA33] rounded-md text-muted-1 p-4 gap-2">
+          <div className="font-medium text-xl text-foreground">Updated At</div>
+          <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
+        </div>
+        <div className="flex flex-col border border-[#AAAAAA33] rounded-md text-muted-1 p-4 gap-2">
+          <div className="font-medium text-xl text-foreground">Units Sold</div>
+          <span className="font-medium text-base text-muted-1">{statistics.units_sold}</span>
         </div>
       </div>
-      <div className="flex flex-col space-y-4 w-full rounded-[0.5rem] border bg-background shadow p-2 text-muted-1">
+      <div className="flex flex-col space-y-4 w-full rounded-md border border-[#AAAAAA33] bg-background shadow p-4 text-muted-1">
         <div>
-          <h1 className="text-primary text-2xl">Default Shipping Information</h1>
+          <h1 className="text-primary text-2xl">Product Information</h1>
         </div>
-        <div className="flex flex-col lg:flex-row">
-          <div className="w-full lg:w-[50%] lg:pr-2 p-0">
-            <InputField placeHolder="Slug" value={slug} setValue={setSlug} />
+        <div className="flex flex-col items-center justify-between gap-6 md:flex-row w-full">
+          <div className="flex-1 flex flex-col gap-2 w-full">
+            <div className="text-sm text-primary">Slug</div>
+            <Input placeholder="Slug" value={slug} onChange={() => setSlug} />
           </div>
-          <div className="w-full lg:w-[50%] lg:pl-2 p-0">
-            <InputField placeHolder="SKU" value={sku} setValue={setSku} />
+          <div className="flex-1 flex flex-col gap-2 w-full">
+            <div className="text-sm text-primary">SKU</div>
+            <Input placeholder="SKU" value={sku} onChange={() => setSku} />
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row">
-          <InputField placeHolder="Name" value={name} setValue={setName} />
+        <div className="flex flex-col gap-2">
+          <div className="text-sm text-primary">Email</div>
+          <Input placeholder="Email" value={name} onChange={() => setName} />
         </div>
-        <div className="flex flex-col lg:flex-row">
-          <InputField placeHolder="Description" value={description} setValue={setDescription} />
+        <div className="flex flex-col gap-2">
+          <div className="text-sm text-primary">Description</div>
+          <TextArea placeholder="Description" value={description} onChange={() => setDescription} className="bg-background" />
         </div>
-        <div className="flex flex-col lg:flex-row">
-          <div className="w-full lg:w-[33%] lg:pr-2 p-0">
-            <InputField placeHolder="Display Price" value={displayPrice} setValue={setDisplayPrice} />
+        <div className="grid grid-cols-1 lg:grid-cols-3 items-start justify-between gap-6 md:flex-row w-full">
+          <div className="flex flex-col gap-2 w-full">
+            <div className="text-sm text-primary">Display Price</div>
+            <Input placeholder="Display Price" value={displayPrice} onChange={() => setDisplayPrice} />
+            <div className="flex text-sm text-primary gap-2">
+              <p>Preorder</p>
+              <Switch className="bg-[#AAAAAA33] data-[state=checked]:bg-[#375DFB]" ></Switch>
+            </div>
           </div>
-          <div className="w-full lg:w-[33%] lg:pr-2 p-0">
-            <InputField placeHolder="MSRP" value={msrp} setValue={setMsrp} />
+          <div className="flex flex-col gap-2 w-full">
+            <div className="text-sm text-primary">MSRF(Optional)</div>
+            <Input placeholder="MSRP" value={msrf} onChange={() => setMsrf} />
+            <div className="flex text-sm text-primary gap-2">
+              <p>Taxable</p>
+              <Switch className="bg-[#AAAAAA33] data-[state=checked]:bg-[#375DFB]" ></Switch>
+            </div>
           </div>
-          <div className="w-full lg:w-[34%] lg:pl-2 p-0">
-            <InputField placeHolder="Projected Price" value={projectedPrice} setValue={setProjectedPrice} />
+          <div className="flex flex-col gap-2 w-full">
+            <div className="text-sm text-primary">Project Price(Optional)</div>
+            <Input placeholder="Projected Price" value={projectedPrice} onChange={() => setProjectedPrice} />
           </div>
         </div>
         <div>

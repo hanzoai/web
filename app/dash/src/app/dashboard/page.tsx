@@ -1,36 +1,54 @@
-import type { TextCardDataProps } from "@/components/DashTextCard";
-import Dollar from "./icons/Dollar";
-import DashTextCard from "@/components/DashTextCard";
-import type { BarChartDataProps } from "@/components/DashBarCharts";
-import DashBarCharts from "@/components/DashBarCharts";
-import type { DashRecentSalesItemType } from "@/components/DashRecentSalesItem";
-import DashRecentSalesItem from "@/components/DashRecentSalesItem";
-import { Tabs, TabsList, TabsTrigger } from "@hanzo/ui/primitives";
+import type { TextCardDataProps } from "@/components/dash-text-card";
+import DashTextCard from "@/components/dash-text-card";
+import type { BarChartDataProps } from "@/components/dash-bar-charts";
+import DashBarCharts from "@/components/dash-bar-charts";
+import type { DashRecentSalesItemType } from "@/components/dash-recent-sales-item";
+import { Input, Tabs, TabsList, TabsTrigger } from "@hanzo/ui/primitives";
+import { Button } from "@hanzo/ui/primitives";
+import { Basket, Credit, CSV, Receipt } from "./icons"
 
 const textCardData: TextCardDataProps[] = [
   {
-    cardTitle: "Total Revenue",
-    cardIcon: <Dollar />,
-    cardMainText: "$45,231.89",
-    cardSubText: "+20.1% from last month"
+    cardTitle: "Projected Revenue",
+    cardIcon: <Credit />,
+    cardValue: 50,
+    cardPercent: 100,
+    cardValueType: 'cash'
   },
   {
-    cardTitle: "Total Revenue",
-    cardIcon: <Dollar />,
-    cardMainText: "$45,231.89",
-    cardSubText: "+20.1% from last month"
+    cardTitle: "Active Preorders",
+    cardIcon: <Basket />,
+    cardValue: 50,
+    cardPercent: 100,
+    cardValueType: 'cash'
   },
   {
-    cardTitle: "Total Revenue",
-    cardIcon: <Dollar />,
-    cardMainText: "$45,231.89",
-    cardSubText: "+20.1% from last month"
+    cardTitle: "Deposites",
+    cardIcon: <Basket />,
+    cardValue: 50,
+    cardPercent: 100,
+    cardValueType: 'cash'
   },
   {
-    cardTitle: "Total Revenue",
-    cardIcon: <Dollar />,
-    cardMainText: "$45,231.89",
-    cardSubText: "+20.1% from last month"
+    cardTitle: "Deposites Processed",
+    cardIcon: <Credit />,
+    cardValue: 50,
+    cardPercent: 100,
+    cardValueType: 'cash'
+  },
+  {
+    cardTitle: "Refunds",
+    cardIcon: <Receipt />,
+    cardValue: 50,
+    cardPercent: 100,
+    cardValueType: 'cash'
+  },
+  {
+    cardTitle: "Refunds Processed",
+    cardIcon: <Receipt />,
+    cardValue: 50,
+    cardPercent: 100,
+    cardValueType: 'cash'
   }
 ];
 
@@ -59,65 +77,43 @@ const salesData: DashRecentSalesItemType[] = [
 
 const UniversalPage = () => {
   return (
-    <div className="flex-1 space-y-4 p-8 pt-6 overflow-y-auto">
-      <div className="flex items-center justify-between space-y-2">
-        <h2 className="text-3xl font-bold tracking-tighter">Dashboard</h2>
-      </div>
-      <div className="space-y-4">
-        <Tabs defaultValue="Overview">
-          <TabsList className="inline-flex h-9 items-center justify-center rounded-sm p-1 text-muted-1 bg-muted-4">
-            <TabsTrigger value="Overview">Overview</TabsTrigger>
-            <TabsTrigger value="Analytics">Analytics</TabsTrigger>
-            <TabsTrigger value="Reports">Reports</TabsTrigger>
-            <TabsTrigger value="Notifications">Notifications</TabsTrigger>
-          </TabsList>
-        </Tabs>
-        <div className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {
-              textCardData.map((item, index) =>
-                <DashTextCard
-                  key={index}
-                  cardTitle={item.cardTitle}
-                  cardIcon={item.cardIcon}
-                  cardMainText={item.cardMainText}
-                  cardSubText={item.cardSubText}
-                />
-              )
-            }
+    <div className="p-4 w-full flex flex-col gap-4">
+      <div className="flex lg:flex-row flex-col w-full gap-4">
+        <div className="w-full lg:flex-[60%] flex md:flex-row flex-col gap-4">
+          <div className="md:flex-[47%] flex flex-col gap-2">
+            <p className="text-base text-primary font-medium">Start Date</p>
+            <div className="w-full"><Input type="date" /></div>
           </div>
-          <div className="grid gap-4 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-7">
-            <div className="rounded-xl border bg-background text-muted-1 shadow col-span-4">
-              <div className="flex flex-col space-y-1.5 p-6">
-                <h3 className="font-semibold leading-none text-primary">Overview</h3>
-              </div>
-              <div className="p-6 pt-0 pl-2 text-muted-1">
-                <DashBarCharts data={chartData} />
-              </div>
-            </div>
-            <div className="rounded-xl border bg-background text-primary shadow col-span-3">
-              <div className="flex flex-col space-y-1.5 p-6">
-                <h3 className="font-semibold leading-none tracking-tighter">Recent Sales</h3>
-                <p className="text-sm text-muted-1">You made 265 sales this month.</p>
-              </div>
-              <div className="p-6 pt-0">
-                <div className="space-y-8">
-                  {
-                    salesData.map((item, index) =>
-                      <DashRecentSalesItem
-                        key={index}
-                        name={item.name}
-                        email={item.email}
-                        balance={item.balance}
-                        avatar={item.avatar}
-                      />
-                    )
-                  }
-                </div>
-              </div>
-            </div>
+          <div className="md:flex-[6%] md:flex hidden justify-center items-end py-2">To</div>
+          <div className="md:flex-[47%] flex flex-col gap-2">
+            <p className="text-base text-primary font-medium">End Date</p>
+            <div className="w-full"><Input type="date" /></div>
           </div>
         </div>
+        <div className="lg:flex-[40%] flex flex-row gap-4 items-end">
+          <Button variant="secondary" className="text-sm font-medium bg-[#AAAAAA33]">Search</Button>
+          <Button variant="secondary" className="text-sm font-medium bg-[#AAAAAA33] flex flex-row gap-2">
+            <CSV /> <div>CSV</div>
+          </Button>
+        </div>
+      </div>
+      <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
+        {
+          textCardData.map((item, index) =>
+            <DashTextCard
+              key={index}
+              cardTitle={item.cardTitle}
+              cardIcon={item.cardIcon}
+              cardValue={item.cardValue}
+              cardPercent={item.cardPercent}
+              cardValueType={item.cardValueType}
+            />
+          )
+        }
+      </div>
+      <div className="rounded-xl border border-[#AAAAAA33] bg-background text-muted-1 flex flex-col gap-4">
+        <div className="font-medium text-xl leading-none text-primary p-4 border-b border-[#AAAAAA33]">Projected Revenue per Day</div>
+        <DashBarCharts data={chartData} />
       </div>
     </div>
   )
