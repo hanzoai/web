@@ -100,7 +100,7 @@ const Page = () => {
 
   return (
     <div className="flex flex-col space-y-4 p-4 overflow-y-auto">
-      <div className="flex flex-row w-full items-center justify-center bg-background shadow gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 w-full items-center justify-center bg-background shadow gap-4">
         <div className="flex-1 flex flex-col border border-[#AAAAAA33] rounded-md p-4 gap-2">
           <div className="font-medium text-xl text-foreground">Statistics ID</div>
           <span className="font-medium text-base text-muted-1">{statistics.id}</span>
@@ -122,7 +122,7 @@ const Page = () => {
           <div className="text-sm text-primary">Email</div>
           <Input placeholder="Email" value={userEmail} onChange={() => setUserEmail} />
         </div>
-        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-6">
           <div className="flex-1 flex flex-col gap-2">
             <div className="text-sm text-primary">First Name</div>
             <Input placeholder="First Name" value={firstName} onChange={() => setFirstName} />
@@ -137,30 +137,30 @@ const Page = () => {
         <div>
           <h1 className="text-primary text-xl">Default Shipping Information</h1>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
             <div className="text-sm text-primary">Address</div>
             <Input placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
           </div>
           <div className="flex flex-col gap-2">
             <div className="text-sm text-primary">Suite</div>
-            <Input placeholder="Suite" value={suite} onChange={(e) => setSuite} />
+            <Input placeholder="Suite" value={suite} onChange={(e) => setSuite(e.target.value)} />
           </div>
           <div className="flex flex-col gap-2">
             <div className="text-sm text-primary">City</div>
-            <Input placeholder="City" value={city} onChange={(e) => setCity} />
+            <Input placeholder="City" value={city} onChange={(e) => setCity(e.target.value)} />
           </div>
           <div className="flex flex-col gap-2">
             <div className="text-sm text-primary">ZIP/Postal Code</div>
-            <Input placeholder="Zip Code" value={postalCode} onChange={(e) => setPostalCode} />
+            <Input placeholder="Zip Code" value={postalCode} onChange={(e) => setPostalCode(e.target.value)} />
           </div>
           <div className="flex flex-col gap-2">
             <div className="text-sm text-primary">Region/State</div>
-            <Input placeholder="Select a State" value={state} onChange={(e) => setState} />
+            <Input placeholder="Select a State" value={state} onChange={(e) => setState(e.target.value)} />
           </div>
           <div className="flex flex-col gap-2">
             <div className="text-sm text-primary">Country</div>
-            <Input placeholder="Select a Country" value={country} onChange={(e) => setCountry} />
+            <Input placeholder="Select a Country" value={country} onChange={(e) => setCountry(e.target.value)} />
           </div>
         </div>
         <div>

@@ -18,68 +18,43 @@ export interface UserOrderTableDataType {
 
 export const UserOrderTableColumn: ColumnDef<UserOrderTableDataType>[] = [
   {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
     accessorKey: "number",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
+          className="text-center"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Number
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("number")}</div>,
+    cell: ({ row }) => <div className="text-center">{row.getValue("number")}</div>,
   },
   {
     accessorKey: "total",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
+          className="text-center"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Total
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
-    cell: ({ row }) => <div className="">{row.getValue("total")}</div>,
+    cell: ({ row }) => <div className="text-center">{row.getValue("total")}</div>,
   },
   {
     accessorKey: "orderStatus",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
+          className="text-center whitespace-nowrap"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Order Status
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
     cell: ({ row }) => <div className="text-center">{row.getValue("orderStatus")}</div>,
@@ -88,13 +63,12 @@ export const UserOrderTableColumn: ColumnDef<UserOrderTableDataType>[] = [
     accessorKey: "paymentStatus",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
+          className="text-center whitespace-nowrap"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Payment Status
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
     cell: ({ row }) => <div className="text-center">{row.getValue("paymentStatus")}</div>,
@@ -103,13 +77,12 @@ export const UserOrderTableColumn: ColumnDef<UserOrderTableDataType>[] = [
     accessorKey: "state",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
+          className="text-center"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           State
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
     cell: ({ row }) => <div className="text-center">{row.getValue("state")}</div>,
@@ -118,13 +91,12 @@ export const UserOrderTableColumn: ColumnDef<UserOrderTableDataType>[] = [
     accessorKey: "country",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
+          className="text-center"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Country
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
     cell: ({ row }) => <div className="text-center">{row.getValue("country")}</div>,
@@ -133,30 +105,28 @@ export const UserOrderTableColumn: ColumnDef<UserOrderTableDataType>[] = [
     accessorKey: "created",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
+          className="text-center"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Created
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
-    cell: ({ row }) => <div className="lowercase text-center">{row.getValue("created")}</div>,
+    cell: ({ row }) => <div className="lowercase text-center whitespace-nowrap">{row.getValue("created")}</div>,
   },
   {
     accessorKey: "updated",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
+          className="text-center"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Updated
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
-    cell: ({ row }) => <div className="lowercase text-center">{row.getValue("updated")}</div>,
+    cell: ({ row }) => <div className="lowercase text-center whitespace-nowrap">{row.getValue("updated")}</div>,
   },
 ]

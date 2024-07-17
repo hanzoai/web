@@ -6,79 +6,84 @@ import { Button, Checkbox } from "@hanzo/ui/primitives"
 import { ArrowUpDown } from "lucide-react"
 
 export interface OrderDetailTableDataType {
-  externalId: string;
-  type: string;
-  country: string;
-  status: string;
-  fee: number;
-  amount: number;
-  returned: number;
+  externalId: string
+  type: string
+  last: string
+  ip: string
+  country: string
+  status: string
+  fee: number
+  amount: number
+  refunded: string
 }
 
 export const OrderDetailTableColumn: ColumnDef<OrderDetailTableDataType>[] = [
   {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
     accessorKey: "externalId",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="text-center whitespace-nowrap"
         >
           External Id
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
-    cell: ({ row }) => <div className="">{row.getValue("externalId")}</div>,
+    cell: ({ row }) => <div className="text-center">{row.getValue("externalId")}</div>,
   },
   {
     accessorKey: "type",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="text-center"
         >
           Type
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
     cell: ({ row }) => <div className="text-center">{row.getValue("type")}</div>,
   },
   {
+    accessorKey: "last",
+    header: ({ column }) => {
+      return (
+        <div
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="text-center whitespace-nowrap"
+        >
+          Last 4
+        </div>
+      )
+    },
+    cell: ({ row }) => <div className="text-center whitespace-nowrap">{row.getValue("last")}</div>,
+  },
+  {
+    accessorKey: "ip",
+    header: ({ column }) => {
+      return (
+        <div
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="text-center"
+        >
+          IP
+        </div>
+      )
+    },
+    cell: ({ row }) => <div className="text-center">{row.getValue("ip")}</div>,
+  },
+  {
     accessorKey: "country",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="text-center"
         >
           Country
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
     cell: ({ row }) => <div className="text-center">{row.getValue("country")}</div>,
@@ -87,13 +92,12 @@ export const OrderDetailTableColumn: ColumnDef<OrderDetailTableDataType>[] = [
     accessorKey: "status",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="text-center"
         >
           Status
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
     cell: ({ row }) => <div className="text-center">{row.getValue("status")}</div>,
@@ -102,13 +106,12 @@ export const OrderDetailTableColumn: ColumnDef<OrderDetailTableDataType>[] = [
     accessorKey: "fee",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="text-center"
         >
           Fee
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
     cell: ({ row }) => <div className="text-center">{row.getValue("fee")}</div>,
@@ -117,30 +120,28 @@ export const OrderDetailTableColumn: ColumnDef<OrderDetailTableDataType>[] = [
     accessorKey: "amount",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="text-center"
         >
           Amount
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
       )
     },
     cell: ({ row }) => <div className="text-center">{row.getValue("amount")}</div>,
   },
   {
-    accessorKey: "returned",
+    accessorKey: "refunded",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
+        <div
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="text-center"
         >
-          Returned
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+          Refunded
+        </div>
       )
     },
-    cell: ({ row }) => <div className="text-center">{row.getValue("returned")}</div>,
+    cell: ({ row }) => <div className="text-center">{row.getValue("refunded")}</div>,
   },
 ]
