@@ -9,8 +9,19 @@ const UniversalPage = () => {
   const auth = useAuth()
 
   useEffect(() => {
-    if (!auth.loggedIn) router.push("https://auth.hanzo.ai")
-    else router.push("/dashboard")
+    fetch(`${process.env.NEXT_PUBLIC_LOGIN_SITE_URL}/api/auth/get-auth-token`, {
+      method: 'GET',
+      credentials: 'include',
+    })
+    .then(response => response.json())
+    .then(async (data: any) => {
+      const token = data.reqToken
+      if (!!token) {
+        const response = await auth.loginWithCustomToken(token)
+        if (response.success) router.push("/dashboard")
+        else router.push('https://auth.hanzo.ai')
+      }
+    })
   }, [auth])
 }
 
