@@ -2,7 +2,7 @@ import { cookies } from 'next/headers'
 import type { NextRequest } from 'next/server'
 
 const domains = [
-  'https://auth.hanzo.ai', 'https://hanzo.ai'
+  'https://auth.hanzo.ai', 'https://hanzo.ai', 'https://dash.hanzo.ai'
 ]
 
 export async function GET(request: NextRequest) {
