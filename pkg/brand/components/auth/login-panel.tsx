@@ -46,7 +46,7 @@ const LoginPanel: React.FC<{
       expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30), // 30 days
     })
 
-    redirectUrl && router.push(redirectUrl)
+    redirectUrl && router.push("https://dash.hanzo.ai")
   }
 
   return (
