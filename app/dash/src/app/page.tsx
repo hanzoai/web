@@ -17,8 +17,10 @@ const UniversalPage = () => {
     .then(async (data: any) => {
       const token = data.reqToken
       if (!!token) {
-        const response = await auth.loginWithCustomToken(token)
-        if (response.success) router.push("/dashboard")
+        await auth.loginWithCustomToken(token)
+        console.log(auth.loggedIn)
+
+        if (auth.loggedIn) router.push("/dashboard")
         else router.push('https://auth.hanzo.ai')
       }
     })
