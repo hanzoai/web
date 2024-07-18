@@ -1,3 +1,4 @@
+import HomeLayout from '@/layout/home'
 import siteDef from '@/site-def'
 import { Footer, Header } from '@hanzo/brand'
 import React from 'react'
@@ -12,6 +13,7 @@ const page = ({ searchParams }: Props) => {
   return (
     <>
       <Header siteDef={siteDef} />
+      <HomeLayout />
       <Footer siteDef={siteDef} />
     </>
   )
