@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { NotFound as NotFoundCommon } from '@hanzo/brand'
-import siteDef from '../site-def'
+import siteDef from '@/site-def'
 
-const NotFound: React.FC = () => (<NotFoundCommon siteDef={siteDef}/>)
+const NotFound: React.FC = () => (<NotFoundCommon siteDef={siteDef} />)
 
 export default NotFound

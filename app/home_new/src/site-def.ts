@@ -1,11 +1,9 @@
-import { footer, mainNav, type SiteDef  } from '@hanzo/brand/site-def'
-
+import { footer, mainNav, type SiteDef } from '@hanzo/brand/site-def'
 
 export default {
   currentAs: 'https://hanzo.ai',
   nav: {
     common: mainNav,
   },
-  footer: footer.standard, 
-} as SiteDef
-
+  footer: footer.standard,
+} satisfies SiteDef
