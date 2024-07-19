@@ -1,6 +1,6 @@
 import React, { type PropsWithChildren } from 'react'
 import AdminHeader from "@/layout/header";
-import SideBar from '@/layout/sidebar';
+import SideBar from '@/layout/settings-sidebar';
 
 const Layout: React.FC<PropsWithChildren> = async ({
   children
