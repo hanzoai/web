@@ -101,20 +101,20 @@ const Page = () => {
   return (
     <div className="flex flex-col space-y-4 p-4 overflow-y-auto">
       <div className="grid grid-cols-1 lg:grid-cols-3 w-full items-center justify-center bg-background shadow gap-4">
-        <div className="flex-1 flex flex-col border border-[#AAAAAA33] rounded-md p-4 gap-2">
+        <div className="flex-1 flex flex-col border border-level-1 rounded-md p-4 gap-2">
           <div className="font-medium text-xl text-foreground">Statistics ID</div>
           <span className="font-medium text-base text-muted-1">{statistics.id}</span>
         </div>
-        <div className="flex-1 flex flex-col border border-[#AAAAAA33] rounded-md text-muted-1 p-4 gap-2">
+        <div className="flex-1 flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
           <div className="font-medium text-xl text-foreground">Created At</div>
           <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
         </div>
-        <div className="flex-1 flex flex-col border border-[#AAAAAA33] rounded-md text-muted-1 p-4 gap-2">
+        <div className="flex-1 flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
           <div className="font-medium text-xl text-foreground">Updated At</div>
           <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
         </div>
       </div>
-      <div className="flex flex-col space-y-4 w-full rounded-md border border-[#AAAAAA33] bg-background shadow p-4 text-muted-1">
+      <div className="flex flex-col space-y-4 w-full rounded-md border border-level-1 bg-background shadow p-4 text-muted-1">
         <div>
           <h1 className="text-primary text-xl">Personal Information</h1>
         </div>
@@ -133,7 +133,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col space-y-4 w-full rounded-md border border-[#AAAAAA33] bg-background shadow p-4 text-muted-1">
+      <div className="flex flex-col space-y-4 w-full rounded-md border border-level-1 bg-background shadow p-4 text-muted-1">
         <div>
           <h1 className="text-primary text-xl">Default Shipping Information</h1>
         </div>

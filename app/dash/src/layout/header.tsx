@@ -42,7 +42,7 @@ const AdminHeader: React.FC<{
     const handleLogOut = () => { }
 
     return (
-      <div className="w-full h-[80px] flex items-center justify-between border-b border-dashed border-[#AAAAAA33] py-2 px-4">
+      <div className="w-full h-[80px] flex items-center justify-between border-b border-dashed border-level-1 py-2 px-4">
         <div className="text-xl font-bold">{content}</div>
         <Popover>
           <PopoverTrigger asChild>
