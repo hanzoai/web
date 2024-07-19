@@ -12,11 +12,14 @@ const AdminHeader: React.FC<{
 }> = ({
   content = 'Karma'
 }) => {
+
     const router = useRouter()
+
     const [openCommandMenu, setOpenCommandMenu] = useState(false)
 
     useEffect(() => {
       const handleCommandMenuEvent = (event: KeyboardEvent) => {
+
         if ((event.metaKey || event.ctrlKey) && event.key == 'k') {
           event.preventDefault()
           setOpenCommandMenu(true)
