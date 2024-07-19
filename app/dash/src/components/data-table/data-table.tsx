@@ -48,7 +48,7 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
       {
         filterKey && <>
           <div className="flex items-center flex-row gap-4">
-            <div className="flex flex-row border rounded-md items-center px-2 w-full">
+            <div className="flex flex-row border rounded-md border-level-1 items-center px-2 py-1 w-full">
               <SearchIcon className="text-muted-2" />
               <Input
                 placeholder={`Filter ${filterKey}...`}
@@ -56,7 +56,7 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
                 onChange={(event) =>
                   table.getColumn(filterKey)?.setFilterValue(event.target.value)
                 }
-                className="w-full border-none hover:border-none focus:border-none focus-visible:border-none"
+                className="w-full outline-none border-none bg-transparent ring-offset-background focus-visible:ring-background"
               />
             </div>
             <Button variant='secondary' className="!h-full !text-sm !font-medium">Search</Button>
@@ -81,10 +81,10 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
           </div>
         </>
       }
-      <div className="rounded-md border border-[#AAAAAA33] custom-scroll text-muted-2 p-4 flex flex-col gap-4">
+      <div className="rounded-md border border-level-1 custom-scroll text-muted-2 p-4 flex flex-col gap-4">
         <div className="text-xl text-medium text-primary">{title}</div>
         <Table>
-          <TableHeader className="border-[#AAAAAA33]">
+          <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
