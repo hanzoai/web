@@ -8,7 +8,28 @@ import ScrollNumBlockComponent from '@/blocks/components/scroll-num';
 import type ScrollNumBlock from '@/blocks/def/scroll-num';
 import type { Block } from '@hanzo/ui/blocks';
 import { Button } from '@hanzo/ui/primitives';
-import { Phone, Rocket } from 'lucide-react';
+import { Phone } from 'lucide-react';
+import Arca from '../components/companies/arca';
+import Cove from '../components/companies/cove';
+import Cover from '../components/companies/cover';
+import Lux from '../components/companies/lux';
+import Nasa from '../components/companies/nasa';
+import Zoo from '../components/companies/zoo';
+import AAAA from '../components/companies/AAAA';
+import Beallabeat from '../components/companies/beallabeat';
+import Casperlabs from '../components/companies/casperlabs';
+import Devxdao from '../components/companies/devxdao';
+import Cycliq from '../components/companies/cycliq';
+import Daemon from '../components/companies/damon';
+import Forstman from '../components/companies/forstman';
+import Karma from '../components/companies/karma';
+import Keek from '../components/companies/keek';
+import Myle from '../components/companies/myle';
+import Snapchat from '../components/companies/snapchat';
+import Skully from '../components/companies/skully';
+import Triller from '../components/companies/triller';
+import Unikain from '../components/companies/unikain';
+import '../../app/global.css';
 
 const scrollNumBlocks = {
   blockType: 'scroll-num',
@@ -51,6 +72,30 @@ const HomeLayout = () => {
         {/* Hanzo power section */}
         <div className='flex border-b border-white-10 py-[34px] px-[150px]'>
           <p className='text-[32px] text-white-65 text-center'><span className='text-white'>Hanzo has powered over 100 companies</span> from zero to millions of dollars in revenue per month.</p>
+        </div>
+
+        {/* Companies section */}
+        <div className='grid grid-flow-col auto-cols-max border-b border-white-10 w-full overflow-x-auto gap-[64px] justify-start items-center no-scroll py-[36px]'>
+          <Arca className='w-full ml-2' />
+          <Cove className='w-full' />
+          <Cover className='w-full' />
+          <Lux className='w-full' />
+          <Nasa className='w-full' />
+          <Zoo className='w-full' />
+          <AAAA className='w-full' />
+          <Beallabeat className='w-full' />
+          <Casperlabs className='w-full' />
+          <Devxdao className='w-full' />
+          <Cycliq className='w-full' />
+          <Daemon className='w-full' />
+          <Forstman className='w-full' />
+          <Karma className='w-full' />
+          <Keek className='w-full' />
+          <Myle className='w-full' />
+          <Snapchat className='w-full' />
+          <Skully className='w-full' />
+          <Triller className='w-full' />
+          <Unikain className='w-full' />
         </div>
 
         {/* Strategy section */}
