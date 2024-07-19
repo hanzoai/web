@@ -45,7 +45,7 @@ const DesktopHeader: React.FC<{
           </div>
           <div className='flex items-center'>
             <Link href={"https://dash.hanzo.ai"} className='m-[14px] hover:font-bold ease-in duration-200'>
-              Contact
+              Dash
             </Link>
             <AuthWidget />
           </div>
