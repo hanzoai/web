@@ -10,11 +10,12 @@ import {
 } from "@tanstack/react-table"
 import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table"
 
-import { Button, Input, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@hanzo/ui/primitives"
+import { Select, SelectItem, SelectContent, SelectTrigger, SelectValue, Button, Input, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@hanzo/ui/primitives"
 import React from "react"
+import { SearchIcon } from "lucide-react"
 
-export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; onClickHandler?: (id: string) => void; filterKey?: string; }) {
-  const { data, columns, filterKey, onClickHandler } = props;
+export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; onClickHandler?: (id: string) => void; filterKey?: string; title: string}) {
+  const { data, columns, filterKey, onClickHandler, title } = props;
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -43,23 +44,47 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
   })
 
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col py-4 gap-4">
       {
-        filterKey &&
-        <div className="flex items-center py-4">
-          <Input
-            placeholder={`Filter ${filterKey}...`}
-            value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn(filterKey)?.setFilterValue(event.target.value)
-            }
-            className="max-w-sm"
-          />
-        </div>
+        filterKey && <>
+          <div className="flex items-center flex-row gap-4">
+            <div className="flex flex-row border rounded-md items-center px-2 w-full">
+              <SearchIcon className="text-muted-2" />
+              <Input
+                placeholder={`Filter ${filterKey}...`}
+                value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
+                onChange={(event) =>
+                  table.getColumn(filterKey)?.setFilterValue(event.target.value)
+                }
+                className="w-full border-none hover:border-none focus:border-none focus-visible:border-none"
+              />
+            </div>
+            <Button variant='secondary' className="!h-full !text-sm !font-medium">Search</Button>
+            <Button variant='secondary' className="!h-full !text-sm !font-medium">
+              Create +
+            </Button>
+            <Button variant='secondary' className="!h-full !text-sm !font-medium">
+              CSV
+            </Button>
+          </div>
+          <div className="w-full">
+            <Select>
+              <SelectTrigger className="text-muted-2">
+                <SelectValue placeholder='More Options' />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value='option1' className="text-muted-2">Option1</SelectItem>
+                <SelectItem value='option2' className="text-muted-2">Option2</SelectItem>
+                <SelectItem value='option3' className="text-muted-2">Option3</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </>
       }
-      <div className="rounded-md border custom-scroll">
+      <div className="rounded-md border border-[#AAAAAA33] custom-scroll text-muted-2 p-4 flex flex-col gap-4">
+        <div className="text-xl text-medium text-primary">{title}</div>
         <Table>
-          <TableHeader>
+          <TableHeader className="border-[#AAAAAA33]">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
@@ -110,10 +135,6 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
         <div className="space-x-2 flex">
           <Button
             variant="outline"

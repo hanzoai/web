@@ -1,7 +1,7 @@
 "use client";
 
 import React, { type Dispatch, type SetStateAction } from 'react';
-import "./DashInput.css"
+import "./dash-input.css"
 
 interface InputFieldProps<T> {
   placeHolder: string;

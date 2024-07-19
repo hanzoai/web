@@ -1,41 +1,30 @@
 "use client";
 
 import { useRouter } from "next/navigation"
+import { useAuth } from '@hanzo/auth/service'
+import { useEffect } from "react";
 
 const UniversalPage = () => {
   const router = useRouter();
+  const auth = useAuth()
 
-  const onClickSignIn = () => {
-    router.push("/dashboard");
-  }
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_LOGIN_SITE_URL}/api/auth/get-auth-token`, {
+      method: 'GET',
+      credentials: 'include',
+    })
+    .then(response => response.json())
+    .then(async (data: any) => {
+      const token = data.reqToken
+      if (!!token) {
+        await auth.loginWithCustomToken(token)
+        console.log(auth.loggedIn)
 
-  return (
-    <div className="w-screen h-screen flex justify-center items-center">
-      <div className="flex items-center justify-center [&>div:w-full]">
-        <div className="rounded-xl border bg-background text-primary shadow">
-          <div className="flex flex-col p-6 space-y-1">
-            <h3 className="font-semibold tracking-tighter text-2xl">Sign In</h3>
-            <p className="text-sm text-muted-1">Enter your email below to create your account</p>
-          </div>
-          <div className="p-6 pt-0 grid gap-4">
-            <div className="grid gap-2">
-              <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Email</label>
-              <input className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" id="email" placeholder="m@example.com" type="email"></input>
-            </div>
-            <div className="grid gap-2">
-              <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Password</label>
-              <input className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50" id="password" type="password" />
-            </div>
-          </div>
-          <div className="flex items-center p-6 pt-0">
-            <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-muted-4 shadow hover:bg-primary/90 h-9 px-4 py-2 w-full" onClick={onClickSignIn}>
-              Sign In
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+        if (auth.loggedIn) router.push("/dashboard")
+        else router.push('https://auth.hanzo.ai/?redirectUrl=https://dash.hanzo.ai')
+      }
+    })
+  }, [auth])
 }
 
 export default UniversalPage
