@@ -1,24 +1,13 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
 import { Ethereum } from '@hanzo/auth/icons'
 import {
   Button,
-  LinkElement,
   Popover,
   PopoverContent,
   PopoverTrigger,
-  PopoverClose,
   Separator,
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
 } from '@hanzo/ui/primitives'
-import type { LinkDef } from '@hanzo/ui/types'
-import { cn } from '@hanzo/ui/util'
 import { useEffect, useState } from 'react'
 import ModalDialog from '@/components/modal-dialog'
 
@@ -28,7 +17,6 @@ const AdminHeader: React.FC<{
   content = 'Karma'
 }) => {
     const [openCommandMenu, setOpenCommandMenu] = useState(false)
-    const [openProfilePopup, setOpenProfilePopup] = useState(false)
 
     useEffect(() => {
       const handleCommandMenuEvent = (event: KeyboardEvent) => {

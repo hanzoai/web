@@ -9,7 +9,7 @@ import {
 import siteDef from '../site-def'
 import _metadata from '../metadata'
 
-import "./global.css"
+import "./globals.css"
 
 export const metadata = { ..._metadata }
 export const viewport = { ...ViewportCode }
