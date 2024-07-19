@@ -1,5 +1,5 @@
 {
-  "name": "@luxfi/blank",
+  "name": "@hanzo/blank",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
     "tc": "tsc --noEmit"
   },
   "dependencies": {
-    "@handzo/brand": "link:../../pkg/brand",
+    "@hanzo/brand": "*",
     "@hanzo/auth": "*",
     "@hanzo/commerce": "*",
     "@hanzo/ui": "*",
