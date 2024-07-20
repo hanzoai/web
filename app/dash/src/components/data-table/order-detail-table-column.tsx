@@ -2,9 +2,6 @@
 
 import type { ColumnDef } from "@tanstack/react-table"
 
-import { Button, Checkbox } from "@hanzo/ui/primitives"
-import { ArrowUpDown } from "lucide-react"
-
 export interface OrderDetailTableDataType {
   externalId: string
   type: string

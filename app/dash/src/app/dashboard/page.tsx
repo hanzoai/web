@@ -91,8 +91,8 @@ const UniversalPage = () => {
           </div>
         </div>
         <div className="lg:flex-[40%] flex flex-row gap-4 items-end">
-          <Button variant="secondary" className="text-sm font-medium bg-[#AAAAAA33]">Search</Button>
-          <Button variant="secondary" className="text-sm font-medium bg-[#AAAAAA33] flex flex-row gap-2">
+          <Button variant="secondary" className="text-sm font-medium bg-level-1">Search</Button>
+          <Button variant="secondary" className="text-sm font-medium bg-level-1 flex flex-row gap-2">
             <CSV /> <div>CSV</div>
           </Button>
         </div>
@@ -111,8 +111,8 @@ const UniversalPage = () => {
           )
         }
       </div>
-      <div className="rounded-xl border border-[#AAAAAA33] bg-background text-muted-1 flex flex-col gap-4">
-        <div className="font-medium text-xl leading-none text-primary p-4 border-b border-[#AAAAAA33]">Projected Revenue per Day</div>
+      <div className="rounded-xl border border-level-1 bg-background text-muted-1 flex flex-col gap-4">
+        <div className="font-medium text-xl leading-none text-primary p-4 border-b border-level-1">Projected Revenue per Day</div>
         <DashBarCharts data={chartData} />
       </div>
     </div>

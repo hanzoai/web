@@ -19,9 +19,9 @@ const SideBarMenuItem: FC<SideBarMenuItemProps> = (props) => {
 
   return (
     <div onClick={handleClick} className="flex flex-row gap-4 hover:cursor-pointer">
-      <div className={`flex p-2 hover:bg-muted-4 w-full gap-2 text-muted-1 hover:text-primary rounded-sm`}>
+      <div className='flex p-2 hover:bg-muted-4 w-full gap-2 text-muted-1 hover:text-primary rounded-sm justify-center md:justify-start'>
         {icon}
-        <span>{label}</span>
+        <span className="hidden md:block">{label}</span>
       </div>
     </div>
   )

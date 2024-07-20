@@ -39,24 +39,24 @@ const Page = () => {
   return (
     <div className="flex flex-col space-y-4 p-4 overflow-y-auto w-full">
       <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 w-full items-center justify-center bg-background shadow gap-4">
-        <div className="flex flex-col border border-[#AAAAAA33] rounded-md p-4 gap-2">
+        <div className="flex flex-col border border-level-1 rounded-md p-4 gap-2">
           <div className="font-medium text-xl text-foreground">Statistics ID</div>
           <span className="font-medium text-base text-muted-1">{statistics.id}</span>
         </div>
-        <div className="flex flex-col border border-[#AAAAAA33] rounded-md text-muted-1 p-4 gap-2">
+        <div className="flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
           <div className="font-medium text-xl text-foreground">Created At</div>
           <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
         </div>
-        <div className="flex flex-col border border-[#AAAAAA33] rounded-md text-muted-1 p-4 gap-2">
+        <div className="flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
           <div className="font-medium text-xl text-foreground">Updated At</div>
           <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
         </div>
-        <div className="flex flex-col border border-[#AAAAAA33] rounded-md text-muted-1 p-4 gap-2">
+        <div className="flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
           <div className="font-medium text-xl text-foreground">Units Sold</div>
           <span className="font-medium text-base text-muted-1">{statistics.units_sold}</span>
         </div>
       </div>
-      <div className="flex flex-col space-y-4 w-full rounded-md border border-[#AAAAAA33] bg-background shadow p-4 text-muted-1">
+      <div className="flex flex-col space-y-4 w-full rounded-md border border-level-1 bg-background shadow p-4 text-muted-1">
         <div>
           <h1 className="text-primary text-2xl">Product Information</h1>
         </div>
@@ -84,7 +84,7 @@ const Page = () => {
             <Input placeholder="Display Price" value={displayPrice} onChange={() => setDisplayPrice} />
             <div className="flex text-sm text-primary gap-2">
               <p>Preorder</p>
-              <Switch className="bg-[#AAAAAA33] data-[state=checked]:bg-[#375DFB]" ></Switch>
+              <Switch className="bg-level-1 data-[state=checked]:bg-[#375DFB]" ></Switch>
             </div>
           </div>
           <div className="flex flex-col gap-2 w-full">
@@ -92,7 +92,7 @@ const Page = () => {
             <Input placeholder="MSRP" value={msrf} onChange={() => setMsrf} />
             <div className="flex text-sm text-primary gap-2">
               <p>Taxable</p>
-              <Switch className="bg-[#AAAAAA33] data-[state=checked]:bg-[#375DFB]" ></Switch>
+              <Switch className="bg-level-1 data-[state=checked]:bg-[#375DFB]" ></Switch>
             </div>
           </div>
           <div className="flex flex-col gap-2 w-full">
