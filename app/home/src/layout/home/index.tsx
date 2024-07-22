@@ -141,6 +141,11 @@ const HomeLayout = () => {
           <ScrollNumBlockComponent block={scrollNumBlocks} />
         </div>
 
+        {/* Video section */}
+        <div className='border-b border-white-10 pt-[82px] pb-[55px] px-10'>
+          
+        </div>
+
         {/* Hanzo power section */}
         <div className='flex border-b border-white-10 py-[34px] px-[150px]'>
           <p className='text-[32px] text-white-65 text-center'><span className='text-white'>Hanzo has powered over 100 companies</span> from zero to millions of dollars in revenue per month.</p>
