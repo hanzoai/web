@@ -15,8 +15,8 @@ const sidebarData = [
 
 const SideBar: FC = () => {
   return (
-    <div className="flex w-[50px] md:w-[250px] flex-col gap-2 flex-none transition-all duration-500">
-      <div className="h-[80px] flex items-center border-b border-dashed border-level-1 justify-center md:justify-start p-2">
+    <div className="w-[0px] md:w-[250px] md:flex flex-col gap-2 flex-none transition-all duration-500">
+      <div className="h-[80px] hidden md:flex items-center border-b border-dashed border-level-1 justify-center md:justify-start p-2">
         <Logo size='md' href='https://hanzo.ai/' className='flex' key='two' layout='logo-only' />
       </div>
       {sidebarData.map((item, index) => {

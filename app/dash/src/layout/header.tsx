@@ -2,15 +2,16 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { PlusCircleIcon, ChevronDownIcon, ChevronUpIcon, AlignLeft } from 'lucide-react'
+import { PlusCircleIcon, ChevronDownIcon, ChevronUpIcon, AlignLeft, BarChart, User2, ShoppingBasket, Notebook, Settings } from 'lucide-react'
 
 import { Ethereum } from '@hanzo/auth/icons'
-import { Button, Popover, PopoverContent, PopoverTrigger, Separator } from '@hanzo/ui/primitives'
+import { Button, Popover, PopoverContent, PopoverTrigger, Separator, Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from '@hanzo/ui/primitives'
 import { cn } from '@hanzo/ui/util'
+import { useAuth } from '@hanzo/auth/service'
+import { Logo } from "@hanzo/brand"
 
 import ModalDialog from '@/components/modal-dialog'
-import { PlusCircleIcon } from 'lucide-react'
-import { useAuth } from '@hanzo/auth/service'
+import SideBarMenuItem from "@/components/side-bar-menu-item";
 
 const AdminHeader: React.FC<{
   content: string
@@ -21,6 +22,15 @@ const AdminHeader: React.FC<{
     const router = useRouter()
     const [openMenu, setOpenMenu] = useState(false)
     const [openCommandMenu, setOpenCommandMenu] = useState(false)
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+    const sidebarData = [
+      { label: "Overview", icon: <BarChart />, href: "/dashboard" },
+      { label: "Users", icon: <User2 />, href: "/users" },
+      { label: "Products", icon: <ShoppingBasket />, href: "/products" },
+      { label: "Orders", icon: <Notebook />, href: "/orders" },
+      { label: "Integrations", icon: <Settings />, href: "/integrations" },
+    ];
 
     useEffect(() => {
       const handleCommandMenuEvent = (event: KeyboardEvent) => {
@@ -47,9 +57,7 @@ const AdminHeader: React.FC<{
     //   }
     // }
 
-    const handleMenu = () => {
-      
-    }
+    const handleMenu = () => { }
 
     const handleWalletClick = () => { }
 
@@ -59,17 +67,43 @@ const AdminHeader: React.FC<{
       <div className="w-full h-[80px] flex items-center justify-between md:border-b md:border-dashed md:border-level-1 py-1 md:py-2 px-2 md:px-4">
         <div className="text-xl font-bold">
           <p className='hidden md:block'>{content}</p>
-          <div className='block md:hidden'><AlignLeft /></div>
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <div className='block md:hidden'><AlignLeft /></div>
+            </SheetTrigger>
+            <SheetContent side='left'>
+              <SheetHeader>
+                <SheetTitle>
+                  <div className="h-[80px] flex items-center justify-start p-2">
+                    <Logo size='md' href='https://hanzo.ai/' className='flex' key='two' layout='text-only' />
+                  </div>
+                </SheetTitle>
+              </SheetHeader>
+              <div className='flex flex-col gap-4'>
+                {sidebarData.map((item, index) => {
+                  return (
+                    <div key={index} onClick={() => {router.push(item.href); setMobileMenuOpen(false)}} className="flex flex-row gap-4 hover:cursor-pointer">
+                      <div className='flex p-2 hover:bg-muted-4 w-full gap-2 text-xl text-muted-1 hover:text-primary rounded-sm justify-start'>
+                        {item.icon}
+                        <span>{item.label}</span>
+                      </div>
+                    </div>
+                  )
+                })
+                }
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
         <Popover>
           <PopoverTrigger asChild>
-              <div className='flex flex-row gap-2' onClick={() => setOpenMenu(!openMenu)}>
-                <img src="assets/images/01.png" className="aspect-square rounded-full" alt="profile" width={30} />
-                <div className='flex items-center'>
-                  <ChevronUpIcon className={openMenu ? 'block' : 'hidden'} size={16}/>
-                  <ChevronDownIcon className={openMenu ? 'hidden' : 'block'} size={16}/>
-                </div>
+            <div className='flex flex-row gap-2' onClick={() => setOpenMenu(!openMenu)}>
+              <img src="assets/images/01.png" className="aspect-square rounded-full" alt="profile" width={30} />
+              <div className='flex items-center'>
+                <ChevronUpIcon className={openMenu ? 'block' : 'hidden'} size={16} />
+                <ChevronDownIcon className={openMenu ? 'hidden' : 'block'} size={16} />
               </div>
+            </div>
           </PopoverTrigger>
           <PopoverContent className='bg-level-0 mr-8 !px-0 text-sm text-primary font-light border-level-1'>
             <div className="grid gap-2">

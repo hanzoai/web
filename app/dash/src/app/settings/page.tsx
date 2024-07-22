@@ -20,7 +20,7 @@ const UniversalPage: React.FC = () => {
     }, [auth])
 
     return (
-        <div className="p-4 w-full flex flex-col gap-4">
+        <div className="p-2 md:p-4 w-full flex flex-col gap-4">
             Account Settings
         </div>
     )
