@@ -54,7 +54,7 @@ export const ProductsTableColumn: ColumnDef<ProductsTableDataType>[] = [
         </div>
       )
     },
-    cell: ({ row }) => <div className="text-center">{row.getValue("description")}</div>,
+    cell: ({ row }) => <div className="text-left min-w-40">{row.getValue("description")}</div>,
   },
   {
     accessorKey: "price",

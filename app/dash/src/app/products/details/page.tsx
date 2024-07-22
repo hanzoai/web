@@ -37,8 +37,9 @@ const Page = () => {
   const [projectedPrice, setProjectedPrice] = useState<string>('0');
 
   return (
-    <div className="flex flex-col space-y-4 p-4 overflow-y-auto w-full">
-      <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 w-full items-center justify-center bg-background shadow gap-4">
+    <div className="flex flex-col space-y-4 p-2 md:p-4 overflow-y-auto w-full">
+      <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
+      <div className="grid xl:grid-cols-4 grid-cols-2 w-full items-center justify-center bg-background shadow gap-4 truncate">
         <div className="flex flex-col border border-level-1 rounded-md p-4 gap-2">
           <div className="font-medium text-xl text-foreground">Statistics ID</div>
           <span className="font-medium text-base text-muted-1">{statistics.id}</span>

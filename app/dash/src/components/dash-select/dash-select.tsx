@@ -3,9 +3,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 const DashSelect = (props: { placeholder: string; options: string[]; value: string; onChange: (value: string) => void; }) => {
   const { placeholder, options, value, onChange } = props;
   return (
-    <Select value={value} onValueChange={onChange}>
+    <Select onValueChange={onChange}>
       <SelectTrigger>
-        <SelectValue placeholder={placeholder} />
+        <SelectValue className="text-muted-2" placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
         {
