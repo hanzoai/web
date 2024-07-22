@@ -2,10 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { PlusCircleIcon, ChevronDownIcon, ChevronUpIcon, AlignLeft } from 'lucide-react'
+
 import { Ethereum } from '@hanzo/auth/icons'
 import { Button, Popover, PopoverContent, PopoverTrigger, Separator } from '@hanzo/ui/primitives'
+import { cn } from '@hanzo/ui/util'
+
 import ModalDialog from '@/components/modal-dialog'
-import { PlusCircleIcon } from 'lucide-react'
 
 const AdminHeader: React.FC<{
   content: string
@@ -13,6 +16,7 @@ const AdminHeader: React.FC<{
   content = 'Karma'
 }) => {
     const router = useRouter()
+    const [openMenu, setOpenMenu] = useState(false)
     const [openCommandMenu, setOpenCommandMenu] = useState(false)
 
     useEffect(() => {
@@ -37,20 +41,29 @@ const AdminHeader: React.FC<{
       }
     }
 
+    const handleMenu = () => {
+
+    }
+
     const handleWalletClick = () => { }
 
     const handleLogOut = () => { }
 
     return (
-      <div className="w-full h-[80px] flex items-center justify-between border-b border-dashed border-level-1 py-2 px-4">
-        <div className="text-xl font-bold">{content}</div>
+      <div className="w-full h-[80px] flex items-center justify-between md:border-b md:border-dashed md:border-level-1 py-1 md:py-2 px-2 md:px-4">
+        <div className="text-xl font-bold">
+          <p className='hidden md:block'>{content}</p>
+          <div className='block md:hidden'><AlignLeft /></div>
+        </div>
         <Popover>
           <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              size='icon'
-              className='rounded-full text-muted bg-level-1 hover:bg-level-2 hover:border-foreground hover:text-foreground uppercase w-8 h-8'
-            ><img src="assets/images/01.png" className="aspect-square rounded-full" alt="profile" width={30} /></Button>
+              <div className='flex flex-row gap-2' onClick={() => setOpenMenu(!openMenu)}>
+                <img src="assets/images/01.png" className="aspect-square rounded-full" alt="profile" width={30} />
+                <div className='flex items-center'>
+                  <ChevronUpIcon className={openMenu ? 'block' : 'hidden'} size={16}/>
+                  <ChevronDownIcon className={openMenu ? 'hidden' : 'block'} size={16}/>
+                </div>
+              </div>
           </PopoverTrigger>
           <PopoverContent className='bg-level-0 mr-8 !px-0 text-sm text-primary font-light border-level-1'>
             <div className="grid gap-2">

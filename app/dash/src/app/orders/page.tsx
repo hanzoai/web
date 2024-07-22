@@ -60,14 +60,13 @@ const UniversalPage = () => {
 
   return (
     <div className="flex-1 space-y-4 overflow-y-auto">
-    <div className="overflow-hidden bg-background shadow">
-      <div className="h-full flex-1 flex-col space-y-8 px-8 md:flex max-w-[calc(100vw-300px)]">
-        <div className="space-y-4">
-          <DataTableDemo data={data} columns={OrderTableColumn} onClickHandler={onClickUser} filterKey="number" title='Orders'/>
+      <div className="overflow-hidden bg-background shadow">
+        <div className="h-full flex-1 flex-col md:flex">
+          <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
+          <DataTableDemo data={data} columns={OrderTableColumn} onClickHandler={onClickUser} filterKey="number" title='Orders' />
         </div>
       </div>
     </div>
-  </div>
   )
 }
 
