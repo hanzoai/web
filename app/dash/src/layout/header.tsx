@@ -45,15 +45,15 @@ const AdminHeader: React.FC<{
       }
     })
 
-    // const auth = useAuth()
+    const auth = useAuth()
 
-    const auth = {
-      user: {
-        email: 'musordmt@proton.me',
-        displayName: 'MusorDMT',
-        walletAddress: '0x1111111111111111111111111111111'
-      }
-    }
+    // const auth = {
+    //   user: {
+    //     email: 'musordmt@proton.me',
+    //     displayName: 'MusorDMT',
+    //     walletAddress: '0x1111111111111111111111111111111'
+    //   }
+    // }
 
     const handleMenu = () => { }
 
