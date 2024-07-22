@@ -10,7 +10,8 @@
   },
   "devDependencies": {
     "@types/jquery": "^3.5.30",
-    "webpack-watch-files-plugin": "^1.2.1"
+    "webpack-watch-files-plugin": "^1.2.1",
+    "@headlessui/react": "^2.1.2"
   },
   "//": "re 'supports-color': https://stackoverflow.com/questions/76591038/module-not-found-esm-packages-supports-color-need-to-be-imported-use-import",
   "pnpm": {
@@ -32,7 +33,6 @@
     }
   },
   "dependencies": {
-    "@headlessui/react": "^2.1.2",
     "@mailchimp/mailchimp_transactional": "^1.0.59",
     "@types/mailchimp__mailchimp_transactional": "^1.0.10",
     "@types/nodemailer": "^6.4.15",
