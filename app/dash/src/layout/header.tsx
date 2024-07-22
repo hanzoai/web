@@ -9,6 +9,8 @@ import { Button, Popover, PopoverContent, PopoverTrigger, Separator } from '@han
 import { cn } from '@hanzo/ui/util'
 
 import ModalDialog from '@/components/modal-dialog'
+import { PlusCircleIcon } from 'lucide-react'
+import { useAuth } from '@hanzo/auth/service'
 
 const AdminHeader: React.FC<{
   content: string
@@ -33,13 +35,15 @@ const AdminHeader: React.FC<{
       }
     })
 
-    const auth = {
-      user: {
-        email: 'musordmt@proton.me',
-        displayName: 'MusorDMT',
-        walletAddress: '0x1111111111111111111111111111111'
-      }
-    }
+    const auth = useAuth()
+
+    // const auth = {
+    //   user: {
+    //     email: 'musordmt@proton.me',
+    //     displayName: 'MusorDMT',
+    //     walletAddress: '0x1111111111111111111111111111111'
+    //   }
+    // }
 
     const handleMenu = () => {
 
