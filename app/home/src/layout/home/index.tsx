@@ -38,7 +38,7 @@ import { useEffect, useRef } from 'react';
 const scrollNumBlocks = {
   blockType: 'scroll-num',
   aniNum: ["11", "100", "1B", "120"],
-  modifier: [" years", "+", "+", "+"],
+  modifier: ["years", "+", "+", "+"],
   detail: ["Growing Companies", "Companies Scaled", "Client Revenue Generated", "Countries Worldwide"]
 } satisfies ScrollNumBlock as Block;
 
