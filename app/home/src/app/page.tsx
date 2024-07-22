@@ -11,6 +11,7 @@ type Props = {
 const page = ({ searchParams }: Props) => {
   return (
     <>
+      <Header siteDef={siteDef} />
       <HomeLayout />
       <Footer siteDef={siteDef} />
     </>
