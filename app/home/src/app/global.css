@@ -1,25 +1,16 @@
 .image-carousel {
-  width: 600px;
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-item {
-  display: inline-block;
-  width: 600px;
-  transition: opacity 0.5s ease;
-  opacity: 0;
-  /* Initially hidden */
-}
-
-.carousel-item.active {
-  opacity: 1;
-  /* Show the active image */
-}
-
-.no-scroll::-webkit-scrollbar {
-  overflow: auto;
-  display: none;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
+    width: 600px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .carousel-item {
+    display: inline-block;
+    width: 600px;
+    transition: opacity 0.5s ease;
+    opacity: 0; /* Initially hidden */
+  }
+  
+  .carousel-item.active {
+    opacity: 1; /* Show the active image */
+  }
