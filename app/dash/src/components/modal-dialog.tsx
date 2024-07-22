@@ -1,10 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-// import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import type { Dispatch, SetStateAction } from 'react'
 import { Input, Dialog, DialogContent, DialogTitle } from '@hanzo/ui/primitives'
-// import { Input } from '@hanzo/ui/primitives'
 import SearchTeam from './icons/search-team'
 import SearchProject from './icons/search-project'
 import { PlusIcon, ArrowLeftIcon } from 'lucide-react'
@@ -55,7 +53,6 @@ export default function ModalDialog({ ...props }: ModealProps) {
             <DialogContent className="relative p-0 gap-0 transform overflow-hidden rounded-lg border border-level-1 bg-background text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95">
                 <DialogTitle className="text-base font-semibold leading-6 !text-primary border-b border-level-1 px-2 h-12 flex flex-row items-center justify-between">
                     <Input placeholder='What are you finding...' className='outline-none border-none ring-offset-background focus-visible:ring-background' onChange={(event) => setProjectSearch(event.target.value)}></Input>
-                    {/* <div className='h-6 flex rounded-sm bg-background hover:bg-level-1 border border-level-2 px-1 items-center hover:cursor-pointer' onClick={() => handleESCClick()}>Esc</div> */}
                 </DialogTitle>
                 <div className="p-2 w-full flex flex-col gap-2 max-h-[400px] overflow-auto custom-scroll">
                     <div className='w-full flex flex-col'>
