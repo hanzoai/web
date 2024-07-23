@@ -24,6 +24,8 @@ const UniversalPage = () => {
 
         if (auth.loggedIn) router.push("/dashboard")
         else router.push('https://auth.hanzo.ai/?redirectUrl=https://dash.hanzo.ai')
+      } else {
+        router.push('https://auth.hanzo.ai/?redirectUrl=https://dash.hanzo.ai')
       }
     })
   }, [auth])
