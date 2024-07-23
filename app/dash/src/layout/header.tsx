@@ -6,12 +6,10 @@ import { PlusCircleIcon, ChevronDownIcon, ChevronUpIcon, AlignLeft, BarChart, Us
 
 import { Ethereum } from '@hanzo/auth/icons'
 import { Button, Popover, PopoverContent, PopoverTrigger, Separator, Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from '@hanzo/ui/primitives'
-import { cn } from '@hanzo/ui/util'
 import { useAuth } from '@hanzo/auth/service'
 import { Logo } from "@hanzo/brand"
 
 import ModalDialog from '@/components/modal-dialog'
-import SideBarMenuItem from "@/components/side-bar-menu-item";
 
 const AdminHeader: React.FC<{
   content: string
