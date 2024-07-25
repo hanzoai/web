@@ -20,11 +20,11 @@
       "@types/react": "^18.3.2",
       "@types/react-dom": "^18.3.0",
       "supports-color": "8.1.1",
-      "@hanzo/brand": "link:./pkg/brand",
-      "@hanzo/data": "link:./pkg/data",
-      "@hanzo/auth": "link:../react-sdk/pkg/auth",
-      "@hanzo/commerce": "link:../react-sdk/pkg/commerce",
-      "@hanzo/ui": "link:../react-sdk/pkg/ui",
+      "@hanzo/brand": "0.2.12",
+      "@hanzo/data": "1.0.9",
+      "@hanzo/auth": "2.4.19",
+      "@hanzo/commerce": "7.3.2",
+      "@hanzo/ui": "3.8.36",
       "react-hook-form": "7.51.4"
     },
     "allowedDeprecatedVersions": {
