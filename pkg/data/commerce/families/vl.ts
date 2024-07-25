@@ -1,7 +1,7 @@
 import type { Product, Family } from '@hanzo/commerce/types'
 import { validator as video } from './videos'
 
-const VL_IMG = 'https://cdn.lux.network/commerce/vl/product/validator-800x800.png'
+const VL_IMG = '/assets/commerce/vl/product/validator-800x800.png'
 const VL_IMG_DEF = {src: VL_IMG, dim: {w: 800, h: 800}}
 
 
@@ -22,7 +22,6 @@ export default {
       price: 1000000, // 1M
       img: VL_IMG_DEF,
       video,
-
     },
     {
       id: 'LXM-VL-VL',
@@ -33,8 +32,7 @@ export default {
       familyId: 'LXM-VL',
       price: 100000, // 100K
       img: VL_IMG_DEF,
-      video,
-      mediaTransform: { scale: 0.75 }
+      video
     },
     {
       id: 'LXM-VL-MI',
@@ -45,9 +43,7 @@ export default {
       familyId: 'LXM-VL',
       price: 10000, // 10K
       img: VL_IMG_DEF,
-      video,
-      mediaTransform: { scale: 0.50 }
-
+      video
     },
     {
       id: 'LXM-VL-NA',
@@ -58,9 +54,7 @@ export default {
       familyId: 'LXM-VL',
       price: 1000, // 1K
       img: VL_IMG_DEF,
-      video,
-      mediaTransform: { scale: 0.25 }
-
+      video
     },
   ] satisfies Product[]
 } satisfies Family
