@@ -9,6 +9,8 @@ import { useStepAnimation } from '@hanzo/ui/util-client'
 
 import { Image } from '@hanzo/ui/primitives'
 
+import { useCommerceDrawer, useRecentActivity } from '../../../commerce/ui/context'
+
 import CheckoutButton from '../checkout-button'
 import useAnimationClxSet from './use-anim-clx-set'
 import CONST from './const'
@@ -109,6 +111,8 @@ const CheckoutWidget: React.FC<{
   const isCheckout = usePathname() === '/checkout'
   const clxSet = useAnimationClxSet(isCheckout)
 
+  const recentActivity = useRecentActivity()
+
     // for rendering content after recentActivity.item() would return false
   const persistentRef = useRef<LineItem | undefined>(undefined)
 
@@ -155,7 +159,7 @@ const CheckoutWidget: React.FC<{
           <p className='whitespace-nowrap text-clip text-xxs' >recently added...</p>
         </div>)}
       </div>
-      <CheckoutButton 
+      {/* <CheckoutButton 
         handleCheckout={handleCheckout} 
         centerText={VARS[v].centerText ?? !steps.notPast(0)}
         variant='primary' 
@@ -179,7 +183,7 @@ const CheckoutWidget: React.FC<{
         >
           Checkout
         </div>
-      </CheckoutButton>
+      </CheckoutButton> */}
     </div>),
     globalThis?.document?.body
   )
