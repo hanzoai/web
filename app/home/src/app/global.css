@@ -23,3 +23,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
+* {
+  line-height: 1.5;
+}

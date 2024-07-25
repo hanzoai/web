@@ -90,18 +90,18 @@ const ScrollNumBlockComponent: React.FC<{
     }
 
     return (
-      <div id='fast-facts' ref={ref} className={cn('grid lg:grid-cols-4 w-full sm:grid-cols-2 xs:grid-cols-2', classname)}>
+      <div id='fast-facts' ref={ref} className={cn('grid grid-cols-1 lg:grid-cols-4 w-full sm:grid-cols-2', classname)}>
         {
           scrollNum.aniNum.map((num, index) => (
-            <div className={'w-full flex flex-col justify-center items-center py-[56px] mx-auto border-r border-white-10 ' + `${index === scrollNum.aniNum.length - 1 && 'border-none'}`} key={index}>
+            <div className={'w-full flex flex-col justify-center items-center py-[56px] mx-auto border-none sm:border-r border-white-10 ' + `${index === scrollNum.aniNum.length - 1 && 'border-none'}`} key={index}>
               <div className='flex flex-row font-semibold'>
-                <span className='animCounter text-[40px]'>{num}</span>
+                <span className='animCounter text-base lg:text-[40px]'>{num}</span>
                 {
                   index === 0 && <span>&nbsp;</span>
                 }
-                <span className='text-[40px]'>{scrollNum.modifier[index]}</span>
+                <span className='text-base lg:text-[40px]'>{scrollNum.modifier[index]}</span>
               </div>
-              <span className='text-white-65 text-[18px] text-center'>{scrollNum.detail[index]}</span>
+              <span className='text-white-65 text-xs lg:text-[18px] text-center'>{scrollNum.detail[index]}</span>
             </div>
           ))
         }
