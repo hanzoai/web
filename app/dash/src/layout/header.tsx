@@ -45,15 +45,15 @@ const AdminHeader: React.FC<{
       }
     })
 
-    const auth = useAuth()
+    // const auth = useAuth()
 
-    // const auth = {
-    //   user: {
-    //     email: 'musordmt@proton.me',
-    //     displayName: 'MusorDMT',
-    //     walletAddress: '0x1111111111111111111111111111111'
-    //   }
-    // }
+    const auth = {
+      user: {
+        email: 'musordmt@proton.me',
+        displayName: 'MusorDMT',
+        walletAddress: '0x1111111111111111111111111111111'
+      }
+    }
 
     const handleMenu = () => { }
 
@@ -96,7 +96,7 @@ const AdminHeader: React.FC<{
         <Popover>
           <PopoverTrigger asChild>
             <div className='flex flex-row gap-2' onClick={() => setOpenMenu(!openMenu)}>
-              <img src="assets/images/01.png" className="aspect-square rounded-full" alt="profile" width={30} />
+              <img src="/assets/images/01.png" className="aspect-square rounded-full" alt="profile" width={30} />
               <div className='flex items-center'>
                 <ChevronUpIcon className={openMenu ? 'block' : 'hidden'} size={16} />
                 <ChevronDownIcon className={openMenu ? 'hidden' : 'block'} size={16} />

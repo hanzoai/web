@@ -21,7 +21,7 @@ const UniversalPage: React.FC = () => {
 
     return (
         <div className="p-2 md:p-4 w-full flex flex-col gap-4">
-            Account Settings
+            <div className='text-xl md:text-2xl'>General</div>
         </div>
     )
 }

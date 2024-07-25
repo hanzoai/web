@@ -34,7 +34,7 @@ const level1 = [
     skuToken: 'AG',
     label: 'Lux Silver',
     outermost: true,
-    img: '/assets/commerce/silver/product/silver-bar-pt-100x125.png',
+    img: 'https://cdn.lux.network/commerce/silver/product/silver-bar-pt-100x125.png',
     imgAR: 1/1.25,
     subNodes: [
       //...BULLION_FORM
@@ -50,7 +50,7 @@ const level1 = [
     skuToken: 'AU',
     label: 'Lux Gold',
     outermost: true,
-    img: '/assets/commerce/gold/product/gold-bar-pt-100x125.png',
+    img: 'https://cdn.lux.network/commerce/gold/product/gold-bar-pt-100x125.png',
     imgAR: 1/1.25,
     subNodes: [...BULLION_FORM]
   },
@@ -58,17 +58,17 @@ const level1 = [
   {
     skuToken: 'VL',
     label: 'Validator',
-    img: <Icons.Gem className='text-foreground h-4 w-4'/> //'/assets/commerce/vl/product/validator-100x100.png',
+    img: <Icons.Gem className='text-foreground h-4 w-4'/> //'https://cdn.lux.network/commerce/vl/product/validator-100x100.png',
   },
   {
     skuToken: 'CN',
     label: 'Coin',
-    img: '/assets/commerce/cn/product/lux-coin-446x446.png',
+    img: 'https://cdn.lux.network/commerce/cn/product/lux-coin-446x446.png',
   },
   {
     skuToken: 'PS',
     label: 'Key',
-    img: '/assets/commerce/ps/product/pass-icon-539x686.png',
+    img: 'https://cdn.lux.network/commerce/ps/product/pass-icon-539x686.png',
     imgAR: 539 / 686
   },
   credit

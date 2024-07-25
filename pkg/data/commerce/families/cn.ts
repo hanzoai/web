@@ -2,7 +2,7 @@ import type { Product, Family } from '@hanzo/commerce/types'
 import { coin as video } from './videos'
 import type { ImageDef } from '@hanzo/ui/types'
 
-const CN_IMG = '/assets/commerce/cn/product/lux-coin-800x800.png'
+const CN_IMG = 'https://cdn.lux.network/commerce/cn/product/lux-coin-800x800.png'
 const CN_IMG_DEF = {
   src: CN_IMG, 
   dim: { w: 800, h: 800},

@@ -1,7 +1,7 @@
 {
   "name": "@hanzo/data",
-  "version": "1.0.6",
-  "description": "Shared data for all Products, Families, that are available via any eCommrece functions on Hanzo sites.",
+  "version": "1.0.9",
+  "description": "Shared data for all Products, Families, that are available via any eCommrece functions on Lux sites.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
@@ -13,7 +13,8 @@
     "directory": "pkg/data"
   },
   "keywords": [
-    "hanzo"
+    "hanzo",
+    "luxdefi"
   ],
   "scripts": {
     "lat": "npm show @hanzo/data version",
