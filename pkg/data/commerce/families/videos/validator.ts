@@ -3,10 +3,10 @@ import { DEF_VIDEO_PROPS } from '../../..'
 
 const video = {
   videoProps: DEF_VIDEO_PROPS, 
-  poster: 'https://cdn.lux.network/commerce/vl/product/Lux-VALIDATOR-poster.jpg',
+  poster: '/assets/commerce/vl/product/Lux-VALIDATOR-poster.jpg',
   sources: [
-    'https://cdn.lux.network/commerce/vl/product/Lux-VALIDATOR-transcode.mp4', 
-    'https://cdn.lux.network/commerce/vl/product/Lux-VALIDATOR-transcode.webm'
+    '/assets/commerce/vl/product/Lux-VALIDATOR-transcode.mp4', 
+    '/assets/commerce/vl/product/Lux-VALIDATOR-transcode.webm'
   ],
     // Determin aspect ration from dims manually...
     // https://stackoverflow.com/questions/684015/how-can-i-get-the-resolution-width-and-height-for-a-video-file-from-a-linux-co
