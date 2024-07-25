@@ -4,7 +4,6 @@ import type { LinkDef } from '@hanzo/ui/types'
 import { cn } from '@hanzo/ui/util'
 import type { LinkDefExtended, ChildMenu } from '../../site-def/main-nav'
 import MobileNavMenuAI from './mobile-nav-menu-ai'
-import MobileNavMenuItem from './mobile-nav-menu-item'
 import MobileAuthWidget from './mobile-login-button'
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@hanzo/ui/primitives'
 import { ChevronDown } from 'lucide-react'
@@ -46,51 +45,61 @@ const MobileNav: React.FC<{
                 }
               }
 
-              if (!el.isAIMenu) {
-                return (
-                  <AccordionItem key={index} value={el.title ? el.title : ""} className='!no-underline !border-0 px-6'>
-                    <AccordionTrigger className={cn(internalClx, itemClx, '')}>
-                      <div className={cn(internalClx, itemClx, 'flex items-center justify-between w-full pl-3 text-base font-normal leading-6')}>
-                        {el.title}
-                      </div>
-                      <ChevronDown className="w-4 h-4 mr-3" />
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      {el.childMenu && (
-                        <div className="px-4">
-                          {Object.entries(el.childMenu.reduce((acc, child) => {
-                            const group = acc[child.groupName ? child.groupName : ""] || []
-                            group.push(child)
-                            acc[child.groupName ? child.groupName : ""] = group
-                            return acc
-                          }, {} as { [key: string]: ChildMenu[] })).map(([groupName, children]) => (
-                            <div key={groupName}>
-                              <div className="mt-4 mb-4 font-light text-muted-1">{groupName}</div>
-                              {children.map((child, childIndex) => (
-                                <div key={childIndex} className="m-2">
-                                  <div className="flex items-center py-1">
-                                    <span>
-                                      {child.icon && child.icon}
-                                    </span>
-                                    <Link
-                                      href={child.href}
-                                      className="text-muted-2 hover:underline ml-5 hover:text-primary"
-                                      target={child.newTab ? '_blank' : '_self'}
-                                      rel="noopener noreferrer"
-                                    >
-                                      {child.title}
-                                    </Link>
-                                  </div>
+
+              return (
+                <AccordionItem key={index} value={el.title ? el.title : ""} className='!no-underline !border-0'>
+                  <AccordionTrigger className={cn(internalClx, itemClx, 'hover:no-underline')}>
+                    {el.title == "Docs" || el.title == "Pricing" ?
+                    (
+                      <Link href={el.href} className='text-muted-2 pl-3 text-base font-normal leading-6'>
+                      {el.title}
+                      </Link>
+                    ):
+                  (
+                    <>                    
+                    <div className={cn(internalClx, itemClx, 'flex items-center justify-between w-full pl-3 text-base font-normal leading-6 hover:no-underline')}>
+                      {el.title}
+                    </div>
+                    <ChevronDown className="w-4 h-4 mr-3" />
+                    </>
+                  ) 
+                  }                    
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    {el.childMenu && (
+                      <div className="px-4">
+                        {Object.entries(el.childMenu.reduce((acc, child) => {
+                          const group = acc[child.groupName ? child.groupName : ""] || []
+                          group.push(child)
+                          acc[child.groupName ? child.groupName : ""] = group
+                          return acc
+                        }, {} as { [key: string]: ChildMenu[] })).map(([groupName, children]) => (
+                          <div key={groupName}>
+                            <div className="mt-4 mb-4 font-light text-muted-1">{groupName}</div>
+                            {children.map((child, childIndex) => (
+                              <div key={childIndex} className="m-2">
+                                <div className="flex items-center py-1">
+                                  <span>
+                                    {child.icon && child.icon}
+                                  </span>
+                                  <Link
+                                    href={child.href}
+                                    className="text-muted-2 ml-5 hover:text-primary hover:no-underline"
+                                    target={child.newTab ? '_blank' : '_self'}
+                                    rel="noopener noreferrer"
+                                  >
+                                    {child.title}
+                                  </Link>
                                 </div>
-                              ))}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </AccordionContent>
-                  </AccordionItem>
-                )
-              }
+                              </div>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </AccordionContent>
+                </AccordionItem>
+              )
             })}
           </Accordion>
         </div>

@@ -8,6 +8,7 @@ import { CarouselBuyCard } from '@hanzo/commerce'
 import { 
   useSelectAndBuy, 
   useCommerceDrawer, 
+  useRecentActivity 
 } from '../../../commerce/ui/context'
 
 import CommerceDrawer from './shell'
@@ -18,10 +19,21 @@ const CommerceUIComponent: React.FC = observer(() => {
 
   const buy = useSelectAndBuy()
   const drawer = useCommerceDrawer()
+  const recent = useRecentActivity()
   const router = useRouter()
+  
 
   const handleCheckout = (): void => {
     router.push('/checkout')
+  }
+
+    // see handleCloseGesture()
+  const setOpen = (b: boolean): void => {
+    if (!b) {
+      if (!drawer.closedByUser) {
+        drawer.setClosedByUser(true)
+      }
+    }
   }
 
   const handleHandleClicked = (): void => {
@@ -30,12 +42,18 @@ const CommerceUIComponent: React.FC = observer(() => {
       buy.hideVariants()
     }
     else if (drawer.state === 'micro') {
-      buy.showRecentVariants()
+      if (drawer.showAdded) {
+        buy.showVariants(recent.item?.sku ?? '')
+      }
+        // checkout only
+      else {
+        drawer.setClosedByUser(true)
+      }
     }
   }
 
   const handleItemClicked = () => {
-    buy.showRecentVariants()
+    buy.showVariants(recent.item?.sku ?? '')
   }
 
   const handleCloseGesture = (): boolean => {
@@ -46,10 +64,21 @@ const CommerceUIComponent: React.FC = observer(() => {
     return false
   }
 
+  return null;
+
+
   return (
     <CommerceDrawer 
+      open={drawer.open} 
+      setOpen={setOpen}
+      snapPoints={drawer.points}
+      modal={drawer.modal}
+      activeSnapPoint={drawer.activePoint}
+      setActiveSnapPoint={drawer.onActivePointChanged.bind(drawer)}
       handleHandleClicked={handleHandleClicked}
       handleCloseGesture={handleCloseGesture}
+      micro={drawer.state === 'micro'}
+      mobile={drawer.isMobile}
       drawerClx='flex flex-col'
     >
       {drawer.state === 'full' && (
@@ -57,7 +86,7 @@ const CommerceUIComponent: React.FC = observer(() => {
         vaul impl.  So we have to ask the drawer for its currect snappoint 
         and constrain layout to that.  
         */
-        <div style={{height: drawer.snapPointPx - 24 /* fudge factor for handle area */}} >
+        <div style={{height: drawer.snapPointPx - 24 /* fudge factor for handle area */}}>
           <CarouselBuyCard 
             skuPath={buy.currentSkuPath!} 
             checkoutButton={
@@ -66,6 +95,7 @@ const CommerceUIComponent: React.FC = observer(() => {
                 className='w-full min-w-[160px] sm:max-w-[320px]'
               />
             }
+            onQuantityChanged={recent.quantityChanged.bind(recent)}
             clx='justify-between h-full pb-3 gap-8'
             addBtnClx='w-full min-w-[160px] sm:max-w-[320px]' 
             buttonsAreaClx='grow-0 shrink-0 mt-0'

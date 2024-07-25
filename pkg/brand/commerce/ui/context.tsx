@@ -15,16 +15,9 @@ import { useDebounceCallback } from 'usehooks-ts'
 import { preset as twConfig } from '@hanzo/ui/tailwind'
 import { useCommerce } from '@hanzo/commerce'
 
-import type { CommerceDrawer, SelectAndBuy } from './store'
+import type { CommerceDrawer, SelectAndBuy, RecentActivity } from './store'
 import { CommerceUIStore } from './store'
 import conf from './conf'
-
-const LOG = false ////////////////////
-const log = (s: string) => {
-  if (LOG) {
-    console.log('CMMC UI CONTEXT ' + s)
-  }
-}
 
 // https://dev.to/ivandotv/mobx-server-side-rendering-with-next-js-4m18
 enableStaticRendering(typeof window === "undefined")
@@ -39,14 +32,22 @@ const useSelectAndBuy = (): SelectAndBuy => {
   return useContext(CommerceUIContext) as SelectAndBuy
 }
 
+const useRecentActivity = (): RecentActivity => {
+  return useContext(CommerceUIContext) as RecentActivity
+}
+
 const CommerceUIProvider: React.FC<PropsWithChildren> = ({ 
   children,
 }) => {
 
   const cmmc = useCommerce()
-  const pathname = usePathname()
-  const storeRef = useRef<CommerceUIStore>(new CommerceUIStore(cmmc, conf))
-  const prevPathRef = useRef<string>('initial')
+  const pathName = usePathname()
+  const isCheckout = pathName === '/checkout'
+  const ref = useRef<CommerceUIStore>(new CommerceUIStore(cmmc, conf))
+
+  if (ref.current.checkingOut != isCheckout) {
+    ref.current.setCheckingOut(isCheckout)
+  }
 
   const onResize = () => { 
     const width = window.innerWidth 
@@ -57,59 +58,36 @@ const CommerceUIProvider: React.FC<PropsWithChildren> = ({
         desktopMin = parseInt(twConfig.theme?.screens.md)
       }
       if (width < desktopMin) {
-        if (!storeRef.current.isMobile) {
-          storeRef.current.setMobile(true)
+        if (!ref.current.isMobile) {
+          ref.current.setMobile(true)
         }
       }
-      else if (storeRef.current.isMobile) {
-        storeRef.current.setMobile(false)
+      else if (ref.current.isMobile) {
+        ref.current.setMobile(false)
       }
     }
-    storeRef.current.setViewportHeight(window.innerHeight)
+    ref.current.setViewportHeight(window.innerHeight)
   }
 
   const onResize_debounced = useDebounceCallback(onResize, 500)
 
   useLayoutEffect(() => {
-    storeRef.current.initialize()
+    ref.current.initialize()
     onResize()
     window.addEventListener('resize', onResize_debounced);
-
     return () => {
       window.removeEventListener('resize', onResize_debounced)
-      storeRef.current.dispose() 
+      ref.current.dispose() 
     }
   }, [])
 
   useEffect(() => {
-    const checkingOut = (pathname === '/checkout')
-
-    /////////////////////////////////////
-    log("useEffect: pathname: " + pathname)
-    log("useEffect: prev pathname: " + prevPathRef.current)
-    
-    if (storeRef.current.checkingOut === undefined || storeRef.current._checkingOut!== checkingOut) {
-      log("useEffect: setting checkingOut to: " + checkingOut) /////////////////////////////////////
-      storeRef.current.setCheckingOut(checkingOut)
-    }
-    if ( prevPathRef.current === 'initial') {
-      prevPathRef.current = pathname
-      storeRef.current.newRoute()
-    }
-    else if (
-      !checkingOut
-      &&
-      prevPathRef.current !== pathname
-    ) {
-      storeRef.current.newRoute()
-      prevPathRef.current = pathname
-      log("ROUTE CHANGE: " + pathname + ": " + storeRef.current._routeChangedTime)
-    }  
-  }, [pathname])
+    ref.current.reset()
+  }, [pathName])
 
 
   return (
-    <CommerceUIContext.Provider value={storeRef.current}>
+    <CommerceUIContext.Provider value={ref.current}>
       {children}
     </CommerceUIContext.Provider>
   )
@@ -118,6 +96,7 @@ const CommerceUIProvider: React.FC<PropsWithChildren> = ({
 export {
   useCommerceDrawer, 
   useSelectAndBuy,
+  useRecentActivity,
   CommerceUIProvider
 }
 

@@ -8,7 +8,7 @@ import type { LineItem } from '@hanzo/commerce/types'
 import { useCommerce, formatCurrencyValue } from '@hanzo/commerce'
 
 import CheckoutButton from '../checkout-button'
-import { useCommerceDrawer } from '../../../commerce/ui/context'
+import { useCommerceDrawer, useRecentActivity } from '../../../commerce/ui/context'
 
 const CN = {
     // h: mind padding!
@@ -67,16 +67,17 @@ const Micro: React.FC<{
 }) => {
 
   const drawer = useCommerceDrawer()
-  const cmmc = useCommerce()
+  const recent = useRecentActivity()
+  const mobile = drawer.isMobile
 
   return (        
     <div className={cn(
-      (drawer.showRecent ? 'grid grid-cols-2' : 'flex justify-center items-center '),
-      (drawer.showRecent ? ((drawer.isMobile) ? '-mt-3' : '-mt-3') : ''),
+      (drawer.showAdded ? 'grid grid-cols-2' : 'flex justify-center items-center '),
+      (drawer.showAdded ? ((drawer.isMobile) ? '-mt-3' : '-mt-3') : ''),
       'gap-2 md:gap-3 relative',
       clx
     )}>
-    {drawer.showRecent && (
+    {drawer.showAdded && (
       <div className={'flex flex-col items-stretch ' + (drawer.isMobile ? 'justify-start' : 'group')}>
         <p className={'relative text-muted text-xxs md:text-xs leading-none pl-1 self-start ' + (drawer.isMobile ? 'top-[3px]' : 'top-[1px]')}>
           <span className='invisible'>scrictly for layout</span>
@@ -90,7 +91,7 @@ const Micro: React.FC<{
         <Button 
           variant='ghost'
           rounded={drawer.isMobile ? 'md' : 'lg'}
-          size={drawer.isMobile ? 'sm' : 'default'}
+          size={drawer.isMobile ? 'default' : 'lg'}
           onClick={handleItemClicked}
           className={cn(
             'box-content',
@@ -99,18 +100,17 @@ const Micro: React.FC<{
             'overflow-hidden ', 
             'px-1 md:px-2 py-[2px]',
             'border border-transparent group-hover:border-muted-3',
-            'group-hover:!bg-transparent',
-            '!min-w-0'
+            'group-hover:!bg-transparent '
           )}
         >
-          {cmmc.recentItem?.item.img && (<>
-            <Image def={cmmc.recentItem.item.img} constrainTo={CN.mobile} preload className='sm:hidden grow-0 shrink-0'/>
-            <Image def={cmmc.recentItem.item.img} constrainTo={CN.sm} preload className='hidden sm:block md:hidden grow-0 shrink-0'/>
-            <Image def={cmmc.recentItem.item.img} constrainTo={CN.desktop} preload className='hidden md:block grow-0 shrink-0'/>
+          {recent.item?.img && (<>
+            <Image def={recent.item.img} constrainTo={CN.mobile} preload className='sm:hidden grow-0 shrink-0'/>
+            <Image def={recent.item.img} constrainTo={CN.sm} preload className='hidden sm:block md:hidden grow-0 shrink-0'/>
+            <Image def={recent.item.img} constrainTo={CN.desktop} preload className='hidden md:block grow-0 shrink-0'/>
           </>)} 
-          {cmmc.recentItem && (
+          {recent.item && (
             <div className='grow w-full'>
-              <Info item={cmmc.recentItem.item} clx='w-full'/>
+              <Info item={recent.item} clx='w-full'/>
             </div>
           )}
         </Button>
@@ -119,21 +119,20 @@ const Micro: React.FC<{
     {drawer.showCheckout && (
       <div className={cn(
         'flex flex-col w-full', 
-        (drawer.showRecent ? 'items-stretch' : 'items-center' ),
+        (drawer.showAdded ? 'items-stretch' : 'items-center' ),
         (drawer.isMobile ? 'justify-start' : 'justify-center')
       )}>
-        {drawer.showRecent && <p className='invisible text-muted text-xxs md:text-xs leading-none pl-1 self-start'>for layout</p>}
+        {drawer.showAdded && <p className='invisible text-muted text-xxs md:text-xs leading-none pl-1 self-start'>for layout</p>}
         <CheckoutButton 
           handleCheckout={handleCheckout} 
           variant='primary' 
-          size={drawer.isMobile ? 'xs' : 'lg'}
+          size={drawer.isMobile ? 'default' : 'lg'}
           rounded={drawer.isMobile ? 'md' : 'lg'}
-          centerText={drawer.isMobile ? !drawer.showRecent : true}
+          centerText={drawer.isMobile ? !drawer.showAdded : true}
           className={cn(drawer.isMobile ? 
-            (drawer.showRecent ? 'pl-3.5 pr-2.5' : 'min-w-[320px]')
+            (drawer.showAdded ? 'pl-3.5 pr-2.5' : 'min-w-[320px]')
             :
-            (drawer.showRecent ? '' : 'w-[320px]'),
-            'text-sm font-semibold'
+            (drawer.showAdded ? '' : 'w-[320px]')
           )} 
         />
       </div>

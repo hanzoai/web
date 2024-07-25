@@ -26,13 +26,15 @@ const STEPS = [
 
 const STEP_NAMES = STEPS.map((s) => (s.label ? s.label : capitalize(s.name)))
 
-import DesktopCP from './desktop-cp'
-import MobileCP from './mobile-cp'
+import DesktopCP from './dt-checkout-panel'
+import MobileCP from './mb-checkout-panel'
 
 const CheckoutPanel: React.FC<{
-  clx?: string
+  close: () => void
+  className?: string
 }> = ({
-  clx=''
+  close,
+  className=''
 }) => {
 
   const cmmc = useCommerce()
@@ -40,7 +42,7 @@ const CheckoutPanel: React.FC<{
     // For sites that don't initialize cmmc
   if (!cmmc) {
     console.log("CHECKOUT PANEL: cmmc svc undefined!")
-    // return <></>
+    return <></>
   }
 
   const [stepIndex, setStepIndex] = useState<number>(0)
@@ -76,15 +78,16 @@ const CheckoutPanel: React.FC<{
 
   const _close = () => {
     setStep('first')
+    close()
   }
   
-    // Determine if mobile or desktop layout based on visibility of desktopElement
-    // This prevents issues with multiple instances of 3rd party e-commerce widgets 
-    // from ever being in the DOM.
-    // https://stackoverflow.com/a/21696585/11378853
+  // Determine if mobile or desktop based on visibility of desktopElement
+  // https://stackoverflow.com/a/21696585/11378853
   const desktopElement = useRef<HTMLDivElement | null>(null)
-  const [layout, setLayout] = useState<'mobile' | 'desktop' | undefined>(undefined)
+  const [layout, setLayout] = useState<'mobile' | 'desktop' | undefined>()
 
+    // TODO :aa I assume it's becase we don't want two instance of the Square plugin....
+    // ... wondering if there is a simpler way.
   useLayoutEffect(() => {
     const checkLayout = () => {
       setLayout(!!desktopElement.current?.offsetParent ? 'desktop' : 'mobile')
@@ -103,19 +106,19 @@ const CheckoutPanel: React.FC<{
 
   return (<>
     <DesktopCP 
-      clx={cn('h-full', clx, 'hidden md:flex')} 
-      onLeave={_close}
-      step={stepIndex}
+      className={cn('h-full', className, 'hidden md:flex')} 
+      close={_close}
+      index={stepIndex}
       stepNames={STEP_NAMES}
     >
-      {/* Element required to determine if DesktopCP is visible. See above. */}
+      {/* Element required to determine if DesktopCP is visible */}
       <div ref={desktopElement}/>
       {layout === 'desktop' && <StepToRender onDone={() => {setStep('next')}} orderId={orderId} setOrderId={setOrderId}/>}
     </DesktopCP>
     <MobileCP 
-      clx={cn('w-full h-full overflow-y-auto', clx, 'md:hidden' )} 
-      onLeave={_close}
-      step={stepIndex}
+      className={cn('h-full overflow-y-auto', className, 'md:hidden' )} 
+      close={_close}
+      index={stepIndex}
       stepNames={STEP_NAMES}
     >
       {layout === 'mobile' && <StepToRender onDone={() => {setStep('next')}} orderId={orderId} setOrderId={setOrderId}/>}
