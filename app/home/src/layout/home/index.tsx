@@ -9,7 +9,7 @@ import CustomRocket from '@/assets/icons/CustomRocket';
 import ScrollNumBlockComponent from '@/blocks/components/scroll-num';
 import type ScrollNumBlock from '@/blocks/def/scroll-num';
 import type { Block } from '@hanzo/ui/blocks';
-import { Button, Carousel, CarouselContent, CarouselItem } from '@hanzo/ui/primitives';
+import { Button, Carousel, CarouselContent, CarouselItem, Progress } from '@hanzo/ui/primitives';
 import { ChevronLeft, ChevronRight, Phone } from 'lucide-react';
 import Arca from '../components/companies/arca';
 import Cove from '../components/companies/cove';
@@ -33,7 +33,8 @@ import Triller from '../components/companies/triller';
 import Unikain from '../components/companies/unikain';
 import '../../app/global.css';
 import { EmblaAutoplay } from '@hanzo/brand';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import ImagePreloader from '../components/scrollingImage/ImagePreloader';
 
 const scrollNumBlocks = {
   blockType: 'scroll-num',
@@ -72,46 +73,114 @@ const innovations = [
   { src: 'assets/content/innovations/03.png' },
 ];
 
+const imageBlocks01: string[] = new Array(35)
+  .fill('')
+  .map((_, index) => `assets/hanzo-site-animation/block0/${index + 1}.png`);
+const imageBlocks02: string[] = new Array(30)
+  .fill('')
+  .map((_, index) => `assets/hanzo-site-animation/block1/${index + 1}.png`);
+const imageBlocks03: string[] = new Array(60)
+  .fill('')
+  .map((_, index) => `assets/hanzo-site-animation/block2/${index + 1}.png`);
+
+const images = [...imageBlocks01, ...imageBlocks02, ...imageBlocks03];
+const imageLength = images.length;
+
 const HomeLayout = () => {
-  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const rootContainerRef = useRef<HTMLDivElement | null>(null);
+  const companyContainerRef = useRef<HTMLDivElement | null>(null);
+  const imageBlockContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const currentIndexRef = useRef<number>(0);
+  const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
+  const [blockPercents, setBlockPercents] = useState<number[]>([0, 0, 0]);
+
+  const onImagesLoaded = () => {
+    setImagesLoaded(true);
+  };
 
   useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
-
-    const handleWheel = (event: WheelEvent) => {
-      if (scrollContainer) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
-        const atStart = scrollLeft === 0;
-        const atEnd = scrollLeft + clientWidth >= scrollWidth;
-
-        if (atStart && event.deltaY < 0) {
-          // If at the start and scrolling up, allow vertical scroll
-          return;
-        }
-
-        if (atEnd && event.deltaY > 0) {
-          // If at the end and scrolling down, allow vertical scroll
-          return;
-        }
-
-        event.preventDefault(); // Prevent default vertical scroll
-        scrollContainer.scrollLeft += event.deltaY; // Adjust horizontal scroll position
-      }
-    };
-
-    if (scrollContainer) {
-      scrollContainer.addEventListener('wheel', handleWheel);
+    if (!rootContainerRef.current) {
+      return;
     }
 
-    return () => {
-      if (scrollContainer) {
-        scrollContainer.removeEventListener('wheel', handleWheel);
+    const handleWheelEventHandler = (event: WheelEvent) => {
+      if (!rootContainerRef.current || !companyContainerRef.current || !imageBlockContainerRef.current) {
+        return;
       }
-    };
+
+      const screenHeight = window.innerHeight;
+      const { deltaY: scrollMovement } = event;
+      const { top: imageBlockPosition, height: imageBlockHeight } = imageBlockContainerRef.current.getBoundingClientRect();
+
+      const imageBlockRemainSpace = (screenHeight - imageBlockHeight) / 2;
+      const imageBlockOffset = imageBlockPosition - imageBlockRemainSpace - scrollMovement;
+      if (scrollMovement > 0 && imageBlockOffset < 0 && currentIndexRef.current < imageLength - 1) {
+        event.preventDefault();
+        imageBlockContainerRef.current.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
+        setCurrentIndex((prevIndex) => {
+          let newIndex = Math.min(prevIndex + 1, imageLength - 1);
+          currentIndexRef.current = newIndex;
+          return newIndex;
+        });
+      }
+      if (scrollMovement < 0 && imageBlockOffset > 0 && currentIndexRef.current > 0) {
+        event.preventDefault();
+        imageBlockContainerRef.current.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
+        setCurrentIndex((prevIndex) => {
+          let newIndex = Math.max(prevIndex - 1, 0);
+          currentIndexRef.current = newIndex;
+          return newIndex;
+        });
+      }
+
+      const { scrollLeft, scrollWidth, clientWidth } = companyContainerRef.current;
+      const { top: companyContainerPosition, height: companyContainerHeight } = companyContainerRef.current.getBoundingClientRect();
+
+      const companyContainerRemainSpace = (screenHeight - companyContainerHeight) / 2;
+      const companyContainerOffset = companyContainerPosition - companyContainerRemainSpace;
+
+      const atStart = scrollLeft + clientWidth < scrollWidth;
+      const atEnd = scrollLeft > 0;
+
+      if (scrollMovement > 0 && companyContainerOffset < 0 && atStart) {
+        event.preventDefault();
+        // companyContainerRef.current.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
+        companyContainerRef.current.scrollLeft += scrollMovement;
+      }
+      if (scrollMovement < 0 && companyContainerOffset > 0 && atEnd) {
+        event.preventDefault();
+        // companyContainerRef.current.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
+        companyContainerRef.current.scrollLeft += scrollMovement;
+      }
+    }
+
+    rootContainerRef.current.addEventListener('wheel', handleWheelEventHandler);
+
+    return () => {
+      if (rootContainerRef.current) {
+        rootContainerRef.current.removeEventListener('wheel', handleWheelEventHandler);
+      }
+    }
   }, []);
 
+  useEffect(() => {
+    const block1Counts = imageBlocks01.length;
+    const block2Counts = imageBlocks02.length;
+    const block3Counts = imageBlocks03.length;
+
+    if (currentIndex < block1Counts) {
+      setBlockPercents([currentIndex / block1Counts * 100, 0, 0]);
+    } else if (currentIndex >= block1Counts && currentIndex < (block2Counts + block1Counts)) {
+      setBlockPercents([100, (currentIndex - block1Counts) / block2Counts * 100, 0]);
+    } else if (currentIndex >= (block2Counts + block1Counts) && currentIndex < (block3Counts + block2Counts + block1Counts)) {
+      setBlockPercents([100, 100, (currentIndex - block1Counts - block2Counts) / block3Counts * 100]);
+    }
+  }, [currentIndex]);
+
   return (
-    <div className="flex mt-[80px] px-[168px] pt-[35px] pb-[57px]">
+    <div ref={rootContainerRef} className="flex mt-[80px] px-[168px] pt-[35px] pb-[57px]">
       <div className="border-l border-r w-full pb-[55px] border-white-10">
 
         {/* First section */}
@@ -143,7 +212,51 @@ const HomeLayout = () => {
 
         {/* Video section */}
         <div className='border-b border-white-10 pt-[82px] pb-[55px] px-10'>
-          
+          <div className="flex flex-row gap-[49px]" ref={imageBlockContainerRef}>
+            <div className="flex justify-center items-center overflow-hidden w-[377px] h-[377px] flex-none">
+              {imagesLoaded ? (
+                <img src={images[currentIndex]} alt={`Image ${currentIndex + 1}`} />
+              ) : (
+                <div>Loading images...</div>
+              )}
+              <ImagePreloader images={images} onImagesLoaded={onImagesLoaded} />
+            </div>
+            <div>
+              <p className="text-dark-grey1 text-base">
+                HYPER SCALE YOUR BRAND WITH HANZO AI
+                <span className="text-white-grey">{`  [PRODUCTS]`}</span>
+              </p>
+              <h1 className="text-white-grey mt-8 text-[22px]">
+                Scale Intelligently, with Hanzo's all in one accelerator.
+              </h1>
+              <p className="text-white-grey-65 text-xl mt-12">With over a decade of experience and backed by Techstars, Hanzo has a prove track record of transforming the complexities of modern business into stramlined success stories.</p>
+              <p className="text-white-grey-65 text-xl mt-12">Take care of all your marketing needs and scale your business with our cutting-edge technology.</p>
+              <Button className="mt-8">Resources</Button>
+            </div>
+          </div>
+          <div className="flex flex-row mt-12 w-100 justify-between">
+            <div className="w-[30%]">
+              <Progress className="w-full h-[3px]" value={blockPercents[0]} />
+              <div className="pt-[10px] pb-2">
+                <h3 className="text-white text-xl">Problems</h3>
+                <p className="text-dark-grey1">Hyper Scale your brand with HANZO AI</p>
+              </div>
+            </div>
+            <div className="w-[30%]">
+              <Progress className="w-full h-[3px]" value={blockPercents[1]} />
+              <div className="pt-[10px] pb-2">
+                <h3 className="text-white text-xl">Solutions</h3>
+                <p className="text-dark-grey1">Deploy sophisticated AI campaigns</p>
+              </div>
+            </div>
+            <div className="w-[30%]">
+              <Progress className="w-full h-[3px]" value={blockPercents[2]} />
+              <div className="pt-[10px] pb-2">
+                <h3 className="text-white text-xl">Resources</h3>
+                <p className="text-dark-grey1">Impressive POI and productive market fit</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Hanzo power section */}
@@ -153,7 +266,7 @@ const HomeLayout = () => {
 
         {/* Companies section */}
         <div
-          ref={scrollContainerRef}
+          ref={companyContainerRef}
           className='grid grid-flow-col auto-cols-max border-b border-white-10 w-full overflow-x-auto gap-[64px] justify-start items-center no-scroll py-[36px]'
         >
           <Arca className='w-full ml-2' />
