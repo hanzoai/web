@@ -14,7 +14,6 @@
     "@hanzo/auth": "*",
     "@hanzo/brand": "*",
     "@hanzo/commerce": "*",
-    "@hanzo/data": "*",
     "@hanzo/ui": "*",
     "@hookform/resolvers": "^3.3.4",
     "@next/mdx": "14.1.0",
