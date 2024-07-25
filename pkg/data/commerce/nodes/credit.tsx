@@ -1,9 +1,9 @@
 import type { CategoryNode } from '@hanzo/commerce/types'
 
-const BLACK_IMAGE = '/assets/commerce/cr/product/black-f-700x441.png'
-const ELITE_IMAGE = '/assets/commerce/cr/product/gold-f-700x442.png'
-const FOUNDER_IMAGE = '/assets/commerce/cr/product/chrome-cool-f-700x441.png'
-const SOVEREIGN_IMAGE = '/assets/commerce/cr/product/titanium-f-700x442.png'
+const BLACK_IMAGE = 'https://cdn.lux.network/commerce/cr/product/black-f-700x441.png'
+const ELITE_IMAGE = 'https://cdn.lux.network/commerce/cr/product/gold-f-700x442.png'
+const FOUNDER_IMAGE = 'https://cdn.lux.network/commerce/cr/product/chrome-cool-f-700x441.png'
+const SOVEREIGN_IMAGE = 'https://cdn.lux.network/commerce/cr/product/titanium-f-700x442.png'
 
 const CC_AR = 1.58577251 // cc aspect ratio, according to international spec 
 

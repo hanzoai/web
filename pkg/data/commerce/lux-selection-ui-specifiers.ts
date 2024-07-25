@@ -12,14 +12,6 @@ export default {
       }
     }
   },  
-  'LXM-FC': {
-    singleFamily: {
-      type: 'carousel',
-      options: {
-        //showQuantity: true 
-      }
-    }
-  },  
   'LXM-CR': {
     multiFamily: {
       type: 'all-variants-carousel',

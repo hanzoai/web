@@ -5,7 +5,7 @@
     "parentTitle": "Lux Silver",
     "desc": "Get unprecedented access to silver with 1:1 asset-backed Lux Silver NFTs, sovereign ownership of physical silver without management fees, and mine-direct discount pricing.",
     "img": {
-      "src": "/assets/commerce/silver/product/silver-bar-pt-800x800.png",
+      "src": "https://cdn.lux.network/commerce/silver/product/silver-bar-pt-800x800.png",
       "dim": {
         "w": 800,
         "h": 800
@@ -22,7 +22,7 @@
         "desc": "Get unprecedented access to silver with 1:1 asset-backed Lux Silver NFTs, sovereign ownership of physical silver without management fees, and mine-direct discount pricing.",
         "price": 0,
         "img": {
-          "src": "/assets/commerce/silver/product/silver-bar-pt-800x800.png",
+          "src": "https://cdn.lux.network/commerce/silver/product/silver-bar-pt-800x800.png",
           "dim": {
             "w": 800,
             "h": 800

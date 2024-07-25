@@ -11,6 +11,7 @@ import * as Icons from './icons'
 const Logo: React.FC<{
   size?: TShirtSize
   layout?: 'text-only' | 'logo-only' | 'full'
+  onClick?: () => void
   href?: string
   className?: string
   spanClassName?: string
@@ -19,7 +20,8 @@ const Logo: React.FC<{
   href, // no default please!
   className='',
   spanClassName,
-  layout='full'
+  layout='full',
+  onClick,
 }) => {
 
   const [classes, setClasses] = useState<{ icon: string, span: string}>({ icon: '', span: ''});
@@ -83,12 +85,12 @@ const Logo: React.FC<{
 
   return (
     href ? (
-      <Link href={href} className={outerClasses} >
+      <Link href={href} className={outerClasses} onClick={onClick}>
         <Inner />
       </Link>
   
     ) : (
-      <span className={outerClasses} >
+      <span className={outerClasses} onClick={onClick}>
         <Inner />
       </span>
     )
