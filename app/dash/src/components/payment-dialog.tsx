@@ -24,12 +24,13 @@ export default function PaymentDialog({ ...props }: PaymentDialogProps) {
                         async (token, verifiedBuyer) => {
                             console.log('THis is square token: ', token)
                             console.log('Verified Buyer: ', verifiedBuyer)
-                            if (token) {
+                            if (token.token) {
                                 handleCloseButtonClick()
                                 props.addPaymenMethod({
                                     cardInfo: token.details,
                                     token: token.token
                                 })
+                                console.log('token: ', token)
                             } else {
                                 console.log('Payment Method Error')
                             }

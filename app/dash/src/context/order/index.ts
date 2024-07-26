@@ -32,6 +32,8 @@ interface SavedOrder {
 const options = {
   dbName: 'hanzo-commerce',
   ordersTable: 'orders',
+  planTable: 'plans',
+  customerTable: 'customers',
 }
 
 const createOrder = async (

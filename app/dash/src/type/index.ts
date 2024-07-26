@@ -12,8 +12,8 @@ interface CheckoutStepComponentProps {
 }
 
 interface CheckoutStep {
-  name: string  
-  label?: string 
+  name: string
+  label?: string
   Comp: ComponentType<CheckoutStepComponentProps>
 }
 
@@ -34,43 +34,57 @@ interface PaymentMethodComponentProps {
 }
 
 interface PaymentMethodDesc {
-  value: string  
-  label: string 
+  value: string
+  label: string
   Comp: ComponentType<PaymentMethodComponentProps>
 }
 
 interface CheckoutPanelProps {
-    step: number
-    stepNames: string[]
-    onLeave: () => void
-    clx?: string
+  step: number
+  stepNames: string[]
+  onLeave: () => void
+  clx?: string
 }
 
 interface CountryProps {
-    id: number
-    alpha2: string
-    alpha3: string
-    name: string
+  id: number
+  alpha2: string
+  alpha3: string
+  name: string
+}
+
+export interface SubscriptionPlan {
+  id: string;
+  name: string;
+  price: number;
+  interval: 'monthly' | 'yearly';
+  variations: SubscriptionPlanVariation[];
+}
+
+export interface SubscriptionPlanVariation {
+  id: string;
+  name: string;
+  price: number;
 }
 
 export type PaymentDialogProps = {
-    open: boolean
-    setOpen: Dispatch<SetStateAction<boolean>>
-    addPaymenMethod: (arg: PaymentMethod) => void
+  open: boolean
+  setOpen: Dispatch<SetStateAction<boolean>>
+  addPaymenMethod: (arg: PaymentMethod) => void
 }
 
 export type PaymentMethod = {
-    cardInfo: any
-    token: string | undefined
+  cardInfo: any
+  token: string | undefined
 }
 
 export {
-    type CheckoutPanelProps as default,
-    type TransactionStatus,
-    type CheckoutStepComponentProps,
-    type CheckoutStep,
-    type PaymentMethodComponentProps,
-    type PaymentMethodDesc,
-    type ContactFormType,
-    type CountryProps,
+  type CheckoutPanelProps as default,
+  type TransactionStatus,
+  type CheckoutStepComponentProps,
+  type CheckoutStep,
+  type PaymentMethodComponentProps,
+  type PaymentMethodDesc,
+  type ContactFormType,
+  type CountryProps,
 }
