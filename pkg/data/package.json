@@ -1,6 +1,6 @@
 {
   "name": "@hanzo/data",
-  "version": "1.0.6",
+  "version": "1.0.10",
   "description": "Shared data for all Products, Families, that are available via any eCommrece functions on Hanzo sites.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",

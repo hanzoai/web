@@ -5,6 +5,8 @@ import {
   viewport as ViewportCode,
 } from '@hanzo/brand/root-layout'
 
+import { PaymentPlanProvider } from '@/context/payment-plan-context';
+
 
 import siteDef from '../site-def'
 import _metadata from '../metadata'
@@ -18,7 +20,9 @@ const RootLayout: React.FC<PropsWithChildren> = async ({
   children
 }) => (
   <RootLayoutCore siteDef={siteDef}>
-    {children}
+    <PaymentPlanProvider>
+      {children}
+    </PaymentPlanProvider>
   </RootLayoutCore>
 )
 
