@@ -23,7 +23,6 @@ const nextConfig = {
     '@hanzo/auth',
     '@hanzo/brand',
     '@hanzo/commerce',
-    '@hanzo/data',
     '@hanzo/ui',
   ],
   productionBrowserSourceMaps: true,

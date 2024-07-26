@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 // import { WalletCards } from 'lucide-react'
 // import { useAuth } from '@hanzo/auth/service'
-import { usePaymentPlan } from '@/context/payment-plan-context'
+// import { usePaymentPlan } from '@/context/payment-plan-context'
 import PaymentPlan from '@/components/payment-plan'
 
 // import PaymentDialog from '@/components/payment-dialog'
@@ -28,13 +28,13 @@ const UniversalPage: React.FC = () => {
     // const [open, setOpen] = useState<boolean>(false)
 
     // const auth = useAuth()
-    const { setPaymentPlan } = usePaymentPlan()
-    const router = useRouter()
+    // const { setPaymentPlan } = usePaymentPlan()
+    // const router = useRouter()
 
-    const handleStartPlan = (plan: string, price: number, duration: string) => {
-        setPaymentPlan({plan, price, duration})
-        router.push('/checkout')
-    }
+    // const handleStartPlan = (plan: string, price: number, duration: string) => {
+    //     setPaymentPlan({plan, price, duration})
+    //     router.push('/checkout')
+    // }
 
     return (
         <div className="p-2 md:p-4 flex flex-col gap-4">
