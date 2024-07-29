@@ -3,12 +3,10 @@ import React, { type PropsWithChildren } from 'react'
 
 import { ScrollArea, StepIndicator } from '@hanzo/ui/primitives'
 import { AuthWidget } from '@hanzo/auth/components'
-import { cn } from '@hanzo/ui/util'
 import PolicyLinks from './policy-links'
 
 import { BackButton, Logo, Tooltip } from '@hanzo/brand'
 import type CheckoutPanelProps from '@/type'
-import PaymentPlan from './payment-plan'
 import { usePaymentPlan } from '@/context/payment-plan-context'
 
 const DesktopCheckoutPanel: React.FC<PropsWithChildren & CheckoutPanelProps> = ({
@@ -38,7 +36,7 @@ const DesktopCheckoutPanel: React.FC<PropsWithChildren & CheckoutPanelProps> = (
                 />
                 <Tooltip select='.back-button-tooltip-class' text='back' position='right' offset={5} />
                 <div className='w-full h-full mx-auto max-w-[700px] flex flex-col justify-center items-center gap-8 px-2 mt-8'>
-                    <PaymentPlan />
+                    {/* <PaymentPlan /> */}
                     <div className='w-full grid grid-cols-2 gap-4'>
                         <div className='text-right'>Plan:</div>
                         <div>{paymentPlan?.plan}</div>
