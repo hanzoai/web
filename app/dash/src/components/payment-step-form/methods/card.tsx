@@ -14,7 +14,7 @@ import {
 
 import { cn } from '@hanzo/ui/util'
 
-import processSquareCardPayment from '@/utils/square-payment'
+import { createCard, createCustomer, createSubscriptionWithStaticPrice, cancelSubscription } from '@/utils/square-payment'
 import { sendFBEvent, sendGAEvent } from '@/utils/analytics'
 import type { PaymentMethodComponentProps } from '@/type'
 import { usePaymentPlan } from '@/context/payment-plan-context'
@@ -29,9 +29,9 @@ const PayWithCard: React.FC<PaymentMethodComponentProps> = observer(({
   storePaymentInfo,
   contactForm,
 }) => {
-  const { paymentPlan } = usePaymentPlan()
+  const plan = usePaymentPlan()
 
-  if (!paymentPlan) {
+  if (!plan.paymentPlan || plan.paymentPlan == null) {
     return (<></>)
   }
 
@@ -41,21 +41,47 @@ const PayWithCard: React.FC<PaymentMethodComponentProps> = observer(({
   ) => {
     contactForm.handleSubmit(async () => {
       setTransactionStatus('paid')
-      const res = await processSquareCardPayment(token.token, paymentPlan.price, verifiedBuyer.token)
-      if (res) {
-        await storePaymentInfo({ paymentMethod: token.details.method ?? null, processed: res })
+      let customerId: string | any
+      let subscription: any
+      const customerInfo = await plan.getCustomer(contactForm.getValues().email)
+      if (!customerInfo) {
+        customerId = await createCustomer(contactForm.getValues().email)
+        if (customerId) await plan.createCustomer(customerId, contactForm.getValues().email, contactForm.getValues().name)
+      } else customerId = customerInfo.customerId
+
+      const cardId = await createCard(token.token, contactForm.getValues().email, customerId)
+      if (!cardId) return console.error("Card not created")
+
+      if (!plan.paymentPlan) {
+        setTransactionStatus('error')
+        return console.error("Payment plan is null")
+      }
+
+      if (customerInfo.subscriptionId) { 
+        await cancelSubscription(customerInfo.subscriptionId) 
+        await plan.deleteSubscription(customerInfo.subscriptionId)
+      }
+
+      subscription = await createSubscriptionWithStaticPrice(plan.paymentPlan.planVariationId, customerId, cardId)
+      // const res = await processSquareCardPayment(token.token, paymentPlan.price, verifiedBuyer.token)
+      if (subscription?.subscription?.id) {
+        await plan.createSubscription(subscription.subscription.id, subscription.subscription)
+        await plan.updateCustomer(customerId, contactForm.getValues().email, contactForm.getValues().name, subscription.subscription.id, plan.paymentPlan.planId)
+
+        await storePaymentInfo({ paymentMethod: token.details.method ?? null, processed: subscription.subscription })
+
         setTransactionStatus('confirmed')
         sendGAEvent('purchase', {
-          transaction_id: res.payment?.id,
-          value: res.payment?.amountMoney?.amount,
-          currency: res.payment?.amountMoney?.currency,
-          plan: paymentPlan.plan,
-          duration: paymentPlan.duration,
+          transaction_id: subscription?.subscription?.id,
+          value: plan.paymentPlan.price,
+          currency: 'USD',
+          plan: plan.paymentPlan.plan,
+          duration: plan.paymentPlan.duration,
         })
         sendFBEvent('Purchase', {
-          plan: paymentPlan.plan,
-          duration: paymentPlan.duration,
-          value: paymentPlan.price,
+          plan: plan.paymentPlan.plan,
+          duration: plan.paymentPlan.duration,
+          value: plan.paymentPlan.price,
           currency: 'USD',
         })
       } else {
@@ -66,8 +92,14 @@ const PayWithCard: React.FC<PaymentMethodComponentProps> = observer(({
 
   const createVerificationDetails = () => {
     const { name, email } = contactForm.getValues()
+
+    if (!plan.paymentPlan) {
+      setTransactionStatus('error')
+      return console.error("Payment plan is null")
+    }
+
     return {
-      amount: paymentPlan.price.toFixed(2),
+      amount: plan.paymentPlan.price.toFixed(2),
       billingContact: {
         givenName: name,
         email,
@@ -77,19 +109,25 @@ const PayWithCard: React.FC<PaymentMethodComponentProps> = observer(({
     }
   }
 
-  const createPaymentRequest = () => ({
-    countryCode: "US",
-    currencyCode: "USD",
-    plan: paymentPlan.plan,
-    duration: paymentPlan.duration,
-    requestBillingContact: false,
-    requestShippingContact: false,
-    total: {
-      amount: paymentPlan.price.toFixed(2),
-      label: "Total",
-    },
-  })
+  const createPaymentRequest = () => {
+    if (!plan.paymentPlan) {
+      console.error("Payment plan is null")
+      return null
+    }
 
+    return {
+      countryCode: "US",
+      currencyCode: "USD",
+      plan: plan.paymentPlan.plan,
+      duration: plan.paymentPlan.duration,
+      requestBillingContact: false,
+      requestShippingContact: false,
+      total: {
+        amount: plan.paymentPlan.price.toFixed(2),
+        label: "Total",
+      },
+    }
+  }
   /**
    * Reload payment form after checkout value changes (promo code applied, etc.)
    * Reloading is required so that Apple Pay and Google Pay buttons are updated for new cart total.
@@ -99,7 +137,7 @@ const PayWithCard: React.FC<PaymentMethodComponentProps> = observer(({
     setLoadingPaymentForm(true)
     const timeout = setTimeout(() => setLoadingPaymentForm(false), 1000)
     return () => clearTimeout(timeout)
-  }, [paymentPlan.price])
+  }, [plan.paymentPlan.price])
 
   if (loadingPaymentForm) {
     return (

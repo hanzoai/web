@@ -35,7 +35,7 @@ const UniversalPage: React.FC = () => {
     //     setPaymentPlan({plan, price, duration})
     //     router.push('/checkout')
     // }
-
+    
     return (
         <div className="p-2 md:p-4 flex flex-col gap-4">
             <p className='text-xl md:text-2xl font-medium'>Payment Plan</p>

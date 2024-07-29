@@ -22,17 +22,13 @@ export default function PaymentDialog({ ...props }: PaymentDialogProps) {
                     applicationId='sandbox-sq0idb-yCZrysTolh0q13yEhkLunA'
                     cardTokenizeResponseReceived={
                         async (token, verifiedBuyer) => {
-                            console.log('THis is square token: ', token)
-                            console.log('Verified Buyer: ', verifiedBuyer)
                             if (token.token) {
                                 handleCloseButtonClick()
                                 props.addPaymenMethod({
                                     cardInfo: token.details,
                                     token: token.token
                                 })
-                                console.log('token: ', token)
                             } else {
-                                console.log('Payment Method Error')
                             }
                         }
                     }
