@@ -1,31 +1,10 @@
 'use client'
 
-import React, { useState, useEffect} from 'react'
+import React from 'react'
 // import { useRouter } from 'next/navigation'
 // import { WalletCards } from 'lucide-react'
 // import { useAuth } from '@hanzo/auth/service'
-import { usePaymentPlan } from '@/context/payment-plan-context'
-import {
-    createCustomer,
-    createCard,
-    createSubscriptionPlan,
-    createSubscriptionPlanVariation,
-    liststSubscriptionPlans,
-    retrieveSubscriptionPlan,
-    updateSubscriptionPlan,
-    createOrder,
-    createSubscriptionWithOrder,
-    createSubscriptionWithStaticPrice,
-    updateSubscription,
-    retrieveSubscription,
-    searchSubscriptions,
-    pauseSubscription,
-    resumeSubscription,
-    cancelSubscription,
-    listSubscriptionEvents,
-    swapSubscriptionPlan,
-    bulkSwapSubscriptionPlan
-} from '@/utils/square-payment'
+// import { usePaymentPlan } from '@/context/payment-plan-context'
 import PaymentPlan from '@/components/payment-plan'
 
 // import PaymentDialog from '@/components/payment-dialog'
