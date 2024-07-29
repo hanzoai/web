@@ -1,20 +1,51 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { Button } from '@hanzo/ui/primitives'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@hanzo/ui/primitives"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@hanzo/ui/primitives"
 
+import { useAuth } from '@hanzo/auth/service'
+
 import { usePaymentPlan } from '@/context/payment-plan-context'
 
 const PaymentPlan: React.FC = () => {
-    const { setPaymentPlan } = usePaymentPlan()
+    const auth = useAuth()
+    const plan = usePaymentPlan()
     const router = useRouter()
 
-    const handleStartPlan = (plan: string, price: number, duration: string) => {
-        setPaymentPlan({ plan, price, duration })
+    const [currentPlan, setCurrentPlan] = useState<string>('')
+
+    useEffect(() => {
+        initPlan()
+    }, [plan, auth])
+
+    const initPlan = async () => {
+        const customerInfo = await plan.getCustomer(auth.user?.email)
+        if (customerInfo) {
+            setCurrentPlan(customerInfo.plan)
+        }
+    }
+
+    const handleBasicMonth = () => {
+        plan.setPaymentPlan({ plan: 'Basic', price: 4900, duration: 'One Month', planId: 'ZOJSPCIE66FICPBO6ABKGB76', planVariationId: '5V36UZ5UDYGEZ5ZGWRMI4WG3' })
+        router.push('/checkout')
+    }
+
+    const handleBasicAnnual = () => {
+        plan.setPaymentPlan({ plan: 'Basic', price: 47880, duration: 'One Year', planId: 'KGJYVX4TWGEVYKMROICXWEHG', planVariationId: 'KLXH7QKZTBA4CZE4KN4RSXRK' })
+        router.push('/checkout')
+    }
+
+    const handleProMonth = () => {
+        plan.setPaymentPlan({ plan: 'Professional', price: 9900, duration: 'One Month', planId: 'GAIZ5PU2O47MQCXPIKHLWVMF', planVariationId: 'PBLWP3CUXO6G7HWMHEJHL4HE' })
+        router.push('/checkout')
+    }
+
+    const handleProAnnual = () => {
+        plan.setPaymentPlan({ plan: 'Professional', price: 95880, duration: 'One Year', planId: 'I6L2KM65MCFHIS4WJIQML2T5', planVariationId: '5NJUWHX3WQXGVCUO4LDJW4R3' })
         router.push('/checkout')
     }
 
@@ -33,7 +64,10 @@ const PaymentPlan: React.FC = () => {
                                 <div className='text-2xl lg:text-4xl font-bold'>$49.00</div>
                                 <div className='text-sm lg:text-base font-light truncate'>per month</div>
                             </div>
-                            <Button size='sm' className='w-pr-50 min-w-20' onClick={() => handleStartPlan('Basic', 49.00, 'One Month')}>Start Plan</Button>
+                            {currentPlan === 'ZOJSPCIE66FICPBO6ABKGB76' ?
+                                <Button size='sm' className='w-pr-50 min-w-20' variant='outline'>Current Plan</Button> :
+                                <Button size='sm' className='w-pr-50 min-w-20' onClick={handleBasicMonth}>Start Plan</Button>
+                            }
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
@@ -50,7 +84,10 @@ const PaymentPlan: React.FC = () => {
                                 <div className='text-2xl lg:text-4xl font-bold'>$99.00</div>
                                 <div className='text-sm lg:text-base font-light truncate'>per month</div>
                             </div>
-                            <Button size='sm' className='w-pr-50 min-w-20' onClick={() => handleStartPlan('Professional', 99.00, 'One Month')}>Start Plan</Button>
+                            {currentPlan === 'GAIZ5PU2O47MQCXPIKHLWVMF' ?
+                                <Button size='sm' className='w-pr-50 min-w-20' variant='outline'>Current Plan</Button> :
+                                <Button size='sm' className='w-pr-50 min-w-20' onClick={handleProMonth}>Start Plan</Button>
+                            }
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
@@ -73,7 +110,10 @@ const PaymentPlan: React.FC = () => {
                                 <div className='font-medium'>$478.80</div>
                                 <div className='font-light truncate'>billed annually</div>
                             </div>
-                            <Button size='sm' className='w-pr-50 min-w-20' onClick={() => handleStartPlan('Basic', 478.80, 'One Year')}>Start Plan</Button>
+                            {currentPlan === 'KGJYVX4TWGEVYKMROICXWEHG' ?
+                                <Button size='sm' className='w-pr-50 min-w-20' variant='outline'>Current Plan</Button> :
+                                <Button size='sm' className='w-pr-50 min-w-20' onClick={handleBasicAnnual}>Start Plan</Button>
+                            }
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
@@ -94,7 +134,10 @@ const PaymentPlan: React.FC = () => {
                                 <div className='font-medium'>$958.80</div>
                                 <div className='font-light truncate'>billed annually</div>
                             </div>
-                            <Button size='sm' className='w-pr-50 min-w-20' onClick={() => handleStartPlan('Professional', 958.80, 'One Year')}>Start Plan</Button>
+                            {currentPlan === 'I6L2KM65MCFHIS4WJIQML2T5' ?
+                                <Button size='sm' className='w-pr-50 min-w-20' variant='outline'>Current Plan</Button> :
+                                <Button size='sm' className='w-pr-50 min-w-20' onClick={handleProAnnual}>Start Plan</Button>
+                            }
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">

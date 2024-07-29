@@ -1,10 +1,31 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 // import { useRouter } from 'next/navigation'
 // import { WalletCards } from 'lucide-react'
 // import { useAuth } from '@hanzo/auth/service'
-// import { usePaymentPlan } from '@/context/payment-plan-context'
+import { usePaymentPlan } from '@/context/payment-plan-context'
+import {
+    createCustomer,
+    createCard,
+    createSubscriptionPlan,
+    createSubscriptionPlanVariation,
+    liststSubscriptionPlans,
+    retrieveSubscriptionPlan,
+    updateSubscriptionPlan,
+    createOrder,
+    createSubscriptionWithOrder,
+    createSubscriptionWithStaticPrice,
+    updateSubscription,
+    retrieveSubscription,
+    searchSubscriptions,
+    pauseSubscription,
+    resumeSubscription,
+    cancelSubscription,
+    listSubscriptionEvents,
+    swapSubscriptionPlan,
+    bulkSwapSubscriptionPlan
+} from '@/utils/square-payment'
 import PaymentPlan from '@/components/payment-plan'
 
 // import PaymentDialog from '@/components/payment-dialog'
@@ -35,7 +56,7 @@ const UniversalPage: React.FC = () => {
     //     setPaymentPlan({plan, price, duration})
     //     router.push('/checkout')
     // }
-
+    
     return (
         <div className="p-2 md:p-4 flex flex-col gap-4">
             <p className='text-xl md:text-2xl font-medium'>Payment Plan</p>

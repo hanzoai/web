@@ -56,7 +56,6 @@ export const createCustomer = async (email: string) => {
       idempotencyKey: randomUUID(),
       emailAddress: email,
     })
-    console.log('Customer created:', result)
     return result.customer?.id
   } catch (error) {
     console.error('Error creating customer:', error)
@@ -74,7 +73,6 @@ export const createCard = async (cardToken: string, email: string, customerId: s
         customerId: customerId,
       }
     })
-    console.log('Card created:', response.result)
     return response.result.card?.id
   } catch (error) {
     console.error('Error creating card:', error)
@@ -94,7 +92,6 @@ export const createSubscriptionPlan = async (subscriptionPlanName: string) => {
         }
       }
     })
-    console.log('Subscription Plan created:', result)
     return result.catalogObject?.id
   } catch (error) {
     console.error('Error creating subscription plan:', error)
@@ -125,7 +122,6 @@ export const createSubscriptionPlanVariation = async (
         }
       }
     });
-    console.log('Subscription Plan Variation created:', result)
     return result
   } catch (error) {
     console.error('Error creating subscription plan variation:', error)
@@ -136,7 +132,6 @@ export const createSubscriptionPlanVariation = async (
 export const liststSubscriptionPlans = async () => {
   try {
     const { result } = await client.catalogApi.listCatalog(undefined, 'SUBSCRIPTION_PLAN');
-    console.log('Subscription Plans:', result)
     return result
   } catch (error) {
     console.error('Error listing subscription plans:', error)
@@ -147,107 +142,10 @@ export const liststSubscriptionPlans = async () => {
 export const retrieveSubscriptionPlan = async (id: string) => {
   try {
     const { result } = await client.catalogApi.retrieveCatalogObject(id);
-    console.log('Subscription Plan:', result)
     return result
   } catch (error) {
     console.error('Error retrieving subscription plan:', error)
     return null
-  }
-}
-
-export const updateSubscriptionPlan = async (id: string, name: string) => {
-  try {
-    const { result } = await client.catalogApi.upsertCatalogObject({
-      idempotencyKey: '{UNIQUE_KEY}',
-      object: {
-        type: 'SUBSCRIPTION_PLAN_VARIATION',
-        id: 'CUPS23SKJ7J4FD4F3IMVAEOH',
-        updatedAt: '2023-01-25T21:24:13.115Z',
-        version: BigInt(1674681853115),
-        isDeleted: false,
-        presentAtAllLocations: true,
-        subscriptionPlanVariationData: {
-          name: 'Coffee of the Month Club',
-          phases: [{
-            uid: 'CR7TS35JYEVXC5BSDV5N7Z4Y',
-            cadence: 'MONTHLY',
-            periods: 1,
-            ordinal: BigInt(0),
-            pricing: {
-              type: 'STATIC'
-            }
-          }, {
-            uid: 'AW9ES43NVGRFC8AQRK8J5X1S',
-            cadence: 'MONTHLY',
-            ordinal: BigInt(1),
-            pricing: {
-              type: 'RELATIVE',
-              discountIds: ['RGO7OY2OZTPQQX2SAHF32NUM']
-            }
-          }],
-          subscriptionPlanId: 'VVH3YXQSQATSL3XR4LIKD3QM'
-        }
-      }
-    });
-    console.log('Subscription Plan updated:', result)
-    return result
-  } catch (error) {
-    console.error('Error updating subscription plan:', error)
-    return null
-  }
-}
-
-export const createOrder = async () => {
-  try {
-    const { result } = await client.ordersApi.createOrder({
-      order: {
-        locationId: 'LE40N37TVF5FT',
-        lineItems: [
-          {
-            quantity: '1',
-            catalogObjectId: 'KAQJXCONWUSBWPHR62W3DZTO'
-          }
-        ],
-        discounts: [
-          {
-            catalogObjectId: '5PFBH6YH5SB2F63FOIHJ7HWR',
-            scope: 'ORDER'
-          }
-        ],
-        state: 'DRAFT'
-      },
-      idempotencyKey: '{UNIQUE_KEY}'
-    });
-
-    console.log('Order created:', result)
-    return result
-  } catch (error) {
-    console.error('Error creating order:', error)
-    return null
-  }
-}
-
-export const createSubscriptionWithOrder = async () => {
-  try {
-    const response = await client.subscriptionsApi.createSubscription({
-      idempotencyKey: '{UNIQUE_KEY}',
-      locationId: 'LE40N37TVF5FT',
-      planVariationId: 'CUPS23SKJ7J4FD4F3IMVAEOH',
-      customerId: 'Y3MBJEF62GVTXAP56H7SD2AFJW',
-      phases: [
-        {
-          ordinal: BigInt(0),
-          orderTemplateId: 'x7ClfqqNapjeDMvrQOZhbgVFVKFZY'
-        },
-        {
-          ordinal: BigInt(1),
-          orderTemplateId: 'sTzXhfu3E2GtjXQHvpnITivAXna1z'
-        }
-      ]
-    });
-    console.log(response.result);
-  } catch (error) {
-    console.log(error);
   }
 }
 
@@ -265,25 +163,28 @@ export const createSubscriptionWithStaticPrice = async (
       cardId: cardId,
       startDate: new Date().toISOString().split('T')[0]
     });
-    console.log(response.result.subscription?.id);
     return response.result
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null
   }
 }
 
-export const updateSubscription = async () => {
+export const updateSubscription = async (  
+  subscriptionId: string,
+  subscriptionPlanVariationId: string,
+  customerId: string,
+  cardId: string,) => {
   try {
-    const response = await client.subscriptionsApi.updateSubscription('subscriptionID',
+    const response = await client.subscriptionsApi.updateSubscription(subscriptionId,
       {
         subscription: {
-          canceledDate: null,
-          cardId: '{NEW CARD ID}'
+          planVariationId: subscriptionPlanVariationId,
+          customerId,
+          cardId,
         }
       }
     );
-    console.log("subscription updated", response.result)
     return response.result
   } catch (error) {
     console.error('Error updating subscription:', error)
@@ -294,7 +195,6 @@ export const updateSubscription = async () => {
 export const retrieveSubscription = async (id: string) => {
   try {
     const { result } = await client.subscriptionsApi.retrieveSubscription(id);
-    console.log('Subscription:', result)
     return result
   } catch (error) {
     console.error('Error retrieving subscription:', error)
@@ -312,7 +212,6 @@ export const searchSubscriptions = async (locationId: string) => {
         }
       }
     })
-    console.log('Subscriptions:', result)
     return result
   } catch (error) {
     console.error('Error searching subscriptions:', error)
@@ -327,7 +226,6 @@ export const pauseSubscription = async (id: string) => {
         pauseCycleDuration: BigInt(3),
         pauseReason: 'Injury'
       });
-    console.log('Subscription paused:', result)
     return result
   } catch (error) {
     console.error('Error pausing subscription:', error)
@@ -343,7 +241,6 @@ export const resumeSubscription = async (id: string) => {
         resumeEffectiveDate: '2023-06-08',
         resumeChangeTiming: 'IMMEDIATE'
       });
-    console.log('Subscription resumed:', result)
     return result
   } catch (error) {
     console.error('Error resuming subscription:', error)
@@ -354,7 +251,6 @@ export const resumeSubscription = async (id: string) => {
 export const cancelSubscription = async (id: string) => {
   try {
     const { result } = await client.subscriptionsApi.cancelSubscription(id);
-    console.log('Subscription canceled:', result)
     return result
   } catch (error) {
     console.error('Error canceling subscription:', error)
@@ -368,7 +264,6 @@ export const changeBillingDate = async (id: string, date: number) => {
       {
         monthlyBillingAnchorDate: date
       });
-    console.log('Subscription billing date changed:', result)
     return result
   } catch (error) {
     console.error('Error changing subscription billing date:', error)
@@ -379,30 +274,10 @@ export const changeBillingDate = async (id: string, date: number) => {
 export const listSubscriptionEvents = async (id: string) => {
   try {
     const { result } = await client.subscriptionsApi.listSubscriptionEvents(id);
-    console.log('Subscription events:', result)
     return result
   } catch (error) {
     console.error('Error listing subscription events:', error)
     return null
-  }
-}
-
-export const swapSubscriptionPlan = async (id: string) => {
-  try {
-    const response = await client.subscriptionsApi.swapPlan(id,
-      {
-        newPlanVariationId: 'FQ7CDXXWSLUJRPM3GFJSJGZ7',
-        phases: [
-          {
-            ordinal: BigInt(0),
-            orderTemplateId: 'uhhnjH9osVv3shUADwaC0b3hNxQZY'
-          }
-        ]
-      });
-
-    console.log(response.result);
-  } catch (error) {
-    console.log(error);
   }
 }
 
@@ -415,9 +290,8 @@ export const bulkSwapSubscriptionPlan = async (oldId: string, newId: string, loc
         locationId: locationId
       }
     );
-    console.log(response.result);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 
