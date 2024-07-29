@@ -57,7 +57,7 @@ const PayWithCard: React.FC<PaymentMethodComponentProps> = observer(({
         return console.error("Payment plan is null")
       }
 
-      if (customerInfo.subscriptionId) { 
+      if (customerInfo) { 
         await cancelSubscription(customerInfo.subscriptionId) 
         await plan.deleteSubscription(customerInfo.subscriptionId)
       }
