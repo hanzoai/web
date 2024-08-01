@@ -208,6 +208,7 @@ const HomeLayout = () => {
       const atEnd = scrollLeft > 0;
 
       if (scrollMovement > 0 && companyContainerOffset < 0 && atStart) {
+<<<<<<< HEAD
         event.preventDefault();
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -227,6 +228,13 @@ const HomeLayout = () => {
 >>>>>>> 691d47c6 (update scroll)
 =======
 >>>>>>> 61da09ee (update responsive & scroll function)
+=======
+        // companyContainerRef.current.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
+        companyContainerRef.current.scrollLeft += scrollMovement;
+      }
+      if (scrollMovement < 0 && companyContainerOffset > 0 && atEnd) {
+        // companyContainerRef.current.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
+>>>>>>> 48f48f01 (update scroll)
         companyContainerRef.current.scrollLeft += scrollMovement;
       }
     }
@@ -275,6 +283,7 @@ const HomeLayout = () => {
     }
   };
 
+<<<<<<< HEAD
   return (
     <div ref={rootContainerRef} className="flex mt-[80px] px-10 xl:px-[168px] pt-[35px] pb-[57px] scroll-smooth">
 =======
@@ -285,6 +294,9 @@ const HomeLayout = () => {
 =======
     <div ref={rootContainerRef} className="flex mt-[80px] px-10 xl:px-[168px] pt-[35px] pb-[57px] scroll-smooth">
 >>>>>>> 61da09ee (update responsive & scroll function)
+=======
+    <div ref={rootContainerRef} className="flex mt-[80px] px-[168px] pt-[35px] pb-[57px]">
+>>>>>>> 48f48f01 (update scroll)
       <div className="border-l border-r w-full pb-[55px] border-white-10">
 
         {/* First section */}
@@ -354,6 +366,7 @@ const HomeLayout = () => {
         {/* Video section */}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className='border-b border-white-10 pt-10 lg:pt-[82px] pb-8 lg:pb-[55px] px-4 lg:px-10'>
           <div className="flex flex-col md:flex-row gap-4 sm:gap-[49px] justify-center items-center md:justify-start" ref={imageBlockContainerRef}>
             <div className="flex justify-center items-center overflow-hidden w-[200px] md:w-[240px] lg:w-[377px] h-[200px] md:h-[240px] lg:h-[377px] flex-none">
@@ -367,6 +380,11 @@ const HomeLayout = () => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-[49px]" ref={imageBlockContainerRef}>
             <div className="flex justify-center items-center overflow-hidden w-[100px] md:w-[240px] lg:w-[377px] h-[100px] md:h-[240px] lg:h-[377px] flex-none">
 >>>>>>> 61da09ee (update responsive & scroll function)
+=======
+        <div className='border-b border-white-10 pt-[82px] pb-[55px] px-10'>
+          <div className="flex flex-row gap-[49px]" ref={imageBlockContainerRef}>
+            <div className="flex justify-center items-center overflow-hidden w-[377px] h-[377px] flex-none">
+>>>>>>> 48f48f01 (update scroll)
               {imagesLoaded ? (
                 <img src={images[currentIndex]} alt={`Image ${currentIndex + 1}`} />
               ) : (
@@ -490,6 +508,7 @@ const HomeLayout = () => {
           ref={companyContainerRef}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           className='grid grid-flow-col auto-cols-max border-b border-white-10 w-full overflow-x-auto gap-8 lg:gap-[64px] justify-start items-center no-scroll py-5 lg:py-[36px]'
 =======
           className='grid grid-flow-col auto-cols-max border-b border-white-10 w-full overflow-x-auto gap-[64px] justify-start items-center no-scroll py-[36px]'
@@ -497,6 +516,9 @@ const HomeLayout = () => {
 =======
           className='grid grid-flow-col auto-cols-max border-b border-white-10 w-full overflow-x-auto gap-8 lg:gap-[64px] justify-start items-center no-scroll py-5 lg:py-[36px]'
 >>>>>>> 61da09ee (update responsive & scroll function)
+=======
+          className='grid grid-flow-col auto-cols-max border-b border-white-10 w-full overflow-x-auto gap-[64px] justify-start items-center no-scroll py-[36px]'
+>>>>>>> 48f48f01 (update scroll)
         >
           <Arca className='w-full ml-2' />
           <Cove className='w-full' />
