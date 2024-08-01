@@ -29,8 +29,6 @@ const ScrollNumBlockComponent: React.FC<{
   agent?: string
 }> = ({
   block,
-  className = '',
-  agent
 }) => {
     if (block.blockType !== 'scroll-num') {
       return <>scrollNum block required</>
@@ -72,8 +70,6 @@ const ScrollNumBlockComponent: React.FC<{
           const finalText = content[index] || "0";
           const finalValue = parseNumber(finalText);
 
-          console.log("index: ", index)
-
           const animationTarget = { value: 0 }
           gsap.to(animationTarget, {
             duration: 1 + index * 0.3,
@@ -99,13 +95,13 @@ const ScrollNumBlockComponent: React.FC<{
           scrollNum.aniNum.map((num, index) => (
             <div className={'w-full flex flex-col justify-center items-center py-[56px] mx-auto border-none sm:border-r border-white-10 ' + `${index === scrollNum.aniNum.length - 1 && 'border-none'}`} key={index}>
               <div className='flex flex-row font-semibold'>
-                <span className='animCounter text-base lg:text-[40px]'>{num}</span>
+                <span className='animCounter text-xl lg:text-[40px]'>{num}</span>
                 {
                   index === 0 && <span>&nbsp;</span>
                 }
-                <span className='text-base lg:text-[40px]'>{scrollNum.modifier[index]}</span>
+                <span className='text-xl lg:text-[40px]'>{scrollNum.modifier[index]}</span>
               </div>
-              <span className='text-white-65 text-xs lg:text-[18px] text-center'>{scrollNum.detail[index]}</span>
+              <span className='text-white-65 text-base lg:text-[18px] text-center'>{scrollNum.detail[index]}</span>
             </div>
           ))
         }

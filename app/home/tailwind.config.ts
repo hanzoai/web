@@ -78,6 +78,7 @@ export default {
         'dark-grey1': 'rgb(161, 161, 161)',
         'white-grey': 'rgb(237, 237, 237)',
         'white-grey-65': 'rgba(237, 237, 237, 0.65)',
+        'primary-black': 'rgb(13, 13, 13)'
       }
     }
   }
