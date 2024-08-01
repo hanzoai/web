@@ -29,6 +29,8 @@ const ScrollNumBlockComponent: React.FC<{
   agent?: string
 }> = ({
   block,
+  className = '',
+  agent
 }) => {
     if (block.blockType !== 'scroll-num') {
       return <>scrollNum block required</>
@@ -69,6 +71,8 @@ const ScrollNumBlockComponent: React.FC<{
         if (counter instanceof HTMLElement) {
           const finalText = content[index] || "0";
           const finalValue = parseNumber(finalText);
+
+          console.log("index: ", index)
 
           const animationTarget = { value: 0 }
           gsap.to(animationTarget, {
