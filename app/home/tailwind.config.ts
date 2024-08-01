@@ -68,6 +68,16 @@ export default {
             opacity: 1
           }
         }
+      },
+      colors: {
+        'white': 'rgb(255, 255, 255)',
+        'white-85': 'rgba(255, 255, 255, 0.85)',
+        'white-65': 'rgba(255, 255, 255, 0.65)',
+        'white-10': 'rgba(255, 255, 255, 0.1)',
+        'dark-grey': 'rgb(30, 30, 30)',
+        'dark-grey1': 'rgb(161, 161, 161)',
+        'white-grey': 'rgb(237, 237, 237)',
+        'white-grey-65': 'rgba(237, 237, 237, 0.65)',
       }
     }
   }
