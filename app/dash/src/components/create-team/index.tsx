@@ -65,7 +65,7 @@ export default function CreateTeamDialog({ ...props }: ModealProps) {
     }
 
     const handleInvite = async () => {
-        // props.setOpen(false)
+        props.setOpen(false)
         invitationDatas.map(async (invitationData) => {
             if (invitationData.email !== '') {
                 const res = await inviteTeamMember(organization, invitationData.email, invitationData.role)

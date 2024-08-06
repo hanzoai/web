@@ -49,10 +49,10 @@ const UniversalPage = () => {
             router.push("/dashboard")
           }
           else {
-            router.push('https://auth.hanzo.ai/?redirectUrl=https://dash.hanzo.ai')
+            // router.push('https://auth.hanzo.ai/?redirectUrl=https://dash.hanzo.ai')
           }
         } else {
-          router.push('https://auth.hanzo.ai/?redirectUrl=https://dash.hanzo.ai')
+          // router.push('https://auth.hanzo.ai/?redirectUrl=https://dash.hanzo.ai')
         }
       })
   }, [auth, searchParams, router])
