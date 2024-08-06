@@ -60,6 +60,10 @@ const DesktopNavHanzo: React.FC<{
     setIsMenuOpen(false);
   };
 
+  const handleContentMouseMove = () => {
+    setIsMenuOpen(false)
+  }
+
   const menuHiddenClass = !isMenuOpened ? "invisible" : "";
 
   return (
@@ -95,7 +99,10 @@ const DesktopNavHanzo: React.FC<{
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <div className="flex flex-row w-full justify-center border-r-0 flex-wrap md:flex-auto">
+                    <div
+                      className="flex flex-row w-full justify-center border-r-0 flex-wrap md:flex-auto pb-10"
+                      onMouseLeave={handleContentMouseMove}
+                    >
                       {GroupChildMenu(el.childMenu)}
                     </div>
                   </NavigationMenuContent>
