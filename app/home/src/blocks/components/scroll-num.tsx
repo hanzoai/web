@@ -72,7 +72,7 @@ const ScrollNumBlockComponent: React.FC<{
 
           const animationTarget = { value: 0 }
           gsap.to(animationTarget, {
-            duration: 1 + index * 0.3,
+            duration: 1 + index * 0.8,
             value: finalValue,
             onUpdate: function () {
               counter.textContent = formatNumber(animationTarget.value)
