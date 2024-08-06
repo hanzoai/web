@@ -24,9 +24,10 @@ export default function DeleteTeamDialog({ ...props }: ModalProps) {
     const org = useOrganization()
     const router = useRouter()
 
-    if (!org) return
-
+    
     const handleDelete = async () => {
+        if (!org.organization) return
+
         const response = await deleteProjectById(props.id)
         if (response.success) {
             console.log('Successfully delete the project')

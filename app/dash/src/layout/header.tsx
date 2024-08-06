@@ -19,6 +19,9 @@ const AdminHeader: React.FC<{
 }> = ({
   content = 'Karma'
 }) => {
+    const [userName, setUserName] = useState('MusorDMT')
+    const [userEmail, setUserEmail] = useState('musordmt@proton.me')
+    const [walletAddress, setWalletAddress] = useState('0x82b23c88ad897f786dff234')
 
     const router = useRouter()
     const [openMenu, setOpenMenu] = useState(false)
@@ -29,14 +32,6 @@ const AdminHeader: React.FC<{
     const auth = useAuth()
     const org = useOrganization()
 
-    // const auth = {
-    //   user: {
-    //     email: 'musordmt@proton.me',
-    //     displayName: 'MusorDMT',
-    //     walletAddress: '0x1111111111111111111111111111111'
-    //   }
-    // }
-
     const sidebarData = [
       { label: "Overview", icon: <BarChart />, href: "/dashboard" },
       { label: "Users", icon: <User2 />, href: "/users" },
@@ -44,6 +39,17 @@ const AdminHeader: React.FC<{
       { label: "Orders", icon: <Notebook />, href: "/orders" },
       { label: "Integrations", icon: <Settings />, href: "/integrations" },
     ];
+
+    useEffect(() => {
+      if (!auth) return
+
+      if (auth.user?.displayName)
+        setUserName(auth.user.displayName)
+      if (auth.user?.email)
+        setUserEmail(auth.user.email)
+      if (auth.user?.walletAddress)
+        setWalletAddress(auth.user.walletAddress)
+    }, [auth])
 
     useEffect(() => {
       const handleCommandMenuEvent = (event: KeyboardEvent) => {
@@ -61,11 +67,12 @@ const AdminHeader: React.FC<{
     }, [])
 
     useEffect(() => {
-      if (!auth.user) return
-      organizations(auth.user.email)
+      if (!userEmail) return
+      organizations(userEmail)
     }, [auth])
 
     const organizations = async (email: string) => {
+      if (!org) return
       const organizations = await getOrganizationsByMember(email)
       org.setOrganization(organizations.data)
     }
@@ -93,7 +100,7 @@ const AdminHeader: React.FC<{
               <div className='flex flex-col gap-4'>
                 {sidebarData.map((item, index) => {
                   return (
-                    <div key={index} onClick={() => {router.push(item.href); setMobileMenuOpen(false)}} className="flex flex-row gap-4 hover:cursor-pointer">
+                    <div key={index} onClick={() => { router.push(item.href); setMobileMenuOpen(false) }} className="flex flex-row gap-4 hover:cursor-pointer">
                       <div className='flex p-2 hover:bg-muted-4 w-full gap-2 text-xl text-muted-1 hover:text-primary rounded-sm justify-start'>
                         {item.icon}
                         <span>{item.label}</span>
@@ -119,16 +126,16 @@ const AdminHeader: React.FC<{
           <PopoverContent className='bg-level-0 mr-8 !px-0 text-sm text-primary font-light border-level-1'>
             <div className="grid gap-2">
               <div className="space-y-2 truncate px-4">
-                {auth.user?.displayName ? (
+                {userName ? (
                   <>
-                    <h4 className="h-8 font-medium leading-none truncate flex items-center">{auth.user.displayName}</h4>
-                    <p className="h-8 text-sm opacity-50 truncate flex items-center">{auth.user.email}</p>
+                    <h4 className="h-8 font-medium leading-none truncate flex items-center">{userName}</h4>
+                    <p className="h-8 text-sm opacity-50 truncate flex items-center">{userEmail}</p>
                   </>
                 ) : (
-                  <h4 className="h-8 font-medium leading-none truncate flex items-center">{auth.user?.email}</h4>
+                  <h4 className="h-8 font-medium leading-none truncate flex items-center">{userEmail}</h4>
                 )}
-                {auth.user?.walletAddress ? (
-                  <p className="h-8 text-sm opacity-50 truncate flex items-center">{auth.user.walletAddress}</p>
+                {walletAddress ? (
+                  <p className="h-8 text-sm opacity-50 truncate flex items-center">{walletAddress}</p>
                 ) : (
                   <Button variant="outline" className='w-full flex items-center gap-2' onClick={() => handleWalletClick}>
                     <Ethereum height={20} />Connect your wallet
@@ -139,7 +146,7 @@ const AdminHeader: React.FC<{
               <div className='flex flex-col'>
                 <div className='h-12 flex truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => router.push('/dashboard')}>DashBoard</div>
                 <div className='h-12 flex truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => router.push('/settings')}>Account Settings</div>
-                <div className='h-12 flex flex-row justify-between truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2'  onClick={() => setOpenCreateTeamDialog(true)}>Create Team<PlusCircleIcon></PlusCircleIcon></div>
+                <div className='h-12 flex flex-row justify-between truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => setOpenCreateTeamDialog(true)}>Create Team<PlusCircleIcon></PlusCircleIcon></div>
               </div>
               <Separator className='bg-level-1' />
               <div className='h-12 flex flex-row justify-between truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => setOpenCommandMenu(true)}>

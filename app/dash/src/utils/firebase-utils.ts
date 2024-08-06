@@ -122,6 +122,24 @@ export const getOrganizationByName = async (organizationName: string) => {
     }
 }
 
+export const getOrganizationById = async (organizationId: string) => {
+    const ref = doc(getDBInstance(options.dbName), options.organization, organizationId)
+    const docSnap = await getDoc(ref)
+    if (docSnap.exists()) {
+        return {
+            success: true,
+            data: {
+                id: docSnap.id,
+                name: docSnap.data().name as string,
+            },
+        }
+    }
+    else {
+        console.log("No such document!");
+        return { success: false, data: null };
+    }
+}
+
 export const leaveTeam = async (organizationId: string, email: string) => {
     const memberRef = doc(getDBInstance(options.dbName), `${options.organization}/${organizationId}/members`, email);
 

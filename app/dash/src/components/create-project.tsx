@@ -23,9 +23,9 @@ export default function CreateProjectDialog({ ...props }: ModalProps) {
 
     const org = useOrganization()
 
-    if (!org) return
-
     const handleCreate = async () => {
+        if (!org.organization) return
+        
         const response = await createProjectHelper(projectName, props.id)
         if (response.success && response.id) {
             console.log('Project created Successfully!: ', response.id)

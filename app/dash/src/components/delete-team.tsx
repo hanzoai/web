@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation'
 
 type ModalProps = {
     id: string
-    name: string | undefined
+    name: string
     open: boolean
     setOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -18,8 +18,6 @@ type ModalProps = {
 export default function DeleteTeamDialog({ ...props }: ModalProps) {
     const org = useOrganization()
     const router = useRouter()
-
-    if (!org) return
 
     const handleDelete = async () => {
         if (!org.organization) return

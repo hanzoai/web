@@ -50,7 +50,7 @@ const UniversalPage: React.FC = () => {
     }
 
     return (
-        <div className="p-2 md:p-4 w-full flex flex-col gap-4">
+        <div className="p-2 md:p-4 w-full h-full flex flex-col gap-4">
             {
                 project ?
                     <div className='text-xl md:text-2xl flex flex-row justify-between'>
@@ -61,6 +61,7 @@ const UniversalPage: React.FC = () => {
                     :
                     <div>Loading...</div>
             }
+            <iframe src="http://localhost:3000" style= {{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" />
         </div>
     )
 }

@@ -26,35 +26,20 @@ const UniversalPage: React.FC = () => {
     const [foundOrg, setFoundOrg] = useState<{ id: string, name: string, owner: string, role: string }>()
     const [projects, setProjects] = useState<{ id: string, name: string }[]>([])
 
-    const org = useOrganization()
+    const {organization, setOrganization} = useOrganization()
     const params = useParams()
     const router = useRouter()
     const auth = useAuth()
 
-    if (!auth) return
-    if (!org.organization) return
-
     const id = params.id as string
 
     useEffect(() => {
-        if (!auth) return
-
-        if (auth.user?.displayName)
-            setUserName(auth.user.displayName)
-        if (auth.user?.email)
-            setUserEmail(auth.user.email)
-        if (auth.user?.walletAddress)
-            setWalletAddress(auth.user.walletAddress)
-    }, [auth])
-
-    useEffect(() => {
-        if (!auth) return
-        if (!org.organization) return
-
-        const foundOrg = org.organization.find(o => o.id === id)
-        setFoundOrg(foundOrg)
-        getProjectsByOrgId()
-    }, [org, id, auth])
+        if (organization) {
+            const foundOrg = organization.find(o => o.id === id)
+            setFoundOrg(foundOrg)
+            getProjectsByOrgId()
+        }
+    }, [organization, auth])
 
     const getProjectsByOrgId = async () => {
         const projects = await getProjectsByOrgIdHelper(id)
@@ -64,6 +49,9 @@ const UniversalPage: React.FC = () => {
     const handleViewClick = (id: string) => {
         router.push(`/projects/${id}`)
     }
+
+    if (!auth) return
+    if (!organization) return
 
     return (
         <div className="p-2 md:p-4 w-full flex flex-col gap-4">
@@ -76,7 +64,7 @@ const UniversalPage: React.FC = () => {
                 </div>
                 <InviteMemberDialog organizationName={foundOrg ? foundOrg.name : ''} open={openInviteMemberDialog} setOpen={setOpenInviteMemberDialog} />
                 <CreateProjectDialog id={id} open={openCreateProjectDialog} setOpen={setOpenCreateProjectDialog} projects={projects} setProjects={setProjects} />
-                <DeleteTeamDialog id={id} name={foundOrg?.name} open={oepnDeleteTeamDialog} setOpen={setOepnDeleteTeamDialog} />
+                <DeleteTeamDialog id={id} name={foundOrg?.name ?? ''} open={oepnDeleteTeamDialog} setOpen={setOepnDeleteTeamDialog} />
             </div>
             <div className={`bg-background flex flex-col ${projects.length !== 0 ? 'border rounded-md border-level-3' : ''}`}>
                 {projects.map((project, index, { length }) => (
