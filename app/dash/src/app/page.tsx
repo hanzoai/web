@@ -32,7 +32,7 @@ const UniversalPage = () => {
   //   router.push("/dashboard")
   // }, [])
 
-  useEffect(() => {
+  const initialize = async () => {
     fetch(`${process.env.NEXT_PUBLIC_LOGIN_SITE_URL}/api/auth/get-auth-token`, {
       method: 'GET',
       credentials: 'include',
@@ -41,7 +41,7 @@ const UniversalPage = () => {
       .then(async (data: any) => {
         const token = data.reqToken
         const invitationToken = searchParams.get('token')
-        invitationToken && accetInvitation(invitationToken)
+        invitationToken && await accetInvitation(invitationToken)
         if (!!token) {
           await auth.loginWithCustomToken(token)
 
@@ -49,13 +49,18 @@ const UniversalPage = () => {
             router.push("/dashboard")
           }
           else {
-            // router.push('https://auth.hanzo.ai/?redirectUrl=https://dash.hanzo.ai')
+            router.push('https://auth.hanzo.ai/?redirectUrl=https://dash.hanzo.ai')
           }
         } else {
-          // router.push('https://auth.hanzo.ai/?redirectUrl=https://dash.hanzo.ai')
+          router.push('https://auth.hanzo.ai/?redirectUrl=https://dash.hanzo.ai')
         }
       })
+  }
+  
+  useEffect(() => {
+    initialize()
   }, [auth, searchParams, router])
+
 }
 
 export default UniversalPage
