@@ -67,7 +67,7 @@ const UniversalPage: React.FC = () => {
                                         </PopoverTrigger>
                                         <PopoverContent className='bg-level-0 mr-10 !p-2 text-sm text-primary font-light border-level-1 w-fit flex flex-col'>
                                             <div className='hover:cursor-pointer hover:bg-level-3 p-2 rounded-sm text-sm' onClick={() => handleViewClick(item.id, item.role)}>View</div>
-                                            { item.role == 'owner' && <div className='hover:cursor-pointer hover:bg-level-3 p-2 rounded-sm text-sm' onClick={() => setOpenLeaveTeamDialog(true)}>Leave Team</div>}
+                                            <div className='hover:cursor-pointer hover:bg-level-3 p-2 rounded-sm text-sm' onClick={() => setOpenLeaveTeamDialog(true)}>Leave Team</div>
                                         </PopoverContent>
                                     </Popover>
                                     <LeaveTeamDialog id={item.id} name={item.name} open={openLeaveTeamDialog} setOpen={setOpenLeaveTeamDialog} />

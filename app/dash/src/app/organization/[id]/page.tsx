@@ -72,7 +72,7 @@ const UniversalPage: React.FC = () => {
                 <div className='flex flex-row gap-2'>
                     <Button variant='outline' size='sm' onClick={() => setOpenInviteMemberDialog(true)}>Invite Member</Button>
                     <Button variant='primary' size='sm' onClick={() => setOpenCreateProjectDialog(true)}>Creat Project</Button>
-                    <Button variant='destructive' size='sm' onClick={() => setOepnDeleteTeamDialog(true)}>Delete Team</Button>
+                    {foundOrg?.role == 'owner' && <Button variant='destructive' size='sm' onClick={() => setOepnDeleteTeamDialog(true)}>Delete Team</Button>}
                 </div>
                 <InviteMemberDialog organizationName={foundOrg ? foundOrg.name : ''} open={openInviteMemberDialog} setOpen={setOpenInviteMemberDialog} />
                 <CreateProjectDialog id={id} open={openCreateProjectDialog} setOpen={setOpenCreateProjectDialog} projects={projects} setProjects={setProjects} />

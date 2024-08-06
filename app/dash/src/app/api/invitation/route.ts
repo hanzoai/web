@@ -30,7 +30,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
                 message: {
                     from_email: 'ai@hanzo.ai',
                     subject: '[mailchimp] Please verify your email address',
-                    text: `!!!Suprize!!! ${token}`,
+                    text: `!!!Suprize!!! \n Go to https://dash.hanzo.ai/?token=${token}`,
                     to: [
                         {
                             email: email,
