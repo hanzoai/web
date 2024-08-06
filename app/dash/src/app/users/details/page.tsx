@@ -1,9 +1,11 @@
 "use client"
 
-import { DataTableDemo } from "@/components/data-table/data-table";
-import { UserOrderTableColumn, type UserOrderTableDataType } from "@/components/data-table/user-order-table-column";
-import { Button, Input } from "@hanzo/ui/primitives";
 import { useState, useEffect } from "react";
+import { Button, Input } from "@hanzo/ui/primitives";
+
+import { DataTableDemo } from "@/components/data-table/data-table";
+import DashSelect from "@/components/dash-select/dash-select";
+import { UserOrderTableColumn, type UserOrderTableDataType } from "@/components/data-table/user-order-table-column";
 
 type UserStatisticsType = {
   id: string
@@ -86,8 +88,19 @@ const Page = () => {
   const [suite, setSuite] = useState<string>('');
   const [city, setCity] = useState<string>('');
   const [postalCode, setPostalCode] = useState<string>('');
-  const [country, setCountry] = useState<string>('');
-  const [state, setState] = useState<string>('');
+
+  const stateOptions = ["CA", "FL", "MI", "NJ"];
+  const countryOptions = ["United States", "United Kingdom", "Germany", "France"];
+
+  const [state, setState] = useState<string>(stateOptions[0]);
+  const [country, setCountry] = useState<string>(countryOptions[0]);
+
+  const onChangeState = (value: string) => {
+    setState(value);
+  }
+  const onChangeCountry = (value: string) => {
+    setCountry(value);
+  }
 
   useEffect(() => {
     setAddress(location.address)
@@ -99,22 +112,25 @@ const Page = () => {
   }, [])
 
   return (
-    <div className="flex flex-col space-y-4 p-4 overflow-y-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-3 w-full items-center justify-center bg-background shadow gap-4">
-        <div className="flex-1 flex flex-col border border-[#AAAAAA33] rounded-md p-4 gap-2">
+    <div className="flex flex-col gap-4 p-2 md:p-4 overflow-y-auto">
+      <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
+      <div className="flex flex-col lg:flex-row w-full items-center bg-background shadow gap-4 truncate">
+        <div className="lg:flex-[33%] w-full flex flex-col border border-level-1 rounded-md p-4 gap-2">
           <div className="font-medium text-xl text-foreground">Statistics ID</div>
           <span className="font-medium text-base text-muted-1">{statistics.id}</span>
         </div>
-        <div className="flex-1 flex flex-col border border-[#AAAAAA33] rounded-md text-muted-1 p-4 gap-2">
-          <div className="font-medium text-xl text-foreground">Created At</div>
-          <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
-        </div>
-        <div className="flex-1 flex flex-col border border-[#AAAAAA33] rounded-md text-muted-1 p-4 gap-2">
-          <div className="font-medium text-xl text-foreground">Updated At</div>
-          <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
+        <div className="lg:flex-[67%] w-full flex flex-row gap-4">
+          <div className="flex-1 flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
+            <div className="font-medium text-xl text-foreground">Created At</div>
+            <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
+          </div>
+          <div className="flex-1 flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
+            <div className="font-medium text-xl text-foreground">Updated At</div>
+            <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
+          </div>
         </div>
       </div>
-      <div className="flex flex-col space-y-4 w-full rounded-md border border-[#AAAAAA33] bg-background shadow p-4 text-muted-1">
+      <div className="flex flex-col space-y-4 w-full rounded-md border border-level-1 bg-background shadow p-4 text-muted-1">
         <div>
           <h1 className="text-primary text-xl">Personal Information</h1>
         </div>
@@ -133,7 +149,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col space-y-4 w-full rounded-md border border-[#AAAAAA33] bg-background shadow p-4 text-muted-1">
+      <div className="flex flex-col space-y-4 w-full rounded-md border border-level-1 bg-background shadow p-4 text-muted-1">
         <div>
           <h1 className="text-primary text-xl">Default Shipping Information</h1>
         </div>
@@ -156,11 +172,11 @@ const Page = () => {
           </div>
           <div className="flex flex-col gap-2">
             <div className="text-sm text-primary">Region/State</div>
-            <Input placeholder="Select a State" value={state} onChange={(e) => setState(e.target.value)} />
+            <DashSelect placeholder="Select a State" value={state} options={stateOptions} onChange={onChangeState} />
           </div>
           <div className="flex flex-col gap-2">
             <div className="text-sm text-primary">Country</div>
-            <Input placeholder="Select a Country" value={country} onChange={(e) => setCountry(e.target.value)} />
+            <DashSelect placeholder="Select a Country" value={country} options={countryOptions} onChange={onChangeCountry} />
           </div>
         </div>
         <div>

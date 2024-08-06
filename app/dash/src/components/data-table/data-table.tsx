@@ -13,8 +13,9 @@ import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } fro
 import { Select, SelectItem, SelectContent, SelectTrigger, SelectValue, Button, Input, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@hanzo/ui/primitives"
 import React from "react"
 import { SearchIcon } from "lucide-react"
+import { CSV } from "@/components/icons"
 
-export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; onClickHandler?: (id: string) => void; filterKey?: string; title: string}) {
+export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; onClickHandler?: (id: string) => void; filterKey?: string; title: string }) {
   const { data, columns, filterKey, onClickHandler, title } = props;
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -44,11 +45,11 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
   })
 
   return (
-    <div className="w-full flex flex-col py-4 gap-4">
+    <div className="w-full flex flex-col p-2 md:p-4 gap-4">
       {
         filterKey && <>
-          <div className="flex items-center flex-row gap-4">
-            <div className="flex flex-row border rounded-md items-center px-2 w-full">
+          <div className="flex items-center flex-row gap-2">
+            <div className="flex flex-row border rounded-md border-level-1 items-center px-2 py-1 w-full">
               <SearchIcon className="text-muted-2" />
               <Input
                 placeholder={`Filter ${filterKey}...`}
@@ -56,15 +57,15 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
                 onChange={(event) =>
                   table.getColumn(filterKey)?.setFilterValue(event.target.value)
                 }
-                className="w-full border-none hover:border-none focus:border-none focus-visible:border-none"
+                className="w-full outline-none border-none bg-transparent ring-offset-background focus-visible:ring-background"
               />
             </div>
-            <Button variant='secondary' className="!h-full !text-sm !font-medium">Search</Button>
-            <Button variant='secondary' className="!h-full !text-sm !font-medium">
+            <Button variant='secondary' className="h-12 !font-medium bg-level-1 min-w-28" size='default'>Search</Button>
+            <Button variant='secondary' className="hidden md:block h-12 !font-medium bg-level-1 min-w-28" size='default'>
               Create +
             </Button>
-            <Button variant='secondary' className="!h-full !text-sm !font-medium">
-              CSV
+            <Button variant="secondary" className="h-12 font-medium !bg-level-1 hidden md:flex flex-row gap-2 min-w-28" size='default'>
+              <CSV /> <div>CSV</div>
             </Button>
           </div>
           <div className="w-full">
@@ -79,12 +80,20 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
               </SelectContent>
             </Select>
           </div>
+          <div className="flex md:hidden items-center flex-row gap-2 justify-end">
+            <Button variant='secondary' className="h-12 !font-medium bg-level-1 min-w-28" size='default'>
+              Create +
+            </Button>
+            <Button variant="secondary" className="h-12 font-medium !bg-level-1 flex-row gap-2 min-w-28" size='default'>
+              <CSV /> <div>CSV</div>
+            </Button>
+          </div>
         </>
       }
-      <div className="rounded-md border border-[#AAAAAA33] custom-scroll text-muted-2 p-4 flex flex-col gap-4">
+      <div className="rounded-md border border-level-1 custom-scroll text-muted-2 p-4 flex flex-col gap-4">
         <div className="text-xl text-medium text-primary">{title}</div>
         <Table>
-          <TableHeader className="border-[#AAAAAA33]">
+          <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {

@@ -5,7 +5,7 @@ import DashBarCharts from "@/components/dash-bar-charts";
 import type { DashRecentSalesItemType } from "@/components/dash-recent-sales-item";
 import { Input, Tabs, TabsList, TabsTrigger } from "@hanzo/ui/primitives";
 import { Button } from "@hanzo/ui/primitives";
-import { Basket, Credit, CSV, Receipt } from "./icons"
+import { Basket, Credit, CSV, Receipt } from "@/components/icons"
 
 const textCardData: TextCardDataProps[] = [
   {
@@ -77,27 +77,33 @@ const salesData: DashRecentSalesItemType[] = [
 
 const UniversalPage = () => {
   return (
-    <div className="p-4 w-full flex flex-col gap-4">
+    <div className="p-2 md:p-4 w-full flex flex-col gap-4">
+      <div className="flex md:hidden flex-row justify-between items-center">
+        <p className="text-2xl font-medium">Karma</p>
+        <Button variant="secondary" className="text-sm font-medium bg-level-1 flex flex-row gap-2">
+          <CSV /> <div>CSV</div>
+        </Button>
+      </div> 
       <div className="flex lg:flex-row flex-col w-full gap-4">
         <div className="w-full lg:flex-[60%] flex md:flex-row flex-col gap-4">
           <div className="md:flex-[47%] flex flex-col gap-2">
-            <p className="text-base text-primary font-medium">Start Date</p>
+            <p className="text-sm text-primary font-medium">Start Date</p>
             <div className="w-full"><Input type="date" /></div>
           </div>
           <div className="md:flex-[6%] md:flex hidden justify-center items-end py-2">To</div>
           <div className="md:flex-[47%] flex flex-col gap-2">
-            <p className="text-base text-primary font-medium">End Date</p>
+            <p className="text-sm text-primary font-medium">End Date</p>
             <div className="w-full"><Input type="date" /></div>
           </div>
         </div>
-        <div className="lg:flex-[40%] flex flex-row gap-4 items-end">
-          <Button variant="secondary" className="text-sm font-medium bg-[#AAAAAA33]">Search</Button>
-          <Button variant="secondary" className="text-sm font-medium bg-[#AAAAAA33] flex flex-row gap-2">
+        <div className="lg:flex-[40%] flex flex-row gap-4 items-end w-full">
+          <Button variant="secondary" className="text-sm font-medium bg-level-1 w-full">Search</Button>
+          <Button variant="secondary" className="text-sm font-medium bg-level-1 hidden md:flex flex-row gap-2 w-full">
             <CSV /> <div>CSV</div>
           </Button>
         </div>
       </div>
-      <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-2 md:gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
         {
           textCardData.map((item, index) =>
             <DashTextCard
@@ -111,8 +117,8 @@ const UniversalPage = () => {
           )
         }
       </div>
-      <div className="rounded-xl border border-[#AAAAAA33] bg-background text-muted-1 flex flex-col gap-4">
-        <div className="font-medium text-xl leading-none text-primary p-4 border-b border-[#AAAAAA33]">Projected Revenue per Day</div>
+      <div className="rounded-xl border border-level-1 bg-background text-muted-1 flex flex-col gap-4">
+        <div className="font-medium text-xl leading-none text-primary p-4 border-b border-level-1">Projected Revenue per Day</div>
         <DashBarCharts data={chartData} />
       </div>
     </div>

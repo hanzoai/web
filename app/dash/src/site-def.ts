@@ -1,8 +1,7 @@
 import { footer, mainNav, type SiteDef  } from '@hanzo/brand/site-def'
 
-
 export default {
-  currentAs: 'https://lux.blank',
+  currentAs: 'https://dash.hanzo.ai',
   nav: {
     common: mainNav,
   },

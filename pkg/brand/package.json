@@ -1,6 +1,6 @@
 {
   "name": "@hanzo/brand",
-  "version": "0.2.8",
+  "version": "0.2.13",
   "description": "Library that contains shared UI primitives, support for a common design system, and other boilerplate support.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hanzo/web.git",
+    "url": "git+https://github.com/hanzoai/web.git",
     "directory": "pkg/brand"
   },
   "keywords": [
@@ -44,6 +44,7 @@
     "firebase": "10.12.0",
     "react-device-detect": "^2.2.3",
     "react-social-icons": "^6.4.0",
+    "react-tooltip": "^5.27.1",
     "request": "^2.88.2",
     "usehooks-ts": "^3.1.0"
   },
