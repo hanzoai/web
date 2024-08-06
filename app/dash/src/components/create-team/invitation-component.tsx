@@ -31,7 +31,7 @@ export default function SendInvitationEmailComponent({ ...props }: InvitationCom
                 <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Select a role" />
                 </SelectTrigger>
-                <SelectContent className='z-[51]'>
+                <SelectContent className='!z-[51]'>
                     <SelectItem value="member">Member</SelectItem>
                     <SelectItem value="owner">Owner</SelectItem>
                 </SelectContent>

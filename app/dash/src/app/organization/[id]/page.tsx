@@ -9,6 +9,7 @@ import { Button, Popover, PopoverTrigger, PopoverContent } from '@hanzo/ui/primi
 
 import { useOrganization } from '@/context/organization-context'
 import { getProjectsByOrgId as getProjectsByOrgIdHelper } from '@/utils/firebase-utils'
+import InviteMemberDialog from '@/components/invite-member'
 import CreateProjectDialog from '@/components/create-project'
 import DeleteProjectDialog from '@/components/delete-project'
 import DeleteTeamDialog from '@/components/delete-team'
@@ -18,7 +19,7 @@ const UniversalPage: React.FC = () => {
     const [userEmail, setUserEmail] = useState('musordmt@proton.me')
     const [walletAddress, setWalletAddress] = useState('0x82b23c88ad897f786dff234')
 
-
+    const [openInviteMemberDialog, setOpenInviteMemberDialog] = useState(false)
     const [openCreateProjectDialog, setOpenCreateProjectDialog] = useState(false)
     const [oepnDeleteProjectDialog, setOepnDeleteProjectDialog] = useState(false)
     const [oepnDeleteTeamDialog, setOepnDeleteTeamDialog] = useState(false)
@@ -69,9 +70,11 @@ const UniversalPage: React.FC = () => {
             <div className='text-xl md:text-2xl flex flex-row justify-between'>
                 <p>Projects</p>
                 <div className='flex flex-row gap-2'>
+                    <Button variant='outline' size='sm' onClick={() => setOpenInviteMemberDialog(true)}>Invite Member</Button>
                     <Button variant='primary' size='sm' onClick={() => setOpenCreateProjectDialog(true)}>Creat Project</Button>
                     <Button variant='destructive' size='sm' onClick={() => setOepnDeleteTeamDialog(true)}>Delete Team</Button>
                 </div>
+                <InviteMemberDialog organizationName={foundOrg ? foundOrg.name : ''} open={openInviteMemberDialog} setOpen={setOpenInviteMemberDialog} />
                 <CreateProjectDialog id={id} open={openCreateProjectDialog} setOpen={setOpenCreateProjectDialog} projects={projects} setProjects={setProjects} />
                 <DeleteTeamDialog id={id} name={foundOrg?.name} open={oepnDeleteTeamDialog} setOpen={setOepnDeleteTeamDialog} />
             </div>

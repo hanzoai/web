@@ -25,7 +25,12 @@ const UniversalPage = () => {
     }
   }
 
-  // router.push("/dashboard")
+
+  // useEffect(() => {
+  //   const invitationToken = searchParams.get('token')
+  //   invitationToken && accetInvitation(invitationToken)
+  //   router.push("/dashboard")
+  // }, [])
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_LOGIN_SITE_URL}/api/auth/get-auth-token`, {

@@ -197,7 +197,8 @@ export const getInvitation = async (token: string) => {
     const ref = collection(getDBInstance(options.dbName), options.invitations)
     const q = query(ref, where("token", "==", token))
     const querySnapshot = await getDocs(q)
-
+    
+    console.log('token: ', token)
     console.log("querysnampshot: ", querySnapshot)
 
     if (!querySnapshot.empty) {
