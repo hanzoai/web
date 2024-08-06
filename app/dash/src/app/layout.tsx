@@ -6,6 +6,7 @@ import {
 } from '@hanzo/brand/root-layout'
 
 import { PaymentPlanProvider } from '@/context/payment-plan-context';
+import { OrganizationProvider } from '@/context/organization-context';
 
 
 import siteDef from '../site-def'
@@ -20,9 +21,11 @@ const RootLayout: React.FC<PropsWithChildren> = async ({
   children
 }) => (
   <RootLayoutCore siteDef={siteDef}>
-    <PaymentPlanProvider>
-      {children}
-    </PaymentPlanProvider>
+    <OrganizationProvider>
+      <PaymentPlanProvider>
+        {children}
+      </PaymentPlanProvider>
+    </OrganizationProvider>
   </RootLayoutCore>
 )
 

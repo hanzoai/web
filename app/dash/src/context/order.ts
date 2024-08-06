@@ -13,7 +13,7 @@ import {
   deleteDoc,
 } from 'firebase/firestore'
 
-import firebaseApp from './firebase'
+import firebaseApp from '@/utils/firebase-conf'
 
 let dbInstance: Firestore | undefined = undefined
 

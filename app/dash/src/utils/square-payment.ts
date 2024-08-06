@@ -11,12 +11,6 @@ declare global {
 BigInt.prototype.toJSON = function () { return this.toString(); }
 
 const locationId = 'L91Q5K038GFYX'
-const catalogItemId = 'ZKAPXAOYXVZDHUGBIDHHR6RJ'
-const subscriptionPlanId = 'IZSPX25OBDIVE76YYASKHF7U'
-const subscriptionPlanVariationId = 'J2OPIJMGARAXJKUPVR4UREJG'
-const customerId = 'GN1PKT966VYK2BF6N0K561D3CG'
-const cardId = 'ccof:CA4SEOm2vZPYBd2jfyEsaaJRN9woAg'
-const subscriptionId = 'f96aea3f-a54e-420e-ad83-516ea5371ca5'
 
 const client = new Client({
   accessToken: process.env.SQUARE_ACCESS_TOKEN,

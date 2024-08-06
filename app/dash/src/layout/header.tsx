@@ -10,6 +10,9 @@ import { useAuth } from '@hanzo/auth/service'
 import { Logo } from "@hanzo/brand"
 
 import ModalDialog from '@/components/modal-dialog'
+import CreateTeamDialog from '@/components/create-team'
+import { useOrganization } from '@/context/organization-context'
+import { getOrganizationsByMember } from '@/utils/firebase-utils'
 
 const AdminHeader: React.FC<{
   content: string
@@ -21,6 +24,18 @@ const AdminHeader: React.FC<{
     const [openMenu, setOpenMenu] = useState(false)
     const [openCommandMenu, setOpenCommandMenu] = useState(false)
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [openCreateTeamDialog, setOpenCreateTeamDialog] = useState(false)
+
+    const auth = useAuth()
+    const org = useOrganization()
+
+    // const auth = {
+    //   user: {
+    //     email: 'musordmt@proton.me',
+    //     displayName: 'MusorDMT',
+    //     walletAddress: '0x1111111111111111111111111111111'
+    //   }
+    // }
 
     const sidebarData = [
       { label: "Overview", icon: <BarChart />, href: "/dashboard" },
@@ -43,19 +58,17 @@ const AdminHeader: React.FC<{
       return () => {
         document.removeEventListener("keydown", (event) => handleCommandMenuEvent(event))
       }
-    })
+    }, [])
 
-    const auth = useAuth()
+    useEffect(() => {
+      if (!auth.user) return
+      organizations(auth.user.email)
+    }, [auth])
 
-    // const auth = {
-    //   user: {
-    //     email: 'musordmt@proton.me',
-    //     displayName: 'MusorDMT',
-    //     walletAddress: '0x1111111111111111111111111111111'
-    //   }
-    // }
-
-    const handleMenu = () => { }
+    const organizations = async (email: string) => {
+      const organizations = await getOrganizationsByMember(email)
+      org.setOrganization(organizations.data)
+    }
 
     const handleWalletClick = () => { }
 
@@ -126,7 +139,7 @@ const AdminHeader: React.FC<{
               <div className='flex flex-col'>
                 <div className='h-12 flex truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => router.push('/dashboard')}>DashBoard</div>
                 <div className='h-12 flex truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => router.push('/settings')}>Account Settings</div>
-                <div className='h-12 flex flex-row justify-between truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => router.push('/')}>Create Team<PlusCircleIcon></PlusCircleIcon></div>
+                <div className='h-12 flex flex-row justify-between truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2'  onClick={() => setOpenCreateTeamDialog(true)}>Create Team<PlusCircleIcon></PlusCircleIcon></div>
               </div>
               <Separator className='bg-level-1' />
               <div className='h-12 flex flex-row justify-between truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => setOpenCommandMenu(true)}>
@@ -147,6 +160,7 @@ const AdminHeader: React.FC<{
           </PopoverContent>
         </Popover>
         <ModalDialog open={openCommandMenu} setOpen={setOpenCommandMenu} />
+        <CreateTeamDialog open={openCreateTeamDialog} setOpen={setOpenCreateTeamDialog} />
       </div>
     )
   }

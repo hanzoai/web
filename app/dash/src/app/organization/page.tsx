@@ -8,10 +8,12 @@ const UniversalPage: React.FC = () => {
     const [userName, setUserName] = useState('MusorDMT')
     const [userEmail, setUserEmail] = useState('musordmt@proton.me')
     const [walletAddress, setWalletAddress] = useState('0x82b23c88ad897f786dff234')
-    
+
     const auth = useAuth()
 
     useEffect(() => {
+        if (!auth) return
+        
         if (auth.user?.displayName)
             setUserName(auth.user.displayName)
         if (auth.user?.email)
