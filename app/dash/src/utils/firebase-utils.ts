@@ -198,9 +198,13 @@ export const getInvitation = async (token: string) => {
     const q = query(ref, where("token", "==", token))
     const querySnapshot = await getDocs(q)
 
+    console.log("querysnampshot: ", querySnapshot)
+
     if (!querySnapshot.empty) {
         const docSnap = querySnapshot.docs[0]
         const { organizationId, email, role } = docSnap.data()
+
+        console.log(organizationId, email, role)
 
         const memberRef = collection(getDBInstance(options.dbName), `${options.organization}/${organizationId}/members`)
         await setDoc(doc(memberRef, email), {
@@ -211,8 +215,12 @@ export const getInvitation = async (token: string) => {
         const orgRef = doc(getDBInstance(options.dbName), options.organization, organizationId)
         const orgDoc = await getDoc(orgRef)
 
+        console.log('orgDoc: ', orgDoc)
+
         if (orgDoc.exists()) {
             const organizationData = orgDoc.data()
+
+            console.log(organizationData.name)
 
             return {
                 success: true,

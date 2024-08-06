@@ -16,14 +16,6 @@ const UniversalPage = () => {
     try {
       const response = await getInvitation(token)
       if (response.success) {
-        const org = useOrganization()
-        const currentOrganizations = org.organization || []
-        org.setOrganization([...currentOrganizations, {
-          id: response?.data?.organizationId,
-          name: response?.data?.organizationName,
-          owner: response?.data?.organizationOwner,
-          role: ''
-        }])
         router.push("/dashboard")
       } else {
         console.log(response.error)
