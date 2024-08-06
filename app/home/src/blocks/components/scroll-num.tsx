@@ -72,8 +72,6 @@ const ScrollNumBlockComponent: React.FC<{
           const finalText = content[index] || "0";
           const finalValue = parseNumber(finalText);
 
-          console.log("index: ", index)
-
           const animationTarget = { value: 0 }
           gsap.to(animationTarget, {
             duration: 1 + index * 0.8,
