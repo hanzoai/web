@@ -33,7 +33,7 @@ const AdminHeader: React.FC<{
     const org = useOrganization()
 
     const sidebarData = [
-      { label: "Overview", icon: <BarChart />, href: "/dashboard" },
+      { label: "Dashboard", icon: <BarChart />, href: "/dashboard" },
       { label: "Users", icon: <User2 />, href: "/users" },
       { label: "Products", icon: <ShoppingBasket />, href: "/products" },
       { label: "Orders", icon: <Notebook />, href: "/orders" },
@@ -144,7 +144,7 @@ const AdminHeader: React.FC<{
               </div>
               <Separator className='bg-level-1' />
               <div className='flex flex-col'>
-                <div className='h-12 flex truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => router.push('/dashboard')}>DashBoard</div>
+                <div className='h-12 flex truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => router.push('/dashboard')}>Dashboard</div>
                 <div className='h-12 flex truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => router.push('/settings')}>Account Settings</div>
                 <div className='h-12 flex flex-row justify-between truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => setOpenCreateTeamDialog(true)}>Create Team<PlusCircleIcon></PlusCircleIcon></div>
               </div>
@@ -152,7 +152,7 @@ const AdminHeader: React.FC<{
               <div className='h-12 flex flex-row justify-between truncate rounded-md hover:bg-level-1 hover:cursor-pointer items-center mx-2 p-2' onClick={() => setOpenCommandMenu(true)}>
                 <p>Command Menu</p>
                 <div className='flex flex-row gap-2 text-xs'>
-                  <div className='rounded-sm border border-level-2 p-1 bg-background'>Ctrl</div>
+                  <div className='rounded-sm border border-level-2 p-1 bg-background'>Command</div>
                   <div className='rounded-sm border border-level-2 p-1 bg-background'>K</div>
                 </div>
               </div>
