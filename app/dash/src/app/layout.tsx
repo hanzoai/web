@@ -1,4 +1,5 @@
 import React, { type PropsWithChildren } from 'react'
+import { Suspense } from 'react';
 
 import {
   RootLayout as RootLayoutCore,
@@ -7,7 +8,6 @@ import {
 
 import { PaymentPlanProvider } from '@/context/payment-plan-context';
 import { OrganizationProvider } from '@/context/organization-context';
-
 
 import siteDef from '../site-def'
 import _metadata from '../metadata'
@@ -23,7 +23,9 @@ const RootLayout: React.FC<PropsWithChildren> = async ({
   <RootLayoutCore siteDef={siteDef}>
     <OrganizationProvider>
       <PaymentPlanProvider>
-        {children}
+        <Suspense>
+          {children}
+        </Suspense>
       </PaymentPlanProvider>
     </OrganizationProvider>
   </RootLayoutCore>
