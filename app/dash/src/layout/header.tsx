@@ -18,6 +18,7 @@ const AdminHeader: React.FC<{
   content: string
 }> = ({
   content = 'Karma'
+  content = 'Karma'
 }) => {
 
     const router = useRouter()
