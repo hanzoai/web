@@ -9,7 +9,7 @@ import CustomRocket from '@/assets/icons/CustomRocket';
 import ScrollNumBlockComponent from '@/blocks/components/scroll-num';
 import type ScrollNumBlock from '@/blocks/def/scroll-num';
 import type { Block } from '@hanzo/ui/blocks';
-import { Button, Carousel, CarouselContent, CarouselItem, Progress } from '@hanzo/ui/primitives';
+import { Button, Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, Progress } from '@hanzo/ui/primitives';
 import { ChevronLeft, ChevronRight, Phone } from 'lucide-react';
 import Arca from '../components/companies/arca';
 import Cove from '../components/companies/cove';
@@ -32,11 +32,11 @@ import Skully from '../components/companies/skully';
 import Triller from '../components/companies/triller';
 import Unikain from '../components/companies/unikain';
 import '../../app/global.css';
-import { EmblaAutoplay } from '@hanzo/brand';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import ImagePreloader from '../components/scrollingImage/ImagePreloader';
 import type { ReviewCardProps } from '../components/reviewcard';
 import ReviewCard from '../components/reviewcard';
+import ImageCarousel from '../components/innovation/ImageCarousel';
 
 const scrollNumBlocks = {
   blockType: 'scroll-num',
@@ -96,11 +96,35 @@ const reviews: ReviewCardProps[] = [
   },
 ]
 
-const innovations = [
-  { src: 'assets/content/innovations/01.png' },
-  { src: 'assets/content/innovations/02.png' },
-  { src: 'assets/content/innovations/03.png' },
-];
+const detailContentData = [
+  {
+    preTitle: "HYPER SCALE YOUR BRAND WITH HANZO AI",
+    title: "Product",
+    subTitle: "Scale Intelligently with Hanzo's all-in-one accelerator.",
+    explain1: "With over a decade of experience and backed by Techstars, Hanzo has a proven track record of transforming modern business complexities into streamlined success stories.",
+    explain2: "Take care of all your marketing needs and scale your business with our cutting-edge technology.",
+    buttonName: "Resources",
+    buttonLink: "https://docs.hanzo.ai"
+  },
+  {
+    preTitle: "DEPLOY SOPHISTICATED AI CAMPAIGNS",
+    title: "Solutions",
+    subTitle: "Accelerate your growth with industry-leading performance & AI.",
+    explain1: "Our team of experts develops innovative strategies, helping clients maximize their online presence and achieve remarkable conversions.",
+    explain2: "We'll transform your company's sales and outreach with sophisticated campaigns, modern social media strategies, and simplified blockchain-based payment solutions.",
+    buttonName: "Our Service",
+    buttonLink: "https://docs.hanzo.ai"
+  },
+  {
+    preTitle: "IMPRESSIVE ROI AND PRODUCT MARKET FIT",
+    title: "Resources",
+    subTitle: "Outperform with Data-Driven Campaigns.",
+    explain1: "With over a decade of priceless e-commerce conversion data across every industry, Hanzo gives companies lazer focus and drives industry leading return on ad spend.",
+    explain2: "Be ready to deliver when Hanzo generates a surge in orders. Some of our clients must scale their sales operations due to order overflow!",
+    buttonName: "Data Driven Solutions",
+    buttonLink: "https://docs.hanzo.ai"
+  }
+]
 
 const imageBlocks01: string[] = new Array(35)
   .fill('')
@@ -124,6 +148,20 @@ const HomeLayout = () => {
   const currentIndexRef = useRef<number>(0);
   const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
   const [blockPercents, setBlockPercents] = useState<number[]>([0, 0, 0]);
+  const blockIndex = useMemo<number>(() => {
+    const block1Counts = imageBlocks01.length;
+    const block2Counts = imageBlocks02.length;
+    const block3Counts = imageBlocks03.length;
+
+    if (currentIndex <= block1Counts) {
+      return 0;
+    } else if (currentIndex > block1Counts && currentIndex <= block1Counts + block2Counts) {
+      return 1;
+    } else if (currentIndex > block1Counts + block2Counts && currentIndex <= block1Counts + block2Counts + block3Counts) {
+      return 2;
+    }
+    return 0;
+  }, [currentIndex]);
 
   const reviewContainerRef = useRef<HTMLDivElement | null>(null);
 
@@ -193,6 +231,81 @@ const HomeLayout = () => {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (!rootContainerRef.current) {
+      return;
+    }
+
+    let startY = 0;
+    let startX = 0;
+
+    const handleTouchStart = (event: TouchEvent) => {
+      startY = event.touches[0].clientY;
+      startX = event.touches[0].clientX;
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      if (!rootContainerRef.current || !companyContainerRef.current || !imageBlockContainerRef.current) {
+        return;
+      }
+
+      const screenHeight = window.innerHeight;
+      const deltaY = startY - event.touches[0].clientY;
+      const deltaX = startX - event.touches[0].clientX;
+      const { top: imageBlockPosition, height: imageBlockHeight } = imageBlockContainerRef.current.getBoundingClientRect();
+
+      const imageBlockRemainSpace = (screenHeight - imageBlockHeight) / 2;
+      const imageBlockOffset = imageBlockPosition - imageBlockRemainSpace - deltaY;
+      if (deltaY > 0 && imageBlockOffset < 0 && currentIndexRef.current < imageLength - 1) {
+        event.preventDefault();
+        imageBlockContainerRef.current.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
+        setCurrentIndex((prevIndex) => {
+          let newIndex = Math.min(prevIndex + 1, imageLength - 1);
+          currentIndexRef.current = newIndex;
+          return newIndex;
+        });
+      }
+      if (deltaY < 0 && imageBlockOffset > 0 && currentIndexRef.current > 0) {
+        event.preventDefault();
+        imageBlockContainerRef.current.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
+        setCurrentIndex((prevIndex) => {
+          let newIndex = Math.max(prevIndex - 1, 0);
+          currentIndexRef.current = newIndex;
+          return newIndex;
+        });
+      }
+
+      const { scrollLeft, scrollWidth, clientWidth } = companyContainerRef.current;
+      const { top: companyContainerPosition, height: companyContainerHeight } = companyContainerRef.current.getBoundingClientRect();
+
+      const companyContainerRemainSpace = (screenHeight - companyContainerHeight) / 2;
+      const companyContainerOffset = companyContainerPosition - companyContainerRemainSpace;
+
+      const atStart = scrollLeft + clientWidth < scrollWidth;
+      const atEnd = scrollLeft > 0;
+
+      if (deltaX > 0 && companyContainerOffset < 0 && atStart) {
+        event.preventDefault();
+        companyContainerRef.current.scrollLeft += deltaX;
+      }
+      if (deltaX < 0 && companyContainerOffset > 0 && atEnd) {
+        event.preventDefault();
+        companyContainerRef.current.scrollLeft += deltaX;
+      }
+    };
+
+    rootContainerRef.current.addEventListener('touchstart', handleTouchStart, { passive: false });
+    rootContainerRef.current.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    return () => {
+      if (rootContainerRef.current) {
+        rootContainerRef.current.removeEventListener('touchstart', handleTouchStart);
+        rootContainerRef.current.removeEventListener('touchmove', handleTouchMove);
+      }
+    };
+  }, []);
+
 
   useEffect(() => {
     const block1Counts = imageBlocks01.length;
@@ -271,19 +384,23 @@ const HomeLayout = () => {
             </div>
             <div>
               <p className="text-dark-grey1 text-sm lg:text-base text-left">
-                HYPER SCALE YOUR BRAND WITH HANZO AI
-                <span className="text-white-grey">{`  [PRODUCTS]`}</span>
+                {detailContentData[blockIndex].preTitle}
+                <span className="text-white-grey">{`  [${detailContentData[blockIndex].title}]`}</span>
               </p>
               <h1 className="text-white-grey mt-4 lg:mt-8 text-sm lg:text-[22px] text-left">
-                Scale Intelligently, with Hanzo's all in one accelerator.
+                {detailContentData[blockIndex].subTitle}
               </h1>
               <p className="text-white-grey-65 text-sm lg:text-xl mt-6 lg:mt-12 text-left">
-                With over a decade of experience and backed by Techstars, Hanzo has a prove track record of transforming the complexities of modern business into stramlined success stories.
+                {detailContentData[blockIndex].explain1}
               </p>
               <p className="text-white-grey-65 text-sm lg:text-xl mt-6 lg:mt-12 text-left">
-                Take care of all your marketing needs and scale your business with our cutting-edge technology.
+                {detailContentData[blockIndex].explain2}
               </p>
-              <Button className="mt-4 md:mt-8 mx-auto md:mx-0">Resources</Button>
+              <Button className="mt-4 md:mt-8 mx-auto md:mx-0">
+                <a href={detailContentData[blockIndex].buttonLink} target='_blank'>
+                  {detailContentData[blockIndex].buttonName}
+                </a>
+              </Button>
             </div>
           </div>
           <div className="flex flex-col md:flex-row mt-12 w-full justify-between">
@@ -369,33 +486,9 @@ const HomeLayout = () => {
         </div>
 
         {/* Innovation section */}
-        <div className='border-b border-white-10 pt-5 lg:pt-[55px] pb-10 lg:pb-38'>
-          <h1 className='text-base lg:text-[32px] ml-5 lg:ml-10 md-6 lg:mb-12'>We believe in innovation</h1>
-          <Carousel
-            options={{ align: 'center', loop: true }}
-            className='w-full mt-8 lg:mt-16 relative'
-            plugins={[EmblaAutoplay({ delay: 5000, stopOnInteraction: true })]}
-          >
-            <CarouselContent className='flex gap-4 justify-center'>
-              {
-                innovations.map((innovation, index) => (
-                  <CarouselItem key={index} className='w-auto flex justify-center basis-auto'>
-                    <div className='w-fit flex justify-center'>
-                      <img src={innovation.src} alt="innovation" className='h-[300px] lg:h-[497px]' />
-                    </div>
-                  </CarouselItem>
-                ))
-              }
-            </CarouselContent>
-            <div className='absolute -bottom-10 right-12 flex flex-row gap-2'>
-              <Button className='w-8 h-7 p-0'>
-                <ChevronLeft />
-              </Button>
-              <Button className='w-8 h-7 p-0'>
-                <ChevronRight />
-              </Button>
-            </div>
-          </Carousel>
+        <div className='border-b border-white-10 pt-5 lg:pt-[55px]'>
+          <h1 className='text-base lg:text-[32px] ml-5 lg:ml-10 md-6 mb-[33px] lg:mb-12'>We believe in innovation</h1>
+          <ImageCarousel />
         </div>
 
         {/* Strategy section */}
