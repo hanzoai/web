@@ -46,11 +46,14 @@ const UniversalPage = () => {
         if (!!token) {
           await auth.loginWithCustomToken(token)
 
-          if (auth.loggedIn) 
+          if (auth.loggedIn) {
+            const invitationToken = searchParams.get('token')
+            invitationToken && accetInvitation(invitationToken)
             router.push("/dashboard")
+          }
           else {
-            const token = searchParams.get('token')
-            token && accetInvitation(token)
+            const invitationToken = searchParams.get('token')
+            invitationToken && accetInvitation(invitationToken)
             router.push('https://auth.hanzo.ai/?redirectUrl=https://dash.hanzo.ai')
           }
         } else {
