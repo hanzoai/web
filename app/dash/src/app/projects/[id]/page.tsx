@@ -61,7 +61,7 @@ const UniversalPage: React.FC = () => {
                     :
                     <div>Loading...</div>
             }
-            <iframe src="http://localhost:3000" style= {{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" />
+            <iframe src="https://gui.hanzo.ai/" style= {{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" />
         </div>
     )
 }
