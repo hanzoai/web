@@ -26,11 +26,11 @@ const UniversalPage = () => {
   }
 
 
-  // useEffect(() => {
-  //   const invitationToken = searchParams.get('token')
-  //   invitationToken && accetInvitation(invitationToken)
-  //   router.push("/dashboard")
-  // }, [])
+  useEffect(() => {
+    const invitationToken = searchParams.get('token')
+    invitationToken && accetInvitation(invitationToken)
+    router.push("/dashboard")
+  }, [])
 
   const initialize = async () => {
     fetch(`${process.env.NEXT_PUBLIC_LOGIN_SITE_URL}/api/auth/get-auth-token`, {
@@ -57,9 +57,9 @@ const UniversalPage = () => {
       })
   }
   
-  useEffect(() => {
-    initialize()
-  }, [auth, searchParams, router])
+  // useEffect(() => {
+  //   initialize()
+  // }, [auth, searchParams, router])
 
 }
 

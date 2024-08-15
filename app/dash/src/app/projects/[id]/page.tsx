@@ -32,7 +32,8 @@ const UniversalPage: React.FC = () => {
     const [foundOrg, setFoundOrg] = useState<{ id: string, name: string, owner: string, role: string } | undefined>(undefined)
     const [project, setProject] = useState<{ id: string, name: string, orgId: string }>()
     const [openSidebar, setOpenSidebar] = useState(false)
-    const [iframeUrl, setIframeUrl] = useState('/chatflows')
+    // const [iframeUrl, setIframeUrl] = useState('/chatflows')
+    const [selectedList, setSelectedList] = useState(0)
 
     const auth = useAuth()
     const org = useOrganization()
@@ -68,6 +69,28 @@ const UniversalPage: React.FC = () => {
         setOpenSidebar(!openSidebar)
     }
 
+    useEffect(() => {
+        const iframe = document.getElementById('myIframe') as HTMLIFrameElement
+        if (iframe && project) {
+            iframe.contentWindow?.postMessage({
+                type: 'IFRAME_LOADED',
+                data: {
+                    id: project?.id,
+                    name: project?.name,
+                    orgId: project?.orgId
+                }
+            }, '*')
+        }
+    }, [project])
+
+    const OnClickSidebarListItem = (item: { title: string; href: string; icon: React.JSX.Element; }, index: number) => {
+        setSelectedList(index)
+        const iframe = document.getElementById('myIframe') as HTMLIFrameElement
+        if (iframe) {
+            iframe.src = "http://localhost:3000" + item.href + '?project=' + project?.id
+        }
+    }
+
     return (
         <div className="p-2 md:p-4 w-full h-full flex flex-col gap-4">
             {
@@ -85,22 +108,25 @@ const UniversalPage: React.FC = () => {
                     :
                     <div>Loading...</div>
             }
-            <div className={`flex flex-row ${openSidebar ? 'gap-4' : ''}`}>
-                <div className={`flex flex-col py-4 ${openSidebar ? 'w-[250px]' : 'w-0'}`} >
-                    <div className='flex flex-col'>
-                        {SidebarList.map((item, index) => (
-                            <div key={index} className='flex flex-row gap-2 items-center rounded-md p-3 hover:cursor-pointer hover:bg-level-3' onClick={() => setIframeUrl(item.href)}>
-                                <div className='w-6 h-6'>
-                                    <div className='w-6 h-6'>{item.icon}</div>
+            {
+                project &&
+                <div className={`flex flex-row ${openSidebar ? 'gap-4' : ''}`}>
+                    <div className={`flex flex-col py-4 ${openSidebar ? 'w-[250px]' : 'w-0 hidden'}`} >
+                        <div className='flex flex-col gap-1'>
+                            {SidebarList.map((item, index) => (
+                                <div key={index} className={`flex flex-row gap-2 items-center rounded-md p-3 hover:cursor-pointer hover:bg-level-3 ${index == selectedList ? 'bg-level-3' : ''}`} onClick={() => OnClickSidebarListItem(item, index)}>
+                                    <div className='w-6 h-6'>
+                                        <div className='w-6 h-6'>{item.icon}</div>
+                                    </div>
+                                    <div className='text-sm'>{item.title}</div>
                                 </div>
-                                <div className='text-sm'>{item.title}</div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
+                    {/* <iframe id='project' src={"https://gui.hanzo.ai" + iframeUrl} style={{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" /> */}
+                    <iframe id='myIframe' src={"http://localhost:3000/chatflows" + '?project=' + project.id} style={{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" />
                 </div>
-                <iframe src={"https://gui.hanzo.ai" + iframeUrl} style= {{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" />
-                {/* <iframe src={"http://localhost:3000" + iframeUrl} style={{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" /> */}
-            </div>
+            }
         </div>
     )
 }
