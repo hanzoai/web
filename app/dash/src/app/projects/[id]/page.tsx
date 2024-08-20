@@ -124,7 +124,7 @@ const UniversalPage: React.FC = () => {
                         </div>
                     </div>
                     {/* <iframe id='project' src={"https://gui.hanzo.ai" + iframeUrl} style={{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" /> */}
-                    <iframe id='myIframe' src={"http://localhost:3000/chatflows" + '?project=' + project.id} style={{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" />
+                    <iframe id='myIframe' src={"http://localhost:3000/chatflows" + '?project=' + project.id} style={{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" className='border border-level-3' />
                 </div>
             }
         </div>
