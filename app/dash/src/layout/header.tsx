@@ -69,7 +69,7 @@ const AdminHeader: React.FC<{
     useEffect(() => {
       if (!userEmail) return
       organizations(userEmail)
-    }, [auth])
+    }, [userEmail])
 
     const organizations = async (email: string) => {
       if (!org) return
