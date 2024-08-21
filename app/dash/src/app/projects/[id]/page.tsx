@@ -87,7 +87,8 @@ const UniversalPage: React.FC = () => {
         setSelectedList(index)
         const iframe = document.getElementById('myIframe') as HTMLIFrameElement
         if (iframe) {
-            iframe.src = "http://localhost:3000" + item.href + '?project=' + project?.id
+            // iframe.src = "http://localhost:3000" + item.href + '?project=' + project?.id
+            iframe.src = "https://gui.hanzo.ai/" + item.href + '?project=' + project?.id
         }
     }
 
@@ -123,8 +124,8 @@ const UniversalPage: React.FC = () => {
                             ))}
                         </div>
                     </div>
-                    {/* <iframe id='project' src={"https://gui.hanzo.ai" + iframeUrl} style={{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" /> */}
-                    <iframe id='myIframe' src={"http://localhost:3000/chatflows" + '?project=' + project.id} style={{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" className='border border-level-3' />
+                    {/* <iframe id='myIframe' src={"http://localhost:3000/chatflows" + '?project=' + project.id} style={{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" className='border border-level-3' /> */}
+                    <iframe id='myIframe' src={"https://gui.hanzo.ai/chatflows" + '?project=' + project.id} style={{ width: '100%', height: 'calc(100vh - 164px)' }} title="Flowise" className='border border-level-3' />
                 </div>
             }
         </div>
