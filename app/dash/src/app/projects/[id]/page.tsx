@@ -88,7 +88,7 @@ const UniversalPage: React.FC = () => {
         const iframe = document.getElementById('myIframe') as HTMLIFrameElement
         if (iframe) {
             // iframe.src = "http://localhost:3000" + item.href + '?project=' + project?.id
-            iframe.src = "https://gui.hanzo.ai/" + item.href + '?project=' + project?.id
+            iframe.src = "https://gui.hanzo.ai" + item.href + '?project=' + project?.id
         }
     }
 
