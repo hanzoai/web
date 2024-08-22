@@ -1,16 +1,23 @@
 'use client'
 
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ChevronLeft, ChevronRight, Phone } from 'lucide-react';
+
+import type { Block } from '@hanzo/ui/blocks';
+import { Button, Progress } from '@hanzo/ui/primitives';
+
 import CustomCard from '@/assets/icons/CustomCard';
 import CustomChatgpt from '@/assets/icons/CustomChatgpt';
 import CustomControl from '@/assets/icons/CustomControl';
 import CustomLighting from '@/assets/icons/CustomLighting';
 import CustomPen from '@/assets/icons/CustomPen';
 import CustomRocket from '@/assets/icons/CustomRocket';
+
 import ScrollNumBlockComponent from '@/blocks/components/scroll-num';
 import type ScrollNumBlock from '@/blocks/def/scroll-num';
-import type { Block } from '@hanzo/ui/blocks';
-import { Button, Progress } from '@hanzo/ui/primitives';
-import { ChevronLeft, ChevronRight, Phone } from 'lucide-react';
+
+import '../../app/global.css';
+
 import Arca from '@/components/companies/arca';
 import Cove from '@/components/companies/cove';
 import Cover from '@/components/companies/cover';
@@ -31,11 +38,9 @@ import Snapchat from '@/components/companies/snapchat';
 import Skully from '@/components/companies/skully';
 import Triller from '@/components/companies/triller';
 import Unikain from '@/components/companies/unikain';
-import '../../app/global.css';
-import { useEffect, useMemo, useRef, useState } from 'react';
+
 import ImagePreloader from '../components/scrollingImage/ImagePreloader';
-import type { ReviewCardProps } from '../components/reviewcard';
-import ReviewCard from '../components/reviewcard';
+import ReviewCard, { type ReviewCardProps } from '../components/reviewcard';
 import ImageCarousel from '../components/innovation/ImageCarousel';
 
 const scrollNumBlocks = {
@@ -49,49 +54,49 @@ const reviews: ReviewCardProps[] = [
   {
     reviewerName: "Jennifer Patel",
     reviewerRole: "Founder & CEO",
-    reviewerAvatar: "assets/content/review/01.png",
+    reviewerAvatar: "assets/review/01.png",
     reviewDetail: "Hanzo has helped us to streamline our complex challenges and processes. Their suite of tools has made it easier for us to launch, scale, and innovate our business."
   },
   {
     reviewerName: "Beck Smirth",
     reviewerRole: "Product Manager",
-    reviewerAvatar: "assets/content/review/02.png",
+    reviewerAvatar: "assets/review/02.png",
     reviewDetail: "Hanzo's digital solutions have empowered us to redefine success. They have provided us with the tools we need to accelerate our growth and expand our reach."
   },
   {
     reviewerName: "Chris Jonathon",
     reviewerRole: "Investor",
-    reviewerAvatar: "assets/content/review/03.png",
+    reviewerAvatar: "assets/review/03.png",
     reviewDetail: "We are impressed with Hanzo's pioneering approach to digital solutions. Their platform has helped us to transcend traditional boundaries and achieve new levels of success."
   },
   {
     reviewerName: "Jennifer Patel",
     reviewerRole: "Founder & CEO",
-    reviewerAvatar: "assets/content/review/04.png",
+    reviewerAvatar: "assets/review/04.png",
     reviewDetail: "Hanzo has a clear vision for the future of business. Their platform is helping us to launch, scale, and innovate in a way that was not possible before."
   },
   {
     reviewerName: "Jennifer Patel",
     reviewerRole: "Founder & CEO",
-    reviewerAvatar: "assets/content/review/01.png",
+    reviewerAvatar: "assets/review/01.png",
     reviewDetail: "Hanzo has helped us to streamline our complex challenges and processes. Their suite of tools has made it easier for us to launch, scale, and innovate our business."
   },
   {
     reviewerName: "Beck Smirth",
     reviewerRole: "Product Manager",
-    reviewerAvatar: "assets/content/review/02.png",
+    reviewerAvatar: "assets/review/02.png",
     reviewDetail: "Hanzo's digital solutions have empowered us to redefine success. They have provided us with the tools we need to accelerate our growth and expand our reach."
   },
   {
     reviewerName: "Chris Jonathon",
     reviewerRole: "Investor",
-    reviewerAvatar: "assets/content/review/03.png",
+    reviewerAvatar: "assets/review/03.png",
     reviewDetail: "We are impressed with Hanzo's pioneering approach to digital solutions. Their platform has helped us to transcend traditional boundaries and achieve new levels of success."
   },
   {
     reviewerName: "Jennifer Patel",
     reviewerRole: "Founder & CEO",
-    reviewerAvatar: "assets/content/review/04.png",
+    reviewerAvatar: "assets/review/04.png",
     reviewDetail: "Hanzo has a clear vision for the future of business. Their platform is helping us to launch, scale, and innovate in a way that was not possible before."
   },
 ]
@@ -348,10 +353,17 @@ const HomeLayout = () => {
             We offer a powerful suite of tools that streamline complex challenges at every stage of your journey - launching, scaling, and innovating.
           </p>
           <div className="flex flex-col sm:flex-row gap-[12px] mt-[48px] z-2">
-            <Button variant="outline" className='text-muted px-[14px] py-[10px] text-[14px] h-[40px] z-2'>Browse Case Studies</Button>
-            <Button className='flex gap-2 px-[14px] py-[10px] text-[14px] h-[40px] z-2'>
-              <Phone />
-              Schedule Call
+            <Button variant="outline" className='text-muted px-[14px] py-[10px] text-[14px] h-[40px] z-2'>
+              <a href='/case-study'>
+                Browse Case Studies
+              </a>
+            </Button>
+            <Button className='px-[14px] py-[10px] text-[14px] h-[40px] z-2'>
+              <a href='https://cal.com/hanzo-ai/30min' target='_blank' className='flex gap-2'>
+                <Phone />
+                Schedule Call
+
+              </a>
             </Button>
           </div>
         </div>
@@ -568,9 +580,11 @@ const HomeLayout = () => {
               &nbsp;stands out.
             </span>
           </p>
-          <Button className='flex gap-2 px-[14px] py-[10px] text-[14px] [40px] mt-[52px]'>
-            <Phone className='w-full' />
-            Schedule Call
+          <Button className='px-[14px] py-[10px] text-[14px] [40px] mt-[52px]'>
+            <a href='https://cal.com/hanzo-ai/30min' target='_blank' className='flex gap-2'>
+              <Phone className='w-full' />
+              Schedule Call
+            </a>
           </Button>
         </div>
       </div>

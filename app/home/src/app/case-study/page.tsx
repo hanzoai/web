@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { ScreenfulBlockComponent as Screenful, BlocksComponent } from '@hanzo/ui/blocks'
+import { ScreenfulBlockComponent as Screenful } from '@hanzo/ui/blocks'
 import { case_study_tiles, case_studies } from '@/content'
 
 type Props = {
