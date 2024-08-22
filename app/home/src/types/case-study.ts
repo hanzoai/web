@@ -1,5 +1,3 @@
-import type { ReactNode } from "react"
-
 interface CaseStudyType {
     id: number,
     title: string
