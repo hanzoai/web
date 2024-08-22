@@ -151,7 +151,7 @@ export default [
           groupName:"Apps",
           title: "AI Chat",
           icon: <AI  size={25}/>,
-          href: "http://docs.hanzo.ai",
+          href: "http://hanzo.ai/ai",
           newTab: false,
           contents:"Virtual assistance" //insert string to here
         },{
@@ -172,7 +172,7 @@ export default [
           groupName:"Apps",
           title: "Web Apps",
           icon: <WebApps  size={25}/>,
-          href: "https://docs.google.com/document/d/1thrUM7-GPNYeP8b9JAz_MR0cLyEwRSOx52uRPmy0mdY/edit?usp=sharing",
+          href: "https://hanzo.ai/ai",
           newTab: false,
           contents:"Customized interfaces" //insert string to here
         },{
@@ -237,7 +237,7 @@ export default [
           groupName:"Company",
           title: "Blog",
           icon: <Blog  size={25}/>,
-          href: "https://docs.google.com/document/d/1HQlLuWAmnT42oNjWKsmhlsRarUbSIZ2ZgVzJspS7aLE/edit?usp=sharing",
+          href: "https://hanzo.ai/blog",
           newTab: false,
           contents:"Latest posts and changes" //insert string to here
         },{
@@ -258,7 +258,7 @@ export default [
           groupName:"More",
           title: "Customer Support",
           icon: <CustomerSupport  size={25}/>,
-          href: "https://docs.google.com/document/d/1Kk4VmVf6RyVF8Bi3lCawFV9zAr7zV8O96pRU_YfHrf4/edit?usp=sharing",
+          href: "https://hanzo.ai/help",
           newTab: false,
           contents:"Dedicated help 24/7" //insert string to here
         },
