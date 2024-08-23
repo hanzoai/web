@@ -4,7 +4,7 @@ import type {
     ElementBlock,
 } from '@hanzo/ui/blocks'
 
-import HanzoLogo from 'node_modules/@hanzo/brand/components/icons/hanzo-logo'
+import HanzoLogo from '@/content/slides/companies/svg/hanzo'
 
 export default {
     blockType: 'screenful',

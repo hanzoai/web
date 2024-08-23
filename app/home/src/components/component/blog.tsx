@@ -73,7 +73,7 @@ export function Blog() {
             <div className="rounded-lg bg-background p-6 text-gray-300">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold">Featured Posts</h2>
-                <Link href="/view/all" className="text-gray-400 hover:underline" prefetch={false}>
+                <Link href="/blog/all" className="text-gray-400 hover:underline" prefetch={false}>
                   View All
                 </Link>
               </div>
@@ -102,7 +102,7 @@ export function Blog() {
             <div className="rounded-lg bg-background p-6 text-gray-300">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold">Popular Topics</h2>
-                <Link href="/view/all" className="text-gray-400 hover:underline" prefetch={false}>
+                <Link href="/blog/all" className="text-gray-400 hover:underline" prefetch={false}>
                   View All
                 </Link>
               </div>
