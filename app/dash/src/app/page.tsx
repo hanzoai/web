@@ -67,6 +67,7 @@ const UniversalPage = () => {
           await auth.loginWithCustomToken(token)
 
           if (auth.loggedIn) {
+            handleLogin()
             router.push("/dashboard")
           }
           else {
