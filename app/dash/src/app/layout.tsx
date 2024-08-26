@@ -8,6 +8,7 @@ import {
 
 import { PaymentPlanProvider } from '@/context/payment-plan-context';
 import { OrganizationProvider } from '@/context/organization-context';
+import { StoreProvider } from '@/stores';
 
 import siteDef from '../site-def'
 import _metadata from '../metadata'
@@ -23,9 +24,11 @@ const RootLayout: React.FC<PropsWithChildren> = async ({
   <RootLayoutCore siteDef={siteDef}>
     <OrganizationProvider>
       <PaymentPlanProvider>
-        <Suspense>
-          {children}
-        </Suspense>
+        <StoreProvider>
+          <Suspense>
+            {children}
+          </Suspense>
+        </StoreProvider>
       </PaymentPlanProvider>
     </OrganizationProvider>
   </RootLayoutCore>

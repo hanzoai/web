@@ -1,81 +1,43 @@
+'use client'
+
+import React, { useState, useEffect } from 'react';
+import { observer } from 'mobx-react';
+import moment from 'moment-timezone';
+
 import type { TextCardDataProps } from "@/components/dash-text-card";
-import DashTextCard from "@/components/dash-text-card";
-import type { BarChartDataProps } from "@/components/dash-bar-charts";
-import DashBarCharts from "@/components/dash-bar-charts";
 import type { DashRecentSalesItemType } from "@/components/dash-recent-sales-item";
-import { Input, Tabs, TabsList, TabsTrigger } from "@hanzo/ui/primitives";
-import { Button } from "@hanzo/ui/primitives";
+import type { BarChartDataProps } from "@/components/dash-bar-charts";
+
+import DashTextCard from "@/components/dash-text-card";
 import { Basket, Credit, CSV, Receipt } from "@/components/icons"
+import { SalesChart, TimeSelect } from '@/components/dash/charts'
 
-const textCardData: TextCardDataProps[] = [
-  {
-    cardTitle: "Projected Revenue",
-    cardIcon: <Credit />,
-    cardValue: 50,
-    cardPercent: 100,
-    cardValueType: 'cash'
-  },
-  {
-    cardTitle: "Active Preorders",
-    cardIcon: <Basket />,
-    cardValue: 50,
-    cardPercent: 100,
-    cardValueType: 'cash'
-  },
-  {
-    cardTitle: "Deposites",
-    cardIcon: <Basket />,
-    cardValue: 50,
-    cardPercent: 100,
-    cardValueType: 'cash'
-  },
-  {
-    cardTitle: "Deposites Processed",
-    cardIcon: <Credit />,
-    cardValue: 50,
-    cardPercent: 100,
-    cardValueType: 'cash'
-  },
-  {
-    cardTitle: "Refunds",
-    cardIcon: <Receipt />,
-    cardValue: 50,
-    cardPercent: 100,
-    cardValueType: 'cash'
-  },
-  {
-    cardTitle: "Refunds Processed",
-    cardIcon: <Receipt />,
-    cardValue: 50,
-    cardPercent: 100,
-    cardValueType: 'cash'
-  }
-];
+import { Input, Button } from "@hanzo/ui/primitives";
 
-const chartData: BarChartDataProps[] = [
-  { key: "Jan", value: 550 },
-  { key: "Feb", value: 980 },
-  { key: "Mar", value: 320 },
-  { key: "Apr", value: 140 },
-  { key: "May", value: 60 },
-  { key: "Jun", value: 150 },
-  { key: "Jul", value: 840 },
-  { key: "Aug", value: 640 },
-  { key: "Sep", value: 330 },
-  { key: "Oct", value: 20 },
-  { key: "Nov", value: 500 },
-  { key: "Dec", value: 780 },
-];
+import { useStore } from "@/stores";
 
-const salesData: DashRecentSalesItemType[] = [
-  { name: "Olivia Martin", email: "olivia.martin@email.com", balance: 1999, avatar: "assets/images/01.png" },
-  { name: "Jackson Lee", email: "jackson.lee@email.com", balance: 39, avatar: "assets/images/02.png" },
-  { name: "Isabella Nguyen", email: "isabella.nguyen@email.com", balance: 299, avatar: "assets/images/03.png" },
-  { name: "William Kim", email: "william.kim@email.com", balance: 99, avatar: "assets/images/04.png" },
-  { name: "Sofia Davis", email: "sofia.davis@email.com", balance: 39, avatar: "assets/images/05.png" },
-];
+const Dashboard = observer(() => {
+  const { dashboardStore, credentialStore } = useStore();
+  const [period, setPeriod] = useState()
 
-const UniversalPage = () => {
+  useEffect(() => {
+    dashboardStore.getWeeklySalesPoints()
+    dashboardStore.getWeeklyRevenuePoints()
+
+    dashboardStore.getWeeklySales()
+    dashboardStore.getWeeklyRevenue()
+    dashboardStore.getWeeklyUsers()
+
+    dashboardStore.getProducts()
+
+    dashboardStore.getProjectedRevenue()
+    dashboardStore.getDeposits()
+    dashboardStore.getRefunds()
+  }, [])
+
+
+  console.log("deposits: ", dashboardStore.deposits)
+
   return (
     <div className="p-2 md:p-4 w-full flex flex-col gap-4">
       <div className="flex md:hidden flex-row justify-between items-center">
@@ -83,10 +45,10 @@ const UniversalPage = () => {
         <Button variant="secondary" className="text-sm font-medium bg-level-1 flex flex-row gap-2">
           <CSV /> <div>CSV</div>
         </Button>
-      </div> 
+      </div>
       <div className="flex lg:flex-row flex-col w-full gap-4">
         <div className="w-full lg:flex-[60%] flex md:flex-row flex-col gap-4">
-          <div className="md:flex-[47%] flex flex-col gap-2">
+          {/* <div className="md:flex-[47%] flex flex-col gap-2">
             <p className="text-sm text-primary font-medium">Start Date</p>
             <div className="w-full"><Input type="date" /></div>
           </div>
@@ -94,7 +56,13 @@ const UniversalPage = () => {
           <div className="md:flex-[47%] flex flex-col gap-2">
             <p className="text-sm text-primary font-medium">End Date</p>
             <div className="w-full"><Input type="date" /></div>
-          </div>
+          </div> */}
+          <TimeSelect
+            inputLabel='Change Timeframe'
+            value={dashboardStore.projectedRevenueSelect}
+            period={period}
+            setPeriod={setPeriod}
+          />
         </div>
         <div className="lg:flex-[40%] flex flex-row gap-4 items-end w-full">
           <Button variant="secondary" className="text-sm font-medium bg-level-1 w-full">Search</Button>
@@ -104,25 +72,61 @@ const UniversalPage = () => {
         </div>
       </div>
       <div className="grid gap-2 md:gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
-        {
-          textCardData.map((item, index) =>
-            <DashTextCard
-              key={index}
-              cardTitle={item.cardTitle}
-              cardIcon={item.cardIcon}
-              cardValue={item.cardValue}
-              cardPercent={item.cardPercent}
-              cardValueType={item.cardValueType}
-            />
-          )
-        }
+        <DashTextCard
+          cardTitle={'Projected Revenue'}
+          cardIcon={<Credit />}
+          cardValue={dashboardStore.projectedRevenue}
+          cardCompareValue={dashboardStore.projectedRevenue}
+          cardPreviousValue={dashboardStore.lastProjectedRevenue}
+          cardValueType={'cash'}
+        />
+        <DashTextCard
+          cardTitle={'Active Preorders'}
+          cardIcon={<Basket />}
+          cardValue={dashboardStore.weeklySales - dashboardStore.weeklyRefunded}
+          cardCompareValue={dashboardStore.weeklySales - dashboardStore.weeklyRefunded}
+          cardPreviousValue={dashboardStore.lastWeeklySales - dashboardStore.lastWeeklyRefunded}
+          cardValueType={'number'}
+        />
+        <DashTextCard
+          cardTitle={'Deposits'}
+          cardIcon={<Basket />}
+          cardValue={dashboardStore.deposits}
+          cardCompareValue={dashboardStore.deposits}
+          cardPreviousValue={dashboardStore.lastDeposits}
+          cardValueType={'cash'}
+        />
+        <DashTextCard
+          cardTitle={'Deposits Processed'}
+          cardIcon={<Credit />}
+          cardValue={dashboardStore.weeklySales}
+          cardCompareValue={dashboardStore.weeklySales}
+          cardPreviousValue={dashboardStore.lastWeeklySales}
+          cardValueType={'number'}
+        />
+        <DashTextCard
+          cardTitle={'Refunds'}
+          cardIcon={<Receipt />}
+          cardValue={dashboardStore.refunds}
+          cardCompareValue={dashboardStore.refunds}
+          cardPreviousValue={dashboardStore.lastRefunds}
+          cardValueType={'cash'}
+        />
+        <DashTextCard
+          cardTitle={'Refunds Processed'}
+          cardIcon={<Receipt />}
+          cardValue={dashboardStore.weeklyRefunded}
+          cardCompareValue={dashboardStore.weeklyRefunded}
+          cardPreviousValue={dashboardStore.lastWeeklyRefunded}
+          cardValueType={'number'}
+        />
       </div>
-      <div className="rounded-xl border border-level-1 bg-background text-muted-1 flex flex-col gap-4">
-        <div className="font-medium text-xl leading-none text-primary p-4 border-b border-level-1">Projected Revenue per Day</div>
-        <DashBarCharts data={chartData} />
+      <div className="rounded-xl bg-background text-muted-1 flex flex-col gap-4">
+        {/* <div className="font-medium text-xl leading-none text-primary p-4 border-b border-level-1">Projected Revenue per Day</div> */}
+        <SalesChart />
       </div>
     </div>
   )
-}
+})
 
-export default UniversalPage
+export default Dashboard

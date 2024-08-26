@@ -7,10 +7,13 @@ import { useAuth } from '@hanzo/auth/service'
 import { useOrganization } from '@/context/organization-context'
 import { getInvitation } from '@/utils/firebase-utils'
 
+import { useStore } from "@/stores";
+
 const UniversalPage = () => {
   const router = useRouter();
   const auth = useAuth()
   const searchParams = useSearchParams()
+  const { credentialStore } = useStore()
 
   const accetInvitation = async (token: string) => {
     try {
@@ -29,8 +32,26 @@ const UniversalPage = () => {
   // useEffect(() => {
   //   const invitationToken = searchParams.get('token')
   //   invitationToken && accetInvitation(invitationToken)
-  //   router.push("/dashboard")
+
+  //   handleLogin()
+
+  //   // router.push("/dashboard")
   // }, [])
+
+  const handleLogin = async () => {
+    credentialStore.setProperty('isLoading', true)
+    try {
+      credentialStore.setProperty('email', 'karma@hanzo.ai')
+      credentialStore.setProperty('password', 'pp2karma!zO')
+      await credentialStore.login()
+      if (!credentialStore.org) await credentialStore.getOrg()
+    } catch (ex) {
+
+    } finally {
+      credentialStore.setProperty('isLoading', false)
+      router.push("/dashboard")
+    }
+  }
 
   const initialize = async () => {
     fetch(`${process.env.NEXT_PUBLIC_LOGIN_SITE_URL}/api/auth/get-auth-token`, {
@@ -56,7 +77,7 @@ const UniversalPage = () => {
         }
       })
   }
-  
+
   useEffect(() => {
     initialize()
   }, [auth, searchParams, router])

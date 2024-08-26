@@ -1,17 +1,32 @@
-import type { FC, ReactNode } from "react";
+'use client'
+
+import type { FC, ReactNode } from "react"
+import { useEffect, useState } from 'react'
 
 export interface TextCardDataProps {
   cardTitle: string
   cardIcon: ReactNode
-  cardPercent: number
+  cardPercent?: number
   cardValue: number
+  cardCompareValue: number
+  cardPreviousValue: number
   cardValueType: 'cash' | 'number'
 }
 
 const DashTextCard: FC<TextCardDataProps> = (props) => {
-  const { cardTitle, cardIcon, cardPercent, cardValue, cardValueType} = props;
+  const { cardTitle, cardIcon, cardPercent, cardValue, cardCompareValue, cardPreviousValue, cardValueType } = props;
   const value = cardValueType == 'cash' ? '$' + cardValue : cardValue
-  const percent = '+' + cardPercent + '%'
+  // const percent = '+' + cardPercent + '%'
+
+  const percent = cardPreviousValue
+    ? cardCompareValue >= cardPreviousValue
+      ? '+' + ((cardCompareValue / cardPreviousValue) * 100).toFixed(2)
+      : '-' + (-100 + (cardCompareValue / cardPreviousValue) * 100).toFixed(2)
+    : '+' + 100 + '%'
+
+  useEffect(() => {
+
+  }, [])
   return (
     <div className="flex flex-row rounded-lg border border-level-1 shadow bg-background text-primary p-4 justify-between">
       <div className="flex flex-col gap-2">
@@ -22,7 +37,7 @@ const DashTextCard: FC<TextCardDataProps> = (props) => {
         </div>
       </div>
       <div className="flex border border-level-1 rounded-md p-1 h-9 w-9 items-center justify-center">
-        {cardIcon} 
+        {cardIcon}
       </div>
     </div>
   )
