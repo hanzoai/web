@@ -24,10 +24,10 @@ export function DataTableDemo<T>(
     title: string,
     searchKey?: string,
     setSearchKey?: Dispatch<SetStateAction<string>>,
-    page: number;
-    setPage: Dispatch<SetStateAction<number>>;
-    pageSize: number;
-    setPageSize: Dispatch<SetStateAction<number>>;
+    page?: number;
+    setPage?: Dispatch<SetStateAction<number>>;
+    pageSize?: number;
+    setPageSize?: Dispatch<SetStateAction<number>>;
   }
 ) {
   const { data, columns, filterKey, onClickHandler, title, searchKey, setSearchKey, page, setPage, pageSize, setPageSize } = props;
@@ -167,15 +167,15 @@ export function DataTableDemo<T>(
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setPage(page - 1)}
-            disabled={page <= 0}
+            onClick={() => setPage && page && setPage(page - 1)}
+            disabled={page ? page <= 0 : false}
           >
             Previous
           </Button>
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setPage(page + 1)}
+            onClick={() => setPage && page && setPage(page + 1)}
             disabled={!data.length}
           >
             Next
