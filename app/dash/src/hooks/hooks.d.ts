@@ -1,4 +1,4 @@
-declare module '@/utils/useMidstream' {
+declare module '@/hooks/hooks' {
     import { Dispatch, SetStateAction } from 'react';
 
     interface MidstreamConfig {
@@ -23,7 +23,7 @@ declare module '@/utils/useMidstream' {
         errors: { [key: string]: any } | ((name: string, value: any) => void);
     }
 
-    export function useMidstream(
+    export default function useMidstream(
         config: MidstreamConfig,
         opts: MidstreamOptions
     ): UseMidstreamReturn;

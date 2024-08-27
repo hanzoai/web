@@ -14,16 +14,16 @@ export default (props: any) => {
     const { disabled, value, period, setPeriod } = props
     const { credentialStore, dashboardStore } = useStore()
     
-    const queryFields = ['deposits']
+    const queryFields = ['deposits', 'sales', 'refunds']
     
     useEffect(() => { setPeriod(value) }, [])
     useEffect(() => {
-        queryFields.forEach(data => timeSelectOnChange(period, data))
+        timeSelectOnChange(period, queryFields)
     }, [period])
 
-    const timeSelectOnChange = (period: any, queryField: string) => {
+    const timeSelectOnChange = (period: any, queryFields: string[]) => {
         if (period === 'alltime') {
-            dashboardStore.setDate(queryField, period, {
+            dashboardStore.setDate(queryFields, period, {
                 date: credentialStore.org.createdAt,
                 period: {
                     interval: 'day',
@@ -31,17 +31,14 @@ export default (props: any) => {
                 },
             })
         } else {
-            dashboardStore.setDate(queryField, period)
+            dashboardStore.setDate(queryFields, period)
         }
     }
 
     return (
         <Select
             value={period}
-            onValueChange={(e) => {
-                console.log(e);
-                timeSelectOnChange(e, 'deposits')
-            }}
+            onValueChange={setPeriod}
             disabled={disabled}
         >
             <SelectTrigger>

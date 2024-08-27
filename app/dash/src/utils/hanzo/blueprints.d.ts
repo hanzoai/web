@@ -1,4 +1,4 @@
-declare module '@/utils/blueprints' {
+declare module '@/utils/hanzo/blueprints' {
     type HttpMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
   
     interface Blueprint {

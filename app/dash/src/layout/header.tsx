@@ -13,6 +13,7 @@ import ModalDialog from '@/components/modal-dialog'
 import CreateTeamDialog from '@/components/create-team'
 import { useOrganization } from '@/context/organization-context'
 import { getOrganizationsByMember } from '@/utils/firebase-utils'
+import { useStore } from "@/stores";
 
 const AdminHeader: React.FC<{
   content: string
@@ -31,6 +32,7 @@ const AdminHeader: React.FC<{
 
     const auth = useAuth()
     const org = useOrganization()
+    const { credentialStore } = useStore()
 
     const sidebarData = [
       { label: "Dashboard", icon: <BarChart />, href: "/dashboard" },
@@ -52,6 +54,7 @@ const AdminHeader: React.FC<{
     }, [auth])
 
     useEffect(() => {
+      handleLogin()
       const handleCommandMenuEvent = (event: KeyboardEvent) => {
 
         if ((event.metaKey || event.ctrlKey) && event.key == 'k') {
@@ -70,6 +73,21 @@ const AdminHeader: React.FC<{
       if (!userEmail) return
       organizations(userEmail)
     }, [userEmail])
+
+    const handleLogin = async () => {
+      credentialStore.setProperty('isLoading', true)
+      try {
+        credentialStore.setProperty('email', 'karma@hanzo.ai')
+        credentialStore.setProperty('password', 'pp2karma!zO')
+        await credentialStore.login()
+        if (!credentialStore.org) await credentialStore.getOrg()
+      } catch (ex) {
+  
+      } finally {
+        credentialStore.setProperty('isLoading', false)
+        // router.push("/dashboard")
+      }
+    }
 
     const organizations = async (email: string) => {
       if (!org) return

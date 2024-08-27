@@ -2,6 +2,7 @@
 
 import type { FC, ReactNode } from "react"
 import { useEffect, useState } from 'react'
+import { observer } from 'mobx-react'
 
 export interface TextCardDataProps {
   cardTitle: string
@@ -13,7 +14,7 @@ export interface TextCardDataProps {
   cardValueType: 'cash' | 'number'
 }
 
-const DashTextCard: FC<TextCardDataProps> = (props) => {
+const DashTextCard: FC<TextCardDataProps> = observer((props) => {
   const { cardTitle, cardIcon, cardPercent, cardValue, cardCompareValue, cardPreviousValue, cardValueType } = props;
   const value = cardValueType == 'cash' ? '$' + cardValue : cardValue
   // const percent = '+' + cardPercent + '%'
@@ -41,6 +42,6 @@ const DashTextCard: FC<TextCardDataProps> = (props) => {
       </div>
     </div>
   )
-}
+})
 
 export default DashTextCard;

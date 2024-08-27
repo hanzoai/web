@@ -29,14 +29,14 @@ const UniversalPage = () => {
   }
 
 
-  // useEffect(() => {
-  //   const invitationToken = searchParams.get('token')
-  //   invitationToken && accetInvitation(invitationToken)
+  useEffect(() => {
+    const invitationToken = searchParams.get('token')
+    invitationToken && accetInvitation(invitationToken)
 
-  //   handleLogin()
+    handleLogin()
 
-  //   // router.push("/dashboard")
-  // }, [])
+    // router.push("/dashboard")
+  }, [])
 
   const handleLogin = async () => {
     credentialStore.setProperty('isLoading', true)
@@ -79,9 +79,9 @@ const UniversalPage = () => {
       })
   }
 
-  useEffect(() => {
-    initialize()
-  }, [auth, searchParams, router])
+  // useEffect(() => {
+  //   initialize()
+  // }, [auth, searchParams, router])
 
 }
 

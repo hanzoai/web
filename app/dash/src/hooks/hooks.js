@@ -2,7 +2,7 @@ import midstream from 'midstream'
 import { isFunction } from '@/utils/isFunction'
 import { useState } from 'react'
 
-export const useMidstream = (config, opts) => {
+export default function useMidstream (config, opts) {
   const [dst, setDst] = useState(() => opts.dst || opts.destination || {})
   const [err, setErr] = useState(() => opts.err || opts.errors || {})
 

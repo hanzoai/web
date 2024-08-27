@@ -11,12 +11,26 @@ import {
 import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table"
 
 import { Select, SelectItem, SelectContent, SelectTrigger, SelectValue, Button, Input, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@hanzo/ui/primitives"
-import React from "react"
+import React, { type Dispatch, type SetStateAction } from "react"
 import { SearchIcon } from "lucide-react"
 import { CSV } from "@/components/icons"
 
-export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; onClickHandler?: (id: string) => void; filterKey?: string; title: string }) {
-  const { data, columns, filterKey, onClickHandler, title } = props;
+export function DataTableDemo<T>(
+  props: {
+    data: T[];
+    columns: ColumnDef<T>[];
+    onClickHandler?: (id: string) => void;
+    filterKey?: string;
+    title: string,
+    searchKey?: string,
+    setSearchKey?: Dispatch<SetStateAction<string>>,
+    page: number;
+    setPage: Dispatch<SetStateAction<number>>;
+    pageSize: number;
+    setPageSize: Dispatch<SetStateAction<number>>;
+  }
+) {
+  const { data, columns, filterKey, onClickHandler, title, searchKey, setSearchKey, page, setPage, pageSize, setPageSize } = props;
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -24,6 +38,7 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
+  const [search, setSearch] = React.useState('')
 
   const table = useReactTable({
     data,
@@ -44,6 +59,10 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
     },
   })
 
+  const handleSearch = () => {
+    setSearchKey?.(search)
+  }
+
   return (
     <div className="w-full flex flex-col p-2 md:p-4 gap-4">
       {
@@ -52,15 +71,15 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
             <div className="flex flex-row border rounded-md border-level-1 items-center px-2 py-1 w-full">
               <SearchIcon className="text-muted-2" />
               <Input
-                placeholder={`Filter ${filterKey}...`}
-                value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
+                placeholder='Search'
+                value={search}
                 onChange={(event) =>
-                  table.getColumn(filterKey)?.setFilterValue(event.target.value)
+                  setSearch(event.target.value)
                 }
                 className="w-full outline-none border-none bg-transparent ring-offset-background focus-visible:ring-background"
               />
             </div>
-            <Button variant='secondary' className="h-12 !font-medium bg-level-1 min-w-28" size='default'>Search</Button>
+            <Button variant='secondary' className="h-12 !font-medium bg-level-1 min-w-28" size='default' onClick={handleSearch}>Search</Button>
             <Button variant='secondary' className="hidden md:block h-12 !font-medium bg-level-1 min-w-28" size='default'>
               Create +
             </Button>
@@ -148,16 +167,16 @@ export function DataTableDemo<T>(props: { data: T[]; columns: ColumnDef<T>[]; on
           <Button
             variant="outline"
             size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
+            onClick={() => setPage(page - 1)}
+            disabled={page <= 0}
           >
             Previous
           </Button>
           <Button
             variant="outline"
             size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
+            onClick={() => setPage(page + 1)}
+            disabled={!data.length}
           >
             Next
           </Button>

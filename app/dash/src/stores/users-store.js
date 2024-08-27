@@ -111,20 +111,14 @@ export default class UsersStore {
     }
   }
 
-  @action async listUsers(page, display, query) {
-    console.log(query)
+  @action async listUsers(page, display) {
     this.isLoading = true
 
-    this.query = query || this.query
     this.page = page || this.page
     this.display = display || this.display
 
-    if (!this.query || !this.page || !this.display) {
+    if (!this.page || !this.display) {
       throw new Error('Some are parameters are missing')
-    }
-
-    if (query.orderBy) {
-      this.sort = (query.orderDirection === 'asc' ? '-' : '') + capitalize(query.orderBy.field)
     }
 
     try {
@@ -154,10 +148,6 @@ export default class UsersStore {
 
       if (q.length > 0) {
         opts.q = q.join(' AND ')
-      }
-
-      if (query.orderBy) {
-        opts.sort = this.sort
       }
 
       console.log('opts', opts)

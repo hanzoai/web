@@ -19,6 +19,7 @@ import { useStore } from "@/stores";
 const Dashboard = observer(() => {
   const { dashboardStore, credentialStore } = useStore();
   const [period, setPeriod] = useState()
+  const [triggerRerender, setTriggerRerender] = useState(false)
 
   useEffect(() => {
     dashboardStore.getWeeklySalesPoints()
@@ -35,8 +36,15 @@ const Dashboard = observer(() => {
     dashboardStore.getRefunds()
   }, [])
 
-
-  console.log("deposits: ", dashboardStore.deposits)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log('isLoading: ', dashboardStore.isLoading)
+      if (!dashboardStore.isLoading) { 
+        clearInterval(interval)
+        setTriggerRerender(!triggerRerender)  
+      }
+    }, 500)
+  }, [period])
 
   return (
     <div className="p-2 md:p-4 w-full flex flex-col gap-4">

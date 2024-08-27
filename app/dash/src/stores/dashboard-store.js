@@ -161,7 +161,7 @@ export default class DashboardStore {
     this.orgStart = org ? moment(org.createdAt) : moment()
   }
 
-  @action setDate(field, val, custom) {
+  @action setDate(fields, val, custom) {
     let d = null
     let period = {
       interval: '',
@@ -203,45 +203,27 @@ export default class DashboardStore {
         break
     }
 
-    this[`${field}Select`] = val
-    this[`${field}Period`] = period
-    this[`${field}Date`] = d
+    fields.forEach(field => {
+      this[`${field}Select`] = val
+      this[`${field}Period`] = period
+      this[`${field}Date`] = d
+    });
 
-    if (field === 'revenue') {
-      // console.log('Refreshing revenue', d.format('MM-DD-YYYY'))
-      this.chartSelect = val
-      this.chartPeriod = period
-      this.chartDate = d
-      this.getWeeklyRevenuePoints()
-      this.getWeeklyRevenue()
-      this.getTotalRevenue()
-    } else if (field === 'chart') {
-      // console.log('Refreshing sales chart', d.format('MM-DD-YYYY'))
-      this.setChartPoints()
-    } else if (field === 'users') {
-      // console.log('Refreshing users chart', d.format('MM-DD-YYYY'))
-      this.getWeeklyUsers()
-    } else if (field === 'sales') {
-      // console.log('Refreshing sales chart', d.format('MM-DD-YYYY'))
-      this.getWeeklySalesPoints()
-      this.getWeeklySales()
-      this.getTotalSales()
-    } else if (field === 'projectedRevenue') {
-      // console.log('Refreshing projected revenue chart', d.format('MM-DD-YYYY'))
-      this.getProjectedRevenue()
-      this.chartSelect = val
-      this.chartPeriod = period
-      this.chartDate = d
-      this.getWeeklyRevenuePoints()
-      this.getWeeklyRevenue()
-      this.getTotalRevenue()
-    } else if (field === 'deposits') {
-      // console.log('Refreshing deposits chart', d.format('MM-DD-YYYY'))
-      this.getDeposits()
-    } else if (field === 'refunds') {
-      // console.log('Refreshing refunds chart', d.format('MM-DD-YYYY'))
-      this.getRefunds()
-    }
+
+    // this.getProjectedRevenue()
+    // this.chartSelect = val
+    // this.chartPeriod = period
+    // this.chartDate = d
+    // this.setChartPoints()
+    this.getWeeklyUsers()
+    this.getWeeklySalesPoints()
+    this.getWeeklySales()
+    this.getTotalSales()
+    // this.getWeeklyRevenuePoints()
+    // this.getWeeklyRevenue()
+    // this.getTotalRevenue()
+    this.getDeposits()
+    this.getRefunds()
   }
 
   @action async getProjectedRevenue() {

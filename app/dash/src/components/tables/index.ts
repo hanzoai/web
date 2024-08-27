@@ -1,1 +1,1 @@
-// export { default as MUITable } from './MUITable'
+export { default as MUITable } from './MUITable'
