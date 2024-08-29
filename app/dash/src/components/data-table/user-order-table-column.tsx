@@ -6,6 +6,7 @@ import { Button, Checkbox } from "@hanzo/ui/primitives"
 import { ArrowUpDown } from "lucide-react"
 
 export interface UserOrderTableDataType {
+  id: string;
   number: string;
   total: string;
   orderStatus: string;

@@ -1,112 +1,28 @@
 "use client"
 
-import { Button, Input, TextArea, Switch } from "@hanzo/ui/primitives";
-import { useState } from "react";
+import { observer } from "mobx-react";
+import { useSearchParams } from "next/navigation";
+import ProductForm from '@/components/form/product-form'
+import { useStore } from "@/stores";
 
-type UserStatisticsType = {
-  id: string
-  createdAt: Date
-  updatedAt: Date
-  units_sold: number
-}
+const ProductPage = observer(() => {
+  const { productsStore } = useStore()
 
-type ProductInfoType = {
-  slug: string
-  sku: string
-  email: string
-  description: string
-  display_price: number
-  msrf: number
-  projectd_price: number
-}
+  const searchParams = useSearchParams()
+  const productId = searchParams.get('id')
 
-const statistics: UserStatisticsType = {
-  id: 'K9idk9KII7',
-  createdAt: new Date('10/11/2020'),
-  updatedAt: new Date('10/11/2020'),
-  units_sold: 0
-}
-
-const Page = () => {
-  const [slug, setSlug] = useState<string>("trunk-show-XXL-XXL");
-  const [sku, setSku] = useState<string>('');
-  const [name, setName] = useState<string>('Trunk Show XXL Top XXL Bottom');
-  const [description, setDescription] = useState<string>("Introducing YOU X KARMA");
-  const [displayPrice, setDisplayPrice] = useState<string>('$400');
-  const [msrf, setMsrf] = useState<string>('$400');
-  const [projectedPrice, setProjectedPrice] = useState<string>('0');
+  if (productId) {
+    productsStore.getProduct(productId).catch((e: any) => {
+      console.log('product page error', e)
+    })
+  } else {
+    console.log('parameter error')
+    return
+  }
 
   return (
-    <div className="flex flex-col space-y-4 p-2 md:p-4 overflow-y-auto w-full">
-      <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
-      <div className="grid xl:grid-cols-4 grid-cols-2 w-full items-center justify-center bg-background shadow gap-4 truncate">
-        <div className="flex flex-col border border-level-1 rounded-md p-4 gap-2">
-          <div className="font-medium text-xl text-foreground">Statistics ID</div>
-          <span className="font-medium text-base text-muted-1">{statistics.id}</span>
-        </div>
-        <div className="flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
-          <div className="font-medium text-xl text-foreground">Created At</div>
-          <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
-        </div>
-        <div className="flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
-          <div className="font-medium text-xl text-foreground">Updated At</div>
-          <span className="font-medium text-base text-muted-1">{statistics.createdAt.toLocaleDateString()}</span>
-        </div>
-        <div className="flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
-          <div className="font-medium text-xl text-foreground">Units Sold</div>
-          <span className="font-medium text-base text-muted-1">{statistics.units_sold}</span>
-        </div>
-      </div>
-      <div className="flex flex-col space-y-4 w-full rounded-md border border-level-1 bg-background shadow p-4 text-muted-1">
-        <div>
-          <h1 className="text-primary text-2xl">Product Information</h1>
-        </div>
-        <div className="flex flex-col items-center justify-between gap-6 md:flex-row w-full">
-          <div className="flex-1 flex flex-col gap-2 w-full">
-            <div className="text-sm text-primary">Slug</div>
-            <Input placeholder="Slug" value={slug} onChange={() => setSlug} />
-          </div>
-          <div className="flex-1 flex flex-col gap-2 w-full">
-            <div className="text-sm text-primary">SKU</div>
-            <Input placeholder="SKU" value={sku} onChange={() => setSku} />
-          </div>
-        </div>
-        <div className="flex flex-col gap-2">
-          <div className="text-sm text-primary">Email</div>
-          <Input placeholder="Email" value={name} onChange={() => setName} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <div className="text-sm text-primary">Description</div>
-          <TextArea placeholder="Description" value={description} onChange={() => setDescription} className="bg-background" />
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 items-start justify-between gap-6 md:flex-row w-full">
-          <div className="flex flex-col gap-2 w-full">
-            <div className="text-sm text-primary">Display Price</div>
-            <Input placeholder="Display Price" value={displayPrice} onChange={() => setDisplayPrice} />
-            <div className="flex text-sm text-primary gap-2">
-              <p>Preorder</p>
-              <Switch className="bg-level-1 data-[state=checked]:bg-[#375DFB]" ></Switch>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 w-full">
-            <div className="text-sm text-primary">MSRF(Optional)</div>
-            <Input placeholder="MSRP" value={msrf} onChange={() => setMsrf} />
-            <div className="flex text-sm text-primary gap-2">
-              <p>Taxable</p>
-              <Switch className="bg-level-1 data-[state=checked]:bg-[#375DFB]" ></Switch>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 w-full">
-            <div className="text-sm text-primary">Project Price(Optional)</div>
-            <Input placeholder="Projected Price" value={projectedPrice} onChange={() => setProjectedPrice} />
-          </div>
-        </div>
-        <div>
-          <Button>Save</Button>
-        </div>
-      </div>
-    </div>
+    <ProductForm productId={productId} create={false}/>
   )
-}
+})
 
-export default Page;
+export default ProductPage;

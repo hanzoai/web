@@ -2,10 +2,8 @@
 
 import type { ColumnDef } from "@tanstack/react-table"
 
-import { Button, Checkbox } from "@hanzo/ui/primitives"
-import { ArrowUpDown } from "lucide-react"
-
 export interface UserTableDataType {
+  id: string
   email: string;
   firstName: string;
   lastName: string;

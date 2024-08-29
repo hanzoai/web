@@ -3,6 +3,7 @@
 import type { ColumnDef } from "@tanstack/react-table"
 
 export interface OrderDetailTableDataType {
+  id: string
   externalId: string
   type: string
   last: string

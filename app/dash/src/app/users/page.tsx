@@ -1,129 +1,13 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import moment from 'moment-timezone'
 import { useRouter } from "next/navigation";
 import { observer } from "mobx-react";
 
 import { useStore } from "@/stores";
-import { MUITable } from "@/components/tables";
 import { DataTableDemo } from "@/components/data-table/data-table";
-import { UserTableColumn, type UserTableDataType } from "@/components/data-table/user-table-column";
-// import { useMidstream } from "@/hooks";
-
-// const data: UserTableDataType[] = [
-//   {
-//     email: "sharonwescorn@gmail.com",
-//     firstName: "Hope",
-//     lastName: "Broussard",
-//     city: "Paris",
-//     postalCode: "020304",
-//     state: "CS",
-//     country: "France",
-//     created: new Date().toLocaleDateString(),
-//     updated: "3 years ago"
-//   },
-//   {
-//     email: "sharonwescorn@gmail.com",
-//     firstName: "Hope",
-//     lastName: "Broussard",
-//     city: "Paris",
-//     postalCode: "020304",
-//     state: "CS",
-//     country: "France",
-//     created: new Date().toLocaleDateString(),
-//     updated: "3 years ago"
-//   },
-//   {
-//     email: "sharonwescorn@gmail.com",
-//     firstName: "Hope",
-//     lastName: "Broussard",
-//     city: "Paris",
-//     postalCode: "020304",
-//     state: "CS",
-//     country: "France",
-//     created: new Date().toLocaleDateString(),
-//     updated: "3 years ago"
-//   },
-//   {
-//     email: "sharonwescorn@gmail.com",
-//     firstName: "Hope",
-//     lastName: "Broussard",
-//     city: "Paris",
-//     postalCode: "020304",
-//     state: "CS",
-//     country: "France",
-//     created: new Date().toLocaleDateString(),
-//     updated: "3 years ago"
-//   },
-//   {
-//     email: "sharonwescorn@gmail.com",
-//     firstName: "Hope",
-//     lastName: "Broussard",
-//     city: "Paris",
-//     postalCode: "020304",
-//     state: "CS",
-//     country: "France",
-//     created: new Date().toLocaleDateString(),
-//     updated: "3 years ago"
-//   },
-//   {
-//     email: "sharonwescorn@gmail.com",
-//     firstName: "Hope",
-//     lastName: "Broussard",
-//     city: "Paris",
-//     postalCode: "020304",
-//     state: "CS",
-//     country: "France",
-//     created: new Date().toLocaleDateString(),
-//     updated: "3 years ago"
-//   },
-// ]
-
-const columns = [
-  {
-    title: 'Email',
-    field: 'email',
-  },
-  {
-    title: 'First Name',
-    field: 'firstName',
-  },
-  {
-    title: 'Last Name',
-    field: 'lastName',
-  },
-  {
-    title: 'City',
-    field: 'shippingAddressCity',
-    render: (row: any) => row.shippingAddress.city,
-  },
-  {
-    title: 'Postal Code',
-    field: 'shippingAddressPostalCode',
-    render: (row: any) => row.shippingAddress.postalCode,
-  },
-  {
-    title: 'State',
-    field: 'shippingAddressState',
-    render: (row: any) => row.shippingAddress.state,
-  },
-  {
-    title: 'Country',
-    field: 'shippingAddressCountry',
-    render: (row: any) => row.shippingAddress.country,
-  },
-  {
-    title: 'Created',
-    field: 'createdAt',
-    render: (row: any) => moment(row.createdAt).format('MM/DD/YYYY'),
-  },
-  {
-    title: 'Updated',
-    field: 'updatedAt',
-    render: (row: any) => moment(row.updatedAt).fromNow(),
-  },
-]
+import { UserTableColumn } from "@/components/data-table/user-table-column";
 
 const UsersPage = observer(() => {
   const router = useRouter();
@@ -136,7 +20,9 @@ const UsersPage = observer(() => {
 
   const getData = async (page: number, pageSize: number) => {
     const response = await usersStore.listUsers(page + 1, pageSize)
+    console.log("data: ", response.models)
     const tableData = response.models.map((user: any) => ({
+      id: user.id,
       email: user.email,
       firstName: user.firstName,
       lastName: user.lastName,
@@ -149,13 +35,16 @@ const UsersPage = observer(() => {
     }))
     setData(tableData)
   }
+  
+  const onClickUser = (userId: string) => {
+    router.push(`/users/details?id=${userId}`)
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (credentialStore.isLoggedIn) {
         clearInterval(interval)
         getData(page, pageSize)
-        console.log("count: ", usersStore.total)
       }
     }, 500)
   }, [])
@@ -163,12 +52,7 @@ const UsersPage = observer(() => {
   useEffect(() => {
     usersStore.searchTokens = {q: searchToken}
     getData(page, pageSize)
-    console.log("count: ", usersStore.total)
   }, [searchToken, page])
-
-  const onClickUser = (userId: string) => {
-    router.push(`/users/details?id=${userId}`)
-  }
 
   return (
     <div className="flex-1 space-y-4 overflow-y-auto">

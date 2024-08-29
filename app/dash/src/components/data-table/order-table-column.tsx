@@ -3,6 +3,7 @@
 import type { ColumnDef } from "@tanstack/react-table"
 
 export interface OrderTableDataType {
+  id: string;
   number: string;
   userEmail: string;
   total: string;

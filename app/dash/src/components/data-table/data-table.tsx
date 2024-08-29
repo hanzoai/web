@@ -8,14 +8,40 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import type { ColumnDef, ColumnFiltersState, SortingState, VisibilityState } from "@tanstack/react-table"
 
-import { Select, SelectItem, SelectContent, SelectTrigger, SelectValue, Button, Input, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@hanzo/ui/primitives"
+import type {
+  ColumnDef,
+  ColumnFiltersState,
+  SortingState,
+  VisibilityState
+} from "@tanstack/react-table"
+
+import {
+  Select,
+  SelectItem,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+  Button,
+  Input,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from "@hanzo/ui/primitives"
+
 import React, { type Dispatch, type SetStateAction } from "react"
 import { SearchIcon } from "lucide-react"
+import { useRouter } from "next/navigation"
 import { CSV } from "@/components/icons"
 
-export function DataTableDemo<T>(
+interface HasId {
+  id: string
+}
+
+export function DataTableDemo<T extends HasId>(
   props: {
     data: T[];
     columns: ColumnDef<T>[];
@@ -24,13 +50,28 @@ export function DataTableDemo<T>(
     title: string,
     searchKey?: string,
     setSearchKey?: Dispatch<SetStateAction<string>>,
-    page?: number;
-    setPage?: Dispatch<SetStateAction<number>>;
+    page: number;
+    setPage: Dispatch<SetStateAction<number>>;
     pageSize?: number;
     setPageSize?: Dispatch<SetStateAction<number>>;
   }
 ) {
-  const { data, columns, filterKey, onClickHandler, title, searchKey, setSearchKey, page, setPage, pageSize, setPageSize } = props;
+  const {
+    data,
+    columns,
+    filterKey,
+    onClickHandler,
+    title,
+    searchKey,
+    setSearchKey,
+    page,
+    setPage,
+    pageSize,
+    setPageSize
+  } = props;
+
+  const router = useRouter();
+
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -80,9 +121,7 @@ export function DataTableDemo<T>(
               />
             </div>
             <Button variant='secondary' className="h-12 !font-medium bg-level-1 min-w-28" size='default' onClick={handleSearch}>Search</Button>
-            <Button variant='secondary' className="hidden md:block h-12 !font-medium bg-level-1 min-w-28" size='default'>
-              Create +
-            </Button>
+            <Button variant='secondary' className="hidden md:block h-12 !font-medium bg-level-1 min-w-28" size='default' onClick={() => router.push('/' + title.toLowerCase() + '/create')}>Create +</Button>
             <Button variant="secondary" className="h-12 font-medium !bg-level-1 hidden md:flex flex-row gap-2 min-w-28" size='default'>
               <CSV /> <div>CSV</div>
             </Button>
@@ -132,23 +171,25 @@ export function DataTableDemo<T>(
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                  onClick={() => onClickHandler?.(row.id)}
-                  className="hover:cursor-pointer"
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
+              table.getRowModel().rows.map((row) => {
+                return (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                    onClick={() => onClickHandler?.(row.original.id)}
+                    className="hover:cursor-pointer"
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                )
+              })
             ) : (
               <TableRow>
                 <TableCell
@@ -167,15 +208,15 @@ export function DataTableDemo<T>(
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setPage && page && setPage(page - 1)}
-            disabled={page ? page <= 0 : false}
+            onClick={() => setPage(page - 1)}
+            disabled={page ? page <= 0 : true}
           >
             Previous
           </Button>
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setPage && page && setPage(page + 1)}
+            onClick={() => setPage(page + 1)}
             disabled={!data.length}
           >
             Next

@@ -128,20 +128,11 @@ import {
       }
     }
   
-    @action async listOrders(page, display, query) {
+    @action async listOrders(page, display) {
       this.isLoading = true
   
-      this.query = query || this.query
       this.page = page || this.page
       this.display = display || this.display
-  
-      if (!this.query || !this.page || !this.display) {
-        throw new Error('Some are parameters are missing')
-      }
-  
-      if (query.orderBy) {
-        this.sort = (query.orderDirection === 'asc' ? '-' : '') + capitalize(query.orderBy.field)
-      }
   
       try {
         const opts = {
@@ -171,10 +162,6 @@ import {
   
         if (q.length > 0) {
           opts.q = q.join(' AND ')
-        }
-  
-        if (query.orderBy) {
-          opts.sort = this.sort
         }
   
         const res = await this.api.client.order.list(opts)

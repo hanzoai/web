@@ -4,6 +4,7 @@ import type { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
 
 export interface ProductsTableDataType {
+  id: string;
   slug: string;
   name: string;
   description: string;
