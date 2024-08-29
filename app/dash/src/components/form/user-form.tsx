@@ -80,7 +80,7 @@ const UserForm = (props: { userId?: string, create: boolean }) => {
             lastName: lastName,
             shippingAddress: {
                 line1: address,
-                // suite: suite,
+                line2: suite,
                 city: city,
                 postalCode: postalCode,
                 state: state,

@@ -8,7 +8,7 @@ import { useStore } from "@/stores";
 import { useEffect, useState } from "react";
 import moment from "moment-timezone";
 
-const UniversalPage = observer(() => {
+const OrdersPage = observer(() => {
   const router = useRouter();
   const { ordersStore, credentialStore } = useStore()
   const [data, setData] = useState()
@@ -20,6 +20,7 @@ const UniversalPage = observer(() => {
     const response = await ordersStore.listOrders(page + 1, pageSize)
     console.log(response.models)
     const tableData = response.models.map((order: any) => ({
+      id: order.id,
       number: order.number,
       userEmail: order.email,
       total: order.total,
@@ -75,4 +76,4 @@ const UniversalPage = observer(() => {
   )
 })
 
-export default UniversalPage;
+export default OrdersPage;
