@@ -419,7 +419,7 @@ const HomeLayout = () => {
             <div className="w-full md:w-[30%]">
               <Progress className="w-full h-[3px]" value={blockPercents[0]} />
               <div className="pt-[10px] pb-2">
-                <h3 className="text-white text-sm lg:text-xl text-left">Problems</h3>
+                <h3 className="text-white text-sm lg:text-xl text-left">Instant Growth</h3>
                 <p className="text-dark-grey1 text-xxs lg:text-xl">Hyper Scale your brand with HANZO AI</p>
               </div>
             </div>
