@@ -104,6 +104,43 @@ export function DataTableDemo<T extends HasId>(
     setSearchKey?.(search)
   }
 
+  const downLoadCSV = () => {
+    const csvData = convertToCSV(data);
+    const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", title + ".csv");
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  const convertToCSV = (objArray: any) => {
+    const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
+    let str = '';
+    let row = "";
+  
+    // Create the header row
+    for (let index in objArray[0]) {
+      row += `"${index}",`;
+    }
+    row = row.slice(0, -1);
+    str += row + '\r\n';
+  
+    // Create the data rows
+    for (let i = 0; i < array.length; i++) {
+      let line = '';
+      for (let index in array[i]) {
+        if (line !== '') line += ',';
+        line += `"${array[i][index]}"`;
+      }
+      str += line + '\r\n';
+    }
+    return str;
+  }
+
   return (
     <div className="w-full flex flex-col p-2 md:p-4 gap-4">
       {
@@ -122,7 +159,7 @@ export function DataTableDemo<T extends HasId>(
             </div>
             <Button variant='secondary' className="h-12 !font-medium bg-level-1 min-w-28" size='default' onClick={handleSearch}>Search</Button>
             <Button variant='secondary' className="hidden md:block h-12 !font-medium bg-level-1 min-w-28" size='default' onClick={() => router.push('/' + title.toLowerCase() + '/create')}>Create +</Button>
-            <Button variant="secondary" className="h-12 font-medium !bg-level-1 hidden md:flex flex-row gap-2 min-w-28" size='default'>
+            <Button variant="secondary" className="h-12 font-medium !bg-level-1 hidden md:flex flex-row gap-2 min-w-28" size='default' onClick={downLoadCSV}>
               <CSV /> <div>CSV</div>
             </Button>
           </div>

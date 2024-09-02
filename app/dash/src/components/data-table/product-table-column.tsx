@@ -69,7 +69,7 @@ export const ProductsTableColumn: ColumnDef<ProductsTableDataType>[] = [
         </div>
       )
     },
-    cell: ({ row }) => <div className="text-center whitespace-nowrap">{row.getValue("price")}</div>,
+    cell: ({ row }) => <div className="text-center whitespace-nowrap">{"$" + Number(row.getValue("price")) / 100}</div>,
   },
   {
     accessorKey: "sold",

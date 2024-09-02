@@ -56,7 +56,7 @@ export const OrderTableColumn: ColumnDef<OrderTableDataType>[] = [
         </div>
       )
     },
-    cell: ({ row }) => <div className="text-center whitespace-nowrap">{row.getValue("total")}</div>,
+    cell: ({ row }) => <div className="text-center whitespace-nowrap">{"$" + Number(row.getValue("total")) / 100}</div>,
   },
   {
     accessorKey: "orderStatus",

@@ -1,78 +1,63 @@
 "use client"
 
-import { DataTableDemo } from "@/components/data-table/data-table";
-import { OrderTableColumn } from "@/components/data-table/order-table-column";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { observer } from "mobx-react";
+import Link from "next/link"
+import { Check } from "lucide-react";
+
+import { Button, Card, CardContent } from "@hanzo/ui/primitives";
+import { STRIPE_CLIENT_ID, STRIPE_REDIRECT_URI } from '@/utils/settings'
 import { useStore } from "@/stores";
-import { useEffect, useState } from "react";
-import moment from "moment-timezone";
 
 const OrdersPage = observer(() => {
   const router = useRouter();
-  const { ordersStore, credentialStore } = useStore()
-  const [data, setData] = useState()
-  const [page, setPage] = useState(0)
-  const [pageSize, setPageSize] = useState(10)
-  const [searchToken, setSearchToken] = useState('')
+  const { credentialStore } = useStore()
 
-  const getData = async (page: number, pageSize: number) => {
-    const response = await ordersStore.listOrders(page + 1, pageSize)
-    console.log(response.models)
-    const tableData = response.models.map((order: any) => ({
-      id: order.id,
-      number: order.number,
-      userEmail: order.email,
-      total: order.total,
-      orderStatus: order.status,
-      paymentStatus: order.paymentStatus,
-      state: order.billingAddress.state,
-      country: order.billingAddress.country,
-      created: moment(order.createdAt).format("MMM DD, YYYY"),
-      updated: moment(order.updatedAt).fromNow()
-    }))
-    setData(tableData)
-  }
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+
+  const [stripeConnect, setStripeConnect] = useState<string>('')
+  const [disabled, setDisabled] = useState<boolean>(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (credentialStore.isLoggedIn) {
         clearInterval(interval)
-        getData(page, pageSize)
+        console.log(credentialStore)
+        setStripeConnect(`https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${STRIPE_CLIENT_ID}&scope=read_write&redirect_uri=${STRIPE_REDIRECT_URI}&state=${credentialStore.org.id}`)
+        setDisabled(credentialStore.org.id.length === 0 && credentialStore.isLoading)
+        setIsLoading(false)
       }
     }, 500)
-  }, [])
-  
-  useEffect(() => {
-    ordersStore.searchTokens = {q: searchToken}
-    getData(page, pageSize)
-  }, [searchToken, page])
-
-  const onClickUser = (orderId: string) => {
-    router.push(`/orders/details?id=${orderId}`)
-  }
+  })
 
   return (
-    <div className="flex-1 space-y-4 overflow-y-auto">
-      <div className="overflow-hidden bg-background shadow">
-        <div className="h-full flex-1 flex-col md:flex">
-          <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
-          {data && <DataTableDemo
-            data={data}
-            columns={OrderTableColumn}
-            onClickHandler={onClickUser}
-            title='Users'
-            filterKey='user'
-            searchKey={searchToken}
-            setSearchKey={setSearchToken}
-            page={page}
-            setPage={setPage}
-            pageSize={pageSize}
-            setPageSize={setPageSize}
-          />}
+    isLoading ? <div className="w-full flex justify-center p-4">Loading...</div> :
+      <div className="flex-1 space-y-4 overflow-y-auto">
+        <div className="overflow-hidden bg-background shadow">
+          <div className="h-full flex-1 flex-col md:flex gap-4">
+            <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">{credentialStore.user.firstName}</p>
+            <Card className="max-w-[360px] self-center mt-4">
+              <CardContent className="flex flex-col gap-4">
+                <div className="text-xl sm:text-2xl font-bold">Stripe</div>
+                <div className="text-sm sm:text-base ">Connect to Stripe to enable the payment system</div>
+                <Button
+                  onClick={() => router.push(stripeConnect)}
+                  size='lg'
+                  variant='primary'
+                  color={credentialStore.hasIntegration('stripe') ? 'secondary' : 'primary'}
+                  type='submit'
+                  disabled={disabled}
+                >
+                  <Link href={stripeConnect} className="flex flex-row">
+                    {credentialStore.hasIntegration('stripe') ? <Check /> : <></>}{credentialStore.hasIntegration('stripe') ? 'Connected' : 'Connect'}
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
-    </div>
   )
 })
 

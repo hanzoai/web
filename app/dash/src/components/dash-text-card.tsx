@@ -15,8 +15,8 @@ export interface TextCardDataProps {
 }
 
 const DashTextCard: FC<TextCardDataProps> = observer((props) => {
-  const { cardTitle, cardIcon, cardPercent, cardValue, cardCompareValue, cardPreviousValue, cardValueType } = props;
-  const value = cardValueType == 'cash' ? '$' + cardValue : cardValue
+  const { cardTitle, cardIcon, cardValue, cardCompareValue, cardPreviousValue, cardValueType } = props;
+  const value = cardValueType == 'cash' ? '$' + cardValue / 100 : cardValue
   // const percent = '+' + cardPercent + '%'
 
   const percent = cardPreviousValue

@@ -30,7 +30,7 @@ const OrdersPage = observer(() => {
       paymentStatus: order.paymentStatus,
       state: order.billingAddress.state,
       country: order.billingAddress.country,
-      created: moment(order.createdAt).format("MMM DD, YYYY"),
+      created: moment(order.createdAt).format("MM/DD/YYYY"),
       updated: moment(order.updatedAt).fromNow()
     }))
     setData(tableData)
@@ -65,8 +65,8 @@ const OrdersPage = observer(() => {
               data={data}
               columns={OrderTableColumn}
               onClickHandler={onClickUser}
-              title='Users'
-              filterKey='user'
+              title='Orders'
+              filterKey='order'
               searchKey={searchToken}
               setSearchKey={setSearchToken}
               page={page}
