@@ -8,7 +8,6 @@ import DashSelect from "@/components/dash-select/dash-select";
 import { UserOrderTableColumn, type UserOrderTableDataType } from "@/components/data-table/user-order-table-column";
 
 import { useStore } from "@/stores";
-import { set } from "react-hook-form";
 
 import moment from "moment-timezone";
 import { useRouter } from "next/navigation";
@@ -18,12 +17,13 @@ const UserForm = (props: { userId?: string, create: boolean }) => {
     const { usersStore, credentialStore, settingsStore } = useStore()
     const router = useRouter();
 
+    const [isLoading, setIsLoading] = useState(true)
     const [page, setPage] = useState(0)
 
     const [statisticId, setStatisticId] = useState<string>('');
     const [statisticCreated, setStatisticCreated] = useState<string>('');
     const [statisticUpdated, setStatisticUpdated] = useState<string>('');
-    const [referrals, setReferrals] = useState([])
+    const [orders, setOrders] = useState([])
 
     const [userEmail, setUserEmail] = useState<string>('');
     const [firstName, setFirstName] = useState<string>('');
@@ -60,8 +60,22 @@ const UserForm = (props: { userId?: string, create: boolean }) => {
                 setStatisticId(user.id)
                 setStatisticCreated(moment(user.createdAt).format("MM/DD/YYYY"))
                 setStatisticUpdated(moment(user.updatedAt).format("MM/DD/YYYY"))
-                setReferrals(user.referrals)
+                const tableData = user.orders.map((order: any) => ({
+                    id: order.id,
+                    number: order.number,
+                    total: order.total,
+                    orderStatus: order.status,
+                    paymentStatus: order.paymentStatus,
+                    state: order.shippingAddress.state,
+                    country: order.shippingAddress.country,
+                    created: moment(order.createdAt).format("MM/DD/YYYY"),
+                    updated: moment(order.updatedAt).format("MM/DD/YYYY")
+                }))
+                setOrders(tableData)
+                setIsLoading(false)
             })
+        } else {
+            setIsLoading(false)
         }
     }
 
@@ -93,85 +107,86 @@ const UserForm = (props: { userId?: string, create: boolean }) => {
     }
 
     return (
-        <div className="flex flex-col gap-4 p-2 md:p-4 overflow-y-auto">
-            <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
-            {!create && <div className="flex flex-col lg:flex-row w-full items-center bg-background shadow gap-4 truncate">
-                <div className="lg:flex-[33%] w-full flex flex-col border border-level-1 rounded-md p-4 gap-2">
-                    <div className="font-medium text-xl text-foreground">Statistics ID</div>
-                    <span className="font-medium text-base text-muted-1">{statisticId}</span>
-                </div>
-                <div className="lg:flex-[67%] w-full flex flex-row gap-4">
-                    <div className="flex-1 flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
-                        <div className="font-medium text-xl text-foreground">Created At</div>
-                        <span className="font-medium text-base text-muted-1">{statisticCreated}</span>
+        isLoading ? <div className="w-full flex justify-center p-4">Loading...</div> :
+            <div className="flex flex-col gap-4 p-2 md:p-4 overflow-y-auto">
+                <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
+                {!create && <div className="flex flex-col lg:flex-row w-full items-center bg-background shadow gap-4 truncate">
+                    <div className="lg:flex-[33%] w-full flex flex-col border border-level-1 rounded-md p-4 gap-2">
+                        <div className="font-medium text-xl text-foreground">Statistics ID</div>
+                        <span className="font-medium text-base text-muted-1">{statisticId}</span>
                     </div>
-                    <div className="flex-1 flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
-                        <div className="font-medium text-xl text-foreground">Updated At</div>
-                        <span className="font-medium text-base text-muted-1">{statisticUpdated}</span>
+                    <div className="lg:flex-[67%] w-full flex flex-row gap-4">
+                        <div className="flex-1 flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
+                            <div className="font-medium text-xl text-foreground">Created At</div>
+                            <span className="font-medium text-base text-muted-1">{statisticCreated}</span>
+                        </div>
+                        <div className="flex-1 flex flex-col border border-level-1 rounded-md text-muted-1 p-4 gap-2">
+                            <div className="font-medium text-xl text-foreground">Updated At</div>
+                            <span className="font-medium text-base text-muted-1">{statisticUpdated}</span>
+                        </div>
+                    </div>
+                </div>}
+                <div className="flex flex-col space-y-4 w-full rounded-md border border-level-1 bg-background shadow p-4 text-muted-1">
+                    <div>
+                        <h1 className="text-primary text-xl">Personal Information</h1>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <div className="text-sm text-primary">Email</div>
+                        <Input placeholder="Email" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-6">
+                        <div className="flex-1 flex flex-col gap-2">
+                            <div className="text-sm text-primary">First Name</div>
+                            <Input placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                        </div>
+                        <div className="flex-1 flex flex-col gap-2">
+                            <div className="text-sm text-primary">Last Name</div>
+                            <Input placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                        </div>
                     </div>
                 </div>
-            </div>}
-            <div className="flex flex-col space-y-4 w-full rounded-md border border-level-1 bg-background shadow p-4 text-muted-1">
-                <div>
-                    <h1 className="text-primary text-xl">Personal Information</h1>
-                </div>
-                <div className="flex flex-col gap-2">
-                    <div className="text-sm text-primary">Email</div>
-                    <Input placeholder="Email" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-6">
-                    <div className="flex-1 flex flex-col gap-2">
-                        <div className="text-sm text-primary">First Name</div>
-                        <Input placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                <div className="flex flex-col space-y-4 w-full rounded-md border border-level-1 bg-background shadow p-4 text-muted-1">
+                    <div>
+                        <h1 className="text-primary text-xl">Default Shipping Information</h1>
                     </div>
-                    <div className="flex-1 flex flex-col gap-2">
-                        <div className="text-sm text-primary">Last Name</div>
-                        <Input placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="flex flex-col gap-2">
+                            <div className="text-sm text-primary">Address</div>
+                            <Input placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <div className="text-sm text-primary">Suite</div>
+                            <Input placeholder="Suite" value={suite} onChange={(e) => setSuite(e.target.value)} />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <div className="text-sm text-primary">City</div>
+                            <Input placeholder="City" value={city} onChange={(e) => setCity(e.target.value)} />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <div className="text-sm text-primary">ZIP/Postal Code</div>
+                            <Input placeholder="Zip Code" value={postalCode} onChange={(e) => setPostalCode(e.target.value)} />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <div className="text-sm text-primary">Region/State</div>
+                            <DashSelect placeholder="Select a State" value={state} options={country !== '' ? settingsStore.stateOptions[country] : null} onChange={onChangeState} />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <div className="text-sm text-primary">Country</div>
+                            <DashSelect placeholder="Select a Country" value={country} options={settingsStore.countryOptions} onChange={onChangeCountry} />
+                        </div>
+                    </div>
+                    <div>
+                        <Button onClick={() => handleButtonClick()}>{create ? 'Create' : 'Save'}</Button>
                     </div>
                 </div>
+                {!create && orders.length !== 0 && <DataTableDemo
+                    data={orders}
+                    columns={UserOrderTableColumn}
+                    title='Orders'
+                    page={page}
+                    setPage={setPage}
+                />}
             </div>
-            <div className="flex flex-col space-y-4 w-full rounded-md border border-level-1 bg-background shadow p-4 text-muted-1">
-                <div>
-                    <h1 className="text-primary text-xl">Default Shipping Information</h1>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-2">
-                        <div className="text-sm text-primary">Address</div>
-                        <Input placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <div className="text-sm text-primary">Suite</div>
-                        <Input placeholder="Suite" value={suite} onChange={(e) => setSuite(e.target.value)} />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <div className="text-sm text-primary">City</div>
-                        <Input placeholder="City" value={city} onChange={(e) => setCity(e.target.value)} />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <div className="text-sm text-primary">ZIP/Postal Code</div>
-                        <Input placeholder="Zip Code" value={postalCode} onChange={(e) => setPostalCode(e.target.value)} />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <div className="text-sm text-primary">Region/State</div>
-                        <DashSelect placeholder="Select a State" value={state} options={country !== '' ? settingsStore.stateOptions[country] : null} onChange={onChangeState} />
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <div className="text-sm text-primary">Country</div>
-                        <DashSelect placeholder="Select a Country" value={country} options={settingsStore.countryOptions} onChange={onChangeCountry} />
-                    </div>
-                </div>
-                <div>
-                    <Button onClick={() => handleButtonClick()}>{create ? 'Create' : 'Save'}</Button>
-                </div>
-            </div>
-            {!create && referrals.length !== 0 && <DataTableDemo
-                data={referrals}
-                columns={UserOrderTableColumn}
-                title='Order'
-                page={page}
-                setPage={setPage}
-            />}
-        </div>
     )
 }
 

@@ -13,6 +13,8 @@ const UsersPage = observer(() => {
   const router = useRouter();
   const { usersStore, credentialStore } = useStore()
 
+  const [isLoading, setIsLoading] = useState(true)
+
   const [data, setData] = useState()
   const [page, setPage] = useState(0)
   const [pageSize, setPageSize] = useState(10)
@@ -20,7 +22,7 @@ const UsersPage = observer(() => {
 
   const getData = async (page: number, pageSize: number) => {
     const response = await usersStore.listUsers(page + 1, pageSize)
-    console.log("data: ", response.models)
+    // console.log("data: ", response.models)
     const tableData = response.models.map((user: any) => ({
       id: user.id,
       email: user.email,
@@ -34,10 +36,11 @@ const UsersPage = observer(() => {
       updated: moment(user.updatedAt).fromNow(),
     }))
     setData(tableData)
+    setIsLoading(false)
   }
-  
-  const onClickUser = (userId: string) => {
-    router.push(`/users/details?id=${userId}`)
+
+  const onClickUser = (user: any) => {
+    router.push(`/users/details?id=${user.id}`)
   }
 
   useEffect(() => {
@@ -48,34 +51,35 @@ const UsersPage = observer(() => {
       }
     }, 500)
   }, [])
-  
+
   useEffect(() => {
-    usersStore.searchTokens = {q: searchToken}
+    usersStore.searchTokens = { q: searchToken }
     getData(page, pageSize)
   }, [searchToken, page])
 
   return (
-    <div className="flex-1 space-y-4 overflow-y-auto">
-      <div className="overflow-hidden bg-background shadow">
-        <div className="h-full flex-1 flex-col md:flex">
-          <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
-          {data && <DataTableDemo
-            data={data}
-            columns={UserTableColumn}
-            onClickHandler={onClickUser}
-            title='Users'
-            filterKey='user'
-            searchKey={searchToken}
-            setSearchKey={setSearchToken}
-            page={page}
-            setPage={setPage}
-            pageSize={pageSize}
-            setPageSize={setPageSize}
-          />
-          }
+    isLoading ? <div className="w-full flex justify-center p-4">Loading...</div> :
+      <div className="flex-1 space-y-4 overflow-y-auto">
+        <div className="overflow-hidden bg-background shadow">
+          <div className="h-full flex-1 flex-col md:flex">
+            <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
+            {data && <DataTableDemo
+              data={data}
+              columns={UserTableColumn}
+              onClickHandler={onClickUser}
+              title='Users'
+              filterKey='user'
+              searchKey={searchToken}
+              setSearchKey={setSearchToken}
+              page={page}
+              setPage={setPage}
+              pageSize={pageSize}
+              setPageSize={setPageSize}
+            />
+            }
+          </div>
         </div>
       </div>
-    </div>
   )
 })
 

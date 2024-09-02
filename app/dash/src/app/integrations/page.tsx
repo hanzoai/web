@@ -11,8 +11,6 @@ import moment from "moment-timezone";
 const OrdersPage = observer(() => {
   const router = useRouter();
   const { ordersStore, credentialStore } = useStore()
-
-  const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState()
   const [page, setPage] = useState(0)
   const [pageSize, setPageSize] = useState(10)
@@ -34,7 +32,6 @@ const OrdersPage = observer(() => {
       updated: moment(order.updatedAt).fromNow()
     }))
     setData(tableData)
-    setIsLoading(false)
   }
 
   useEffect(() => {
@@ -45,38 +42,37 @@ const OrdersPage = observer(() => {
       }
     }, 500)
   }, [])
-
+  
   useEffect(() => {
-    ordersStore.searchTokens = { q: searchToken }
+    ordersStore.searchTokens = {q: searchToken}
     getData(page, pageSize)
   }, [searchToken, page])
 
-  const onClickUser = (order: any) => {
-    router.push(`/orders/details?id=${order.id}`)
+  const onClickUser = (orderId: string) => {
+    router.push(`/orders/details?id=${orderId}`)
   }
 
   return (
-    isLoading ? <div className="w-full flex justify-center p-4">Loading...</div> :
-      <div className="flex-1 space-y-4 overflow-y-auto">
-        <div className="overflow-hidden bg-background shadow">
-          <div className="h-full flex-1 flex-col md:flex">
-            <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
-            {data && <DataTableDemo
-              data={data}
-              columns={OrderTableColumn}
-              onClickHandler={onClickUser}
-              title='Users'
-              filterKey='user'
-              searchKey={searchToken}
-              setSearchKey={setSearchToken}
-              page={page}
-              setPage={setPage}
-              pageSize={pageSize}
-              setPageSize={setPageSize}
-            />}
-          </div>
+    <div className="flex-1 space-y-4 overflow-y-auto">
+      <div className="overflow-hidden bg-background shadow">
+        <div className="h-full flex-1 flex-col md:flex">
+          <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
+          {data && <DataTableDemo
+            data={data}
+            columns={OrderTableColumn}
+            onClickHandler={onClickUser}
+            title='Users'
+            filterKey='user'
+            searchKey={searchToken}
+            setSearchKey={setSearchToken}
+            page={page}
+            setPage={setPage}
+            pageSize={pageSize}
+            setPageSize={setPageSize}
+          />}
         </div>
       </div>
+    </div>
   )
 })
 

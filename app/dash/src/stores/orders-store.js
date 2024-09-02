@@ -90,6 +90,7 @@ import {
       this.isLoading = true
   
       try {
+        console.log('updateOrder: ', this.order)
         const res = await this.api.client.order.update(this.order)
   
         runInAction(() => {

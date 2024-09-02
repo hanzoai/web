@@ -3,7 +3,7 @@
 import DashSelect from "@/components/dash-select/dash-select";
 import { DataTableDemo } from "@/components/data-table/data-table";
 import { OrderDetailTableColumn } from "@/components/data-table/order-detail-table-column";
-import { Button, Input } from "@hanzo/ui/primitives";
+import { Button, Input, Label, Dialog, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter } from "@hanzo/ui/primitives";
 import { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import { useStore } from "@/stores";
@@ -16,17 +16,23 @@ const OrderForm = observer((props: { orderId?: string, create: boolean }) => {
     const { ordersStore, credentialStore, settingsStore } = useStore()
 
     const [isLoading, setIsLoading] = useState(true)
+    const [open, setOpen] = useState(false)
+    const [refundAmount, setRefundAmount] = useState('0')
+    const [refundSuccess, setRefundSuccess] = useState(false)
+    const [page, setPage] = useState<number>(0)
 
     const [id, setId] = useState<string>('');
     const [createdAt, setCreatedAt] = useState<string>('');
     const [updatedAt, setUpdatedAt] = useState<string>('');
 
-    const [email, setEmail] = useState('sharonwescorn@gmail.com');
+    const [userId, setUserId] = useState<string>('');
+    const [email, setEmail] = useState('');
     const [name, setName] = useState('')
     const [address, setAddress] = useState<string>('');
     const [suite, setSuite] = useState<string>('');
     const [city, setCity] = useState<string>('');
     const [postalCode, setPostalCode] = useState<string>('');
+    const [paymentObject, setPaymentObject] = useState();
 
     const orderStatusOptions = {
         "cancelled": "Cancelled",
@@ -85,6 +91,7 @@ const OrderForm = observer((props: { orderId?: string, create: boolean }) => {
                 setId(order.id)
                 setCreatedAt(moment(order.createdAt).format("MM/DD/YYYY"))
                 setUpdatedAt(moment(order.updatedAt).format("MM/DD/YYYY"))
+                setUserId(order.userId)
                 setEmail(order.email)
                 setName(order.shippingAddress.name)
                 setAddress(order.shippingAddress.line1)
@@ -96,9 +103,23 @@ const OrderForm = observer((props: { orderId?: string, create: boolean }) => {
                 setOrderStatus(order.status)
                 setPaymentStatus(order.paymentStatus)
                 setNumber(order.number)
-                setSubTotal(order.subtotal)
-                setDiscount(order.discount)
-                setTotal(order.total)
+                setSubTotal((order.subtotal / 100).toString())
+                setDiscount((order.discount / 100).toString())
+                setTotal((order.total / 100).toString())
+                const tableData = order.paymentObjects.map((item: any) => (
+                    {
+                        externalId: item.account.chargeId,
+                        type: item.type,
+                        last: item.account.lastFour,
+                        ip: item.client.ip,
+                        country: item.client.country,
+                        status: item.status,
+                        fee: item.fee,
+                        amount: item.amount,
+                        refunded: item.amountRefunded
+                    }
+                ))
+                setPaymentObject(tableData)
                 setIsLoading(false)
             })
         } else {
@@ -106,16 +127,69 @@ const OrderForm = observer((props: { orderId?: string, create: boolean }) => {
         }
     }
 
-    const handleSaveButtonClick = () => {
+    const handleSaveButtonClick = async () => {
+        const order = {
+            id: id,
+            email: email,
+            shippingAddress: {
+                name: name,
+                line1: address,
+                line2: suite,
+                city: city,
+                postalCode: postalCode,
+                state: state,
+                country: country,
+            },
+            status: orderStatus,
+            paymentStatus: paymentStatus,
+        }
 
+        console.log(order)
+
+        ordersStore.order = order
+        const u = await (create ? ordersStore.createOrder() : ordersStore.updateOrder())
+        router.push(`/orders/details?id=${u.id}`)
     }
+
     const handleRefundButtonClick = () => {
-        
+        setRefundAmount('0')
+        setRefundSuccess(false)
+        setOpen(true)
+    }
+
+    const handleCancelButtonClick = () => {
+        setOpen(false)
+    }
+
+    const handleConfirmButtonClick = async () => {
+        try {
+            console.log(Number(refundAmount))
+            await ordersStore.refundOrder(orderId, Number(refundAmount))
+            setRefundSuccess(true)
+        } catch (e: any) {
+            console.log(e)
+        }
+    }
+
+    const handleRefundAmountChange = (value: string) => {
+        let cleanedValue = value.replace(/[^0-9.]/g, '');
+        if (!isNaN(Number(cleanedValue))) {
+            setRefundAmount(cleanedValue);
+        }
+    }
+
+    const onRowClick = (rowData: any) => {
+        try {
+            if (rowData.type === 'stripe') {
+                window.open(`//dashboard.stripe.com/payments/${rowData.externalId}`, '_blank')
+            }
+        } catch (e) {
+            console.error(e)
+        }
     }
 
     return (
-        isLoading ?
-            <div className="w-full flex justify-center p-4">Loading...</div> :
+        isLoading ? <div className="w-full flex justify-center p-4">Loading...</div> :
             <>
                 <div className="flex-1 space-y-4 p-2 md:p-4 overflow-y-auto">
                     <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
@@ -141,7 +215,7 @@ const OrderForm = observer((props: { orderId?: string, create: boolean }) => {
                                 <h1 className="text-primary text-xl">User Information</h1>
                                 <div className="flex flex-col font-medium text-base">
                                     <p className="text-primary">User ID</p>
-                                    <p className="text-muted-1">saud7g7a6tdbasw352345d</p>
+                                    <p className="text-muted-1">{userId}</p>
                                 </div>
                             </div>
                             <div className="flex flex-col w-full rounded-md border border-level-1 bg-background shadow p-4 gap-4">
@@ -198,6 +272,7 @@ const OrderForm = observer((props: { orderId?: string, create: boolean }) => {
                                 <div className="flex flex-row gap-4 w-full md:w-[50%]">
                                     <Button variant="primary" className="flex-1" onClick={handleSaveButtonClick}>Save</Button>
                                     <Button variant="outline" className="flex-1" onClick={handleRefundButtonClick}>Refund</Button>
+
                                 </div>
                             </div>
                         </div>
@@ -211,21 +286,52 @@ const OrderForm = observer((props: { orderId?: string, create: boolean }) => {
                                 <p className="text-primary">Terms</p>
                                 <div className="flex flex-row items-center justify-between">
                                     <p className="text-primary">Subtotal</p>
-                                    <span>{subTotal}</span>
+                                    <span>{'$' + subTotal}</span>
                                 </div>
                                 <div className="flex flex-row items-center justify-between">
                                     <p className="text-primary">Discount</p>
-                                    <span>{discount}</span>
+                                    <span>{'$' + discount}</span>
                                 </div>
                             </div>
                             <div className="flex flex-row items-center justify-between">
                                 <p className="text-primary">Total</p>
-                                <span>{total}</span>
+                                <span>{'$' + total}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                {/* <DataTableDemo data={data} columns={OrderDetailTableColumn} title="Payments" /> */}
+                <DataTableDemo
+                    data={paymentObject ?? []}
+                    columns={OrderDetailTableColumn}
+                    onClickHandler={onRowClick}
+                    page={page}
+                    setPage={setPage}
+                    title="Payments" />
+                <Dialog open={open} onOpenChange={setOpen}>
+                    <DialogContent className="p-0 gap-0 transform overflow-hidden rounded-lg border border-level-3 bg-background sm:max-w-[500px]">
+                        <DialogHeader className="text-xl lg:text-2xl bg-background p-4 gap-4 overflow-hidden">
+                            <DialogTitle>Refund</DialogTitle>
+                            <DialogDescription>
+                                {refundSuccess ? "This refund was successfully processed." : "Enter an amount to refund."}
+                            </DialogDescription>
+                        </DialogHeader>
+                        <div className="p-4 flex flex-row gap-4 items-center">
+                            <Label htmlFor="refund" className="text-right">
+                                Amount
+                            </Label>
+                            <Input
+                                id="refund"
+                                value={'$' + refundAmount}
+                                className="col-span-3"
+                                onChange={(e) => handleRefundAmountChange(e.target.value)}
+                            />
+                        </div>
+                        <DialogFooter className="p-4 flex flex-row items-right">
+                            <Button variant="outline" onClick={handleCancelButtonClick}>{refundSuccess ? "Confirm" : "Cancel"}</Button>
+                            {!refundSuccess && <Button variant="primary" onClick={handleConfirmButtonClick}>Confirm</Button>}
+                        </DialogFooter>
+                    </DialogContent>
+                </Dialog>
             </>
     )
 })

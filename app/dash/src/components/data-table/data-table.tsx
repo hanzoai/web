@@ -45,7 +45,7 @@ export function DataTableDemo<T extends HasId>(
   props: {
     data: T[];
     columns: ColumnDef<T>[];
-    onClickHandler?: (id: string) => void;
+    onClickHandler?: (id: any) => void;
     filterKey?: string;
     title: string,
     searchKey?: string,
@@ -176,7 +176,7 @@ export function DataTableDemo<T extends HasId>(
                   <TableRow
                     key={row.id}
                     data-state={row.getIsSelected() && "selected"}
-                    onClick={() => onClickHandler?.(row.original.id)}
+                    onClick={() => onClickHandler?.(row.original)}
                     className="hover:cursor-pointer"
                   >
                     {row.getVisibleCells().map((cell) => (

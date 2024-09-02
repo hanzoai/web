@@ -91,8 +91,7 @@ const ProductForm = (props: { productId?: string, create: boolean }) => {
     }
 
     return (
-        isLoading ?
-            <div className="w-full flex justify-center p-4">Loading...</div> :
+        isLoading ? <div className="w-full flex justify-center p-4">Loading...</div> :
             <div className="flex flex-col space-y-4 p-2 md:p-4 overflow-y-auto w-full">
                 <p className="p-2 md:p-4 block md:hidden text-2xl font-medium">Karma</p>
                 {!create && <div className="grid xl:grid-cols-4 grid-cols-2 w-full items-center justify-center bg-background shadow gap-4 truncate">

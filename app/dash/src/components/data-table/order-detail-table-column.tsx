@@ -112,7 +112,7 @@ export const OrderDetailTableColumn: ColumnDef<OrderDetailTableDataType>[] = [
         </div>
       )
     },
-    cell: ({ row }) => <div className="text-center">{row.getValue("fee")}</div>,
+    cell: ({ row }) => <div className="text-center">{"$" + Number(row.getValue("fee")) / 100}</div>,
   },
   {
     accessorKey: "amount",
@@ -126,7 +126,7 @@ export const OrderDetailTableColumn: ColumnDef<OrderDetailTableDataType>[] = [
         </div>
       )
     },
-    cell: ({ row }) => <div className="text-center">{row.getValue("amount")}</div>,
+    cell: ({ row }) => <div className="text-center">{"$" + Number(row.getValue("amount")) / 100}</div>,
   },
   {
     accessorKey: "refunded",
@@ -140,6 +140,6 @@ export const OrderDetailTableColumn: ColumnDef<OrderDetailTableDataType>[] = [
         </div>
       )
     },
-    cell: ({ row }) => <div className="text-center">{row.getValue("refunded")}</div>,
+    cell: ({ row }) => <div className="text-center">{"$" + Number(row.getValue("refunded")) / 100}</div>,
   },
 ]
