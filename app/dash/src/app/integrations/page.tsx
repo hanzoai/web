@@ -10,7 +10,7 @@ import { Button, Card, CardContent } from "@hanzo/ui/primitives";
 import { STRIPE_CLIENT_ID, STRIPE_REDIRECT_URI } from '@/utils/settings'
 import { useStore } from "@/stores";
 
-const OrdersPage = observer(() => {
+const IntegrationsPage = observer(() => {
   const router = useRouter();
   const { credentialStore } = useStore()
 
@@ -61,4 +61,4 @@ const OrdersPage = observer(() => {
   )
 })
 
-export default OrdersPage;
+export default IntegrationsPage;

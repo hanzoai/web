@@ -163,18 +163,6 @@ export function DataTableDemo<T extends HasId>(
               <CSV /> <div>CSV</div>
             </Button>
           </div>
-          <div className="w-full">
-            <Select>
-              <SelectTrigger className="text-muted-2">
-                <SelectValue placeholder='More Options' />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='option1' className="text-muted-2">Option1</SelectItem>
-                <SelectItem value='option2' className="text-muted-2">Option2</SelectItem>
-                <SelectItem value='option3' className="text-muted-2">Option3</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
           <div className="flex md:hidden items-center flex-row gap-2 justify-end">
             <Button variant='secondary' className="h-12 !font-medium bg-level-1 min-w-28" size='default'>
               Create +
