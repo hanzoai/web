@@ -15,10 +15,11 @@ const sidebarData = [
   { label: "Activity", icon: <Recycle />, href: "/settings/activity" },
 ];
 
-const SideBar: FC = () => {
+export default function SettingsSideBar(props: {layout?: string}) {
+  const layout = props.layout
   return (
-    <div className="w-[0px] md:w-[250px] md:flex flex-col gap-2 flex-none transition-all duration-200">
-      <div className="h-[80px] text-2xl truncate font-bold hidden md:flex items-center border-b border-dashed border-level-1 justify-center md:justify-start p-2">
+    <div className={(layout == 'hidden' ? "w-[0px]" : "w-[250px] ") + layout + " md:w-[250px] md:flex flex-col gap-2 flex-none transition-all duration-200"}>
+      <div className={layout + " h-[80px] text-2xl truncate font-bold md:flex items-center border-b border-dashed border-level-1 justify-start p-2"}>
         Account Settings
       </div>
       {sidebarData.map((item, index) => {
@@ -28,6 +29,7 @@ const SideBar: FC = () => {
             label={item.label}
             href={item.href}
             icon={item.icon}
+            layout={layout}
           />
         )
       })
@@ -35,5 +37,3 @@ const SideBar: FC = () => {
     </div>
   )
 }
-
-export default SideBar;

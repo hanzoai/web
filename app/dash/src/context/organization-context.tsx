@@ -7,6 +7,7 @@ export interface Organization {
     name: string
     owner: string
     role: string
+    projects?: string[]
 }
 
 interface OrganizationContextProps {
