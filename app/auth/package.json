@@ -22,7 +22,8 @@
     "next-themes": "^0.2.1",
     "postcss-selector-parser": "^6.0.13",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "undici": "^6.19.8"
   },
   "devDependencies": {
     "@mdx-js/loader": "^3.0.0",

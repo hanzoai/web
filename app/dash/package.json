@@ -46,6 +46,7 @@
     "react-square-web-payments-sdk-fixed": "3.2.1-fixed",
     "recharts": "^2.12.7",
     "square": "^37.1.1",
+    "undici": "^6.19.8",
     "zod": "3.23.8"
   },
   "devDependencies": {
