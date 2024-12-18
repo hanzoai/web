@@ -34,7 +34,7 @@
     "mobx-react": "^9.1.1",
     "mobx-react-lite": "^4.0.7",
     "moment-timezone": "^0.5.45",
-    "next": "14.2.3",
+    "next": "14.2.15",
     "next-themes": "^0.2.1",
     "numeral": "^2.0.6",
     "postcss-selector-parser": "^6.0.13",
