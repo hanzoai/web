@@ -471,7 +471,6 @@ const HomeLayout = () => {
           <Karma className='w-full' />
           <Keek className='w-full' />
           <Myle className='w-full' />
-          <Snapchat className='w-full' />
           <Skully className='w-full' />
           <Triller className='w-full' />
           <Unikain className='w-full' />
